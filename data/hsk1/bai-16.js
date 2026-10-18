@@ -1,3472 +1,14596 @@
-/**
- * HSK STUDIO - DỮ LIỆU BÀI 16 (PHẦN 1/2)
- * Bao gồm: Nhóm 1 (Từ 1 - 6) & Nhóm 2 (Từ 7 - 12)
- * Tiêu chuẩn: Đầy đủ 6 chiều tiếp cận, chuyên đề bẫy tư duy Việt - Trung, Audio queues chuẩn xác.
- */
-
-(function(){
-  // Khởi tạo đối tượng lưu trữ dùng chung giữa Phần 1 và Phần 2
-  window.HSK_BAI16_DATA = window.HSK_BAI16_DATA || {
-    id: "hsk1-bai-16",
-    number: 16,
-    title: "Bài 16: Từ vựng trong đời sống và giao tiếp",
-    level: "HSK1",
-    desc: "24 từ vựng mở rộng chuyên sâu bẫy người Việt, cùng 4 đoạn hội thoại đường dài 16-24 lượt tương tác giọng Nam – Nữ.",
-    objectives: [
-      "Nắm vững 24 từ vựng thực tế và bản chất ngữ dụng phân biệt với tiếng Việt.",
-      "Vượt qua 24 bẫy chuyển di ngôn ngữ tiêu cực thường gặp của người học Việt Nam.",
-      "Luyện phản xạ giao tiếp qua 4 đoạn hội thoại thực tế đường dài (16-24 lượt thoại)."
-    ],
-    groups: [],
-    dialogues: []
-  };
-
-  // ==========================================
-  // NHÓM 1: PHƯƠNG HƯỚNG, ĐỘNG TÁC & ĐẠI TỪ NHÂN XƯNG
-  // ==========================================
-  const group1 = {
-    id: "hsk1-bai-16-g1",
-    title: "Nhóm 1: Phương Hướng, Động Tác & Đại Từ Nhân Xưng",
-    desc: "Học cách dùng chuyên sâu các từ: 右, 得到, 开车, 北, 他们, 动作; nhận diện bẫy vị trí mốc không gian và động tác cụ thể.",
-    words: [
-      // --- TỪ 1: 右 ---
+/* HSK Studio V5. Giữ nguyên toàn bộ id cũ; thêm trường deep, confusables, positionRules, voices (schemaVersion 3). */
+(function(){ HSK_REGISTER({
+ "id": "hsk1-bai-16",
+ "number": 16,
+ "title": "Bài 16: Từ vựng trong đời sống và giao tiếp",
+ "level": "HSK1",
+ "groups": [
+  {
+   "id": "hsk1-bai-16-g1",
+   "title": "Nhóm 1: Phương Hướng, Động Tác & Đại Từ Nhân Xưng",
+   "desc": "Học cách dùng 右、得到、开车、北、他们、动作; tự nhớ trước khi mở đáp án, rồi dùng trong hội thoại.",
+   "words": [
+    {
+     "id": "hsk1-bai-16-g1-w1",
+     "index": 1,
+     "hanzi": "右",
+     "pinyin": "yòu",
+     "coreMeaning": "Bên phải, phía bên phải",
+     "introAudio": [
       {
-        id: "hsk1-bai-16-g1-w1",
-        index: 1,
-        hanzi: "右",
-        pinyin: "yòu",
-        coreMeaning: "Bên phải, phía bên phải",
-        introAudio: [
-          { lang: "zh-CN", text: "右", pause: 500 },
-          { lang: "vi-VN", text: "Bên phải, phía bên phải", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi chỉ phương hướng di chuyển, xác định tọa độ vị trí vật thể hoặc cơ thể trong không gian thực tế.",
-          detail: "Chỉ phía bên phải. Khi đóng vai trò định vị không gian độc lập, luôn dùng danh từ phương vị '右边'. Khi chỉ hướng chuyển động, kết hợp với giới từ: '往右' hoặc '向右'.",
-          keyPoint: "Bên phải. Luôn đặt vật mốc chuẩn ở TRƯỚC từ phương vị: [Vật mốc + 右边].",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ nhất: Hữu, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "右", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là bên phải. Khi nói vị trí, dùng ", pause: 300 },
-            { lang: "zh-CN", text: "右边", pause: 400 },
-            { lang: "vi-VN", text: "; khi chỉ hướng rẽ, dùng ", pause: 300 },
-            { lang: "zh-CN", text: "往右", pause: 400 },
-            { lang: "vi-VN", text: "hoặc", pause: 200 },
-            { lang: "zh-CN", text: "向右", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Vị trí tương đối so với vật mốc",
-            pattern: "[Vật mốc] + (的) + 右边",
-            note: "Vật mốc chuẩn luôn đứng TRƯỚC phương vị từ. Ví dụ: 学校右边 (Bên phải trường học).",
-            audio: [
-              { lang: "vi-VN", text: "Cấu trúc một: Vật mốc đứng trước, phương vị từ đứng sau.", pause: 400 },
-              { lang: "zh-CN", text: "学校右边有一家书店。", pause: 800 },
-              { lang: "vi-VN", text: "Phía bên phải trường học có một hiệu sách.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Hướng di chuyển, rẽ hướng",
-            pattern: "往 / 向 + 右 + [Động từ: 走 / 拐 / 转]",
-            note: "Giới từ chỉ hướng đứng trước động từ hành động: 往右拐 (Rẽ sang phải).",
-            audio: [
-              { lang: "vi-VN", text: "Cấu trúc hai: Giới từ chỉ hướng đứng trước động từ rẽ.", pause: 400 },
-              { lang: "zh-CN", text: "到路口请往右拐。", pause: 800 },
-              { lang: "vi-VN", text: "Đến ngã rẽ xin vui lòng rẽ sang phải.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "学校的右边有一个商店。",
-            vi: "Phía bên phải trường học có một cửa hàng.",
-            situation: "Mô tả vị trí cửa hàng khi chỉ đường cho bạn học trong khuôn viên trường.",
-            analysis: "学校 là vật mốc đứng trước; 右边 là phương vị từ đứng sau, liên kết bởi trợ từ 的.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Trường học là mốc chuẩn đứng trước, phương vị từ đứng sau.", pause: 400 },
-              { lang: "zh-CN", text: "学校的右边有一个商店。", pause: 800 }
-            ]
-          },
-          {
-            zh: "到路口请往右拐。",
-            vi: "Đến ngã rẽ xin vui lòng rẽ sang phải.",
-            situation: "Hướng dẫn tài xế taxi hoặc bạn bè khi lái xe tới nút giao thông.",
-            analysis: "到路口 là trạng ngữ thời gian/địa điểm; 往右拐 chỉ rõ hành động chuyển hướng sang phải.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Chỉ dẫn chuyển hướng tại ngã rẽ.", pause: 400 },
-              { lang: "zh-CN", text: "到路口请往右拐。", pause: 800 }
-            ]
-          },
-          {
-            zh: "我的右手有点儿疼。",
-            vi: "Tay phải của tôi hơi đau một chút.",
-            situation: "Nói với bác sĩ hoặc bạn bè khi tay phải bị chấn thương sau khi chơi bóng.",
-            analysis: "右 kết hợp trực tiếp với danh từ chỉ bộ phận cơ thể 手 tạo thành danh từ: 右手 (tay phải).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Ghép trực tiếp với bộ phận cơ thể.", pause: 400 },
-              { lang: "zh-CN", text: "我的右手有点儿疼。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy dịch ngược trật tự từ tiếng Việt (Word-by-word Trap)",
-            situation: "Bạn muốn nói 'Bên phải trường học có một hiệu sách'.",
-            explanation: "Người Việt có thói quen nói chữ 'Bên phải' trước rồi mới tới 'Trường học'. Nếu dịch từng chữ thành '右边学校' là SAI HOÀN TOÀN về mặt tư duy không gian Hán ngữ.",
-            wrong: "右边学校有一家书店。 (Sai trật tự)",
-            right: "学校右边有一家书店。 (Chuẩn người bản xứ)",
-            tip: "Quy tắc Không gian: Cái to/Vật mốc có trước -> Phương vị gắn vào sau lưng.",
-            boundary: "Khi đứng độc lập trả lời câu hỏi 'Ở đâu?': Có thể nói ngắn gọn '在右边' (Ở bên phải).",
-            comparisons: [
-              { zh: "学校右边", vi: "Bên phải trường học (Mốc đứng trước)" },
-              { zh: "右边的人", vi: "Người ở phía bên phải (Định ngữ bổ nghĩa)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Cảnh báo bẫy ngữ pháp: Người Việt thường nói bên phải trường học nên hay dịch nhầm thành ", pause: 300 },
-              { lang: "zh-CN", text: "右边学校", pause: 400 },
-              { lang: "vi-VN", text: ". Trong tiếng Trung, vật mốc trường học bắt buộc phải đứng trước: ", pause: 300 },
-              { lang: "zh-CN", text: "学校右边", pause: 500 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "Thanh bốn (dấu huyền dứt khoát): bắt đầu từ cao độ 5 rơi nhanh xuống 1. Không kéo dài như dấu nặng tiếng Việt.",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm thanh bốn:", pause: 300 },
-            { lang: "zh-CN", text: "右", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Bao gồm nét ngang nét phẩy ở trên, phía dưới là chữ Khẩu (口). Mẹo phân biệt: Tay phải đưa cơm vào Miệng (口) -> Chữ Hữu (右). Tay trái cầm dụng cụ Công cụ (工) -> Chữ Tả (左).",
-          audio: [
-            { lang: "vi-VN", text: "Mẹo nhớ mặt chữ: Phía dưới chữ Hữu có chữ Khẩu, tức là tay phải cầm đồ ăn đưa vào miệng.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Vật mốc + 右边; Rẽ phải: 往右拐.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng từ Hữu: Vật mốc đứng trước, hữu biên đứng sau. Rẽ phải dùng vãng hữu quải.", pause: 400 }
-        ]
+       "lang": "zh-CN",
+       "text": "右",
+       "pause": 500
       },
-
-      // --- TỪ 2: 得到 ---
       {
-        id: "hsk1-bai-16-g1-w2",
-        index": 2,
-        hanzi": "得到",
-        pinyin": "dédào",
-        coreMeaning: "Được, đạt được, nhận được (kết quả, giải thưởng, sự chấp thuận, giúp đỡ)",
-        introAudio: [
-          { lang: "zh-CN", text: "得到", pause: 500 },
-          { lang: "vi-VN", text: "Được, đạt được, nhận được kết quả tốt hoặc sự giúp đỡ", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi người nói nhận được một giá trị tích cực, sự chấp thuận, cơ hội, hoặc thành quả sau một quá trình phấn đấu nỗ lực.",
-          detail: "Động từ biểu thị sự tiếp nhận kết quả (mang tính trừu tượng hoặc thành tựu). Thường đi kèm với: 帮助 (giúp đỡ), 同意 (đồng ý), 机会 (cơ hội), 第一名 (giải nhất).",
-          keyPoint: "Nhấn mạnh vào KẾT QUẢ ĐẠT ĐƯỢC sau quá trình nỗ lực hoặc tác động xã hội.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ hai: Đắc đáo, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "得到", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là đạt được, có được sự giúp đỡ, đồng thuận hoặc giải thưởng.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Tiếp nhận sự hỗ trợ hoặc đồng thuận",
-            pattern: "得到 + [Danh từ trừu tượng: 帮助 / 同意 / 支持]",
-            note: "Biểu thị nhận được sự hậu thuẫn quý giá từ người khác.",
-            audio: [
-              { lang: "zh-CN", text: "我得到了老师的帮助。", pause: 800 },
-              { lang: "vi-VN", text: "Tôi đã nhận được sự giúp đỡ của thầy giáo.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Đạt được thành tích hoặc cơ hội",
-            pattern: "得到 + [Cơ hội / Thành tích: 机会 / 好成绩 / 第一名]",
-            note: "Nhấn mạnh kết quả tích cực xứng đáng sau quá trình phấn đấu.",
-            audio: [
-              { lang: "zh-CN", text: "经过努力，他得到了这个工作机会。", pause: 800 },
-              { lang: "vi-VN", text: "Qua nỗ lực, anh ấy đã có được cơ hội việc làm này.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "在汉语课上，我得到了老师的帮助。",
-            vi: "Trong tiết học tiếng Trung, tôi đã nhận được sự giúp đỡ của giáo viên.",
-            situation: "Bày tỏ lòng biết ơn khi được thầy cô giáo kiên nhẫn sửa phát âm và giảng bài.",
-            analysis: "得到 kết hợp với tân ngữ trừu tượng 老师的帮助 (sự giúp đỡ của thầy).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Nhận được sự giúp đỡ.", pause: 300 },
-              { lang: "zh-CN", text: "在汉语课上，我得到了老师的帮助。", pause: 800 }
-            ]
-          },
-          {
-            zh: "这个计划得到了大家的同意。",
-            vi: "Kế hoạch này đã nhận được sự đồng ý của mọi người.",
-            situation: "Báo cáo kết quả cuộc họp thảo luận đề xuất công việc với cả nhóm.",
-            analysis: "得到的同意 là sự đồng thuận tập thể được thiết lập sau buổi bàn bạc.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Đạt được sự đồng ý của tập thể.", pause: 300 },
-              { lang: "zh-CN", text: "这个计划得到了大家的同意。", pause: 800 }
-            ]
-          },
-          {
-            zh: "他在比赛中得到了第一名。",
-            vi: "Anh ấy đã đạt được giải nhất trong cuộc thi.",
-            situation: "Khen ngợi và chúc mừng bạn học vừa giành chiến thắng trong kỳ thi thể thao.",
-            analysis: "第一名 (hạng nhất) là phần thưởng/kết quả đạt được sau cuộc thi.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Đạt giải thưởng trong cuộc thi.", pause: 300 },
-              { lang: "zh-CN", text: "他在比赛中得到了第一名。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy nhầm lẫn giữa 得到 (dédào) và 收到 (shōudào)",
-            situation: "Bạn muốn nói 'Tôi vừa nhận được quà sinh nhật' hoặc 'nhận được tin nhắn'.",
-            explanation: "Người Việt dịch chung cả hai từ là 'nhận được'. Tuy nhiên: 收到 dùng cho đồ vật cụ thể, bưu phẩm, thư từ được gửi tới qua đường vận chuyển. Còn 得到 dùng cho sự đồng thuận, giúp đỡ, giải thưởng, cơ hội.",
-            wrong: "我得到了他的生日礼物。 (Dùng 得到 cho gói quà vật lý là thiếu tự nhiên)",
-            right: "我收到了他的生日礼物。 (Đồ vật gửi tới dùng 收到)",
-            tip: "Đồ vật cầm nắm trên tay qua bưu điện/chuyển giao -> dùng 收到. Sự giúp đỡ, cơ hội, tình cảm, giải thưởng -> dùng 得到.",
-            boundary: "Trong văn viết trang trọng, 得到 có thể đi với một số phần thưởng vật chất mang tính biểu trưng (得到奖杯 - nhận cúp).",
-            comparisons: [
-              { zh: "得到帮助", vi: "Nhận được sự giúp đỡ (Trừu tượng -> Dùng 得到)" },
-              { zh: "收到信 / 礼物", vi: "Nhận được thư / quà (Vật lý gửi đến -> Dùng 收到)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Phân biệt 得到 và 收到: Quà cáp, tin nhắn chuyển tới dùng thu đáo ", pause: 300 },
-              { lang: "zh-CN", text: "收到", pause: 400 },
-              { lang: "vi-VN", text: ". Sự giúp đỡ, giải thưởng, đồng thuận sau nỗ lực dùng đắc đáo ", pause: 300 },
-              { lang: "zh-CN", text: "得到", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "Đọc dé (thanh 2 đi lên) + dào (thanh 4 giáng mạnh). Nhịp đọc dứt khoát.",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "得到", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ 得 gồm bộ Xích (彳) bên trái, chữ Đán (旦) và Thốn (寸) bên phải. Chữ 到 gồm chữ Chí (至) và bộ Đao đứng (刂).",
-          audio: [
-            { lang: "vi-VN", text: "Nhận diện chữ Hán: Nhớ cụm từ cố định đắc đáo bang trợ để khắc sâu mặt chữ.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: 得到 + 帮助 / 同意 / 机会 / 成绩 (Thành quả trừu tượng).",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng từ Đắc đáo: Nhận được giúp đỡ, cơ hội và thành tích tốt.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 3: 开车 ---
-      {
-        id: "hsk1-bai-16-g1-w3",
-        index": 3,
-        hanzi": "开车",
-        pinyin": "kāichē",
-        coreMeaning": "Lái xe, chạy xe (người trực tiếp điều khiển vô lăng)",
-        introAudio: [
-          { lang: "zh-CN", text: "开车", pause: 500 },
-          { lang: "vi-VN", text: "Lái xe, tự điều khiển phương tiện ô tô", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi nói về năng lực lái xe, hành vi đang cầm vô lăng điều khiển xe ô tô trên đường.",
-          detail: "Động từ ly hợp (开 + 车). Chỉ dành cho người trực tiếp lái xe. Nếu là hành khách đi nhờ hoặc ngồi xe công cộng, tuyệt đối không dùng từ này.",
-          keyPoint: "Người trực tiếp cầm lái = 开车. Hành khách ngồi trên xe = 坐车.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ ba: Khai xa, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "开车", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là tự cầm lái xe hơi. Cả hai âm đều đọc thanh một bằng phẳng.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Phương thức di chuyển đi làm, đi học",
-            pattern: "开车 + 去 + [Địa điểm: 上班 / 上学 / 书店]",
-            note: "Lái xe đóng vai trò trạng ngữ chỉ cách thức thực hiện hành động.",
-            audio: [
-              { lang: "zh-CN", text: "我爸开车去上班。", pause: 800 },
-              { lang: "vi-VN", text: "Bố tôi lái xe đi làm.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Khả năng kỹ năng lái xe",
-            pattern: "会 / 不会 + 开车",
-            note: "Hỏi hoặc nói về kỹ năng có biết lái xe hay không.",
-            audio: [
-              { lang: "zh-CN", text: "你会开车吗？", pause: 800 },
-              { lang: "vi-VN", text: "Bạn có biết lái xe không?", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "我爸爸每天开车去上班。",
-            vi: "Bố tôi mỗi ngày đều lái xe đi làm.",
-            situation: "Kể về thói quen di chuyển hàng ngày của bố bằng phương tiện cá nhân.",
-            analysis: "开车 là trạng ngữ chỉ phương thức đứng trước động từ 去上班.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Bố lái xe đi làm.", pause: 300 },
-              { lang: "zh-CN", text: "我爸爸每天开车去上班。", pause: 800 }
-            ]
-          },
-          {
-            zh: "你会开车吗？路上车很多，请慢点儿开。",
-            vi: "Bạn có biết lái xe không? Trên đường xe đông lắm, xin hãy lái chậm một chút.",
-            situation: "Nhắc nhở bạn bè chú ý an toàn giao thông khi ngồi trên xe ô tô.",
-            analysis: "慢点儿开 tách động từ 开 ra độc lập để bổ nghĩa tốc độ lái xe chậm rãi.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Nhắc nhở lái xe chậm và an toàn.", pause: 300 },
-              { lang: "zh-CN", text: "路上车很多，请慢点儿开。", pause: 800 }
-            ]
-          },
-          {
-            zh: "今天他不打算开车，他想坐地铁。",
-            vi: "Hôm nay anh ấy không định lái xe, anh ấy muốn đi tàu điện ngầm.",
-            situation: "Giải thích lý do để xe ở nhà nhằm tránh tắc đường vào giờ cao điểm.",
-            analysis: "Đối chiếu rõ ràng giữa 开车 (tự lái) và 坐地铁 (ngồi tàu điện ngầm làm hành khách).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Đối chiếu giữa tự lái xe và đi phương tiện công cộng.", pause: 300 },
-              { lang: "zh-CN", text: "今天他不打算开车，他想坐地铁。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy tư duy 'Đi xe' của người Việt (Lái xe vs Ngồi xe)",
-            situation: "Bạn đón taxi hoặc xe buýt đi học, bạn nói bằng tiếng Việt 'Tôi đi xe đến trường'.",
-            explanation: "Người Việt quen gọi chung là 'đi xe'. Nếu dịch thành '我开车去学校' thì người bản xứ sẽ hiểu là bạn tự lái xe ô tô của riêng mình. Khi bạn là hành khách, bắt buộc phải dùng 坐车 (ngồi xe) hoặc 打车 (gọi taxi).",
-            wrong: "我开车公共汽车去学校。 (Sai hoàn toàn)",
-            right: "我坐公共汽车去学校。 (Hành khách dùng 坐车)",
-            tip: "Cầm vô lăng -> 开车. Ngồi ở ghế sau/ghế phụ -> 坐车.",
-            boundary: "Khi nói lái loại xe cụ thể, chỉ dùng động từ '开' + tên xe: 开出租车 (lái taxi), không được nói '开车出租车'.",
-            comparisons: [
-              { zh: "我开车去", vi: "Tôi tự lái xe đi (Tôi là tài xế)" },
-              { zh: "我坐车去", vi: "Tôi ngồi xe đi (Tôi là hành khách)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý bẫy lái xe: Bạn ngồi xe buýt hoặc taxi phải dùng tọa xa ", pause: 300 },
-              { lang: "zh-CN", text: "坐车", pause: 400 },
-              { lang: "vi-VN", text: ". Chỉ khi tự cầm vô lăng mới dùng khai xa ", pause: 300 },
-              { lang: "zh-CN", text: "开车", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "Cả hai âm đều thanh một (kāi - chē). Giữ âm vực cao, ngang và ngân đều, không thả giọng.",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm hai âm thanh một:", pause: 300 },
-            { lang: "zh-CN", text: "开车", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Khai (开) gồm hai nét ngang và hai nét sổ. Chữ Xa (车) có nét sổ thẳng cắt qua thân xe.",
-          audio: [
-            { lang: "vi-VN", text: "Nhận diện mặt chữ: Nhớ chữ Xa tượng hình bánh xe và trục xe.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Tự cầm lái = 开车; Hành khách ngồi xe = 坐车.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng từ Khai xa: Tự lái xe là khai xa, hành khách ngồi xe là tọa xa.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 4: 北 ---
-      {
-        id: "hsk1-bai-16-g1-w4",
-        index": 4,
-        hanzi: "北",
-        pinyin: "běi",
-        coreMeaning: "Bắc, hướng bắc, phía bắc",
-        introAudio: [
-          { lang: "zh-CN", text: "北", pause: 500 },
-          { lang: "vi-VN", text: "Bắc, hướng bắc, phía bắc", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng để xác định phương vị địa lý trên bản đồ, vị trí các tòa nhà, hoặc hướng di chuyển của phương tiện.",
-          detail: "Danh từ phương vị địa lý chỉ hướng bắc. Trong khẩu ngữ xác định vị trí tương đối thường dùng '北边'. Khi chỉ hướng chuyển động dùng '往北' hoặc '向北'.",
-          keyPoint: "Phương hướng địa lý cố định trên la bàn. Vật mốc + 北边.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ tư: Bắc, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "北", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là hướng bắc. Vị trí ở phía bắc dùng ", pause: 300 },
-            { lang: "zh-CN", text: "北边", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Vị trí ở phía bắc so với vật mốc",
-            pattern: "[Vật mốc] + (的) + 北边",
-            note: "Ví dụ: 学校北边 (Phía bắc của trường học).",
-            audio: [
-              { lang: "zh-CN", text: "车站在学校北边。", pause: 800 },
-              { lang: "vi-VN", text: "Bến xe nằm ở phía bắc trường học.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Hướng di chuyển về phương bắc",
-            pattern: "往 / 向 + 北 + 走",
-            note: "Đi về hướng bắc theo chỉ dẫn giao thông.",
-            audio: [
-              { lang: "zh-CN", text: "从这里一直往北走。", pause: 800 },
-              { lang: "vi-VN", text: "Từ đây cứ đi thẳng về hướng bắc.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "车站在学校北边。",
-            vi: "Nhà ga nằm ở phía bắc trường học.",
-            situation: "Chỉ vị trí nhà ga khi bạn bè hỏi đường tại cổng trường.",
-            analysis: "学校 là vật mốc đứng trước; 北边 chỉ rõ tọa độ phía bắc.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Nhà ga ở phía bắc trường học.", pause: 300 },
-              { lang: "zh-CN", text: "车站在学校北边。", pause: 800 }
-            ]
-          },
-          {
-            zh: "从这里一直往北走，就是有名的人民公园。",
-            vi: "Từ đây cứ đi thẳng về hướng bắc là đến công viên Nhân Dân nổi tiếng.",
-            situation: "Chỉ đường đi bộ dạo mát cho khách du lịch trong thành phố.",
-            analysis: "往北走 kết hợp phó từ 一直 (đi thẳng liên tục về phía bắc).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Cứ đi thẳng về phía bắc.", pause: 300 },
-              { lang: "zh-CN", text: "从这里一直往北走，就是有名的人民公园。", pause: 800 }
-            ]
-          },
-          {
-            zh: "我的家在中国北方的一个小城市。",
-            vi: "Nhà của tôi ở một thành phố nhỏ thuộc miền bắc Trung Quốc.",
-            situation: "Giới thiệu quê quán của du học sinh với bạn cùng phòng.",
-            analysis: "北方 là danh từ chỉ vùng miền: miền bắc.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Quê ở miền bắc.", pause: 300 },
-              { lang: "zh-CN", text: "我的家在中国北方的一个小城市。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy đồng nhất hướng tương đối của cơ thể với hướng la bàn",
-            situation: "Khi nhìn bản đồ hoặc đứng trên đường, thấy hướng bên phải vội vàng cho là hướng bắc.",
-            explanation: "Phải (右) và Trái (左) là phương hướng tương đối thay đổi theo vị trí cơ thể quay mặt. Còn Bắc (北) và Nam (南) là tọa độ địa lý cố định của trái đất. Không được nhầm lẫn giữa 右边 và 北边.",
-            wrong: "Nhầm lẫn giữa 往右 (rẽ phải) và 往北 (đi về hướng bắc).",
-            right: "看地图时，上面是北，右边是东。",
-            tip: "Nhìn bản đồ: Trên Bắc, Dưới Nam, Trái Tây, Phải Đông.",
-            boundary: "Bắc Kinh (北京) có chữ Bắc này nghĩa là thủ đô phương bắc.",
-            comparisons: [
-              { zh: "北边", vi: "Phía bắc (Tọa độ la bàn cố định)" },
-              { zh: "右边", vi: "Bên phải (Phương vị tương đối theo người đứng)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý: Hướng bắc bắc biên là phương vị la bàn cố định, không được đồng nhất với bên phải hữu biên.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "Thanh ba (běi): hạ thấp giọng xuống đáy cổ họng rồi bật nhẹ lên.",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm thanh ba:", pause: 300 },
-            { lang: "zh-CN", text: "北", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Bắc gồm hai phần đối xứng lưng vào nhau (tượng hình hai người quay lưng vào nhau tránh gió lạnh phương bắc).",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Bắc tượng hình hai người ngồi quay lưng chống lại giá lạnh.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Mốc + 北边 (Phía bắc của mốc); 往北走 (Đi về hướng bắc).",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng từ Bắc: Mốc đứng trước bắc biên đứng sau, đi về hướng bắc dùng vãng bắc tẩu.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 5: 他们 ---
-      {
-        id: "hsk1-bai-16-g1-w5",
-        index": 5,
-        hanzi: "他们",
-        pinyin": "tāmen",
-        coreMeaning: "Họ, bọn họ, chúng nó (nhóm nam hoặc cả nam lẫn nữ)",
-        introAudio: [
-          { lang: "zh-CN", text: "他们", pause: 500 },
-          { lang: "vi-VN", text: "Họ, bọn họ, nhóm nhiều người", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi ngôi thứ nhất và ngôi thứ hai cùng nhắc tới một nhóm người thứ ba từ hai người trở lên.",
-          detail: "Đại từ nhân xưng số nhiều ngôi thứ ba. Được dùng phổ quát cho nhóm toàn nam giới HOẶC nhóm hỗn hợp có cả nam và nữ, hoặc khi chưa rõ danh tính giới tính cụ thể.",
-          keyPoint: "Nhóm có cả nam lẫn nữ -> BẮT BUỘC dùng chữ Họ có bộ Nhân đứng (他们).",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ năm: Tha môn, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "他们", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là bọn họ, chúng nó.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Vị trí phó từ nhấn mạnh tính tập thể",
-            pattern: "他们 + 都 + [Vị ngữ]",
-            note: "Phó từ 都 (đều) luôn đứng NGAY SAU chủ ngữ 他们.",
-            audio: [
-              { lang: "zh-CN", text: "他们都在这里。", pause: 800 },
-              { lang: "vi-VN", text: "Họ đều đang ở đây.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Cụm đồng hành cùng ai đó",
-            pattern: "跟 / 和 + 他们 + 一起 + [Hành động]",
-            note: "Cùng làm việc gì đó với họ.",
-            audio: [
-              { lang: "zh-CN", text: "我想跟他们一起去打球。", pause: 800 },
-              { lang: "vi-VN", text: "Tôi muốn cùng bọn họ đi chơi bóng.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "他们都是我的大学同学。",
-            vi: "Họ đều là bạn học đại học của tôi.",
-            situation: "Giới thiệu một nhóm bạn cũ đang đứng trò chuyện với người thân.",
-            analysis: "他们 làm chủ ngữ số nhiều; 都 nhấn mạnh toàn bộ các bạn đều chung thuộc tính bạn học.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Giới thiệu bạn học đại học.", pause: 300 },
-              { lang: "zh-CN", text: "他们都是我的大学同学。", pause: 800 }
-            ]
-          },
-          {
-            zh: "明天下午他们想去书店买书。",
-            vi: "Chiều mai bọn họ muốn đi hiệu sách mua sách.",
-            situation: "Thông báo kế hoạch của nhóm bạn khác cho người đối thoại biết.",
-            analysis: "Trạng ngữ thời gian 明天下午 đứng trước chủ ngữ 他们.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Kế hoạch đi mua sách của họ.", pause: 300 },
-              { lang: "zh-CN", text: "明天下午他们想去书店买书。", pause: 800 }
-            ]
-          },
-          {
-            zh: "你看，他们正在车站等车呢。",
-            vi: "Bạn xem kìa, họ đều đang đứng ở nhà ga đợi xe buýt đấy.",
-            situation: "Chỉ tay cho bạn đi cùng nhìn thấy nhóm bạn đang tập trung ở bến xe.",
-            analysis: "正在...呢 biểu thị hành vi chờ xe của nhóm họ đang diễn ra tại thời điểm nói.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Họ đang đứng đợi xe ở nhà ga.", pause: 300 },
-              { lang: "zh-CN", text: "你看，他们正在车站等车呢。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy phân biệt chữ viết 他们 và 她们 trong giao tiếp thực tế",
-            situation: "Nghe trong băng phát ra âm thanh 'tāmen', vội vàng viết thành chữ 她们 có bộ Nữ.",
-            explanation: "Trong ngữ âm, 他们 (nam/chung) và 她们 (nữ) phát âm giống hệt nhau 100%. Tuy nhiên, trong chữ viết: chỉ khi nhóm đó 100% là nữ giới mới được viết 她们. Nếu trong nhóm có dù chỉ một người nam, hoặc chưa xác định rõ giới tính, BẮT BUỘC phải viết là 他们 (bộ Nhân đứng).",
-            wrong: "Thấy trong lớp có 10 bạn nữ và 1 bạn nam mà viết 她们 là sai chính tả quy chuẩn.",
-            right: "Có cả nam lẫn nữ -> Dùng 他们.",
-            tip: "Nhóm hỗn hợp hoặc chung chung -> Luôn ưu tiên dùng 他们.",
-            boundary: "Với đồ vật hoặc động vật số nhiều, dùng chữ 它们 (bộ Miên).",
-            comparisons: [
-              { zh: "他们", vi: "Bọn họ (Toàn nam HOẶC Cả nam lẫn nữ)" },
-              { zh: "她们", vi: "Bọn họ (Bắt buộc 100% toàn nữ)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý mặt chữ: Nghe âm tāmen giống nhau nhưng khi viết, nhóm có cả nam lẫn nữ bắt buộc dùng tha môn bộ nhân đứng ", pause: 300 },
-              { lang: "zh-CN", text: "他们", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "tā (thanh một cao đều) + men (thanh nhẹ, đọc ngắn, lướt nhẹ, không nhấn giọng).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "他们", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ 他 có bộ Nhân đứng (亻) và chữ Dã (也). Chữ 们 có bộ Nhân đứng (亻) và chữ Môn (门).",
-          audio: [
-            { lang: "vi-VN", text: "Nhận diện mặt chữ: Cả hai chữ đều có bộ Nhân đứng bên trái.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Nhóm hỗn hợp nam nữ = 他们; 都 luôn đứng sau 他们.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Họ số nhiều chung dùng tha môn, phó từ đô đứng liền sau.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 6: 动作 ---
-      {
-        id: "hsk1-bai-16-g1-w6",
-        index": 6,
-        hanzi: "动作",
-        pinyin: "dòngzuò",
-        coreMeaning: "Động tác, hành động, thao tác cụ thể",
-        introAudio: [
-          { lang: "zh-CN", text: "动作", pause: 500 },
-          { lang: "vi-VN", text: "Động tác, cử chỉ, thao tác cụ thể", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng trong các ngữ cảnh tập luyện thể dục thể thao, học múa võ, hướng dẫn thao tác làm việc hoặc nhận xét sự nhanh nhẹn của cơ thể.",
-          detail: "Danh từ chỉ cử động cụ thể của chân tay, tư thế thân thể hoặc thao tác kỹ thuật. Thường đi với động từ 做 (làm): 做动作 (thực hiện động tác) hoặc tính từ miêu tả: 动作很快 (thao tác rất nhanh).",
-          keyPoint: "Cử động tay chân, tư thế vận động cụ thể của hình thể = 动作.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ sáu: Động tác, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "动作", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là cử động hoặc thao tác tay chân cụ thể.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Thực hiện một động tác",
-            pattern: "做 + (这个 / 那个) + 动作",
-            note: "Học theo hoặc làm theo tư thế mẫu.",
-            audio: [
-              { lang: "zh-CN", text: "请跟我做这个动作。", pause: 800 },
-              { lang: "vi-VN", text: "Xin hãy làm theo tôi động tác này.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Nhận xét tốc độ thao tác",
-            pattern: "动作 + 很 / 非常 + 快 / 慢",
-            note: "Miêu tả thao tác làm việc hoặc di chuyển cơ thể nhanh hay chậm.",
-            audio: [
-              { lang: "zh-CN", text: "他的动作真快！", pause: 800 },
-              { lang: "vi-VN", text: "Động tác của anh ấy nhanh thật đấy!", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "请大家跟我做这个动作。",
-            vi: "Xin mời mọi người cùng làm theo tôi động tác này.",
-            situation: "Giáo viên thể dục đứng trước lớp hướng dẫn bài tập khởi động đầu giờ.",
-            analysis: "跟我做 là trạng ngữ đồng hành: cùng làm theo tôi; 这个动作 là tân ngữ chỉ động tác cụ thể.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Làm theo động tác này.", pause: 300 },
-              { lang: "zh-CN", text: "请大家跟我做这个动作。", pause: 800 }
-            ]
-          },
-          {
-            zh: "他的动作很快，一分钟就做完了。",
-            vi: "Thao tác của anh ấy rất nhanh, một phút đã hoàn thành xong rồi.",
-            situation: "Khen ngợi tốc độ xử lý nhanh nhẹn của người thợ đóng gói sản phẩm.",
-            analysis: "动作 đóng vai trò chủ ngữ; 快 là vị ngữ tính từ nhận xét tốc độ.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Thao tác rất nhanh nhẹn.", pause: 300 },
-              { lang: "zh-CN", text: "他的动作很快，一分钟就做完了。", pause: 800 }
-            ]
-          },
-          {
-            zh: "打篮球的时候，这个动作非常重要。",
-            vi: "Khi chơi bóng rổ, động tác này hết sức quan trọng.",
-            situation: "Huấn luyện viên bóng rổ hướng dẫn tư thế ném rổ ghi điểm cho học viên.",
-            analysis: "打篮球的时候 nêu bối cảnh thể thao mà động tác kỹ thuật đó phát huy tác dụng.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Động tác quan trọng trong thể thao.", pause: 300 },
-              { lang: "zh-CN", text: "打篮球的时候，这个动作非常重要。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy nhầm lẫn giữa 动作 (dòngzuò) và 行动 (xíngdòng)",
-            situation: "Khi chuẩn bị thực hiện một chiến dịch hoặc kế hoạch, bạn muốn hô hào 'Bắt đầu hành động!'.",
-            explanation: "Cả hai từ tiếng Hán Việt đều dịch là 'hành động'. Nhưng 动作 là cử động tay chân, tư thế hình thể cụ thể. Còn 行动 là hành động mang tính chiến lược, kế hoạch, quyết định của tư duy. Hô khẩu hiệu phải dùng 开始行动, không được dùng 开始动作.",
-            wrong: "大家注意，现在开始动作！ (Sai ngữ cảnh chiến lược)",
-            right: "大家注意，现在开始行动！ (Kế hoạch hành động)",
-            tip: "Cử động tay chân, múa võ, tập bóng -> 动作. Kế hoạch, dự án, hành động cụ thể hóa lời nói -> 行动.",
-            boundary: "Trong điện ảnh: 'Phim hành động' gọi là 动作电影 (Action movies) vì có nhiều cảnh võ thuật đánh đấm tay chân.",
-            comparisons: [
-              { zh: "做动作", vi: "Làm động tác (Cử động cơ thể)" },
-              { zh: "开始行动", vi: "Bắt đầu hành động (Triển khai kế hoạch)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Phân biệt động tác và hành động: Cử động chân tay dùng động tác ", pause: 300 },
-              { lang: "zh-CN", text: "动作", pause: 400 },
-              { lang: "vi-VN", text: ". Thực hiện kế hoạch, chiến lược dùng hành động ", pause: 300 },
-              { lang: "zh-CN", text: "行动", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "Cả hai âm đều thanh bốn: dòng - zuò. Giáng âm sắc gọn, không kéo dài.",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm hai thanh bốn:", pause: 300 },
-            { lang: "zh-CN", text: "动作", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Động (动) có chữ Trọng (重) và chữ Lực (力). Chữ Tác (作) có bộ Nhân đứng (亻) và chữ Tạ (乍).",
-          audio: [
-            { lang: "vi-VN", text: "Nhận diện chữ Hán: Nhớ cụm từ làm động tác tố động tác.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Làm động tác = 做动作; Thao tác nhanh = 动作很快.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Cử động tay chân dùng tố động tác, khen nhanh nhẹn dùng động tác ngận khoái.", pause: 400 }
-        ]
+       "lang": "vi-VN",
+       "text": "Bên phải, phía bên phải",
+       "pause": 500
       }
-    ],
-
-    // BÀI TẬP TRẮC NGHIỆM NGỮ DỤNG CHO NHÓM 1
-    exercises: [
+     ],
+     "meaning": {
+      "situation": "Dùng khi chỉ đường, xác định vị trí đồ vật, người hoặc chuyển hướng di chuyển trong không gian thực tế.",
+      "detail": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng 右边; khi chỉ hướng đi dùng 往右 hoặc 向右.",
+      "keyPoint": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng 右边; khi chỉ hướng đi dùng 往右 hoặc 向右.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi chỉ đường, xác định vị trí đồ vật, người hoặc chuyển hướng di chuyển trong không gian thực tế. Chỉ phía phải. Khi nói vị trí độc lập, thường dùng ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "右边",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; khi chỉ hướng đi dùng ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "往右",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " hoặc ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "向右",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
       {
-        id: "hsk1-b16-g1-ex1",
-        type: "Phân biệt trật tự mốc không gian",
-        prompt: "Chọn câu đúng nhất để diễn đạt: 'Phía bên phải trường học có một cửa hàng tiện lợi lớn.'",
-        options: [
-          "右边的学校有一个大商店。",
-          "学校右边有一个大商店。",
-          "学校的大商店在右边里面。",
-          "在右边学校有一个大商店。"
-        ],
-        correct: 1,
-        reasonRight: "Chuẩn xác! Quy tắc Hán ngữ bắt buộc mốc chuẩn trường học (学校) phải đứng TRƯỚC phương vị từ (右边).",
-        reasonWrong: "Chưa đúng: Tiếng Trung không cho phép đặt phương vị từ trước mốc chuẩn trong cấu trúc chỉ vị trí tồn hiện.",
-        questionAudio: [{ lang: "vi-VN", text: "Chọn câu diễn đạt đúng vị trí bên phải trường học.", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "学校右边有一个大商店。", pause: 600 },
-          { lang: "vi-VN", text: "Trường học làm mốc đứng trước, hữu biên đứng sau.", pause: 400 }
-        ]
+       "title": "Mẫu thường gặp",
+       "pattern": "右边 · 往右走 · 右手",
+       "note": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng 右边; khi chỉ hướng đi dùng 往右 hoặc 向右.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "右边",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": "; khi chỉ hướng đi dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "往右",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hoặc ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "向右",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ".",
+         "pause": 350
+        }
+       ]
       },
       {
-        id: "hsk1-b16-g1-ex2",
-        type: "Phân biệt 得到 và 收到",
-        prompt: "Điền từ thích hợp vào chỗ trống: '在这次考试中，他经过努力，____了第一名。'",
-        options: ["收到", "得到", "送到", "买到"],
-        correct: 1,
-        reasonRight: "Chính xác! Giải nhất (第一名) là kết quả phấn đấu nỗ lực trừu tượng, bắt buộc dùng 得到.",
-        reasonWrong: "Chưa đúng: 收到 chỉ dùng cho đồ vật, thư từ hoặc bưu kiện cụ thể được gửi đến.",
-        questionAudio: [{ lang: "zh-CN", text: "他经过努力，什么了第一名？", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "得到了第一名", pause: 600 },
-          { lang: "vi-VN", text: "Đạt giải nhất sau nỗ lực bắt buộc dùng đắc đáo.", pause: 400 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g1-ex3",
-        type: "Phân biệt 开车 và 坐车",
-        prompt: "Tiểu An là hành khách đi taxi đến chỗ hẹn. Tiểu An nên nói câu nào với bạn bè?",
-        options: [
-          "我正在开车出租车，马上到。",
-          "我坐出租车去，马上到。",
-          "我开车出租车去学校。",
-          "我是出租车开车人。"
-        ],
-        correct: 1,
-        reasonRight: "Tuyệt vời! Hành khách ngồi trên xe taxi bắt buộc dùng động từ 坐 (ngồi): 坐出租车.",
-        reasonWrong: "Chưa đúng: 开车 chỉ dùng cho người tài xế trực tiếp cầm vô lăng.",
-        questionAudio: [{ lang: "vi-VN", text: "Hành khách đi taxi nên dùng từ nào?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "我坐出租车去，马上到。", pause: 600 },
-          { lang: "vi-VN", text: "Hành khách dùng tọa xuất tô xa.", pause: 400 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g1-ex4",
-        type: "Phương vị địa lý",
-        prompt: "Nhìn bản đồ thấy nhà ga ở phía bắc trường học. Câu nào chuẩn xác?",
-        options: [
-          "学校在车站的北边。",
-          "车站在学校的北边。",
-          "车站的北边是学校的右边。",
-          "学校往北是车站的左边。"
-        ],
-        correct: 1,
-        reasonRight: "Chuẩn xác! Trường học là mốc chuẩn, nhà ga nằm ở phía bắc: 车站在学校的北边.",
-        reasonWrong: "Chưa đúng: Bạn đã đảo ngược vị trí giữa chủ thể nhà ga và vật mốc trường học.",
-        questionAudio: [{ lang: "vi-VN", text: "Nhà ga nằm ở phía bắc trường học, nói thế nào?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "车站在学校的北边。", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g1-ex5",
-        type: "Đại từ nhân xưng hỗn hợp",
-        prompt: "Trong phòng có 3 thầy giáo nam và 5 cô giáo nữ. Khi nói 'Bọn họ đều là giáo viên', dùng chữ Hán nào?",
-        options: ["她们都是老师。", "他们都是老师。", "它们都是老师。", "大家他们是老师。"],
-        correct: 1,
-        reasonRight: "Chính xác! Nhóm có cả nam lẫn nữ bắt buộc dùng đại từ 他们 (bộ Nhân đứng).",
-        reasonWrong: "Chưa đúng: 她们 chỉ được dùng khi 100% người trong nhóm là nữ giới.",
-        questionAudio: [{ lang: "vi-VN", text: "Nhóm có cả nam lẫn nữ dùng chữ Hán nào?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "他们都是老师。", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g1-ex6",
-        type: "Nhận diện từ loại 动作",
-        prompt: "Điền từ vào câu: '老师在前面做，大家请跟着老师做____。'",
-        options: ["行动", "动作", "工作", "活动"],
-        correct: 1,
-        reasonRight: "Chuẩn xác! Tư thế, cử động mẫu mà thầy cô thực hiện để học sinh làm theo là 动作 (động tác).",
-        reasonWrong: "Chưa đúng: 行动 là kế hoạch hành động chiến lược, không dùng cho cử động thể hình.",
-        questionAudio: [{ lang: "zh-CN", text: "请跟着老师做什么？", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "做动作", pause: 600 }
-        ]
+       "title": "Câu áp dụng",
+       "pattern": "学校右边有一家书店。",
+       "note": "学校 là mốc; 右边 nêu phía; 有 giới thiệu hiệu sách ở đó.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "学校右边有一家书店。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "学校",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là mốc; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "右边",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " nêu phía; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "有",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " giới thiệu hiệu sách ở đó.",
+         "pause": 350
+        }
+       ]
       }
-    ],
-
-    // THỰC HÀNH TỰ ĐẶT CÂU (ACTIVE OUTPUT) 3 TẦNG TRỢ GIÚP
-    selfUse: [
+     ],
+     "examples": [
       {
-        id: "hsk1-b16-g1-su1",
-        situation: "Tình huống: Bạn đang đứng trước cổng trường cùng một người bạn nước ngoài. Bạn muốn nói bằng tiếng Trung: 'Phía bên phải trường học có một hiệu sách rất nổi tiếng.'",
-        hint1: "1. Xác định mốc chuẩn trước: Đưa 'Trường học' (学校) lên đầu, tiếp theo là từ chỉ 'bên phải' (右边), sau đó dùng cấu trúc tồn hiện 'có một' (有一个).",
-        hint2: "2. Khung cấu trúc chữ Hán: 学校 + 的 + 右边 + 有 + 一个 + 很有名的 + 书店。",
-        modelAnswer: "学校的右边有一个很有名的书店。",
-        modelExplain: "Trường học làm mốc chuẩn đứng trước phương vị từ bên phải, tiếp theo là cụm định ngữ hiệu sách nổi tiếng.",
-        questionAudio: [{ lang: "vi-VN", text: "Tình huống 1: Hãy tự nói câu Phía bên phải trường học có một hiệu sách rất nổi tiếng.", pause: 400 }],
-        hint1Audio: [{ lang: "vi-VN", text: "Gợi ý 1: Đặt trường học lên trước bên phải.", pause: 300 }],
-        hint2Audio: [{ lang: "vi-VN", text: "Gợi ý 2: Khung câu là trường học hữu biên hữu nhất cá ngận hữu danh đích thư điếm.", pause: 400 }],
-        modelAudio: [
-          { lang: "zh-CN", text: "学校的右边有一个很有名的书店。", pause: 800 },
-          { lang: "vi-VN", text: "Câu chuẩn: Phía bên phải trường học có một hiệu sách rất nổi tiếng.", pause: 400 }
-        ]
+       "zh": "学校的右边有一个商店。",
+       "vi": "Phía bên phải trường học có một cửa hàng.",
+       "situation": "Mô tả vị trí cửa hàng khi chỉ đường cho bạn bè.",
+       "analysis": "Trường học là mốc chuẩn đứng trước, phương vị từ đứng sau liên kết bằng trợ từ sở hữu.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Trường học là mốc chuẩn đứng trước, phương vị từ đứng sau liên kết bằng trợ từ sở hữu. Phía bên phải trường học có một cửa hàng.",
+         "pause": 350
+        }
+       ]
       },
       {
-        id: "hsk1-b16-g1-su2",
-        situation: "Tình huống: Bạn muốn kể với đồng nghiệp: 'Hôm nay bố tôi lái xe đưa tôi đi làm, thao tác lái xe của bố rất nhanh và an toàn.'",
-        hint1: "1. Vế đầu: Bố tôi tự cầm lái (我爸爸开车) đưa tôi đi làm (送我去上班). Vế sau: Nhận xét thao tác lái xe (他的动作) rất nhanh (很快).",
-        hint2: "2. Khung cấu trúc chữ Hán: 今天我爸开车送我去上班，他的动作很快也很安全。",
-        modelAnswer: "今天我爸开车送我去上班，他的动作很快也很安全。",
-        modelExplain: "Sử dụng đại từ thân mật bố tôi, phương thức lái xe và danh từ thao tác cử động chỉ sự nhanh nhẹn.",
-        questionAudio: [{ lang: "vi-VN", text: "Tình huống 2: Hãy tự diễn đạt câu Bố lái xe đưa tôi đi làm, thao tác rất nhanh.", pause: 400 }],
-        hint1Audio: [{ lang: "vi-VN", text: "Gợi ý 1: Ai lái xe đưa đi làm, thao tác ra sao?", pause: 300 }],
-        hint2Audio: [{ lang: "vi-VN", text: "Gợi ý 2: Dùng ngã ba khai xa tống ngã khứ thượng ban, tha đích động tác ngận khoái.", pause: 400 }],
-        modelAudio: [
-          { lang: "zh-CN", text: "今天我爸开车送我去上班，他的动作很快也很安全。", pause: 800 }
-        ]
+       "zh": "到路口请往右拐。",
+       "vi": "Đến ngã rẽ xin vui lòng rẽ sang phải.",
+       "situation": "Bác tài xế hoặc người chỉ đường hướng dẫn hướng rẽ tại nút giao.",
+       "analysis": "Sử dụng giới từ chỉ phương hướng đứng trước phương vị từ và động từ rẽ đứng cuối.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sử dụng giới từ chỉ phương hướng đứng trước phương vị từ và động từ rẽ đứng cuối. Đến ngã rẽ xin vui lòng rẽ sang phải.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "我的右手有点儿疼。",
+       "vi": "Tay phải của tôi hơi đau một chút.",
+       "situation": "Nói với bác sĩ hoặc người thân về tình trạng đau tay.",
+       "analysis": "Từ này kết hợp trực tiếp với danh từ bộ phận cơ thể để làm định ngữ mà không cần thêm trợ từ.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Từ này kết hợp trực tiếp với danh từ bộ phận cơ thể để làm định ngữ mà không cần thêm trợ từ. Tay phải của tôi hơi đau một chút.",
+         "pause": 350
+        }
+       ]
       }
-    ],
-
-    // NGÂN HÀNG ÔN TẬP SRS MỐC 1 - 3 - 7 NGÀY
-    reviews: [
+     ],
+     "traps": [
       {
-        id: "hsk1-b16-g1-rev1",
-        day: 1,
-        type: "Phản xạ trật tự từ",
-        q: "Người đi đường hỏi bạn hiệu sách ở đâu. Bạn muốn nói 'Đi về phía bên phải', tiếng Trung nói thế nào?",
-        answer: "往右走。",
-        explain: "Chỉ hướng đi về bên phải bắt buộc dùng giới từ chỉ hướng 往 hoặc 向 kết hợp với 右 và động từ 走: 往右走.",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói Đi về phía bên phải bằng tiếng Trung thế nào?", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "往右走。", pause: 700 },
-          { lang: "vi-VN", text: "Đáp án là: Vãng hữu tẩu.", pause: 300 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g1-rev2",
-        day: 3,
-        type: "Phân biệt bẫy động từ",
-        q: "Bạn đi làm bằng xe buýt với tư cách hành khách. Hãy nói câu 'Tôi đi xe buýt đi làm' mà không mắc bẫy 开车.",
-        answer: "我坐公共汽车去上班。",
-        explain: "Hành khách ngồi xe công cộng phải dùng 坐车 (ngồi xe); tuyệt đối không dùng 开车 (chỉ người tài xế lái).",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói câu Tôi đi xe buýt đi làm mà không mắc bẫy khai xa.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "我坐公共汽车去上班。", pause: 700 },
-          { lang: "vi-VN", text: "Hành khách phải dùng tọa công cộng khí xa khứ thượng ban.", pause: 300 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g1-rev3",
-        day: 7,
-        type: "Vận dụng ngữ cảnh tổng hợp",
-        q: "Hãy nói: 'Nhà ga nằm ở phía bắc của trường đại học, bọn họ đều đang đợi ở đó.'",
-        answer: "车站在大学的北边，他们都在那里等。",
-        explain: "Kết hợp mốc trường học đứng trước bắc biên (大学北边) và đại từ nhân xưng số nhiều (他们) đi với phó từ 都.",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói Nhà ga ở phía bắc trường đại học, họ đều đợi ở đó.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "车站在大学的北边，他们都在那里等。", pause: 800 }
-        ]
+       "name": "Bẫy cách dùng",
+       "situation": "Bạn muốn chỉ người kia đi sang phải. Nói “Đi về bên phải”.",
+       "explanation": "Đảo vị trí của mốc trong cụm “bên phải trường”: nói 右边学校 khi định nói 学校右边.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "学校右边有一家书店。",
+       "tip": "学校 là mốc; 右边 nêu phía; 有 giới thiệu hiệu sách ở đó.",
+       "boundary": "Hai phía đối lập. Chọn mốc nhìn trước khi chỉ đường.",
+       "comparisons": [
+        {
+         "zh": "右边",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "左边",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Đảo vị trí của mốc trong cụm “bên phải trường”: nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "右边学校",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " khi định nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "学校右边",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Hai phía đối lập. Chọn mốc nhìn trước khi chỉ đường.",
+         "pause": 350
+        }
+       ]
       }
-    ]
-  };
-
-  // ==========================================
-  // NHÓM 2: HÀNH ĐỘNG SONG SONG, ĐÁNH GIÁ & ĐỜI SỐNG HỌC ĐƯỜNG
-  // ==========================================
-  const group2 = {
-    id: "hsk1-bai-16-g2",
-    title: "Nhóm 2: Hành Động Song Song, Đánh Giá & Đời Sống Học Đường",
-    desc: "Học cách dùng chuyên sâu các từ: 一边, 真的, 下课, 有名, 大学, 这里; nắm vững cấu trúc đồng thời và động từ ly hợp.",
-    words: [
-      // --- TỪ 7: 一边 ---
+     ],
+     "pron": {
+      "guide": "Thanh bốn: giọng đi xuống. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh bốn: giọng đi xuống.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "右",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "So sánh phần dưới: 右 có 口, 左 có 工. Đây là mẹo nhận hình, không phải giải thích nguồn gốc chữ.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "So sánh phần dưới: ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "右",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "口",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "左",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "工",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Đây là mẹo nhận hình, không phải giải thích nguồn gốc chữ.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng 右边; khi chỉ hướng đi dùng 往右 hoặc 向右.",
+     "summaryAudio": [
       {
-        id: "hsk1-bai-16-g2-w7",
-        index": 7,
-        hanzi: "一边",
-        pinyin: "yībiān",
-        coreMeaning: "Một bên; vừa... vừa... (hai hành động diễn ra song song)",
-        introAudio: [
-          { lang: "zh-CN", text: "一边", pause: 500 },
-          { lang: "vi-VN", text: "Một bên; vừa... vừa... diễn tả hai hành động đồng thời", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi người nói thực hiện hoặc quan sát ai đó tiến hành cùng lúc hai hành vi trong cùng một khoảng thời gian.",
-          detail: "Có 2 công năng: 1. Danh từ chỉ phương vị không gian: 路的一边 (Một bên đường). 2. Cấu trúc liên từ song hành: 一边 [Hành động 1] 一边 [Hành động 2] (Vừa làm việc này vừa làm việc kia).",
-          keyPoint: "Bắt buộc 2 hành động phải diễn ra ĐỒNG THỜI 100% trong cùng một thời điểm.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ bảy: Nhất biên, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "一边", pause: 400 },
-            { lang: "vi-VN", text: "dùng trong cấu trúc vừa làm việc này vừa làm việc kia song song.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Cấu trúc hai hành động đồng thời",
-            pattern: "[Chủ ngữ] + 一边 + [Động từ 1] + 一边 + [Động từ 2]",
-            note: "Ví dụ: 我一边听音乐一边看书 (Tôi vừa nghe nhạc vừa đọc sách).",
-            audio: [
-              { lang: "zh-CN", text: "我一边听音乐一边看书。", pause: 800 },
-              { lang: "vi-VN", text: "Tôi vừa nghe nhạc vừa đọc sách.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Danh từ phương vị không gian",
-            pattern: "路的一边是……，另一边是……",
-            note: "Một bên đường là... bên còn lại là...",
-            audio: [
-              { lang: "zh-CN", text: "路的一边是大学，另一边是书店。", pause: 800 },
-              { lang: "vi-VN", text: "Một bên đường là trường đại học, bên kia là hiệu sách.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "我喜欢一边听音乐一边写作业。",
-            vi: "Tôi thích vừa nghe nhạc vừa làm bài tập.",
-            situation: "Chia sẻ về thói quen học tập và thư giãn cá nhân buổi tối.",
-            analysis: "Nghe nhạc và làm bài tập diễn ra cùng lúc, chia đôi sự chú ý một cách hài hòa.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Vừa nghe nhạc vừa làm bài tập.", pause: 300 },
-              { lang: "zh-CN", text: "我喜欢一边听音乐一边写作业。", pause: 800 }
-            ]
-          },
-          {
-            zh: "爸爸一边喝茶一边看书。",
-            vi: "Bố vừa uống trà vừa đọc sách.",
-            situation: "Miêu tả hình ảnh bố thư giãn thảnh thơi vào sáng chủ nhật.",
-            analysis: "Hai động từ 喝茶 (uống trà) và 看书 (đọc sách) kết nối trực tiếp với 一边.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Bố vừa thưởng trà vừa đọc sách.", pause: 300 },
-              { lang: "zh-CN", text: "爸爸一边喝茶一边看书。", pause: 800 }
-            ]
-          },
-          {
-            zh: "路的一边是大学，另一边是车站。",
-            vi: "Một bên đường là trường đại học, bên còn lại là nhà ga.",
-            situation: "Mô tả cảnh quan hai bên đại lộ chính trước cổng trường.",
-            analysis: "Sử dụng 一边 với ý nghĩa danh từ chỉ ranh giới không gian.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Miêu tả hai bên con đường.", pause: 300 },
-              { lang: "zh-CN", text: "路的一边是大学，另一边是车站。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy dùng 一边...一边... cho hai hành động diễn ra trước - sau",
-            situation: "Bạn muốn nói 'Tôi ăn cơm xong rồi đi ngủ' nhưng lại dùng cấu trúc 一边...一边...",
-            explanation: "Cấu trúc 一边...一边... bắt buộc hai hành động phải diễn ra ĐỒNG THỜI. Bạn không thể vừa ăn cơm vừa ngủ được. Những hành động nối tiếp theo thứ tự thời gian phải dùng cấu trúc 先……再…… (Trước tiên... sau đó...).",
-            wrong: "我一边吃完饭一边去睡觉。 (Phi logic thực tế)",
-            right: "我先吃晚饭，再去睡觉。 (Hành động trước sau dùng 先...再...)",
-            tip: "Đồng thời 100% -> Dùng 一边...一边... Trước - sau tuần tự -> Dùng 先...再...",
-            boundary: "Không dùng cho các hành động gây nguy hiểm tính mạng: Lái xe thì không nên vừa lái vừa bấm điện thoại.",
-            comparisons: [
-              { zh: "一边看书一边听音乐", vi: "Vừa đọc vừa nghe (Đồng thời)" },
-              { zh: "先洗手再吃饭", vi: "Rửa tay trước rồi mới ăn cơm (Trước sau)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Cảnh báo: Nhất biên nhất biên chỉ dùng cho hai việc xảy ra đồng thời. Việc trước sau phải dùng tiên... tái...", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "Biến điệu của chữ 一: Khi đứng trước 边 (thanh 1), chữ 一 biến điệu thành thanh bốn: yìbiān.",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm biến điệu thanh bốn:", pause: 300 },
-            { lang: "zh-CN", text: "一边", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ 一 là một nét ngang. Chữ Biên (边) có bộ Quai xước (辶) bao quanh chữ Lực (力).",
-          audio: [
-            { lang: "vi-VN", text: "Nhận diện chữ Hán: Chữ Biên có bộ Quai xước bên ngoài.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: 一边 [Động từ 1] 一边 [Động từ 2] (Đồng thời 100%).",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Hai việc xảy ra cùng lúc dùng cấu trúc nhất biên nhất biên.", pause: 400 }
-        ]
+       "lang": "vi-VN",
+       "text": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng ",
+       "pause": 350
       },
-
-      // --- TỪ 8: 真的 ---
       {
-        id: "hsk1-bai-16-g1-w8",
-        index": 8,
-        hanzi: "真的",
-        pinyin: "zhēnde",
-        coreMeaning: "Thật sự, thật đấy, quả thật (xác nhận tính chân thực)",
-        introAudio: [
-          { lang: "zh-CN", text: "真的", pause: 500 },
-          { lang: "vi-VN", text: "Thật sự, thật đấy, quả thật chân thành", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi khẳng định một sự việc là thật 100%, hoặc bày tỏ cảm xúc chân thành trước một lời khen, hoặc hỏi lại để xác nhận tin tức giật gân.",
-          detail: "Có 2 cách dùng phổ biến: 1. Đứng trước hình dung từ/động từ làm trạng ngữ tăng sức nặng: 真的很好 (Thật sự rất tốt). 2. Dùng trong câu hỏi xác nhận: 真的吗？ (Thật vậy sao?).",
-          keyPoint: "Biểu đạt tính chân thực khách quan và mức độ cảm xúc chân thành.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ tám: Chân đích, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "真的", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là thật sự, thật đấy.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Câu hỏi xác nhận thông tin",
-            pattern: "真的吗？ / 是真的吗？",
-            note: "Hỏi lại khi nghe một tin tức bất ngờ.",
-            audio: [
-              { lang: "zh-CN", text: "真的吗？我也想去。", pause: 800 },
-              { lang: "vi-VN", text: "Thật vậy sao? Tôi cũng muốn đi.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Trạng ngữ gia tăng mức độ chân thành",
-            pattern: "真的 + [Tính từ: 好 / 高兴 / 漂亮] hoặc [Động từ: 喜欢 / 想去]",
-            note: "Tăng cường tính chân thực: 真的很高兴 (Thực sự rất vui mừng).",
-            audio: [
-              { lang: "zh-CN", text: "这个汉语老师真的很好。", pause: 800 },
-              { lang: "vi-VN", text: "Thầy giáo tiếng Trung này thật sự rất tuyệt vời.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "这个汉语老师真的很好。",
-            vi: "Thầy giáo tiếng Trung này thật sự rất tốt.",
-            situation: "Khen ngợi thầy giáo với bạn học khi được hỏi ý kiến giới thiệu lớp học.",
-            analysis: "真的 đứng trước tính từ 好 biểu thị sự đánh giá chân thành xuất phát từ đáy lòng.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Thầy giáo tiếng Trung thực sự rất tốt.", pause: 300 },
-              { lang: "zh-CN", text: "这个汉语老师真的很好。", pause: 800 }
-            ]
-          },
-          {
-            zh: "是真的吗？我有点儿不太相信。",
-            vi: "Có thật không vậy? Tôi có chút không tin lắm.",
-            situation: "Phản ứng bất ngờ khi nghe bạn cùng phòng trúng vé số hoặc học bổng lớn.",
-            analysis: "是真的吗 là mẫu câu cố định để yêu cầu người nói tái khẳng định sự thật.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Hỏi lại để xác minh tin tức.", pause: 300 },
-              { lang: "zh-CN", text: "是真的吗？我有点儿不太相信。", pause: 800 }
-            ]
-          },
-          {
-            zh: "今天能见到你，我真的非常高兴！",
-            vi: "Hôm nay được gặp bạn, tôi thật sự vô cùng vui sướng!",
-            situation: "Bày tỏ niềm hân hoan khi gặp lại người bạn thân lâu năm xa cách.",
-            analysis: "真的非常高兴 là sự kết hợp kép giữa tính xác thực và mức độ vui vẻ cực đỉnh.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Bày tỏ niềm vui chân thành khi hội ngộ.", pause: 300 },
-              { lang: "zh-CN", text: "今天能见到你，我真的非常高兴！", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy ngộ nhận 真的 chỉ dùng để hỏi mà không biết làm trạng ngữ",
-            situation: "Nhiều người nghĩ chữ 真的 chỉ có trong câu hỏi '真的吗？'.",
-            explanation: "Trong khẩu ngữ thực tế, 真的 xuất hiện dày đặc trước tính từ và động từ tâm lý để bày tỏ sự chân thành: 真的很喜欢, 真的想去. Không chỉ giới hạn trong câu nghi vấn.",
-            wrong: "Hạn chế chỉ dùng 真 mà không dám dùng 真的.",
-            right: "这部电影真的很好看！ (Rất tự nhiên)",
-            tip: "Dùng 真的 + Tính từ để lời khen của bạn nghe chân thành gấp đôi.",
-            boundary: "Trong câu cảm thán ngắn có ngữ khí từ: 真好看啊 thường phổ biến hơn 真的好看啊.",
-            comparisons: [
-              { zh: "真的很好", vi: "Thật sự rất tốt (Đánh giá khách quan, chân thành)" },
-              { zh: "真好！", vi: "Tốt quá! (Cảm thán tức thời)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý: Chân đích đứng trước tính từ làm lời khen ngợi thêm phần chân thành.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "zhēn (thanh 1 bằng phẳng) + de (thanh nhẹ lướt nhanh).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "真的", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Chân (真) có nét thập ở trên, thân giữa có 3 nét ngang khép kín bên trong, chân dưới là nét phẩy và chấm.",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Chân bên trong có ba nét ngang, đừng viết thiếu nét.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: 真的吗？ (Hỏi thật à?); 真的 + [Tính từ] (Thật sự rất...).",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng từ Chân đích: Hỏi xác nhận dùng chân đích ma, khen chân thành dùng chân đích ngận hảo.", pause: 400 }
-        ]
+       "lang": "zh-CN",
+       "text": "右边",
+       "pause": 350
       },
-
-      // --- TỪ 9: 下课 ---
       {
-        id: "hsk1-bai-16-g2-w9",
-        index": 9,
-        hanzi: "下课",
-        pinyin: "xiàkè",
-        coreMeaning: "Tan học, hết giờ học, kết thúc buổi học",
-        introAudio: [
-          { lang: "zh-CN", text: "下课", pause: 500 },
-          { lang: "vi-VN", text: "Tan học, hết tiết, kết thúc giờ học", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi chuông báo hết tiết vang lên, giáo viên cho học sinh nghỉ, hoặc hẹn bạn bè làm gì đó sau giờ tan trường.",
-          detail: "Động từ ly hợp (下 + 课). Biểu thị hành vi kết thúc một tiết học hoặc buổi học. Trái nghĩa với 上课 (vào lớp/bắt đầu học).",
-          keyPoint: "Là động từ ly hợp: TUYỆT ĐỐI KHÔNG mang tân ngữ môn học phía sau.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ chín: Hạ khóa, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "下课", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là tan học, hết giờ giảng.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Mốc thời gian sau giờ học",
-            pattern: "下课 + 以后 / 后，[Hành động tiếp theo]",
-            note: "Ví dụ: 下课以后，我们去书店吧 (Sau khi tan học, chúng mình đi hiệu sách nhé).",
-            audio: [
-              { lang: "zh-CN", text: "下课以后，我们去书店吧。", pause: 800 },
-              { lang: "vi-VN", text: "Hết tiết học chúng ta cùng đi hiệu sách nhé.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Thời điểm hết giờ cụ thể",
-            pattern: "[Mốc giờ] + 下课",
-            note: "Ví dụ: 我们下午四点下课 (Bọn tôi tan học lúc 4 giờ chiều).",
-            audio: [
-              { lang: "zh-CN", text: "我们下午四点下课。", pause: 800 },
-              { lang: "vi-VN", text: "Chúng tôi bốn giờ chiều tan học.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "老师说：“同学们，下课了！”",
-            vi: "Thầy giáo nói: “Các em học sinh, tan học rồi!”",
-            situation: "Lời tuyên bố của giáo viên khi đồng hồ điểm hết giờ giảng bài trên lớp.",
-            analysis: "下课了 với trợ từ ngữ khí 了 biểu thị trạng thái tiết học đã chính thức kết thúc.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Lời báo tan học của thầy giáo.", pause: 300 },
-              { lang: "zh-CN", text: "老师说：“同学们，下课了！”", pause: 800 }
-            ]
-          },
-          {
-            zh: "下课以后，我们去学校右边的书店买书吧。",
-            vi: "Sau khi tan học, chúng mình đến hiệu sách bên phải trường mua sách nhé.",
-            situation: "Rủ bạn học cùng lớp đi mua tài liệu sau khi nghe xong bài giảng.",
-            analysis: "下课以后 làm trạng ngữ thời gian ở đầu câu, xác định rõ thời điểm xuất phát.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Rủ nhau đi hiệu sách sau giờ học.", pause: 300 },
-              { lang: "zh-CN", text: "下课以后，我们去学校右边的书店买书吧。", pause: 800 }
-            ]
-          },
-          {
-            zh: "你今天几点下课？我开车去接你。",
-            vi: "Hôm nay bạn mấy giờ tan học? Tôi lái xe qua đón bạn.",
-            situation: "Người thân hoặc bạn bè gọi điện hỏi giờ tan trường để chủ động đón xe.",
-            analysis: "几点下课 là câu hỏi giờ giấc kết thúc buổi học thông dụng nhất.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Hỏi giờ tan học để đón xe.", pause: 300 },
-              { lang: "zh-CN", text: "你今天几点下课？我开车去接你。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy ghép tân ngữ môn học vào sau động từ ly hợp 下课",
-            situation: "Bạn muốn nói 'Học xong môn tiếng Trung rồi' và dịch thành '下课汉语了'.",
-            explanation: "下课 là động từ ly hợp (Động từ 下 + Danh từ 课). Trong ngữ pháp tiếng Trung, động từ ly hợp KHÔNG ĐƯỢC mang thêm bất kỳ tân ngữ nào phía sau nó nữa. Muốn nói học xong môn tiếng Trung, phải đưa tên môn học lên trước làm định ngữ cho 课: 汉语课下课了, hoặc dùng cụm 上完汉语课.",
-            wrong: "我下课汉语了。 (Sai ngữ pháp nghiêm trọng)",
-            right: "我的汉语课下课了。 / 上完汉语课了。 (Chuẩn xác)",
-            tip: "Đã có chữ 课 thì không nhét thêm tên môn học phía sau nó nữa.",
-            boundary: "Phân biệt 下课 (kết thúc một tiết học) với 放学 (kết thúc toàn bộ ngày học ở trường, học sinh ra về).",
-            comparisons: [
-              { zh: "下课", vi: "Hết tiết học / Tan một buổi học" },
-              { zh: "放学", vi: "Tan trường (Hết sạch các tiết trong ngày, về nhà)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Cảnh báo động từ ly hợp: Tuyệt đối không nói hạ khóa hán ngữ. Phải nói hán ngữ khóa hạ khóa liễu.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "Cả hai âm đều thanh bốn: xià - kè. Âm kè bật hơi mạnh ở vòm họng.",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm bật hơi:", pause: 300 },
-            { lang: "zh-CN", text: "下课", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Hạ (下) có nét ngang ở trên, nét sổ và chấm ở dưới. Chữ Khóa (课) có bộ Ngôn (讠) và chữ Quả (果).",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Khóa liên quan đến ngôn từ bài học nên có bộ Ngôn đứng đầu.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: 下课以后 + [Hành động]; Không mang tân ngữ môn học sau 下课.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Tan học là hạ khóa, sau giờ học là hạ khóa dĩ hậu.", pause: 400 }
-        ]
+       "lang": "vi-VN",
+       "text": "; khi chỉ hướng đi dùng ",
+       "pause": 350
       },
-
-      // --- TỪ 10: 有名 ---
       {
-        id: "hsk1-bai-16-g1-w10",
-        index": 10,
-        hanzi: "有名",
-        pinyin: "yǒumíng",
-        coreMeaning: "Có tiếng, nổi tiếng (được nhiều người biết đến)",
-        introAudio: [
-          { lang: "zh-CN", text: "有名", pause: 500 },
-          { lang: "vi-VN", text: "Nổi tiếng, có tiếng tăm lừng lẫy", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng để khen ngợi hoặc giới thiệu danh lam thắng cảnh, trường đại học lớn, nhân vật lừng danh, món ăn đặc sản.",
-          detail: "Hình dung từ (tính từ) chỉ danh tiếng. Có thể làm vị ngữ trong câu: 很有名 (rất nổi tiếng) HOẶC làm định ngữ bổ nghĩa cho danh từ: 有名的大学 (trường đại học nổi tiếng).",
-          keyPoint: "Bản thân là tính từ: KHÔNG cần thêm động từ 是 khi đứng trước 很有名.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ mười: Hữu danh, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "有名", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là có tiếng tăm, nổi tiếng.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Vị ngữ tính từ miêu tả",
-            pattern: "[Chủ ngữ] + (在 + Địa điểm) + 很有名",
-            note: "Ví dụ: 这所大学在中国很有名 (Trường đại học này rất nổi tiếng ở Trung Quốc).",
-            audio: [
-              { lang: "zh-CN", text: "这所大学很有名。", pause: 800 },
-              { lang: "vi-VN", text: "Trường đại học này rất nổi tiếng.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Định ngữ bổ nghĩa cho danh từ",
-            pattern: "有名的 + [Danh từ: 人 / 老师 / 地方 / 菜]",
-            note: "Ví dụ: 有名的中国菜 (Món ăn Trung Quốc nổi tiếng).",
-            audio: [
-              { lang: "zh-CN", text: "北京烤鸭是一道很有名的中国菜。", pause: 800 },
-              { lang: "vi-VN", text: "Vịt quay Bắc Kinh là một món ăn Trung Quốc rất nổi tiếng.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "这所大学在中国很有名。",
-            vi: "Trường đại học này rất nổi tiếng ở Trung Quốc.",
-            situation: "Giới thiệu ngôi trường danh giá mà bạn bè hoặc người thân đang theo học.",
-            analysis: "在中国 là giới từ phạm vi; 很有名 làm vị ngữ miêu tả trực tiếp.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Trường đại học nổi tiếng ở Trung Quốc.", pause: 300 },
-              { lang: "zh-CN", text: "这所大学在中国很有名。", pause: 800 }
-            ]
-          },
-          {
-            zh: "我想买那位有名的老师写的书。",
-            vi: "Tôi muốn mua cuốn sách do người thầy giáo nổi tiếng kia viết.",
-            situation: "Tìm kiếm sách giáo trình chất lượng của các tác giả uy tín trong hiệu sách.",
-            analysis: "有名的 làm định ngữ bổ nghĩa cho danh từ người thầy (老师).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Mua sách của thầy giáo nổi tiếng.", pause: 300 },
-              { lang: "zh-CN", text: "我想买那位有名的老师写的书。", pause: 800 }
-            ]
-          },
-          {
-            zh: "这是一家很有名的老书店，开了三十年了。",
-            vi: "Đây là một hiệu sách cũ rất có tiếng tăm, đã mở được ba mươi năm rồi.",
-            situation: "Kể về bề dày lịch sử của hiệu sách truyền thống bên cạnh trường học.",
-            analysis: "Cụm tính từ 很有名 bổ nghĩa cho danh từ hiệu sách cũ (老书店).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Hiệu sách cũ rất có tiếng tăm.", pause: 300 },
-              { lang: "zh-CN", text: "这是一家很有名的老书店，开了三十年了。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy chèn động từ '是' vào trước vị ngữ tính từ 有名",
-            situation: "Người Việt nghĩ 'Trường đại học này LÀ rất nổi tiếng' nên dịch thành '这所大学是很有名'.",
-            explanation: "Trong ngữ pháp tiếng Trung cơ bản, vị ngữ hình dung từ không cần dùng động từ 是, chỉ cần dùng phó từ mức độ 很 đứng trước tính từ: 这所大学很有名. Nếu dùng 是很有名 thì mang sắc thái nhấn mạnh khẳng định đối lập (Ừ thì công nhận là nổi tiếng thật đấy nhưng mà...).",
-            wrong: "这所大学是很有名。 (Dư thừa chữ 是 trong câu miêu tả trung tính)",
-            right: "这所大学很有名。 (Chuẩn mực tự nhiên)",
-            tip: "Câu miêu tả tính từ: Bỏ động từ 是 đi, chỉ giữ lại 很 + 有名.",
-            boundary: "Phân biệt 有名 (nổi tiếng) với 有名字 (có tên gọi, có danh xưng cụ thể).",
-            comparisons: [
-              { zh: "他很有名", vi: "Anh ấy rất nổi tiếng (Ai cũng biết)" },
-              { zh: "这只狗有名字", vi: "Con chó này có tên đặt rồi (Không phải vô danh)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý: Không chèn động từ thị vào trước ngận hữu danh trong câu miêu tả bình thường.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "yǒu (thanh 3 giữ trầm) + míng (thanh 2 vuốt lên cao).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "有名", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Hữu (有) có nét ngang phẩy và chữ Nguyệt (月). Chữ Danh (名) có chữ Tịch (夕) và chữ Khẩu (口).",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Danh gồm chữ Tịch là đêm tối và chữ Khẩu là miệng gọi tên.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: [Chủ ngữ] + 很有名; Có tiếng: 有名的 + [Danh từ].",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Nổi tiếng dùng ngận hữu danh, người nổi tiếng dùng hữu danh đích nhân.", pause: 400 }
-        ]
+       "lang": "zh-CN",
+       "text": "往右",
+       "pause": 350
       },
-
-      // --- TỪ 11: 大学 ---
       {
-        id: "hsk1-bai-16-g1-w11",
-        index": 11,
-        hanzi: "大学",
-        pinyin: "dàxué",
-        coreMeaning: "Đại học, trường đại học (bậc giáo dục đại học)",
-        introAudio: [
-          { lang: "zh-CN", text: "大学", pause: 500 },
-          { lang: "vi-VN", text: "Đại học, trường đại học", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi nói về cơ sở đào tạo giáo dục bậc cao, giảng đường đại học, hoặc thời kỳ thanh xuân sinh viên.",
-          detail: "Danh từ chỉ trường đại học hoặc bậc đại học. Lượng từ tiêu chuẩn của trường đại học là '所' (suǒ): 一所大学. Khi nói đi học đại học, người bản xứ dùng cụm '上大学' hoặc '在大学读书'.",
-          keyPoint: "Học đại học = 上大学 hoặc 在大学读书 (KHÔNG dùng *学大学*).",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ mười một: Đại học, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "大学", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là trường đại học hoặc bậc học đại học.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Động từ học đại học chuẩn bản xứ",
-            pattern: "上大学 / 在大学读书",
-            note: "Ví dụ: 我姐在大学读书 (Chị tôi đang theo học đại học).",
-            audio: [
-              { lang: "zh-CN", text: "我姐在大学读书。", pause: 800 },
-              { lang: "vi-VN", text: "Chị tôi đang học đại học.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Lượng từ chuẩn của trường đại học",
-            pattern: "一所 + 很有名的 + 大学",
-            note: "Lượng từ 所 dùng cho trường học, bệnh viện, cơ quan.",
-            audio: [
-              { lang: "zh-CN", text: "这是一所很有名的大学。", pause: 800 },
-              { lang: "vi-VN", text: "Đây là một trường đại học rất nổi tiếng.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "我哥哥在北京的一所大学读书。",
-            vi: "Anh trai tôi đang học tại một trường đại học ở Bắc Kinh.",
-            situation: "Kể về việc học tập xa nhà của anh trai tại thủ đô.",
-            analysis: "一所大学 sử dụng lượng từ 所 chuẩn mực; 读书 mang nghĩa theo học sinh viên.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Anh trai học ở trường đại học Bắc Kinh.", pause: 300 },
-              { lang: "zh-CN", text: "我哥哥在北京的一所大学读书。", pause: 800 }
-            ]
-          },
-          {
-            zh: "大学里有很多外国留学生。",
-            vi: "Trong trường đại học có rất nhiều du học sinh nước ngoài.",
-            situation: "Miêu tả không khí giao lưu quốc tế năng động trong khuôn viên trường.",
-            analysis: "大学里 kết hợp từ chỉ vị trí 里 (bên trong khuôn viên trường đại học).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Trong trường đại học có nhiều du học sinh.", pause: 300 },
-              { lang: "zh-CN", text: "大学里有很多外国留学生。", pause: 800 }
-            ]
-          },
-          {
-            zh: "他们都是我的大学同学。",
-            vi: "Bọn họ đều là bạn học thời đại học của tôi.",
-            situation: "Giới thiệu những người bạn cùng khóa với người thân gia đình.",
-            analysis: "大学同学 là cụm danh từ cố định: bạn học đại học.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Bạn học thời đại học.", pause: 300 },
-              { lang: "zh-CN", text: "他们都是我的大学同学。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy dịch 'Học đại học' thành '学大学'",
-            situation: "Bạn muốn nói 'Tôi đang học đại học' và dùng động từ 学 thành '我学大学'.",
-            explanation: "Động từ 学 chỉ đi kèm với tên môn học hoặc kỹ năng cụ thể: 学汉语 (học tiếng Trung), 学开车 (học lái xe). Đại học là bậc học, trường học, nên bắt buộc dùng động từ 上 (lên học): 上大学, hoặc cụm 在大学读书. Tuyệt đối không nói 学大学.",
-            wrong: "我学大学四年了。 (Sai ngữ pháp)",
-            right: "我上大学 / 我在大学读书。 (Chuẩn mực)",
-            tip: "Môn học dùng 学; Bậc học đại học dùng 上大学.",
-            boundary: "Sinh viên đại học gọi là 大学生.",
-            comparisons: [
-              { zh: "上大学", vi: "Học đại học (Bậc học)" },
-              { zh: "学汉语", vi: "Học môn tiếng Trung (Môn học)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý: Học đại học phải dùng thượng đại học hoặc tại đại học độc thư, không nói học đại học.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "dà (thanh 4 giáng mạnh) + xué (thanh 2 vuốt cao).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "大学", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Đại (大) có nét ngang, phẩy và mác. Chữ Học (学) có bộ Mịch ở trên và chữ Tử (子) ở dưới.",
-          audio: [
-            { lang: "vi-VN", text: "Nhận diện mặt chữ: Chữ Đại to lớn ghép với chữ Học học tập.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Học đại học = 上大学; Lượng từ = 一所大学; Bạn đại học = 大学同学.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng từ Đại học: Thượng đại học là đi học đại học, lượng từ dùng nhất sở đại học.", pause: 400 }
-        ]
+       "lang": "vi-VN",
+       "text": " hoặc ",
+       "pause": 350
       },
-
-      // --- TỪ 12: 这里 ---
       {
-        id: "hsk1-bai-16-g1-w12",
-        index": 12,
-        hanzi: "这里",
-        pinyin: "zhèlǐ",
-        coreMeaning: "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)",
-        introAudio: [
-          { lang: "zh-CN", text: "这里", pause: 500 },
-          { lang: "vi-VN", text: "Ở đây, nơi này, chỗ này gần người nói", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng để chỉ vị trí, địa điểm hoặc không gian mà người nói đang có mặt hoặc ở khoảng cách rất gần tầm với.",
-          detail: "Đại từ chỉ định nơi chốn. Đồng nghĩa với '这儿' (zhèr - phổ biến ở miền bắc Trung Quốc). Thường đi sau giới từ 在: '在这里' (ở đây), hoặc làm chủ ngữ chỉ địa điểm.",
-          keyPoint: "Đại từ chỉ nơi chốn độc lập. Ở đây = 在这里 / 在这儿 (KHÔNG dùng *在这个*).",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ mười hai: Giá lý, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "这里", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là ở đây, nơi này.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Trạng ngữ nơi chốn chỉ vị trí hiện tại",
-            pattern: "在 + 这里 + [Động từ hành động]",
-            note: "Ví dụ: 我们在这里等你 (Chúng tôi chờ bạn ở đây).",
-            audio: [
-              { lang: "zh-CN", text: "我们在这里等你。", pause: 800 },
-              { lang: "vi-VN", text: "Chúng tôi đợi bạn ở đây.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Chủ ngữ chỉ cảnh quan địa điểm",
-            pattern: "这里 + [Tính từ / Hiện tượng]",
-            note: "Ví dụ: 这里人很多 (Ở đây rất đông người).",
-            audio: [
-              { lang: "zh-CN", text: "这里的人真多！", pause: 800 },
-              { lang: "vi-VN", text: "Người ở đây đông thật đấy!", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "我们在这里学汉语。",
-            vi: "Chúng tôi học tiếng Trung ở nơi này.",
-            situation: "Nói với người lạ về địa điểm lớp học mà cả nhóm đang theo học.",
-            analysis: "在这里 là cụm giới từ chỉ địa điểm đứng trước động từ 学汉语.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Học tiếng Trung ở đây.", pause: 300 },
-              { lang: "zh-CN", text: "我们在这里学汉语。", pause: 800 }
-            ]
-          },
-          {
-            zh: "这里的天气非常好，不冷也不热。",
-            vi: "Thời tiết ở đây rất đẹp, không lạnh cũng không nóng.",
-            situation: "Khen ngợi khí hậu dễ chịu khi vừa đặt chân tới thành phố du lịch.",
-            analysis: "这里的天气 đưa đại từ nơi chốn lên làm định ngữ bổ nghĩa cho thời tiết.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Thời tiết ở đây rất tuyệt vời.", pause: 300 },
-              { lang: "zh-CN", text: "这里的天气非常好，不冷也不热。", pause: 800 }
-            ]
-          },
-          {
-            zh: "请问，这里有人坐吗？",
-            vi: "Xin hỏi, chỗ này đã có ai ngồi chưa ạ?",
-            situation: "Hỏi lịch sự trước khi kéo ghế ngồi xuống bàn trong thư viện hoặc quán cà phê.",
-            analysis: "这里 đại diện cho vị trí chiếc ghế ngồi gần người đối thoại.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Xin hỏi chỗ này có ai ngồi chưa.", pause: 300 },
-              { lang: "zh-CN", text: "请问，这里有人坐吗？", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy dùng '在这个' khi muốn nói 'ở đây'",
-            situation: "Bạn muốn nói 'Tôi chờ bạn ở đây' và buột miệng dịch thành '我在这个等你'.",
-            explanation: "这个 (cái này) là đại từ chỉ thị đồ vật, bắt buộc phải có danh từ đi kèm: 个人 (người này), 本书 (cuốn sách này). Muốn nói 'ở đây' (nơi chốn) bắt buộc phải dùng đại từ nơi chốn: 这里 hoặc 这儿. Nói 在这个 mà không có danh từ là sai cấu trúc.",
-            wrong: "我在这个等你。 (Sai ngữ pháp)",
-            right: "我在这里 / 这儿等你。 (Chuẩn xác)",
-            tip: "Nơi chốn gần -> 这里 / 这儿. Đồ vật gần -> 这个 + [Danh từ].",
-            boundary: "Đối lập với khoảng cách xa: 那里 / 那儿 (ở kia, chỗ đằng kia).",
-            comparisons: [
-              { zh: "在这里", vi: "Ở đây (Nơi chốn)" },
-              { zh: "这个东西", vi: "Đồ vật này (Đồ vật cụ thể)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý: Nói ở đây phải dùng tại giá lý hoặc tại giá nhi, không nói tại giá cá.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "zhè (thanh 4 giáng mạnh) + lǐ (thanh 3 trầm sâu).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "这里", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Giá (这) có bộ Quai xước (辶) và chữ Văn (文). Chữ Lý (里) có chữ Điền (田) ở trên và chữ Thổ (土) ở dưới.",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Lý bên trong có chữ Điền là đồng ruộng và chữ Thổ là đất đai.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Ở đây = 在这里 / 在这儿; Chờ ở đây = 在这里等.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng từ Giá lý: Ở đây là tại giá lý, đối lập với ở đằng kia là tại na lý.", pause: 400 }
-        ]
+       "lang": "zh-CN",
+       "text": "向右",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ".",
+       "pause": 350
       }
-    ],
-
-    // BÀI TẬP TRẮC NGHIỆM NGỮ DỤNG CHO NHÓM 2
-    exercises: [
+     ],
+     "collocations": [
       {
-        id: "hsk1-b16-g2-ex1",
-        type: "Phân biệt hành động đồng thời",
-        prompt: "Chọn câu diễn đạt tự nhiên nhất: 'Tôi vừa nghe nhạc vừa viết bài tập.'",
-        options: [
-          "我先听音乐，再一边写作业。",
-          "我一边听音乐，一边写作业。",
-          "我一边写完作业，一边去听音乐。",
-          "我听音乐的一边在写作业。"
-        ],
-        correct: 1,
-        reasonRight: "Chính xác! Hai hành động nghe nhạc và làm bài tập diễn ra song song 100% dùng 一边...一边...",
-        reasonWrong: "Chưa đúng: Cấu trúc song hành yêu cầu đặt 一边 trước cả hai động từ.",
-        questionAudio: [{ lang: "vi-VN", text: "Chọn câu diễn đạt vừa nghe nhạc vừa làm bài tập.", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "我一边听音乐，一边写作业。", pause: 600 }
-        ]
+       "zh": "右边",
+       "vi": "bên phải"
       },
       {
-        id: "hsk1-b16-g2-ex2",
-        type: "Trạng ngữ gia tăng tính chân thành",
-        prompt: "Điền từ vào chỗ trống để tạo lời khen chân thành nhất: '这个汉语老师____很好，我很喜欢他。'",
-        options: ["真的", "真吗", "的真", "是真的"],
-        correct: 0,
-        reasonRight: "Tuyệt vời! Phó từ 真的 đứng trước tính từ 很好 làm lời khen ngợi trở nên chân thành sâu sắc.",
-        reasonWrong: "Chưa đúng: 真吗 không tồn tại; 是真的 không đứng trực tiếp làm trạng ngữ trước tính từ.",
-        questionAudio: [{ lang: "zh-CN", text: "这个汉语老师什么很好？", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "真的很好", pause: 600 }
-        ]
+       "zh": "往右走",
+       "vi": "đi về bên phải"
       },
       {
-        id: "hsk1-b16-g2-ex3",
-        type: "Bẫy động từ ly hợp 下课",
-        prompt: "Câu nào dưới đây đúng ngữ pháp tiếng Trung chuẩn bản xứ?",
-        options: [
-          "我们四点下课汉语课。",
-          "四点下课以后，我们去书店。",
-          "老师下课了同学们汉语。",
-          "下课英语以后我回家。"
-        ],
-        correct: 1,
-        reasonRight: "Chuẩn xác! 下课 là động từ ly hợp không mang tân ngữ môn học; dùng 下课以后 làm mốc thời gian là chuẩn 100%.",
-        reasonWrong: "Chưa đúng: Các câu khác đều mắc bẫy nhồi nhét tên môn học (汉语, 英语) vào sau động từ ly hợp 下课.",
-        questionAudio: [{ lang: "vi-VN", text: "Tìm câu dùng đúng động từ ly hợp tan học.", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "四点下课以后，我们去书店。", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g2-ex4",
-        type: "Vị ngữ tính từ 有名",
-        prompt: "Chọn câu đúng khi nói về danh tiếng của trường đại học:",
-        options: [
-          "这所大学是很有名。",
-          "这所大学很有名。",
-          "这所大学有名的。",
-          "这所大学是在有名。"
-        ],
-        correct: 1,
-        reasonRight: "Chính xác! Vị ngữ tính từ tiếng Trung dùng trực tiếp 很 + 有名, không chèn động từ 是.",
-        reasonWrong: "Chưa đúng: Chèn 是 vào trước 很有名 là lỗi dịch từng chữ từ tiếng Việt.",
-        questionAudio: [{ lang: "vi-VN", text: "Câu nào miêu tả trường đại học nổi tiếng đúng ngữ pháp?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "这所大学很有名。", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g2-ex5",
-        type: "Bẫy dùng từ 'Học đại học'",
-        prompt: "Muốn nói 'Chị tôi đang học đại học ở Bắc Kinh', câu nào chuẩn mực nhất?",
-        options: [
-          "我姐在北京学大学。",
-          "我姐在北京的大学读书。",
-          "我姐在北京学很大的学校。",
-          "我姐在大学学读书。"
-        ],
-        correct: 1,
-        reasonRight: "Tuyệt vời! Theo học đại học người bản xứ dùng 在大学读书 hoặc 上大学, không bao giờ dùng 学大学.",
-        reasonWrong: "Chưa đúng: Tiếng Trung không dùng động từ 学 đi với danh từ bậc học 大学.",
-        questionAudio: [{ lang: "vi-VN", text: "Chị tôi học đại học ở Bắc Kinh, nói thế nào chuẩn?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "我姐在北京的大学读书。", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g2-ex6",
-        type: "Phân biệt đại từ nơi chốn 这里",
-        prompt: "Bạn muốn bảo bạn mình: 'Cậu đứng chờ tớ ở đây nhé!', câu nào chuẩn xác?",
-        options: [
-          "你在在这个等我吧！",
-          "你在这个等我吧！",
-          "你在这里等我吧！",
-          "你这儿个等我吧！"
-        ],
-        correct: 2,
-        reasonRight: "Chuẩn xác! Đại từ nơi chốn độc lập ở đây là 这里 (hoặc 这儿), đi sau giới từ 在.",
-        reasonWrong: "Chưa đúng: 这个 là chỉ định từ đồ vật, không dùng thay thế cho trạng ngữ nơi chốn.",
-        questionAudio: [{ lang: "vi-VN", text: "Cậu chờ tớ ở đây nhé, câu nào đúng?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "你在这里等我吧！", pause: 600 }
-        ]
+       "zh": "右手",
+       "vi": "tay phải"
       }
-    ],
-
-    // THỰC HÀNH TỰ ĐẶT CÂU (ACTIVE OUTPUT) 3 TẦNG TRỢ GIÚP
-    selfUse: [
+     ],
+     "compare": {
+      "a": "右边",
+      "b": "左边",
+      "why": "Hai phía đối lập. Chọn mốc nhìn trước khi chỉ đường."
+     },
+     "usage": [
       {
-        id: "hsk1-b16-g2-su1",
-        situation: "Tình huống: Bạn muốn rủ bạn cùng lớp: 'Sau khi tan học, chúng mình ngồi ở đây vừa uống trà vừa đọc cuốn sách nổi tiếng này nhé!'",
-        hint1: "1. Mốc thời gian: Sau khi tan học (下课以后). Nơi chốn: Ngồi ở đây (在这里坐). Hành động song song: Vừa uống trà vừa đọc sách nổi tiếng (一边喝茶一边看这本很有名的书).",
-        hint2: "2. Khung cấu trúc chữ Hán: 下课以后，我们在这里一边喝茶，一边看这本很有名的书吧。",
-        modelAnswer: "下课以后，我们在这里一边喝茶，一边看这本很有名的书吧。",
-        modelExplain: "Kết hợp mốc thời gian tan học ở đầu câu, trạng ngữ nơi chốn ở đây, và cấu trúc hành động song hành nhất biên nhất biên.",
-        questionAudio: [{ lang: "vi-VN", text: "Tình huống 1: Hãy tự nói câu Tan học xong ngồi ở đây vừa uống trà vừa đọc sách nổi tiếng.", pause: 400 }],
-        hint1Audio: [{ lang: "vi-VN", text: "Gợi ý 1: Đặt tan học xong lên trước, rồi tới ngồi ở đây, rồi cấu trúc vừa vừa.", pause: 300 }],
-        hint2Audio: [{ lang: "vi-VN", text: "Gợi ý 2: Khung câu hạ khóa dĩ hậu, ngã môn tại giá lý nhất biên hát trà nhất biên khán thư.", pause: 400 }],
-        modelAudio: [
-          { lang: "zh-CN", text: "下课以后，我们在这里一边喝茶，一边看这本很有名的书吧。", pause: 800 }
-        ]
+       "title": "Dùng thế nào?",
+       "text": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng 右边; khi chỉ hướng đi dùng 往右 hoặc 向右."
       },
       {
-        id: "hsk1-b16-g2-su2",
-        situation: "Tình huống: Bạn gặp lại bạn cũ và tự hào khoe: 'Trường đại học của tôi thực sự rất nổi tiếng, ở đây có rất nhiều sinh viên nước ngoài.'",
-        hint1: "1. Vế đầu: Trường đại học của tôi (我的大学) thực sự rất nổi tiếng (真的很有名). Vế sau: Ở đây (这里) có rất nhiều sinh viên nước ngoài (有很多外国留学生).",
-        hint2: "2. Khung cấu trúc chữ Hán: 我的大学真的很有名，这里有很多外国留学生。",
-        modelAnswer: "我的大学真的很有名，这里有很多外国留学生。",
-        modelExplain: "Sử dụng phó từ xác thực chân đích tăng sức nặng cho tính từ nổi tiếng, kết hợp đại từ nơi chốn giá lý làm chủ ngữ chỉ sự tồn hiện.",
-        questionAudio: [{ lang: "vi-VN", text: "Tình huống 2: Khoe trường đại học của tôi thật sự rất nổi tiếng, ở đây nhiều du học sinh.", pause: 400 }],
-        hint1Audio: [{ lang: "vi-VN", text: "Gợi ý 1: Trường đại học của tôi thực sự rất nổi tiếng, ở nơi này có nhiều sinh viên.", pause: 300 }],
-        hint2Audio: [{ lang: "vi-VN", text: "Gợi ý 2: Ngã đích đại học chân đích ngận hữu danh, giá lý hữu ngận đa ngoại quốc lưu học sinh.", pause: 400 }],
-        modelAudio: [
-          { lang: "zh-CN", text: "我的大学真的很有名，这里有很多外国留学生。", pause: 800 }
-        ]
+       "title": "Phân biệt gần nghĩa",
+       "text": "右边 / 左边: Hai phía đối lập. Chọn mốc nhìn trước khi chỉ đường."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Đảo vị trí của mốc trong cụm “bên phải trường”: nói 右边学校 khi định nói 学校右边."
       }
-    ],
-
-    // NGÂN HÀNG ÔN TẬP SRS MỐC 1 - 3 - 7 NGÀY
-    reviews: [
+     ],
+     "context": {
+      "zh": "学校右边有一家书店。",
+      "vi": "",
+      "note": "学校 là mốc; 右边 nêu phía; 有 giới thiệu hiệu sách ở đó."
+     },
+     "activeTask": {
+      "prompt": "Bạn muốn chỉ người kia đi sang phải. Nói “Đi về bên phải”.",
+      "answer": "往右走。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Bạn muốn chỉ người kia đi sang phải. Nói “Đi về bên phải”.",
+      "answer": "往右走。"
+     },
+     "deep": {
+      "etymology": "Chữ 右 gồm 又 (bàn tay) + 口 (miệng): tay phải là tay cầm đũa đưa lên miệng.",
+      "psychology": "Dùng khi chỉ đường: người nghe cần định vị nhanh, nên luôn nói kèm mốc.",
+      "position": "Mốc + 右边: 学校右边. Đi hướng: 往右走.",
+      "trap": "Đừng nói 右边学校. Khác 左 (có 工 – tay trái làm việc).",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Chữ",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "右",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "gồm",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "又",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "(bàn tay) +",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "口",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "(miệng): tay phải là tay cầm đũa đưa lên miệng.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi chỉ đường: người nghe cần định vị nhanh, nên luôn nói kèm mốc.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mốc +",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "右边",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ":",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "学校右边",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Đi hướng:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "往右走",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Đừng nói",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "右边学校",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Khác",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "左",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "(có",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "工",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "– tay trái làm việc).",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g1-w2",
+     "index": 2,
+     "hanzi": "得到",
+     "pinyin": "dédào",
+     "coreMeaning": "Được, đạt được, nhận được (kết quả, sự giúp đỡ, giải thưởng)",
+     "introAudio": [
       {
-        id: "hsk1-b16-g2-rev1",
-        day: 1,
-        type: "Hành động song hành",
-        q: "Hãy nói: 'Bố tôi vừa uống trà vừa đọc sách báo.' bằng cấu trúc song song chuẩn xác.",
-        answer: "我爸爸一边喝茶一边看书。",
-        explain: "Cấu trúc 一边 + [Hành động 1] + 一边 + [Hành động 2] diễn tả hai hành vi diễn ra đồng thời 100%.",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói Bố tôi vừa uống trà vừa đọc sách.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "我爸爸一边喝茶一边看书。", pause: 700 }
-        ]
+       "lang": "zh-CN",
+       "text": "得到",
+       "pause": 500
       },
       {
-        id: "hsk1-b16-g2-rev2",
-        day: 3,
-        type: "Khắc phục bẫy ngữ pháp",
-        q: "Bạn hết tiết học lúc 4 giờ 20 phút chiều. Hãy nói câu thông báo giờ tan học tự nhiên nhất.",
-        answer: "我下午四点二十下课。",
-        explain: "Đặt mốc thời gian cụ thể trước động từ ly hợp 下课, không nhồi nhét từ ngữ thừa thãi.",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói Tôi tan học lúc 4 giờ 20 chiều.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "我下午四点二十下课。", pause: 700 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g2-rev3",
-        day: 7,
-        type: "Vận dụng ngữ cảnh tổng hợp",
-        q: "Hãy nói: 'Trường đại học này thật sự rất có tiếng tăm, chúng tôi đều thích học tập ở đây.'",
-        answer: "这所大学真的很有名，我们都喜欢在这里学习。",
-        explain: "Kết hợp lượng từ 所 cho trường đại học, phó từ 真的 trước 很有名, và cụm giới từ 在这里 trước động từ học tập.",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói Trường đại học này thực sự rất nổi tiếng, chúng tôi đều thích học ở đây.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "这所大学真的很有名，我们都喜欢在这里学习。", pause: 800 }
-        ]
+       "lang": "vi-VN",
+       "text": "Được, đạt được, nhận được (kết quả, sự giúp đỡ, giải thưởng)",
+       "pause": 500
       }
-    ]
-  };
-
-  // Đăng ký Nhóm 1 và Nhóm 2 vào đối tượng bài học chung
-  window.HSK_BAI16_DATA.groups.push(group1, group2);
-
-  // Tự động đăng ký với ứng dụng HSK Studio để có thể học ngay 12 từ đầu tiên
-  if (typeof window.HSK_REGISTER === 'function') {
-    window.HSK_REGISTER(window.HSK_BAI16_DATA);
+     ],
+     "meaning": {
+      "situation": "Dùng khi người nói muốn diễn đạt việc bản thân hoặc ai đó nhận được một giá trị tích cực, sự chấp thuận, giúp đỡ hoặc phần thưởng sau một quá trình.",
+      "detail": "Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh.",
+      "keyPoint": "Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi người nói muốn diễn đạt việc bản thân hoặc ai đó nhận được một giá trị tích cực, sự chấp thuận, giúp đỡ hoặc phần thưởng sau một quá trình. Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "得到帮助 · 得到机会 · 得到同意",
+       "note": "Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我得到了老师的帮助。",
+       "note": "Có được sự giúp đỡ của giáo viên. 了 đánh dấu việc đã xảy ra trong câu này.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我得到了老师的帮助。",
+         "pause": 800
+        },
+        {
+         "lang": "vi-VN",
+         "text": "Có được sự giúp đỡ của giáo viên. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "了",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " đánh dấu việc đã xảy ra trong câu này.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "在汉语课上，我得到了老师的帮助。",
+       "vi": "Trong tiết học tiếng Trung, tôi đã nhận được sự giúp đỡ của giáo viên.",
+       "situation": "Bày tỏ lòng biết ơn về việc giáo viên đã hỗ trợ mình học bài.",
+       "analysis": "Sự giúp đỡ là danh từ trừu tượng tiếp nhận được, kết hợp hoàn hảo với động từ này.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sự giúp đỡ là danh từ trừu tượng tiếp nhận được, kết hợp hoàn hảo với động từ này. Trong tiết học tiếng Trung, tôi đã nhận được sự giúp đỡ của giáo viên.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "这个计划得到了大家的同意。",
+       "vi": "Kế hoạch này đã được mọi người đồng ý.",
+       "situation": "Nói kết quả thảo luận",
+       "analysis": "得到 + 同意 nhấn mạnh đã có được sự đồng ý.",
+       "explainAudio": [
+        {
+         "lang": "zh-CN",
+         "text": "得到同意",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " nghĩa là được đồng ý.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "这个计划得到了大家的同意。",
+       "vi": "Kế hoạch này đã nhận được sự đồng thuận của mọi người.",
+       "situation": "Thông báo kết quả cuộc họp bàn kế hoạch làm việc nhóm.",
+       "analysis": "Sự đồng ý của tập thể là tân ngữ biểu thị kết quả đạt được.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sự đồng ý của tập thể là tân ngữ biểu thị kết quả đạt được. Kế hoạch này đã nhận được sự đồng thuận của mọi người.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Bạn đã nhận được sự giúp đỡ của giáo viên. Hãy nói một câu.",
+       "explanation": "Cho rằng 得到 không thể đi với đồ vật. Điều quan trọng là sắc thái có được hay nhận thứ chuyển tới, không chỉ loại danh từ.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我得到了老师的帮助。",
+       "tip": "Có được sự giúp đỡ của giáo viên. 了 đánh dấu việc đã xảy ra trong câu này.",
+       "boundary": "得到 nhấn mạnh kết quả có được; 收到 thường nhấn mạnh tiếp nhận thứ được gửi hoặc chuyển tới. Không chia cứng trừu tượng/vật chất.",
+       "comparisons": [
+        {
+         "zh": "得到",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "收到",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cho rằng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "得到",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " không thể đi với đồ vật. Điều quan trọng là sắc thái có được hay nhận thứ chuyển tới, không chỉ loại danh từ. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "得到",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " nhấn mạnh kết quả có được; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "收到",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " thường nhấn mạnh tiếp nhận thứ được gửi hoặc chuyển tới. Không chia cứng trừu tượng/vật chất.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh hai rồi thanh bốn. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh hai rồi thanh bốn.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "得到",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "Nhìn 得 và 到 như hai khối riêng; nhớ cả cụm qua 得到帮助.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Nhìn ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "得",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " và ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "到",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " như hai khối riêng; nhớ cả cụm qua ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "得到帮助",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "得到帮助",
+       "vi": "nhận được giúp đỡ"
+      },
+      {
+       "zh": "得到机会",
+       "vi": "có được cơ hội"
+      },
+      {
+       "zh": "得到同意",
+       "vi": "được đồng ý"
+      }
+     ],
+     "compare": {
+      "a": "得到",
+      "b": "收到",
+      "why": "得到 nhấn mạnh kết quả có được; 收到 thường nhấn mạnh tiếp nhận thứ được gửi hoặc chuyển tới. Không chia cứng trừu tượng/vật chất."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "得到 / 收到: 得到 nhấn mạnh kết quả có được; 收到 thường nhấn mạnh tiếp nhận thứ được gửi hoặc chuyển tới. Không chia cứng trừu tượng/vật chất."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Cho rằng 得到 không thể đi với đồ vật. Điều quan trọng là sắc thái có được hay nhận thứ chuyển tới, không chỉ loại danh từ."
+      }
+     ],
+     "context": {
+      "zh": "我得到了老师的帮助。",
+      "vi": "",
+      "note": "Có được sự giúp đỡ của giáo viên. 了 đánh dấu việc đã xảy ra trong câu này."
+     },
+     "activeTask": {
+      "prompt": "Bạn đã nhận được sự giúp đỡ của giáo viên. Hãy nói một câu.",
+      "answer": "我得到了老师的帮助。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Bạn đã nhận được sự giúp đỡ của giáo viên. Hãy nói một câu.",
+      "answer": "我得到了老师的帮助。"
+     },
+     "deep": {
+      "etymology": "得 = “thu về”, 到 = “tới nơi”: kết quả đã nằm trong tay.",
+      "psychology": "Nhấn mạnh công sức hoặc may mắn bạn đã bỏ ra để có được.",
+      "position": "得到 + kết quả/cơ hội/giúp đỡ: 得到帮助.",
+      "trap": "Có người gửi tới tay → 收到, không phải 得到.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "得",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= “thu về”,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "到",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= “tới nơi”: kết quả đã nằm trong tay.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Nhấn mạnh công sức hoặc may mắn bạn đã bỏ ra để có được.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "得到",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ kết quả/cơ hội/giúp đỡ:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "得到帮助",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Có người gửi tới tay →",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "收到",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", không phải",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "得到",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g1-w3",
+     "index": 3,
+     "hanzi": "开车",
+     "pinyin": "kāichē",
+     "coreMeaning": "Lái xe, chạy xe (người trực tiếp điều khiển vô lăng)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "开车",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Lái xe, chạy xe (người trực tiếp điều khiển vô lăng)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi nói về năng lực lái xe, hành vi đang cầm lái, hoặc lựa chọn tự lái phương tiện đi làm, đi chơi.",
+      "detail": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng 坐车. Khi nêu loại xe, dùng 开 + loại xe.",
+      "keyPoint": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng 坐车. Khi nêu loại xe, dùng 开 + loại xe.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi nói về năng lực lái xe, hành vi đang cầm lái, hoặc lựa chọn tự lái phương tiện đi làm, đi chơi. Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "坐车",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Khi nêu loại xe, dùng ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "开",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " + loại xe.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "开车上班 · 会开车 · 开出租车",
+       "note": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng 坐车. Khi nêu loại xe, dùng 开 + loại xe.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "坐车",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Khi nêu loại xe, dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "开",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " + loại xe.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我爸开车去上班。",
+       "note": "我爸 là người cầm lái; 去上班 là đi làm.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我爸开车去上班。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "我爸",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là người cầm lái; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "去上班",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là đi làm.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "我爸爸每天开车去上班。",
+       "vi": "Bố tôi mỗi ngày đều lái xe đi làm.",
+       "situation": "Kể về thói quen đi lại hằng ngày của người thân trong gia đình.",
+       "analysis": "Lái xe là phương thức di chuyển, đứng trước hành vi đi làm.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Lái xe là phương thức di chuyển, đứng trước hành vi đi làm. Bố tôi mỗi ngày đều lái xe đi làm.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "你会开车吗？",
+       "vi": "Bạn có biết lái xe không?",
+       "situation": "Hỏi bạn bè về kỹ năng lái xe khi chuẩn bị thuê xe đi du lịch.",
+       "analysis": "Câu hỏi kỹ năng dùng trợ từ nghi vấn đặt ở cuối câu khẳng định.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Câu hỏi kỹ năng dùng trợ từ nghi vấn đặt ở cuối câu khẳng định. Bạn có biết lái xe không?",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "路上车很多，请慢点儿开。",
+       "vi": "Trên đường xe cộ rất đông, xin hãy lái chậm một chút.",
+       "situation": "Nhắc nhở người cầm lái chú ý an toàn giao thông.",
+       "analysis": "Tách động từ lái ra độc lập khi kết hợp với trạng ngữ miêu tả tốc độ.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Tách động từ lái ra độc lập khi kết hợp với trạng ngữ miêu tả tốc độ. Trên đường xe cộ rất đông, xin hãy lái chậm một chút.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Bạn đi xe buýt với tư cách hành khách. Hãy nói “Tôi đi xe buýt”.",
+       "explanation": "Nói 开车出租车. 车 đã là xe; khi nêu taxi, nói 开出租车.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我爸开车去上班。",
+       "tip": "我爸 là người cầm lái; 去上班 là đi làm.",
+       "boundary": "Một bên là lái, một bên là ngồi xe. Người đi cùng tài xế không vì thế mà được gọi là 开车.",
+       "comparisons": [
+        {
+         "zh": "开车",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "坐车",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "开车出租车",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "车",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " đã là xe; khi nêu taxi, nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "开出租车",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Một bên là lái, một bên là ngồi xe. Người đi cùng tài xế không vì thế mà được gọi là ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "开车",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ".",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Hai âm đều thanh một, cao và tương đối bằng. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Hai âm đều thanh một, cao và tương đối bằng.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "开车",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "Nhận 车 là xe; nhớ 开车 như một cụm hành động.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Nhận ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "车",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là xe; nhớ ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "开车",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " như một cụm hành động.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng 坐车. Khi nêu loại xe, dùng 开 + loại xe.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "坐车",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ". Khi nêu loại xe, dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "开",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " + loại xe.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "开车上班",
+       "vi": "lái xe đi làm"
+      },
+      {
+       "zh": "会开车",
+       "vi": "biết lái xe"
+      },
+      {
+       "zh": "开出租车",
+       "vi": "lái taxi"
+      }
+     ],
+     "compare": {
+      "a": "开车",
+      "b": "坐车",
+      "why": "Một bên là lái, một bên là ngồi xe. Người đi cùng tài xế không vì thế mà được gọi là 开车."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng 坐车. Khi nêu loại xe, dùng 开 + loại xe."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "开车 / 坐车: Một bên là lái, một bên là ngồi xe. Người đi cùng tài xế không vì thế mà được gọi là 开车."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Nói 开车出租车. 车 đã là xe; khi nêu taxi, nói 开出租车."
+      }
+     ],
+     "context": {
+      "zh": "我爸开车去上班。",
+      "vi": "",
+      "note": "我爸 là người cầm lái; 去上班 là đi làm."
+     },
+     "activeTask": {
+      "prompt": "Bạn đi xe buýt với tư cách hành khách. Hãy nói “Tôi đi xe buýt”.",
+      "answer": "我坐公共汽车。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Bạn đi xe buýt với tư cách hành khách. Hãy nói “Tôi đi xe buýt”.",
+      "answer": "我坐公共汽车。"
+     },
+     "deep": {
+      "etymology": "开 = vận hành, 车 = xe: bạn là người điều khiển.",
+      "psychology": "Nói khi bạn chủ động đi bằng xe của mình, thường để giải thích cách di chuyển.",
+      "position": "Chủ ngữ + 开车 + 去 + nơi: 我开车去书店.",
+      "trap": "Làm hành khách → 坐车. Không nói 开车 khi người khác lái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "开",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= vận hành,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "车",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= xe: bạn là người điều khiển.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Nói khi bạn chủ động đi bằng xe của mình, thường để giải thích cách di chuyển.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Chủ ngữ +",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "开车",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "去",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ nơi:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "我开车去书店",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Làm hành khách →",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "坐车",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Không nói",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "开车",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "khi người khác lái.",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g1-w4",
+     "index": 4,
+     "hanzi": "北",
+     "pinyin": "běi",
+     "coreMeaning": "Bắc, hướng bắc, phía bắc",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "北",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Bắc, hướng bắc, phía bắc",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng để xác định phương vị địa lý, vị trí các tòa nhà, thành phố hoặc vùng miền trên bản đồ.",
+      "detail": "Chỉ hướng bắc. 北边 thường dùng nói vị trí tương đối; 往北 dùng chỉ hướng di chuyển.",
+      "keyPoint": "Chỉ hướng bắc. 北边 thường dùng nói vị trí tương đối; 往北 dùng chỉ hướng di chuyển.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng để xác định phương vị địa lý, vị trí các tòa nhà, thành phố hoặc vùng miền trên bản đồ. Chỉ hướng bắc. ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "北边",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " thường dùng nói vị trí tương đối; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "往北",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " dùng chỉ hướng di chuyển.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "北边 · 往北走 · 北方",
+       "note": "Chỉ hướng bắc. 北边 thường dùng nói vị trí tương đối; 往北 dùng chỉ hướng di chuyển.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Chỉ hướng bắc. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "北边",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " thường dùng nói vị trí tương đối; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "往北",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " dùng chỉ hướng di chuyển.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "车站在学校北边。",
+       "note": "Trường là mốc; nhà ga ở phía bắc của trường.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "车站在学校北边。",
+         "pause": 800
+        },
+        {
+         "lang": "vi-VN",
+         "text": "Trường là mốc; nhà ga ở phía bắc của trường.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "我家在车站的北边。",
+       "vi": "Nhà tôi ở phía bắc nhà ga.",
+       "analysis": "车站 làm mốc; 北边 là phía bắc so với mốc đó.",
+       "situation": "Nói vị trí nhà.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Nhà tôi ở phía bắc nhà ga.",
+         "pause": 400
+        }
+       ]
+      },
+      {
+       "zh": "我家在车站的北边。",
+       "vi": "Nhà tôi ở phía bắc của nhà ga.",
+       "situation": "Chỉ đường cho người quen đến thăm nhà.",
+       "analysis": "Nhà ga là vật mốc đứng trước, phương vị từ đứng sau liên kết bằng trợ từ sở hữu.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Nhà ga là vật mốc đứng trước, phương vị từ đứng sau liên kết bằng trợ từ sở hữu. Nhà tôi ở phía bắc của nhà ga.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "从这里一直往北走，就是公园。",
+       "vi": "Từ đây cứ đi thẳng về hướng bắc là đến công viên.",
+       "situation": "Hướng dẫn đường đi bộ cho khách tham quan du lịch.",
+       "analysis": "Kết hợp với phó từ đi thẳng và giới từ chỉ hướng chuyển động.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Kết hợp với phó từ đi thẳng và giới từ chỉ hướng chuyển động. Từ đây cứ đi thẳng về hướng bắc là đến công viên.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nói nhà ga ở phía bắc trường học.",
+       "explanation": "Thấy bản đồ rồi đồng nhất bên phải với phía bắc. Cần đọc dấu chỉ hướng trên bản đồ.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "车站在学校北边。",
+       "tip": "Trường là mốc; nhà ga ở phía bắc của trường.",
+       "boundary": "Bắc là hướng địa lý; phải phụ thuộc hướng người hoặc vật đang quay. Hai hướng không mặc định trùng nhau.",
+       "comparisons": [
+        {
+         "zh": "北边",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "右边",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Thấy bản đồ rồi đồng nhất bên phải với phía bắc. Cần đọc dấu chỉ hướng trên bản đồ. Bắc là hướng địa lý; phải phụ thuộc hướng người hoặc vật đang quay. Hai hướng không mặc định trùng nhau.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh ba: trong lời nói liên tục thường đọc thấp; không cần cố uốn lên đầy đủ mỗi lần. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh ba: trong lời nói liên tục thường đọc thấp; không cần cố uốn lên đầy đủ mỗi lần.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "北",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "Nhìn 北 thành hai phần đối nhau; đặt cạnh 南 để nhớ cặp phương hướng.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Nhìn ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "北",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " thành hai phần đối nhau; đặt cạnh ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "南",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " để nhớ cặp phương hướng.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Chỉ hướng bắc. 北边 thường dùng nói vị trí tương đối; 往北 dùng chỉ hướng di chuyển.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chỉ hướng bắc. ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "北边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " thường dùng nói vị trí tương đối; ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "往北",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " dùng chỉ hướng di chuyển.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "北边",
+       "vi": "phía bắc"
+      },
+      {
+       "zh": "往北走",
+       "vi": "đi về phía bắc"
+      },
+      {
+       "zh": "北方",
+       "vi": "miền bắc"
+      }
+     ],
+     "compare": {
+      "a": "北边",
+      "b": "右边",
+      "why": "Bắc là hướng địa lý; phải phụ thuộc hướng người hoặc vật đang quay. Hai hướng không mặc định trùng nhau."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Chỉ hướng bắc. 北边 thường dùng nói vị trí tương đối; 往北 dùng chỉ hướng di chuyển."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "北边 / 右边: Bắc là hướng địa lý; phải phụ thuộc hướng người hoặc vật đang quay. Hai hướng không mặc định trùng nhau."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Thấy bản đồ rồi đồng nhất bên phải với phía bắc. Cần đọc dấu chỉ hướng trên bản đồ."
+      }
+     ],
+     "context": {
+      "zh": "车站在学校北边。",
+      "vi": "nhà ga ở phía bắc trường học.",
+      "note": "Trường là mốc; nhà ga ở phía bắc của trường."
+     },
+     "activeTask": {
+      "prompt": "Nói nhà ga ở phía bắc trường học.",
+      "answer": "车站在学校北边。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nói nhà ga ở phía bắc trường học.",
+      "answer": "车站在学校北边。"
+     },
+     "deep": {
+      "etymology": "Chữ 北 là hai người quay lưng vào nhau – nghĩa gốc “quay lưng”, sau thành phương Bắc.",
+      "psychology": "Dùng khi chỉ vị trí lớn: nhà ga, trường học, thành phố.",
+      "position": "Mốc + 北边: 学校北边. Có thể dùng 北 đơn trong tên riêng: 北京.",
+      "trap": "Đừng nhầm 北边 (phía bắc) với 右边: một cái là hướng địa lý, một cái là hướng theo người nhìn.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Chữ",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "北",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "là hai người quay lưng vào nhau – nghĩa gốc “quay lưng”, sau thành phương Bắc.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi chỉ vị trí lớn: nhà ga, trường học, thành phố.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mốc +",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "北边",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ":",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "学校北边",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Có thể dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "北",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "đơn trong tên riêng:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "北京",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Đừng nhầm",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "北边",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "(phía bắc) với",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "右边",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ": một cái là hướng địa lý, một cái là hướng theo người nhìn.",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g1-w5",
+     "index": 5,
+     "hanzi": "他们",
+     "pinyin": "tāmen",
+     "coreMeaning": "Họ, bọn họ, chúng nó (nhóm toàn nam hoặc cả nam lẫn nữ)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "他们",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Họ, bọn họ, chúng nó (nhóm toàn nam hoặc cả nam lẫn nữ)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi nói về một nhóm người từ hai người trở lên mà người nói và người nghe đang cùng hướng tới bàn luận.",
+      "detail": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+      "keyPoint": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi nói về một nhóm người từ hai người trở lên mà người nói và người nghe đang cùng hướng tới bàn luận. Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "他们都 · 他们的书 · 跟他们一起",
+       "note": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "他们都在这里。",
+       "note": "都 đứng sau chủ ngữ, trước cụm 在这里.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "他们都在这里。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "都",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " đứng sau chủ ngữ, trước cụm ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "在这里",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ".",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "他们都是我的大学同学。",
+       "vi": "Họ đều là bạn học đại học của tôi.",
+       "situation": "Giới thiệu một nhóm bạn bè cũ với người thân.",
+       "analysis": "Đại từ làm chủ ngữ số nhiều kết hợp với phó từ đều để nhấn mạnh tính đồng nhất.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Đại từ làm chủ ngữ số nhiều kết hợp với phó từ đều để nhấn mạnh tính đồng nhất. Họ đều là bạn học đại học của tôi.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "明天下午他们想去打球。",
+       "vi": "Chiều mai bọn họ muốn đi chơi bóng.",
+       "situation": "Thông báo kế hoạch vui chơi thể thao của nhóm bạn.",
+       "analysis": "Chủ ngữ số nhiều đi kèm trợ động từ muốn và cụm vị ngữ chỉ hoạt động.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Chủ ngữ số nhiều đi kèm trợ động từ muốn và cụm vị ngữ chỉ hoạt động. Chiều mai bọn họ muốn đi chơi bóng.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "这是他们的书。",
+       "vi": "Đây là sách của bọn họ.",
+       "situation": "Chỉ vào chồng sách để quên trên bàn học.",
+       "analysis": "Đại từ kết hợp với trợ từ sở hữu làm định ngữ cho danh từ sách.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Đại từ kết hợp với trợ từ sở hữu làm định ngữ cho danh từ sách. Đây là sách của bọn họ.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Hai người bạn của bạn đang ở đây. Nói “Họ đều ở đây”.",
+       "explanation": "Chỉ nghe âm rồi khẳng định chắc chữ phải là 他们 hay 她们. Âm không đủ để phân biệt.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "他们都在这里。",
+       "tip": "都 đứng sau chủ ngữ, trước cụm 在这里.",
+       "boundary": "她们 nêu nhóm nữ. Khi nghe, hai từ phát âm giống nhau; cần ngữ cảnh hoặc chữ viết để phân biệt.",
+       "comparisons": [
+        {
+         "zh": "他们",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "她们",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Chỉ nghe âm rồi khẳng định chắc chữ phải là ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "他们",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hay ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "她们",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Âm không đủ để phân biệt. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "她们",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " nêu nhóm nữ. Khi nghe, hai từ phát âm giống nhau; cần ngữ cảnh hoặc chữ viết để phân biệt.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Âm đầu thanh một; âm sau nhẹ và ngắn hơn. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Âm đầu thanh một; âm sau nhẹ và ngắn hơn.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "他们",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "他 có 亻; 她 có 女. 们 là phần chỉ số nhiều trong các đại từ này.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "他",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "亻",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "她",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "女",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "们",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là phần chỉ số nhiều trong các đại từ này.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "他们都",
+       "vi": "họ đều"
+      },
+      {
+       "zh": "他们的书",
+       "vi": "sách của họ"
+      },
+      {
+       "zh": "跟他们一起",
+       "vi": "cùng với họ"
+      }
+     ],
+     "compare": {
+      "a": "他们",
+      "b": "她们",
+      "why": "她们 nêu nhóm nữ. Khi nghe, hai từ phát âm giống nhau; cần ngữ cảnh hoặc chữ viết để phân biệt."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "他们 / 她们: 她们 nêu nhóm nữ. Khi nghe, hai từ phát âm giống nhau; cần ngữ cảnh hoặc chữ viết để phân biệt."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Chỉ nghe âm rồi khẳng định chắc chữ phải là 他们 hay 她们. Âm không đủ để phân biệt."
+      }
+     ],
+     "context": {
+      "zh": "他们都在这里。",
+      "vi": "",
+      "note": "都 đứng sau chủ ngữ, trước cụm 在这里."
+     },
+     "activeTask": {
+      "prompt": "Hai người bạn của bạn đang ở đây. Nói “Họ đều ở đây”.",
+      "answer": "他们都在这里。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Hai người bạn của bạn đang ở đây. Nói “Họ đều ở đây”.",
+      "answer": "他们都在这里。"
+     },
+     "deep": {
+      "etymology": "们 là hậu tố số nhiều chỉ dùng với người.",
+      "psychology": "Dùng khi nói về nhóm hai người trở lên mà không cần nêu tên.",
+      "position": "他们 làm chủ ngữ, đứng đầu câu hoặc trước trạng ngữ.",
+      "trap": "Nhóm toàn nữ → 她们. Đồ vật/động vật → 它们.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "们",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "là hậu tố số nhiều chỉ dùng với người.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi nói về nhóm hai người trở lên mà không cần nêu tên.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "他们",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "làm chủ ngữ, đứng đầu câu hoặc trước trạng ngữ.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Nhóm toàn nữ →",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "她们",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Đồ vật/động vật →",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "它们",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g1-w6",
+     "index": 6,
+     "hanzi": "动作",
+     "pinyin": "dòngzuò",
+     "coreMeaning": "Động tác, hành động, thao tác cụ thể",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "动作",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Động tác, hành động, thao tác cụ thể",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng trong các ngữ cảnh tập thể dục, học múa, rèn luyện võ thuật, thao tác công việc hoặc nhận xét cử chỉ tay chân nhanh hay chậm.",
+      "detail": "Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng 做 + 动作 hoặc miêu tả 动作很快.",
+      "keyPoint": "Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng 做 + 动作 hoặc miêu tả 动作很快.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng trong các ngữ cảnh tập thể dục, học múa, rèn luyện võ thuật, thao tác công việc hoặc nhận xét cử chỉ tay chân nhanh hay chậm. Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "做",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " + ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "动作",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " hoặc miêu tả ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "动作很快",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "做动作 · 这个动作 · 动作很快",
+       "note": "Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng 做 + 动作 hoặc miêu tả 动作很快.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "做",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " + ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "动作",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hoặc miêu tả ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "动作很快",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ".",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "请跟我做这个动作。",
+       "note": "做 là động từ, 这个动作 là động tác cần thực hiện.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "请跟我做这个动作。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "做",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là động từ, ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "这个动作",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là động tác cần thực hiện.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "他的动作很快，一分钟就做完了。",
+       "vi": "Thao tác của anh ấy rất nhanh, một phút đã làm xong rồi.",
+       "situation": "Khen ngợi tốc độ xử lý công việc đóng gói hoặc thao tác máy móc.",
+       "analysis": "Danh từ làm chủ ngữ kết hợp tính từ chỉ tốc độ.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Danh từ làm chủ ngữ kết hợp tính từ chỉ tốc độ. Thao tác của anh ấy rất nhanh, một phút đã làm xong rồi.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "请大家跟我做这个动作。",
+       "vi": "Xin mời mọi người cùng làm theo tôi động tác này.",
+       "situation": "Giáo viên thể dục hoặc huấn luyện viên hướng dẫn bài tập khởi động.",
+       "analysis": "Động tác được bổ nghĩa bởi đại từ chỉ thị và lượng từ cụ thể.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Động tác được bổ nghĩa bởi đại từ chỉ thị và lượng từ cụ thể. Xin mời mọi người cùng làm theo tôi động tác này.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "打篮球的时候，这个动作很重要。",
+       "vi": "Khi chơi bóng rổ, động tác này rất quan trọng.",
+       "situation": "Huấn luyện viên giải thích kỹ thuật ném bóng ghi điểm.",
+       "analysis": "Cụm danh từ làm chủ ngữ chính của phân câu thứ hai.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cụm danh từ làm chủ ngữ chính của phân câu thứ hai. Khi chơi bóng rổ, động tác này rất quan trọng.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nhờ bạn làm động tác này cùng mình.",
+       "explanation": "Dịch mọi nghĩa của “hành động” thành 动作. Khi hô “bắt đầu hành động”, 开始行动 tự nhiên hơn.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "请跟我做这个动作。",
+       "tip": "做 là động từ, 这个动作 là động tác cần thực hiện.",
+       "boundary": "动作 thiên về cử động/thao tác; 行动 có thể nói hành động theo kế hoạch. Không luôn thay thế nhau.",
+       "comparisons": [
+        {
+         "zh": "动作",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "行动",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dịch mọi nghĩa của “hành động” thành ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "动作",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Khi hô “bắt đầu hành động”, ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "开始行动",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " tự nhiên hơn. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "动作",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " thiên về cử động/thao tác; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "行动",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " có thể nói hành động theo kế hoạch. Không luôn thay thế nhau.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Hai âm thanh bốn. Khi nói liền, không cần gằn hay tăng âm lượng. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Hai âm thanh bốn. Khi nói liền, không cần gằn hay tăng âm lượng.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "动作",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "Nhận riêng 动 và 作; nhớ qua cụm 做动作 để nhớ cả cách dùng.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Nhận riêng ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "动",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " và ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "作",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; nhớ qua cụm ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "做动作",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " để nhớ cả cách dùng.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng 做 + 动作 hoặc miêu tả 动作很快.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "做",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " + ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "动作",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " hoặc miêu tả ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "动作很快",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ".",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "做动作",
+       "vi": "làm động tác"
+      },
+      {
+       "zh": "这个动作",
+       "vi": "động tác này"
+      },
+      {
+       "zh": "动作很快",
+       "vi": "động tác nhanh"
+      }
+     ],
+     "compare": {
+      "a": "动作",
+      "b": "行动",
+      "why": "动作 thiên về cử động/thao tác; 行动 có thể nói hành động theo kế hoạch. Không luôn thay thế nhau."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng 做 + 动作 hoặc miêu tả 动作很快."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "动作 / 行动: 动作 thiên về cử động/thao tác; 行动 có thể nói hành động theo kế hoạch. Không luôn thay thế nhau."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Dịch mọi nghĩa của “hành động” thành 动作. Khi hô “bắt đầu hành động”, 开始行动 tự nhiên hơn."
+      }
+     ],
+     "context": {
+      "zh": "请跟我做这个动作。",
+      "vi": "",
+      "note": "做 là động từ, 这个动作 là động tác cần thực hiện."
+     },
+     "activeTask": {
+      "prompt": "Nhờ bạn làm động tác này cùng mình.",
+      "answer": "请跟我做这个动作。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nhờ bạn làm động tác này cùng mình.",
+      "answer": "请跟我做这个动作。"
+     },
+     "deep": {
+      "etymology": "动 = chuyển động, 作 = làm: nét cụ thể của một hành động.",
+      "psychology": "Dùng khi dạy hoặc miêu tả một thao tác cần làm theo từng bước.",
+      "position": "做/学 + 动作 hoặc 这个动作.",
+      "trap": "Không dùng 动作 cho “hoạt động” nói chung: đó là 活动.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "动",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= chuyển động,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "作",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= làm: nét cụ thể của một hành động.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi dạy hoặc miêu tả một thao tác cần làm theo từng bước.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "做",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "/",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "学",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "动作",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "hoặc",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "这个动作",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Không dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "动作",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "cho “hoạt động” nói chung: đó là",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "活动",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "hsk1-bai-16-g1-w1-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 右 có nghĩa chính nào?",
+     "options": [
+      "Bên phải, phía bên phải",
+      "Được, đạt được, nhận được (kết quả, sự giúp đỡ, giải thưởng)",
+      "Một bên; vừa... vừa... (hai hành động diễn ra song song)",
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)"
+     ],
+     "correct": 0,
+     "reasonRight": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng 右边; khi chỉ hướng đi dùng 往右 hoặc 向右.",
+     "reasonWrong": "Đối chiếu nghĩa của 右: Chỉ phía phải. Khi nói vị trí độc lập, thường dùng 右边; khi chỉ hướng đi dùng 往右 hoặc 向右.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "右",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "右边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "; khi chỉ hướng đi dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "往右",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " hoặc ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "向右",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ".",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w1-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Phía bên phải trường học có một cửa hàng. Điền từ: 学校的____边有一个商店。",
+     "options": [
+      "右",
+      "得到",
+      "一边",
+      "这里"
+     ],
+     "correct": 0,
+     "reasonRight": "学校的右边有一个商店。 Trường học là mốc chuẩn đứng trước, phương vị từ đứng sau liên kết bằng trợ từ sở hữu.",
+     "reasonWrong": "Câu cần diễn đạt: 学校的右边有一个商店。 Phía bên phải trường học có một cửa hàng.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "学校的右边有一个商店。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Phía bên phải trường học có một cửa hàng.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w2-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 得到 có nghĩa chính nào?",
+     "options": [
+      "Bên phải, phía bên phải",
+      "Một bên; vừa... vừa... (hai hành động diễn ra song song)",
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)",
+      "Được, đạt được, nhận được (kết quả, sự giúp đỡ, giải thưởng)"
+     ],
+     "correct": 3,
+     "reasonRight": "Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh.",
+     "reasonWrong": "Đối chiếu nghĩa của 得到: Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "得到",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nhấn mạnh có được hoặc đạt được một điều. Dùng với sự giúp đỡ, cơ hội, sự đồng ý, cũng có thể dùng với vật cụ thể tùy ngữ cảnh.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w2-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Trong tiết học tiếng Trung, tôi đã nhận được sự giúp đỡ của giáo viên. Điền từ: 在汉语课上，我____了老师的帮助。",
+     "options": [
+      "右",
+      "一边",
+      "这里",
+      "得到"
+     ],
+     "correct": 3,
+     "reasonRight": "在汉语课上，我得到了老师的帮助。 Sự giúp đỡ là danh từ trừu tượng tiếp nhận được, kết hợp hoàn hảo với động từ này.",
+     "reasonWrong": "Câu cần diễn đạt: 在汉语课上，我得到了老师的帮助。 Trong tiết học tiếng Trung, tôi đã nhận được sự giúp đỡ của giáo viên.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "在汉语课上，我得到了老师的帮助。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Trong tiết học tiếng Trung, tôi đã nhận được sự giúp đỡ của giáo viên.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w3-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 开车 có nghĩa chính nào?",
+     "options": [
+      "Một bên; vừa... vừa... (hai hành động diễn ra song song)",
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)",
+      "Lái xe, chạy xe (người trực tiếp điều khiển vô lăng)",
+      "Bên phải, phía bên phải"
+     ],
+     "correct": 2,
+     "reasonRight": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng 坐车. Khi nêu loại xe, dùng 开 + loại xe.",
+     "reasonWrong": "Đối chiếu nghĩa của 开车: Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng 坐车. Khi nêu loại xe, dùng 开 + loại xe.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "开车",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "坐车",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ". Khi nêu loại xe, dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "开",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " + loại xe.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w3-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Bố tôi mỗi ngày đều lái xe đi làm. Điền từ: 我爸爸每天____去上班。",
+     "options": [
+      "一边",
+      "这里",
+      "开车",
+      "右"
+     ],
+     "correct": 2,
+     "reasonRight": "我爸爸每天开车去上班。 Lái xe là phương thức di chuyển, đứng trước hành vi đi làm.",
+     "reasonWrong": "Câu cần diễn đạt: 我爸爸每天开车去上班。 Bố tôi mỗi ngày đều lái xe đi làm.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我爸爸每天开车去上班。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Bố tôi mỗi ngày đều lái xe đi làm.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w4-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 北 có nghĩa chính nào?",
+     "options": [
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)",
+      "Bắc, hướng bắc, phía bắc",
+      "Bên phải, phía bên phải",
+      "Một bên; vừa... vừa... (hai hành động diễn ra song song)"
+     ],
+     "correct": 1,
+     "reasonRight": "Chỉ hướng bắc. 北边 thường dùng nói vị trí tương đối; 往北 dùng chỉ hướng di chuyển.",
+     "reasonWrong": "Đối chiếu nghĩa của 北: Chỉ hướng bắc. 北边 thường dùng nói vị trí tương đối; 往北 dùng chỉ hướng di chuyển.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "北",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chỉ hướng bắc. ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "北边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " thường dùng nói vị trí tương đối; ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "往北",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " dùng chỉ hướng di chuyển.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w4-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Nhà tôi ở phía bắc nhà ga. Điền từ: 我家在车站的____边。",
+     "options": [
+      "这里",
+      "北",
+      "右",
+      "一边"
+     ],
+     "correct": 1,
+     "reasonRight": "我家在车站的北边。 车站 làm mốc; 北边 là phía bắc so với mốc đó.",
+     "reasonWrong": "Câu cần diễn đạt: 我家在车站的北边。 Nhà tôi ở phía bắc nhà ga.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我家在车站的北边。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Nhà tôi ở phía bắc nhà ga.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w5-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 他们 có nghĩa chính nào?",
+     "options": [
+      "Họ, bọn họ, chúng nó (nhóm toàn nam hoặc cả nam lẫn nữ)",
+      "Bên phải, phía bên phải",
+      "Một bên; vừa... vừa... (hai hành động diễn ra song song)",
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)"
+     ],
+     "correct": 0,
+     "reasonRight": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+     "reasonWrong": "Đối chiếu nghĩa của 他们: Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "他们",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w5-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Họ đều là bạn học đại học của tôi. Điền từ: ____都是我的大学同学。",
+     "options": [
+      "他们",
+      "右",
+      "一边",
+      "这里"
+     ],
+     "correct": 0,
+     "reasonRight": "他们都是我的大学同学。 Đại từ làm chủ ngữ số nhiều kết hợp với phó từ đều để nhấn mạnh tính đồng nhất.",
+     "reasonWrong": "Câu cần diễn đạt: 他们都是我的大学同学。 Họ đều là bạn học đại học của tôi.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "他们都是我的大学同学。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Họ đều là bạn học đại học của tôi.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w6-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 动作 có nghĩa chính nào?",
+     "options": [
+      "Bên phải, phía bên phải",
+      "Một bên; vừa... vừa... (hai hành động diễn ra song song)",
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)",
+      "Động tác, hành động, thao tác cụ thể"
+     ],
+     "correct": 3,
+     "reasonRight": "Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng 做 + 动作 hoặc miêu tả 动作很快.",
+     "reasonWrong": "Đối chiếu nghĩa của 动作: Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng 做 + 动作 hoặc miêu tả 动作很快.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "动作",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Ở bài này học nghĩa cử động hoặc động tác, thường dùng như danh từ. Dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "做",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " + ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "动作",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " hoặc miêu tả ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "动作很快",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ".",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-w6-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Thao tác của anh ấy rất nhanh, một phút đã làm xong rồi. Điền từ: 他的____很快，一分钟就做完了。",
+     "options": [
+      "右",
+      "一边",
+      "这里",
+      "动作"
+     ],
+     "correct": 3,
+     "reasonRight": "他的动作很快，一分钟就做完了。 Danh từ làm chủ ngữ kết hợp tính từ chỉ tốc độ.",
+     "reasonWrong": "Câu cần diễn đạt: 他的动作很快，一分钟就做完了。 Thao tác của anh ấy rất nhanh, một phút đã làm xong rồi.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "他的动作很快，一分钟就做完了。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Thao tác của anh ấy rất nhanh, một phút đã làm xong rồi.",
+       "pause": 500
+      }
+     ]
+    }
+   ],
+   "selfUse": [
+    {
+     "id": "hsk1-bai-16-g1-su1",
+     "situation": "Tình huống: Bạn đang đứng trước cổng trường học cùng một người bạn ngoại quốc. Bạn muốn nói bằng tiếng Trung: 'Phía bên phải trường học có một hiệu sách lớn.'",
+     "hint1": "Xác định mốc trước: 'Trường học' đặt ở đầu, sau đó thêm từ chỉ 'phía bên phải', rồi dùng động từ tồn tại 'có'.",
+     "hint2": "Khung câu gợi ý: 学校 + 右边 + 有 + 一个 + 大书店。",
+     "modelAnswer": "学校的右边有一个大书店。",
+     "modelExplain": "Trường học làm mốc đứng đầu câu, liên kết với phương vị từ bên phải, tiếp theo là vị ngữ chỉ sự tồn tại.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nhiệm vụ 1: Hãy tự nói câu: Phía bên phải trường học có một hiệu sách lớn.",
+       "pause": 300
+      }
+     ],
+     "hint1Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 1: Hãy đưa mốc trường học lên trước rồi gắn từ bên phải vào sau.",
+       "pause": 300
+      }
+     ],
+     "hint2Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 2: Khung câu gồm trường học, bên phải, động từ có, và một hiệu sách lớn.",
+       "pause": 300
+      }
+     ],
+     "modelAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "学校的右边有一个大书店。",
+       "pause": 800
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Câu mẫu hoàn chỉnh: Phía bên phải trường học có một hiệu sách lớn.",
+       "pause": 300
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-su2",
+     "situation": "Tình huống: Đồng nghiệp hỏi bạn hôm nay đi làm bằng phương tiện gì. Bạn muốn trả lời: 'Hôm nay bố tôi lái xe đưa tôi đi làm.'",
+     "hint1": "Chủ thể thực hiện hành vi lái xe là 'bố tôi'. Hành vi tự lái xe đứng trước mục đích 'đi làm'.",
+     "hint2": "Khung câu gợi ý: 今天我爸爸 + 开车 + 送我去上班。",
+     "modelAnswer": "今天我爸爸开车送我去上班。",
+     "modelExplain": "Cụm lái xe làm trạng ngữ chỉ phương thức thực hiện hành vi đưa đi làm.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nhiệm vụ 2: Hãy tự diễn đạt câu: Hôm nay bố tôi lái xe đưa tôi đi làm.",
+       "pause": 300
+      }
+     ],
+     "hint1Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 1: Nêu rõ ai là người cầm lái và phương thức lái xe trước khi nhắc tới hành vi đi làm.",
+       "pause": 300
+      }
+     ],
+     "hint2Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 2: Sử dụng cụm từ hôm nay bố tôi lái xe, sau đó thêm động từ đưa tôi đi làm.",
+       "pause": 300
+      }
+     ],
+     "modelAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "今天我爸爸开车送我去上班。",
+       "pause": 800
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Câu mẫu hoàn chỉnh: Hôm nay bố tôi lái xe đưa tôi đi làm.",
+       "pause": 300
+      }
+     ]
+    }
+   ],
+   "reviews": [
+    {
+     "id": "hsk1-bai-16-g1-v2-review0",
+     "day": 1,
+     "type": "Nhớ nghĩa & Trật tự từ",
+     "q": "Bạn muốn chỉ người kia đi sang phải. Nói “Đi về bên phải”.",
+     "answer": "往右走。",
+     "explain": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng 右边; khi chỉ hướng đi dùng 往右 hoặc 向右.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Bạn muốn chỉ người kia đi sang phải. Nói “Đi về bên phải”.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "往右走。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Chỉ phía phải. Khi nói vị trí độc lập, thường dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "右边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "; khi chỉ hướng đi dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "往右",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " hoặc ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "向右",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ".",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-v2-review1",
+     "day": 3,
+     "type": "Phân biệt bẫy ngữ pháp",
+     "q": "Bạn đi xe buýt với tư cách hành khách. Hãy nói “Tôi đi xe buýt”.",
+     "answer": "我坐公共汽车。",
+     "explain": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng 坐车. Khi nêu loại xe, dùng 开 + loại xe.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Bạn đi xe buýt với tư cách hành khách. Hãy nói “Tôi đi xe buýt”.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "我坐公共汽车。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Chỉ người trực tiếp điều khiển xe. Nếu là hành khách, thường dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "坐车",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ". Khi nêu loại xe, dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "开",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " + loại xe.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g1-v2-review2",
+     "day": 7,
+     "type": "Vận dụng ngữ cảnh mới",
+     "q": "Hai người bạn của bạn đang ở đây. Nói “Họ đều ở đây”.",
+     "answer": "他们都在这里。",
+     "explain": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Hai người bạn của bạn đang ở đây. Nói “Họ đều ở đây”.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "他们都在这里。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Đại từ chỉ họ. Trong cách viết thông thường, dùng cho nhóm nam hoặc nhóm có cả nam và nữ; cũng dùng khi nói chung về một nhóm người.",
+       "pause": 350
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hsk1-bai-16-g2",
+   "title": "Nhóm 2: Hành Động Song Song, Đánh Giá & Đời Sống Học Đường",
+   "desc": "Học cách dùng 一边、真的、下课、有名、大学、这里; tự nhớ trước khi mở đáp án, rồi dùng trong hội thoại.",
+   "words": [
+    {
+     "id": "hsk1-bai-16-g2-w7",
+     "index": 7,
+     "hanzi": "一边",
+     "pinyin": "yībiān",
+     "coreMeaning": "Một bên; vừa... vừa... (hai hành động diễn ra song song)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "一边",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Một bên; vừa... vừa... (hai hành động diễn ra song song)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi người nói thực hiện hoặc quan sát ai đó tiến hành cùng lúc hai hành vi trong cùng một khoảng thời gian.",
+      "detail": "Có hai cách dùng cần tách: 路的一边 là một bên đường; 一边…一边… diễn tả hai việc cùng diễn ra.",
+      "keyPoint": "Có hai cách dùng cần tách: 路的一边 là một bên đường; 一边…一边… diễn tả hai việc cùng diễn ra.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi người nói thực hiện hoặc quan sát ai đó tiến hành cùng lúc hai hành vi trong cùng một khoảng thời gian. Có hai cách dùng cần tách: ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "路的一边",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là một bên đường; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "一边",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "…",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "一边",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "… diễn tả hai việc cùng diễn ra.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "路的一边 · 一边看一边听 · 另一边",
+       "note": "Có hai cách dùng cần tách: 路的一边 là một bên đường; 一边…一边… diễn tả hai việc cùng diễn ra.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Có hai cách dùng cần tách: ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "路的一边",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là một bên đường; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "一边",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": "…",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "一边",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": "… diễn tả hai việc cùng diễn ra.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我一边听音乐一边看书。",
+       "note": "Hai hành động cùng diễn ra. Không dùng những hành động gây mất an toàn khi kết hợp.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我一边听音乐一边看书。",
+         "pause": 800
+        },
+        {
+         "lang": "vi-VN",
+         "text": "Hai hành động cùng diễn ra. Không dùng những hành động gây mất an toàn khi kết hợp.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "我喜欢一边听音乐一边写作业。",
+       "vi": "Tôi thích vừa nghe nhạc vừa làm bài tập.",
+       "situation": "Chia sẻ về thói quen học tập và thư giãn cá nhân.",
+       "analysis": "Hai hành vi nghe nhạc và làm bài tập diễn ra hoàn toàn đồng thời.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Hai hành vi nghe nhạc và làm bài tập diễn ra hoàn toàn đồng thời. Tôi thích vừa nghe nhạc vừa làm bài tập.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "爸爸一边喝茶一边看书。",
+       "vi": "Bố vừa uống trà vừa đọc sách.",
+       "situation": "Kể về hoạt động thư thả của bố vào buổi sáng cuối tuần.",
+       "analysis": "Hai động từ uống trà và đọc sách được đặt ngay sau từ nối song hành.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Hai động từ uống trà và đọc sách được đặt ngay sau từ nối song hành. Bố vừa uống trà vừa đọc sách.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "路的一边是大学，另一边是书店。",
+       "vi": "Một bên đường là trường đại học, bên kia là hiệu sách.",
+       "situation": "Miêu tả vị trí địa lý của con đường trước cổng trường.",
+       "analysis": "Sử dụng nghĩa gốc chỉ phương vị không gian hai bên đường.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sử dụng nghĩa gốc chỉ phương vị không gian hai bên đường. Một bên đường là trường đại học, bên kia là hiệu sách.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nói bạn vừa nghe nhạc vừa đọc sách.",
+       "explanation": "Dùng mẫu đồng thời cho hai việc thực tế diễn ra nối tiếp. Học mẫu đầy đủ trước; khẩu ngữ có thể rút gọn trong ngữ cảnh phù hợp.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我一边听音乐一边看书。",
+       "tip": "Hai hành động cùng diễn ra. Không dùng những hành động gây mất an toàn khi kết hợp.",
+       "boundary": "Cấu trúc đầu là đồng thời; cấu trúc sau là trước rồi sau.",
+       "comparisons": [
+        {
+         "zh": "一边…一边…",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "先…再…",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dùng mẫu đồng thời cho hai việc thực tế diễn ra nối tiếp. Học mẫu đầy đủ trước; khẩu ngữ có thể rút gọn trong ngữ cảnh phù hợp. Cấu trúc đầu là đồng thời; cấu trúc sau là trước rồi sau.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "一 trong cụm này thường biến thành thanh bốn trước 边 thanh một. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "từ đang học trong cụm này thường biến thành thanh bốn trước từ đang học thanh một.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "一边",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "边 có 辶. Ở phần giới thiệu, pinyin ghi âm từ điển; 一 có biến điệu khi nói trong cụm.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "边",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "辶",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Ở phần giới thiệu, pinyin ghi âm từ điển; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "一",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có biến điệu khi nói trong cụm.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Có hai cách dùng cần tách: 路的一边 là một bên đường; 一边…一边… diễn tả hai việc cùng diễn ra.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Có hai cách dùng cần tách: ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "路的一边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " là một bên đường; ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "一边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "…",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "一边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "… diễn tả hai việc cùng diễn ra.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "路的一边",
+       "vi": "một bên đường"
+      },
+      {
+       "zh": "一边看一边听",
+       "vi": "vừa xem vừa nghe"
+      },
+      {
+       "zh": "另一边",
+       "vi": "bên còn lại"
+      }
+     ],
+     "compare": {
+      "a": "一边…一边…",
+      "b": "先…再…",
+      "why": "Cấu trúc đầu là đồng thời; cấu trúc sau là trước rồi sau."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Có hai cách dùng cần tách: 路的一边 là một bên đường; 一边…一边… diễn tả hai việc cùng diễn ra."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "一边…一边… / 先…再…: Cấu trúc đầu là đồng thời; cấu trúc sau là trước rồi sau."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Dùng mẫu đồng thời cho hai việc thực tế diễn ra nối tiếp. Học mẫu đầy đủ trước; khẩu ngữ có thể rút gọn trong ngữ cảnh phù hợp."
+      }
+     ],
+     "context": {
+      "zh": "我一边听音乐一边看书。",
+      "vi": "bạn vừa nghe nhạc vừa đọc sách.",
+      "note": "Hai hành động cùng diễn ra. Không dùng những hành động gây mất an toàn khi kết hợp."
+     },
+     "activeTask": {
+      "prompt": "Nói bạn vừa nghe nhạc vừa đọc sách.",
+      "answer": "我一边听音乐一边看书。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nói bạn vừa nghe nhạc vừa đọc sách.",
+      "answer": "我一边听音乐一边看书。"
+     },
+     "deep": {
+      "etymology": "边 = bên, cạnh: hai việc xảy ra ở “hai bên” cùng lúc.",
+      "psychology": "Dùng khi bạn đang làm đồng thời hai việc quen thuộc.",
+      "position": "一边 + V1 + 一边 + V2: 一边走一边说.",
+      "trap": "Hai động từ phải cùng chủ ngữ; không dùng khi chỉ một việc.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "边",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= bên, cạnh: hai việc xảy ra ở “hai bên” cùng lúc.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi bạn đang làm đồng thời hai việc quen thuộc.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "一边",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ V1 +",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "一边",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ V2:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "一边走一边说",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Hai động từ phải cùng chủ ngữ; không dùng khi chỉ một việc.",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g2-w8",
+     "index": 8,
+     "hanzi": "真的",
+     "pinyin": "zhēnde",
+     "coreMeaning": "Thật sự, thật đấy, quả thật (xác nhận tính chân thực)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "真的",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Thật sự, thật đấy, quả thật (xác nhận tính chân thực)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi bạn muốn khẳng định một sự việc là có thật 100%, không nói dối, hoặc khi hỏi lại đối phương để xác nhận tin tức bất ngờ.",
+      "detail": "Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò.",
+      "keyPoint": "Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi bạn muốn khẳng định một sự việc là có thật 100%, không nói dối, hoặc khi hỏi lại đối phương để xác nhận tin tức bất ngờ. Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "真的吗 · 真的很好 · 是真的",
+       "note": "Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "真的吗？我也想去。",
+       "note": "真的吗 hỏi xác nhận điều vừa nghe.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "真的吗？我也想去。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "真的吗",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hỏi xác nhận điều vừa nghe.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "这个汉语老师真的很好。",
+       "vi": "Thầy giáo tiếng Trung này thật sự rất tốt.",
+       "situation": "Khen ngợi và giới thiệu người thầy tận tâm với bạn học.",
+       "analysis": "Từ này đứng trước tính từ tốt để gia tăng sức nặng của lời khen chân thực.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Từ này đứng trước tính từ tốt để gia tăng sức nặng của lời khen chân thực. Thầy giáo tiếng Trung này thật sự rất tốt.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "是真的吗？我不太相信。",
+       "vi": "Có thật không vậy? Tôi không tin lắm.",
+       "situation": "Phản ứng trước một tin đồn giật gân chưa được kiểm chứng.",
+       "analysis": "Câu nghi vấn xác nhận sự thật đứng độc lập ở phân câu đầu.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Câu nghi vấn xác nhận sự thật đứng độc lập ở phân câu đầu. Có thật không vậy? Tôi không tin lắm.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "我真的很想去中国旅游。",
+       "vi": "Tôi thực sự rất muốn đi du lịch Trung Quốc.",
+       "situation": "Bộc bạch ước mơ và nguyện vọng tha thiết của bản thân.",
+       "analysis": "Đứng trước động từ năng nguyện muốn để biểu đạt cảm xúc chân thành.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Đứng trước động từ năng nguyện muốn để biểu đạt cảm xúc chân thành. Tôi thực sự rất muốn đi du lịch Trung Quốc.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Bạn nghe tin bất ngờ và muốn hỏi “Thật à?”.",
+       "explanation": "Cho rằng 真的 chỉ có thể dùng để hỏi hoặc không thể đứng trước tính từ. 真的很好 là cách nói thông dụng.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "真的吗？我也想去。",
+       "tip": "真的吗 hỏi xác nhận điều vừa nghe.",
+       "boundary": "真常 dùng trong lời cảm thán như 真好看; 真的 dùng được trong 这是真的 và 你真的要去吗. Hai dạng có vùng dùng giao nhau.",
+       "comparisons": [
+        {
+         "zh": "真",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "真的",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cho rằng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "真的",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " chỉ có thể dùng để hỏi hoặc không thể đứng trước tính từ. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "真的很好",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là cách nói thông dụng. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "真常",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " dùng trong lời cảm thán như ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "真好看",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": "; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "真的",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " dùng được trong ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "这是真的",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " và ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "你真的要去吗",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Hai dạng có vùng dùng giao nhau.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "真 thanh một; 的 thanh nhẹ. Nghe cả cụm, không bỏ âm 的. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "từ đang học thanh một; từ đang học thanh nhẹ. Nghe cả cụm, không bỏ âm từ đang học.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "真的",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "Nhìn 真 và 的 riêng; 的 ở cụm này không nên máy móc dịch thành “của”.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Nhìn ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "真",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " và ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "的",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " riêng; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "的",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " ở cụm này không nên máy móc dịch thành “của”.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "真的吗",
+       "vi": "thật à"
+      },
+      {
+       "zh": "真的很好",
+       "vi": "thật sự tốt"
+      },
+      {
+       "zh": "是真的",
+       "vi": "là thật"
+      }
+     ],
+     "compare": {
+      "a": "真",
+      "b": "真的",
+      "why": "真常 dùng trong lời cảm thán như 真好看; 真的 dùng được trong 这是真的 và 你真的要去吗. Hai dạng có vùng dùng giao nhau."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "真 / 真的: 真常 dùng trong lời cảm thán như 真好看; 真的 dùng được trong 这是真的 và 你真的要去吗. Hai dạng có vùng dùng giao nhau."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Cho rằng 真的 chỉ có thể dùng để hỏi hoặc không thể đứng trước tính từ. 真的很好 là cách nói thông dụng."
+      }
+     ],
+     "context": {
+      "zh": "真的吗？我也想去。",
+      "vi": "",
+      "note": "真的吗 hỏi xác nhận điều vừa nghe."
+     },
+     "activeTask": {
+      "prompt": "Bạn nghe tin bất ngờ và muốn hỏi “Thật à?”.",
+      "answer": "真的吗？",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Bạn nghe tin bất ngờ và muốn hỏi “Thật à?”.",
+      "answer": "真的吗？"
+     },
+     "deep": {
+      "etymology": "真 = thật, 的 = trợ từ: xác nhận điều có thật.",
+      "psychology": "Dùng khi ngạc nhiên hoặc hỏi lại để chắc chắn.",
+      "position": "真的? đứng riêng; 真的 + câu; 是真的.",
+      "trap": "真 + tính từ (真好) khác 真的: 真好 là “thật tốt”, 真的 là “thật không?”.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "真",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= thật,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "的",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= trợ từ: xác nhận điều có thật.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi ngạc nhiên hoặc hỏi lại để chắc chắn.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "真的",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "? đứng riêng;",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "真的",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ câu;",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "是真的",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "真",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ tính từ (",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "真好",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ") khác",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "真的",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ":",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "真好",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "là “thật tốt”,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "真的",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "là “thật không?”.",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g2-w9",
+     "index": 9,
+     "hanzi": "下课",
+     "pinyin": "xiàkè",
+     "coreMeaning": "Tan học, hết giờ học, kết thúc buổi học",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "下课",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Tan học, hết giờ học, kết thúc buổi học",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi chuông báo hết tiết vang lên, giáo viên cho học sinh nghỉ, hoặc khi hẹn bạn bè làm gì đó sau giờ tan trường.",
+      "detail": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+      "keyPoint": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi chuông báo hết tiết vang lên, giáo viên cho học sinh nghỉ, hoặc khi hẹn bạn bè làm gì đó sau giờ tan trường. Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "下课以后 · 几点下课 · 下课了",
+       "note": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "下课以后，我们去书店。",
+       "note": "以后 đặt sau 下课 để tạo mốc “sau giờ học”.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "下课以后，我们去书店。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "以后",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " đặt sau ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "下课",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " để tạo mốc “sau giờ học”.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "老师说：“同学们，下课了！”",
+       "vi": "Thầy giáo nói: “Các em học sinh, tan học rồi!”",
+       "situation": "Lời tuyên bố của giáo viên khi hết tiết học trên lớp.",
+       "analysis": "Động từ ly hợp kết hợp với trợ từ ngữ khí biểu thị kết thúc tiết học.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Động từ ly hợp kết hợp với trợ từ ngữ khí biểu thị kết thúc tiết học. Thầy giáo nói: “Các em học sinh, tan học rồi!”",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "下课以后，我们去书店买书吧。",
+       "vi": "Sau khi tan học, chúng ta đi hiệu sách mua sách nhé.",
+       "situation": "Rủ bạn cùng lớp đi mua tài liệu sau giờ giảng.",
+       "analysis": "Cụm từ tan học làm mốc thời gian đứng ở đầu câu.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cụm từ tan học làm mốc thời gian đứng ở đầu câu. Sau khi tan học, chúng ta đi hiệu sách mua sách nhé.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "我们下午四点半下课。",
+       "vi": "Bọn tôi tan học lúc bốn rưỡi chiều.",
+       "situation": "Trả lời người nhà về thời gian kết thúc buổi học để bố mẹ tới đón.",
+       "analysis": "Thời gian cụ thể đứng trước động từ vị ngữ chỉ thời điểm hoàn thành.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Thời gian cụ thể đứng trước động từ vị ngữ chỉ thời điểm hoàn thành. Bọn tôi tan học lúc bốn rưỡi chiều.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Rủ bạn đi hiệu sách sau giờ học.",
+       "explanation": "Nói 下课汉语 để diễn đạt học xong tiết tiếng Trung. Có thể nói 汉语课下课了 hoặc 上完汉语课了 tùy ý định.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "下课以后，我们去书店。",
+       "tip": "以后 đặt sau 下课 để tạo mốc “sau giờ học”.",
+       "boundary": "下课 kết thúc tiết; 放学 kết thúc buổi/ngày học ở trường tùy ngữ cảnh.",
+       "comparisons": [
+        {
+         "zh": "下课",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "放学",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "下课汉语",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " để diễn đạt học xong tiết tiếng Trung. Có thể nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "汉语课下课了",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hoặc ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "上完汉语课了",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " tùy ý định. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "下课",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " kết thúc tiết; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "放学",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " kết thúc buổi/ngày học ở trường tùy ngữ cảnh.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Hai âm thanh bốn; âm đầu của 课 có bật hơi. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Hai âm thanh bốn; âm đầu của từ đang học có bật hơi.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "下课",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "So sánh 上课 và 下课; 课 có 讠.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "So sánh ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "上课",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " và ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "下课",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "课",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "讠",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "下课以后",
+       "vi": "sau giờ học"
+      },
+      {
+       "zh": "几点下课",
+       "vi": "mấy giờ hết tiết"
+      },
+      {
+       "zh": "下课了",
+       "vi": "hết giờ học rồi"
+      }
+     ],
+     "compare": {
+      "a": "下课",
+      "b": "放学",
+      "why": "下课 kết thúc tiết; 放学 kết thúc buổi/ngày học ở trường tùy ngữ cảnh."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "下课 / 放学: 下课 kết thúc tiết; 放学 kết thúc buổi/ngày học ở trường tùy ngữ cảnh."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Nói 下课汉语 để diễn đạt học xong tiết tiếng Trung. Có thể nói 汉语课下课了 hoặc 上完汉语课了 tùy ý định."
+      }
+     ],
+     "context": {
+      "zh": "下课以后，我们去书店。",
+      "vi": "",
+      "note": "以后 đặt sau 下课 để tạo mốc “sau giờ học”."
+     },
+     "activeTask": {
+      "prompt": "Rủ bạn đi hiệu sách sau giờ học.",
+      "answer": "下课以后，我们去书店吧。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Rủ bạn đi hiệu sách sau giờ học.",
+      "answer": "下课以后，我们去书店吧。"
+     },
+     "deep": {
+      "etymology": "下 = kết thúc, 课 = tiết học: tiết học đã xong.",
+      "psychology": "Dùng để hẹn giờ sau khi học xong.",
+      "position": "Giờ + 下课: 四点下课. Sau 下课 + 以后 để nối việc tiếp theo.",
+      "trap": "Ngược nghĩa: 上课. Đừng nói 课下 hay 下学.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "下",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= kết thúc,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "课",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= tiết học: tiết học đã xong.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng để hẹn giờ sau khi học xong.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Giờ +",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "下课",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ":",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "四点下课",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Sau",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "下课",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "以后",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "để nối việc tiếp theo.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Ngược nghĩa:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "上课",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Đừng nói",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "课下",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "hay",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "下学",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g2-w10",
+     "index": 10,
+     "hanzi": "有名",
+     "pinyin": "yǒumíng",
+     "coreMeaning": "Có tiếng, nổi tiếng (được nhiều người biết đến)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "有名",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Có tiếng, nổi tiếng (được nhiều người biết đến)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng để miêu tả danh lam thắng cảnh, món ăn ngon, trường đại học lớn hoặc nhân vật được công chúng biết đến rộng rãi.",
+      "detail": "Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với 的.",
+      "keyPoint": "Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với 的.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng để miêu tả danh lam thắng cảnh, món ăn ngon, trường đại học lớn hoặc nhân vật được công chúng biết đến rộng rãi. Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "的",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "很有名 · 有名的大学 · 在这里有名",
+       "note": "Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với 的.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "的",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ".",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "这所大学很有名。",
+       "note": "Câu miêu tả thông thường không cần thêm 是 trước 很有名.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "这所大学很有名。",
+         "pause": 800
+        },
+        {
+         "lang": "vi-VN",
+         "text": "Câu miêu tả thông thường không cần thêm ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "是",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " trước ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "很有名",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ".",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "这所大学在中国很有名。",
+       "vi": "Trường đại học này rất nổi tiếng ở Trung Quốc.",
+       "situation": "Giới thiệu về vị thế danh tiếng của một trường đại học danh giá.",
+       "analysis": "Tính từ làm vị ngữ chính tiếp nhận phó từ mức độ và cụm giới từ chỉ phạm vi.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Tính từ làm vị ngữ chính tiếp nhận phó từ mức độ và cụm giới từ chỉ phạm vi. Trường đại học này rất nổi tiếng ở Trung Quốc.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "北京烤鸭是一道很有名的中国菜。",
+       "vi": "Vịt quay Bắc Kinh là một món ăn Trung Quốc rất nổi tiếng.",
+       "situation": "Giới thiệu tinh hoa ẩm thực cho khách du lịch lần đầu đến Bắc Kinh.",
+       "analysis": "Cụm tính từ làm định ngữ bổ nghĩa cho món ăn Trung Quốc.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cụm tính từ làm định ngữ bổ nghĩa cho món ăn Trung Quốc. Vịt quay Bắc Kinh là một món ăn Trung Quốc rất nổi tiếng.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "他是一个非常有名的医生。",
+       "vi": "Ông ấy là một bác sĩ hết sức nổi tiếng.",
+       "situation": "Khen ngợi tay nghề và danh tiếng của vị bác sĩ trưởng khoa.",
+       "analysis": "Làm định ngữ bổ nghĩa cho danh từ chỉ nghề nghiệp.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Làm định ngữ bổ nghĩa cho danh từ chỉ nghề nghiệp. Ông ấy là một bác sĩ hết sức nổi tiếng.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nói trường đại học này nổi tiếng.",
+       "explanation": "Cho rằng mọi câu tính từ bắt buộc phải có 很. 很 thường dùng trong miêu tả trung tính, nhưng phủ định, so sánh, nhấn mạnh có cấu trúc khác.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "这所大学很有名。",
+       "tip": "Câu miêu tả thông thường không cần thêm 是 trước 很有名.",
+       "boundary": "Nổi tiếng khác với có tên. Không tách máy móc 有名 thành “có tên”.",
+       "comparisons": [
+        {
+         "zh": "有名",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "有名字",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cho rằng mọi câu tính từ bắt buộc phải có ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "很",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "很",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " thường dùng trong miêu tả trung tính, nhưng phủ định, so sánh, nhấn mạnh có cấu trúc khác. Nổi tiếng khác với có tên. Không tách máy móc ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "有名",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " thành “có tên”.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh ba rồi thanh hai; giữ âm đầu thấp, tránh ép cổ. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh ba rồi thanh hai; giữ âm đầu thấp, tránh ép cổ.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "有名",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "Nhìn 名 có 口 phía dưới; nhớ qua 有名的大学.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Nhìn ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "名",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "口",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " phía dưới; nhớ qua ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "有名的大学",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với 的.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "的",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ".",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "很有名",
+       "vi": "nổi tiếng"
+      },
+      {
+       "zh": "有名的大学",
+       "vi": "đại học nổi tiếng"
+      },
+      {
+       "zh": "在这里有名",
+       "vi": "nổi tiếng ở đây"
+      }
+     ],
+     "compare": {
+      "a": "有名",
+      "b": "有名字",
+      "why": "Nổi tiếng khác với có tên. Không tách máy móc 有名 thành “có tên”."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với 的."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "有名 / 有名字: Nổi tiếng khác với có tên. Không tách máy móc 有名 thành “có tên”."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Cho rằng mọi câu tính từ bắt buộc phải có 很. 很 thường dùng trong miêu tả trung tính, nhưng phủ định, so sánh, nhấn mạnh có cấu trúc khác."
+      }
+     ],
+     "context": {
+      "zh": "这所大学很有名。",
+      "vi": "trường đại học này nổi tiếng.",
+      "note": "Câu miêu tả thông thường không cần thêm 是 trước 很有名."
+     },
+     "activeTask": {
+      "prompt": "Nói trường đại học này nổi tiếng.",
+      "answer": "这所大学很有名。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nói trường đại học này nổi tiếng.",
+      "answer": "这所大学很有名。"
+     },
+     "deep": {
+      "etymology": "有 + 名 (tên): có tên tuổi.",
+      "psychology": "Dùng khi giới thiệu nơi chốn hoặc người nổi tiếng.",
+      "position": "很有名, 在……很有名.",
+      "trap": "Không thêm 的 trước danh từ khi nói “nổi tiếng” như vị ngữ: 这所大学很有名.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "有",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "名",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "(tên): có tên tuổi.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi giới thiệu nơi chốn hoặc người nổi tiếng.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "很有名",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ",",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "在",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "……",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "很有名",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Không thêm",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "的",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "trước danh từ khi nói “nổi tiếng” như vị ngữ:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "这所大学很有名",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g2-w11",
+     "index": 11,
+     "hanzi": "大学",
+     "pinyin": "dàxué",
+     "coreMeaning": "Đại học, trường đại học (bậc giáo dục đại học)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "大学",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Đại học, trường đại học (bậc giáo dục đại học)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi nói về cơ sở đào tạo đại học, thời kỳ sinh viên hoặc kết hợp thành tên gọi các trường đại học cụ thể.",
+      "detail": "Danh từ chỉ đại học hoặc trường đại học. Nói 上大学, 在大学读书; 学汉语 dùng cho học một môn.",
+      "keyPoint": "Danh từ chỉ đại học hoặc trường đại học. Nói 上大学, 在大学读书; 学汉语 dùng cho học một môn.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi nói về cơ sở đào tạo đại học, thời kỳ sinh viên hoặc kết hợp thành tên gọi các trường đại học cụ thể. Danh từ chỉ đại học hoặc trường đại học. Nói ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "上大学",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "在大学读书",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "学汉语",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " dùng cho học một môn.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "上大学 · 大学生 · 一所大学",
+       "note": "Danh từ chỉ đại học hoặc trường đại học. Nói 上大学, 在大学读书; 学汉语 dùng cho học một môn.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Danh từ chỉ đại học hoặc trường đại học. Nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "上大学",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ", ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "在大学读书",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": "; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "学汉语",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " dùng cho học một môn.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我姐在大学读书。",
+       "note": "在大学 cho biết nơi theo học; 读书 ở đây mang nghĩa đi học.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我姐在大学读书。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "在大学",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " cho biết nơi theo học; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "读书",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " ở đây mang nghĩa đi học.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "我哥哥在北京的一所大学读书。",
+       "vi": "Anh trai tôi đang học tại một trường đại học ở Bắc Kinh.",
+       "situation": "Kể về việc học tập của anh trai nơi phương xa.",
+       "analysis": "Sử dụng lượng từ chuẩn của trường học kết hợp với cụm động từ đi học.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sử dụng lượng từ chuẩn của trường học kết hợp với cụm động từ đi học. Anh trai tôi đang học tại một trường đại học ở Bắc Kinh.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "你打算去哪个大学上学？",
+       "vi": "Bạn dự định sẽ đi học ở trường đại học nào?",
+       "situation": "Hỏi thăm định hướng chọn trường của bạn học cấp ba.",
+       "analysis": "Đại từ nghi vấn nào kết hợp lượng từ đứng trước danh từ đại học.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Đại từ nghi vấn nào kết hợp lượng từ đứng trước danh từ đại học. Bạn dự định sẽ đi học ở trường đại học nào?",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "大学里有很多外国留学生。",
+       "vi": "Trong trường đại học có rất nhiều du học sinh nước ngoài.",
+       "situation": "Miêu tả môi trường học tập đa văn hóa tại khuôn viên trường.",
+       "analysis": "Thêm từ chỉ phương vị bên trong vào sau danh từ để biến thành từ chỉ nơi chốn.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Thêm từ chỉ phương vị bên trong vào sau danh từ để biến thành từ chỉ nơi chốn. Trong trường đại học có rất nhiều du học sinh nước ngoài.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nói chị bạn đang học đại học.",
+       "explanation": "Dùng 学大学 với ý học đại học. Cách nói thông dụng là 上大学 hoặc 在大学读书.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我姐在大学读书。",
+       "tip": "在大学 cho biết nơi theo học; 读书 ở đây mang nghĩa đi học.",
+       "boundary": "Một từ chỉ trường/bậc học, một từ chỉ người học.",
+       "comparisons": [
+        {
+         "zh": "大学",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "大学生",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "学大学",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " với ý học đại học. Cách nói thông dụng là ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "上大学",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hoặc ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "在大学读书",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Một từ chỉ trường/bậc học, một từ chỉ người học.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh bốn rồi thanh hai. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh bốn rồi thanh hai.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "大学",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "大 là lớn; 学 liên quan học. Mẹo ghép nghĩa không thay thế việc học cách kết hợp từ.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "大",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là lớn; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "学",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " liên quan học. Mẹo ghép nghĩa không thay thế việc học cách kết hợp từ.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Danh từ chỉ đại học hoặc trường đại học. Nói 上大学, 在大学读书; 学汉语 dùng cho học một môn.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Danh từ chỉ đại học hoặc trường đại học. Nói ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "上大学",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "在大学读书",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "; ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "学汉语",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " dùng cho học một môn.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "上大学",
+       "vi": "học đại học"
+      },
+      {
+       "zh": "大学生",
+       "vi": "sinh viên đại học"
+      },
+      {
+       "zh": "一所大学",
+       "vi": "một trường đại học"
+      }
+     ],
+     "compare": {
+      "a": "大学",
+      "b": "大学生",
+      "why": "Một từ chỉ trường/bậc học, một từ chỉ người học."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Danh từ chỉ đại học hoặc trường đại học. Nói 上大学, 在大学读书; 学汉语 dùng cho học một môn."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "大学 / 大学生: Một từ chỉ trường/bậc học, một từ chỉ người học."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Dùng 学大学 với ý học đại học. Cách nói thông dụng là 上大学 hoặc 在大学读书."
+      }
+     ],
+     "context": {
+      "zh": "我姐在大学读书。",
+      "vi": "chị bạn đang học đại học.",
+      "note": "在大学 cho biết nơi theo học; 读书 ở đây mang nghĩa đi học."
+     },
+     "activeTask": {
+      "prompt": "Nói chị bạn đang học đại học.",
+      "answer": "我姐在大学读书。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nói chị bạn đang học đại học.",
+      "answer": "我姐在大学读书。"
+     },
+     "deep": {
+      "etymology": "大 = lớn, 学 = học: bậc học cao nhất.",
+      "psychology": "Dùng khi nói về nơi học hoặc trường của ai đó.",
+      "position": "在 + 大学 + 读书/学习.",
+      "trap": "所 là lượng từ của trường học: 这所大学, không dùng 个 nếu muốn tự nhiên.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "大",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= lớn,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "学",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= học: bậc học cao nhất.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi nói về nơi học hoặc trường của ai đó.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "在",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "大学",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "读书",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "/",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "学习",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "所",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "là lượng từ của trường học:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "这所大学",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", không dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "个",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "nếu muốn tự nhiên.",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g2-w12",
+     "index": 12,
+     "hanzi": "这里",
+     "pinyin": "zhèlǐ",
+     "coreMeaning": "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "这里",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng để chỉ vị trí, địa điểm hoặc không gian mà người nói đang có mặt hoặc ở khoảng cách rất gần.",
+      "detail": "Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. 这儿 cũng thông dụng.",
+      "keyPoint": "Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. 这儿 cũng thông dụng.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng để chỉ vị trí, địa điểm hoặc không gian mà người nói đang có mặt hoặc ở khoảng cách rất gần. Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "这儿",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " cũng thông dụng.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "在这里 · 来这里 · 这里的书",
+       "note": "Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. 这儿 cũng thông dụng.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "这儿",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " cũng thông dụng.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我们在这里等你。",
+       "note": "在这里 đặt trước 等你 để chỉ nơi chờ.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我们在这里等你。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "在这里",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " đặt trước ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "等你",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " để chỉ nơi chờ.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "我们在这里学汉语。",
+       "vi": "Chúng tôi học tiếng Trung ở đây.",
+       "situation": "Nói với người lạ về địa điểm học tập của cả nhóm.",
+       "analysis": "Cụm trạng ngữ chỉ địa điểm đứng trước động từ học tiếng Trung.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cụm trạng ngữ chỉ địa điểm đứng trước động từ học tiếng Trung. Chúng tôi học tiếng Trung ở đây.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "这里的天气非常好。",
+       "vi": "Thời tiết ở đây rất đẹp.",
+       "situation": "Khen ngợi khí hậu khi vừa đặt chân đến thành phố du lịch.",
+       "analysis": "Đại từ nơi chốn làm định ngữ bổ nghĩa cho danh từ thời tiết.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Đại từ nơi chốn làm định ngữ bổ nghĩa cho danh từ thời tiết. Thời tiết ở đây rất đẹp.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "请问，这里有人吗？",
+       "vi": "Xin hỏi, chỗ này đã có ai ngồi chưa?",
+       "situation": "Lịch sự hỏi người bên cạnh trước khi ngồi vào chiếc ghế trống trong thư viện.",
+       "analysis": "Câu hỏi tồn hiện lịch sự dùng từ xin hỏi ở đầu câu.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Câu hỏi tồn hiện lịch sự dùng từ xin hỏi ở đầu câu. Xin hỏi, chỗ này đã có ai ngồi chưa?",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nói “Chúng tôi chờ bạn ở đây”.",
+       "explanation": "Ghép 在这个 khi muốn nói đơn giản “ở đây” mà chưa có danh từ hoặc ngữ cảnh chỉ đối tượng. Dùng 在这里.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我们在这里等你。",
+       "tip": "在这里 đặt trước 等你 để chỉ nơi chờ.",
+       "boundary": "这里 chỉ nơi chốn; 这个 chỉ một người/vật/sự việc đã biết theo ngữ cảnh.",
+       "comparisons": [
+        {
+         "zh": "这里",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "这个",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Ghép ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "在这个",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " khi muốn nói đơn giản “ở đây” mà chưa có danh từ hoặc ngữ cảnh chỉ đối tượng. Dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "在这里",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "这里",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " chỉ nơi chốn; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "这个",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " chỉ một người/vật/sự việc đã biết theo ngữ cảnh.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh bốn rồi thanh ba; nghe nhịp của cả cụm. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh bốn rồi thanh ba; nghe nhịp của cả cụm.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "这里",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "这里 có 里; 这边 chỉ bên này, có thể gần nghĩa nhưng không luôn hoán đổi.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "这里",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "里",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "这边",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " chỉ bên này, có thể gần nghĩa nhưng không luôn hoán đổi.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. 这儿 cũng thông dụng.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "这儿",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " cũng thông dụng.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "在这里",
+       "vi": "ở đây"
+      },
+      {
+       "zh": "来这里",
+       "vi": "đến đây"
+      },
+      {
+       "zh": "这里的书",
+       "vi": "sách ở đây"
+      }
+     ],
+     "compare": {
+      "a": "这里",
+      "b": "这个",
+      "why": "这里 chỉ nơi chốn; 这个 chỉ một người/vật/sự việc đã biết theo ngữ cảnh."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. 这儿 cũng thông dụng."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "这里 / 这个: 这里 chỉ nơi chốn; 这个 chỉ một người/vật/sự việc đã biết theo ngữ cảnh."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Ghép 在这个 khi muốn nói đơn giản “ở đây” mà chưa có danh từ hoặc ngữ cảnh chỉ đối tượng. Dùng 在这里."
+      }
+     ],
+     "context": {
+      "zh": "我们在这里等你。",
+      "vi": "“Chúng tôi chờ bạn ở đây”.",
+      "note": "在这里 đặt trước 等你 để chỉ nơi chờ."
+     },
+     "activeTask": {
+      "prompt": "Nói “Chúng tôi chờ bạn ở đây”.",
+      "answer": "我们在这里等你。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nói “Chúng tôi chờ bạn ở đây”.",
+      "answer": "我们在这里等你。"
+     },
+     "deep": {
+      "etymology": "这 = này, 里 = bên trong: khu vực gần người nói.",
+      "psychology": "Dùng khi chỉ nơi hiện tại mà cả hai cùng thấy.",
+      "position": "在这里 + động từ: 在这里等.",
+      "trap": "Xa hơn → 那里. Trò chuyện thường dùng 这儿 (khẩu ngữ phương Bắc).",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "这",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= này,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "里",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= bên trong: khu vực gần người nói.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi chỉ nơi hiện tại mà cả hai cùng thấy.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "在这里",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ động từ:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "在这里等",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Xa hơn →",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "那里",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Trò chuyện thường dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "这儿",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "(khẩu ngữ phương Bắc).",
+        "pause": 600
+       }
+      ]
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "hsk1-bai-16-g2-w7-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 一边 có nghĩa chính nào?",
+     "options": [
+      "Một bên; vừa... vừa... (hai hành động diễn ra song song)",
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)"
+     ],
+     "correct": 0,
+     "reasonRight": "Có hai cách dùng cần tách: 路的一边 là một bên đường; 一边…一边… diễn tả hai việc cùng diễn ra.",
+     "reasonWrong": "Đối chiếu nghĩa của 一边: Có hai cách dùng cần tách: 路的一边 là một bên đường; 一边…一边… diễn tả hai việc cùng diễn ra.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "一边",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Có hai cách dùng cần tách: ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "路的一边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " là một bên đường; ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "一边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "…",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "一边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "… diễn tả hai việc cùng diễn ra.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w7-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Tôi thích vừa nghe nhạc vừa làm bài tập. Điền từ: 我喜欢____听音乐一边写作业。",
+     "options": [
+      "一边",
+      "右",
+      "动作",
+      "这里"
+     ],
+     "correct": 0,
+     "reasonRight": "我喜欢一边听音乐一边写作业。 Hai hành vi nghe nhạc và làm bài tập diễn ra hoàn toàn đồng thời.",
+     "reasonWrong": "Câu cần diễn đạt: 我喜欢一边听音乐一边写作业。 Tôi thích vừa nghe nhạc vừa làm bài tập.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我喜欢一边听音乐一边写作业。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Tôi thích vừa nghe nhạc vừa làm bài tập.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w8-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 真的 có nghĩa chính nào?",
+     "options": [
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)",
+      "Thật sự, thật đấy, quả thật (xác nhận tính chân thực)"
+     ],
+     "correct": 3,
+     "reasonRight": "Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò.",
+     "reasonWrong": "Đối chiếu nghĩa của 真的: Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "真的",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Dùng để nói thật sự, xác nhận sự thật hoặc phản ứng “Thật à?”. Cần nhìn cả câu để biết vai trò.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w8-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Thầy giáo tiếng Trung này thật sự rất tốt. Điền từ: 这个汉语老师____很好。",
+     "options": [
+      "右",
+      "动作",
+      "这里",
+      "真的"
+     ],
+     "correct": 3,
+     "reasonRight": "这个汉语老师真的很好。 Từ này đứng trước tính từ tốt để gia tăng sức nặng của lời khen chân thực.",
+     "reasonWrong": "Câu cần diễn đạt: 这个汉语老师真的很好。 Thầy giáo tiếng Trung này thật sự rất tốt.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "这个汉语老师真的很好。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Thầy giáo tiếng Trung này thật sự rất tốt.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w9-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 下课 có nghĩa chính nào?",
+     "options": [
+      "Động tác, hành động, thao tác cụ thể",
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)",
+      "Tan học, hết giờ học, kết thúc buổi học",
+      "Bên phải, phía bên phải"
+     ],
+     "correct": 2,
+     "reasonRight": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+     "reasonWrong": "Đối chiếu nghĩa của 下课: Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "下课",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w9-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Thầy giáo nói: “Các em học sinh, tan học rồi!” Điền từ: 老师说：“同学们，____了！”",
+     "options": [
+      "动作",
+      "这里",
+      "下课",
+      "右"
+     ],
+     "correct": 2,
+     "reasonRight": "老师说：“同学们，下课了！” Động từ ly hợp kết hợp với trợ từ ngữ khí biểu thị kết thúc tiết học.",
+     "reasonWrong": "Câu cần diễn đạt: 老师说：“同学们，下课了！” Thầy giáo nói: “Các em học sinh, tan học rồi!”",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "老师说：“同学们，下课了！”",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Thầy giáo nói: “Các em học sinh, tan học rồi!”",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w10-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 有名 có nghĩa chính nào?",
+     "options": [
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)",
+      "Có tiếng, nổi tiếng (được nhiều người biết đến)",
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể"
+     ],
+     "correct": 1,
+     "reasonRight": "Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với 的.",
+     "reasonWrong": "Đối chiếu nghĩa của 有名: Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với 的.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "有名",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Tính từ mang nghĩa nổi tiếng. Có thể miêu tả người, nơi chốn, món ăn; có thể làm định ngữ trước danh từ với ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "的",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ".",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w10-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Trường đại học này rất nổi tiếng ở Trung Quốc. Điền từ: 这所大学在中国很____。",
+     "options": [
+      "这里",
+      "有名",
+      "右",
+      "动作"
+     ],
+     "correct": 1,
+     "reasonRight": "这所大学在中国很有名。 Tính từ làm vị ngữ chính tiếp nhận phó từ mức độ và cụm giới từ chỉ phạm vi.",
+     "reasonWrong": "Câu cần diễn đạt: 这所大学在中国很有名。 Trường đại học này rất nổi tiếng ở Trung Quốc.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "这所大学在中国很有名。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Trường đại học này rất nổi tiếng ở Trung Quốc.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w11-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 大学 có nghĩa chính nào?",
+     "options": [
+      "Đại học, trường đại học (bậc giáo dục đại học)",
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)"
+     ],
+     "correct": 0,
+     "reasonRight": "Danh từ chỉ đại học hoặc trường đại học. Nói 上大学, 在大学读书; 学汉语 dùng cho học một môn.",
+     "reasonWrong": "Đối chiếu nghĩa của 大学: Danh từ chỉ đại học hoặc trường đại học. Nói 上大学, 在大学读书; 学汉语 dùng cho học một môn.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "大学",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Danh từ chỉ đại học hoặc trường đại học. Nói ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "上大学",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "在大学读书",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "; ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "学汉语",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " dùng cho học một môn.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w11-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Anh trai tôi đang học tại một trường đại học ở Bắc Kinh. Điền từ: 我哥哥在北京的一所____读书。",
+     "options": [
+      "大学",
+      "右",
+      "动作",
+      "这里"
+     ],
+     "correct": 0,
+     "reasonRight": "我哥哥在北京的一所大学读书。 Sử dụng lượng từ chuẩn của trường học kết hợp với cụm động từ đi học.",
+     "reasonWrong": "Câu cần diễn đạt: 我哥哥在北京的一所大学读书。 Anh trai tôi đang học tại một trường đại học ở Bắc Kinh.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我哥哥在北京的一所大学读书。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Anh trai tôi đang học tại một trường đại học ở Bắc Kinh.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w12-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 这里 có nghĩa chính nào?",
+     "options": [
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)",
+      "Ở đây, nơi này, chỗ này (khoảng cách gần người nói)"
+     ],
+     "correct": 3,
+     "reasonRight": "Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. 这儿 cũng thông dụng.",
+     "reasonWrong": "Đối chiếu nghĩa của 这里: Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. 这儿 cũng thông dụng.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "这里",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chỉ nơi ở đây, gần người nói hoặc nơi đang được xác định trong tình huống. ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "这儿",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " cũng thông dụng.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-w12-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Chúng tôi học tiếng Trung ở đây. Điền từ: 我们在____学汉语。",
+     "options": [
+      "右",
+      "动作",
+      "大学",
+      "这里"
+     ],
+     "correct": 3,
+     "reasonRight": "我们在这里学汉语。 Cụm trạng ngữ chỉ địa điểm đứng trước động từ học tiếng Trung.",
+     "reasonWrong": "Câu cần diễn đạt: 我们在这里学汉语。 Chúng tôi học tiếng Trung ở đây.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我们在这里学汉语。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Chúng tôi học tiếng Trung ở đây.",
+       "pause": 500
+      }
+     ]
+    }
+   ],
+   "selfUse": [
+    {
+     "id": "hsk1-bai-16-g2-su1",
+     "situation": "Tình huống: Bạn muốn chia sẻ thói quen học tập của mình với bạn cùng lớp: 'Sau khi tan học, tôi thích vừa uống trà vừa nói chuyện với bạn bè ở đây.'",
+     "hint1": "Xác định thời gian ở đầu câu: 'Sau khi tan học', sau đó dùng cụm 'ở đây' trước cấu trúc song hành 'vừa... vừa...'.",
+     "hint2": "Khung câu gợi ý: 下课以后，我喜欢在这里 + 一边喝茶 + 一边和朋友聊天。",
+     "modelAnswer": "下课以后，我喜欢在这里一边喝茶一边跟朋友聊天。",
+     "modelExplain": "Kết hợp mốc thời gian tan học ở đầu câu, trạng ngữ nơi chốn 'ở đây', và cấu trúc song hành hai hành động uống trà và trò chuyện.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nhiệm vụ 1: Hãy tự nói câu: Sau khi tan học, tôi thích vừa uống trà vừa trò chuyện cùng bạn bè ở đây.",
+       "pause": 300
+      }
+     ],
+     "hint1Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 1: Đặt cụm từ tan học xong lên trước, nêu rõ địa điểm ở đây rồi mới tới hai hành động song song.",
+       "pause": 300
+      }
+     ],
+     "hint2Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 2: Khung câu gồm tan học sau đó, tôi thích ở nơi này, vừa uống trà vừa cùng bạn bè nói chuyện.",
+       "pause": 300
+      }
+     ],
+     "modelAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "下课以后，我喜欢在这里一边喝茶一边跟朋友聊天。",
+       "pause": 800
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Câu mẫu hoàn chỉnh: Sau khi tan học, tôi thích ở đây vừa uống trà vừa trò chuyện cùng bạn bè.",
+       "pause": 300
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-su2",
+     "situation": "Tình huống: Bạn gặp một người quen và muốn giới thiệu đầy tự hào: 'Trường đại học của tôi thực sự rất nổi tiếng ở thành phố này.'",
+     "hint1": "Chủ ngữ là 'trường đại học của tôi'. Dùng phó từ 'thực sự' kết hợp với tính từ 'rất nổi tiếng' và cụm giới từ chỉ phạm vi.",
+     "hint2": "Khung câu gợi ý: 我的大学 + 在这个城市 + 真的很有名。",
+     "modelAnswer": "我的大学在这个城市真的很有名。",
+     "modelExplain": "Chủ ngữ danh từ đại học đi cùng cụm giới từ phạm vi và vị ngữ tính từ được tăng cường bởi phó từ xác thực.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nhiệm vụ 2: Hãy tự diễn đạt câu: Trường đại học của tôi thực sự rất nổi tiếng ở thành phố này.",
+       "pause": 300
+      }
+     ],
+     "hint1Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 1: Nêu trường đại học lên làm chủ ngữ, sau đó dùng từ thật sự đứng trước từ rất nổi tiếng.",
+       "pause": 300
+      }
+     ],
+     "hint2Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 2: Khung câu gồm trường đại học của tôi, ở thành phố này, thật sự rất nổi tiếng.",
+       "pause": 300
+      }
+     ],
+     "modelAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我的大学在这个城市真的很有名。",
+       "pause": 800
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Câu mẫu hoàn chỉnh: Trường đại học của tôi ở thành phố này thực sự rất có tiếng tăm.",
+       "pause": 300
+      }
+     ]
+    }
+   ],
+   "reviews": [
+    {
+     "id": "hsk1-bai-16-g2-v2-review0",
+     "day": 1,
+     "type": "Nhớ cấu trúc song hành",
+     "q": "Nói bạn vừa nghe nhạc vừa đọc sách.",
+     "answer": "我一边听音乐一边看书。",
+     "explain": "Có hai cách dùng cần tách: 路的一边 là một bên đường; 一边…一边… diễn tả hai việc cùng diễn ra.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nói bạn vừa nghe nhạc vừa đọc sách.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "我一边听音乐一边看书。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Có hai cách dùng cần tách: ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "路的一边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " là một bên đường; ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "一边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "…",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "一边",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "… diễn tả hai việc cùng diễn ra.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-v2-review1",
+     "day": 3,
+     "type": "Khắc phục bẫy ngữ pháp",
+     "q": "Rủ bạn đi hiệu sách sau giờ học.",
+     "answer": "下课以后，我们去书店吧。",
+     "explain": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Rủ bạn đi hiệu sách sau giờ học.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "下课以后，我们去书店吧。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Nói tiết học kết thúc hoặc học xong một buổi/tiết theo ngữ cảnh. Không đồng nhất với kết thúc ngày học hay tan làm.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g2-v2-review2",
+     "day": 7,
+     "type": "Vận dụng ngữ cảnh giao tiếp",
+     "q": "Nói chị bạn đang học đại học.",
+     "answer": "我姐在大学读书。",
+     "explain": "Danh từ chỉ đại học hoặc trường đại học. Nói 上大学, 在大学读书; 学汉语 dùng cho học một môn.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nói chị bạn đang học đại học.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "我姐在大学读书。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Danh từ chỉ đại học hoặc trường đại học. Nói ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "上大学",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "在大学读书",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "; ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "学汉语",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " dùng cho học một môn.",
+       "pause": 350
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hsk1-bai-16-g3",
+   "title": "Nhóm 3: Thời Gian, Xã Hội, Thẩm Mỹ & Gia Đình",
+   "desc": "Học cách dùng 有时候、后天、国家、书店、好看、爸; tự nhớ trước khi mở đáp án, rồi dùng trong hội thoại.",
+   "words": [
+    {
+     "id": "hsk1-bai-16-g3-w13",
+     "index": 13,
+     "hanzi": "有时候",
+     "pinyin": "yǒushíhou",
+     "coreMeaning": "Có lúc, có khi, thỉnh thoảng (tần suất không cố định)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "有时候",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Có lúc, có khi, thỉnh thoảng (tần suất không cố định)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi bạn muốn miêu tả một thói quen hoặc sự việc thỉnh thoảng mới diễn ra, không xảy ra liên tục mỗi ngày.",
+      "detail": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+      "keyPoint": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi bạn muốn miêu tả một thói quen hoặc sự việc thỉnh thoảng mới diễn ra, không xảy ra liên tục mỗi ngày. Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "有时候去 · 有时候不去 · 有时候…有时候…",
+       "note": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我有时候去书店看书。",
+       "note": "Tần suất không đều, không khẳng định ngày nào cũng đi.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我有时候去书店看书。",
+         "pause": 800
+        },
+        {
+         "lang": "vi-VN",
+         "text": "Tần suất không đều, không khẳng định ngày nào cũng đi.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "周末我有时候去书店买书。",
+       "vi": "Cuối tuần tôi thỉnh thoảng đi hiệu sách mua sách.",
+       "situation": "Kể về hoạt động giải trí không cố định vào ngày nghỉ cuối tuần.",
+       "analysis": "Từ chỉ tần suất đứng giữa chủ ngữ tôi và cụm động từ đi hiệu sách.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Từ chỉ tần suất đứng giữa chủ ngữ tôi và cụm động từ đi hiệu sách. Cuối tuần tôi thỉnh thoảng đi hiệu sách mua sách.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "这里的春天，有时候冷，有时候热。",
+       "vi": "Mùa xuân ở đây, có lúc lạnh, có lúc nóng.",
+       "situation": "Miêu tả sự thất thường của thời tiết giao mùa cho bạn bè chuẩn bị áo ấm.",
+       "analysis": "Sử dụng cấu trúc hai vế song hành miêu tả hai trạng thái thời tiết đối lập.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sử dụng cấu trúc hai vế song hành miêu tả hai trạng thái thời tiết đối lập. Mùa xuân ở đây, có lúc lạnh, có lúc nóng.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "爸爸工作很忙，有时候不回家吃晚饭。",
+       "vi": "Bố làm việc rất bận rộn, có khi không về nhà ăn cơm tối.",
+       "situation": "Kể về lịch trình công việc vất vả và thất thường của người cha.",
+       "analysis": "Từ chỉ tần suất đứng trước cụm vị ngữ phủ định.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Từ chỉ tần suất đứng trước cụm vị ngữ phủ định. Bố làm việc rất bận rộn, có khi không về nhà ăn cơm tối.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nói bạn thỉnh thoảng đến hiệu sách đọc sách.",
+       "explanation": "Dịch “khi tan học” bằng 有时候下课. Dùng 下课的时候 hoặc 下课以后 tùy ý định.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我有时候去书店看书。",
+       "tip": "Tần suất không đều, không khẳng định ngày nào cũng đi.",
+       "boundary": "Một bên nói tần suất; một bên tạo mốc “khi…”.",
+       "comparisons": [
+        {
+         "zh": "有时候",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "…的时候",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dịch “khi tan học” bằng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "有时候下课",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "下课的时候",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hoặc ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "下课以后",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " tùy ý định. Một bên nói tần suất; một bên tạo mốc “khi…”.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "有 thanh ba, 时 thanh hai, 候 thường nhẹ và ngắn trong cụm này. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "từ đang học thanh ba, từ đang học thanh hai, từ đang học thường nhẹ và ngắn trong cụm này.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "有时候",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "Nhận 时 và 候; 候 trong từ này thường đọc nhẹ, không phải bỏ âm.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Nhận ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "时",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " và ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "候",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "候",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " trong từ này thường đọc nhẹ, không phải bỏ âm.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "有时候去",
+       "vi": "thỉnh thoảng đi"
+      },
+      {
+       "zh": "有时候不去",
+       "vi": "có lúc không đi"
+      },
+      {
+       "zh": "有时候…有时候…",
+       "vi": "có lúc…có lúc…"
+      }
+     ],
+     "compare": {
+      "a": "有时候",
+      "b": "…的时候",
+      "why": "Một bên nói tần suất; một bên tạo mốc “khi…”."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "有时候 / …的时候: Một bên nói tần suất; một bên tạo mốc “khi…”."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Dịch “khi tan học” bằng 有时候下课. Dùng 下课的时候 hoặc 下课以后 tùy ý định."
+      }
+     ],
+     "context": {
+      "zh": "我有时候去书店看书。",
+      "vi": "bạn thỉnh thoảng đến hiệu sách đọc sách.",
+      "note": "Tần suất không đều, không khẳng định ngày nào cũng đi."
+     },
+     "activeTask": {
+      "prompt": "Nói bạn thỉnh thoảng đến hiệu sách đọc sách.",
+      "answer": "我有时候去书店看书。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nói bạn thỉnh thoảng đến hiệu sách đọc sách.",
+      "answer": "我有时候去书店看书。"
+     },
+     "deep": {
+      "etymology": "Gốc là “có lúc”, nhấn tần suất không đều.",
+      "psychology": "Dùng khi kể thói quen không cố định.",
+      "position": "Đứng đầu vế hoặc sau chủ ngữ: 我们有时候去书店.",
+      "trap": "Không phải 的时候: cái sau cần mốc đứng trước.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Gốc là “có lúc”, nhấn tần suất không đều.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi kể thói quen không cố định.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Đứng đầu vế hoặc sau chủ ngữ:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "我们有时候去书店",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Không phải",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "的时候",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ": cái sau cần mốc đứng trước.",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g3-w14",
+     "index": 14,
+     "hanzi": "后天",
+     "pinyin": "hòutiān",
+     "coreMeaning": "Ngày mốt, ngày kia (ngày sau ngày mai)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "后天",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Ngày mốt, ngày kia (ngày sau ngày mai)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng để ấn định lịch hẹn, thời hạn nộp bài, hoặc kế hoạch di chuyển trong tương lai gần cách ngày hôm nay hai ngày.",
+      "detail": "Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”.",
+      "keyPoint": "Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng để ấn định lịch hẹn, thời hạn nộp bài, hoặc kế hoạch di chuyển trong tương lai gần cách ngày hôm nay hai ngày. Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "后天见 · 后天下午 · 后天去",
+       "note": "Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我们后天下午见。",
+       "note": "后天下午 là mốc thời gian trước động từ 见.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我们后天下午见。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "后天下午",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là mốc thời gian trước động từ ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "见",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ".",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "后天下午我们要去大学考试。",
+       "vi": "Chiều ngày kia chúng tôi phải đến trường đại học để thi.",
+       "situation": "Thông báo lịch thi học kỳ cho nhóm bạn cùng lớp.",
+       "analysis": "Mốc ngày kết hợp buổi chiều làm trạng ngữ thời gian đứng ở đầu câu.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Mốc ngày kết hợp buổi chiều làm trạng ngữ thời gian đứng ở đầu câu. Chiều ngày kia chúng tôi phải đến trường đại học để thi.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "我后天想去书店买几本汉字书。",
+       "vi": "Ngày mốt tôi muốn đi hiệu sách mua mấy cuốn sách chữ Hán.",
+       "situation": "Bàn kế hoạch rủ bạn đi mua tài liệu học chữ Hán.",
+       "analysis": "Trạng ngữ thời gian đứng ngay sau chủ ngữ tôi.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Trạng ngữ thời gian đứng ngay sau chủ ngữ tôi. Ngày mốt tôi muốn đi hiệu sách mua mấy cuốn sách chữ Hán.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "后天是星期天，大家都不用上班。",
+       "vi": "Ngày kia là chủ nhật, mọi người đều không phải đi làm.",
+       "situation": "Nhắc nhở đồng nghiệp về ngày nghỉ cuối tuần sắp tới.",
+       "analysis": "Danh từ thời gian làm chủ ngữ chính trong câu phán đoán ngày trong tuần.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Danh từ thời gian làm chủ ngữ chính trong câu phán đoán ngày trong tuần. Ngày kia là chủ nhật, mọi người đều không phải đi làm.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Hẹn gặp bạn vào chiều ngày kia.",
+       "explanation": "Dịch “ngày tiếp theo của một sự kiện trong chuyện” luôn thành 后天. Thường dùng 第二天 khi lấy sự kiện làm mốc.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我们后天下午见。",
+       "tip": "后天下午 là mốc thời gian trước động từ 见.",
+       "boundary": "Nếu hôm nay là thứ hai, 明天 là thứ ba, 后天 là thứ tư.",
+       "comparisons": [
+        {
+         "zh": "后天",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "明天",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dịch “ngày tiếp theo của một sự kiện trong chuyện” luôn thành ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "后天",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Thường dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "第二天",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " khi lấy sự kiện làm mốc. Nếu hôm nay là thứ hai, ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "明天",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là thứ ba, ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "后天",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là thứ tư.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh bốn rồi thanh một. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh bốn rồi thanh một.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "后天",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "Đối chiếu 前天、昨天、今天、明天、后天 để nhớ trục thời gian.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Đối chiếu ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "前天、昨天、今天、明天、后天",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " để nhớ trục thời gian.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "后天见",
+       "vi": "hẹn ngày kia"
+      },
+      {
+       "zh": "后天下午",
+       "vi": "chiều ngày kia"
+      },
+      {
+       "zh": "后天去",
+       "vi": "ngày kia đi"
+      }
+     ],
+     "compare": {
+      "a": "后天",
+      "b": "明天",
+      "why": "Nếu hôm nay là thứ hai, 明天 là thứ ba, 后天 là thứ tư."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "后天 / 明天: Nếu hôm nay là thứ hai, 明天 là thứ ba, 后天 là thứ tư."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Dịch “ngày tiếp theo của một sự kiện trong chuyện” luôn thành 后天. Thường dùng 第二天 khi lấy sự kiện làm mốc."
+      }
+     ],
+     "context": {
+      "zh": "我们后天下午见。",
+      "vi": "",
+      "note": "后天下午 là mốc thời gian trước động từ 见."
+     },
+     "activeTask": {
+      "prompt": "Hẹn gặp bạn vào chiều ngày kia.",
+      "answer": "我们后天下午见。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Hẹn gặp bạn vào chiều ngày kia.",
+      "answer": "我们后天下午见。"
+     },
+     "deep": {
+      "etymology": "后 = sau, 天 = ngày: ngày sau ngày mai.",
+      "psychology": "Dùng khi hẹn lịch gần.",
+      "position": "Mốc thời gian đứng trước động từ: 我们后天见.",
+      "trap": "Không chen giữa động từ và tân ngữ: ✗ 见后天你.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "后",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= sau,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "天",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= ngày: ngày sau ngày mai.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi hẹn lịch gần.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mốc thời gian đứng trước động từ:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "我们后天见",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Không chen giữa động từ và tân ngữ: ✗",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "见后天你",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g3-w15",
+     "index": 15,
+     "hanzi": "国家",
+     "pinyin": "guójiā",
+     "coreMeaning": "Quốc gia, đất nước, nhà nước",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "国家",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Quốc gia, đất nước, nhà nước",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi nói về lãnh thổ các nước trên thế giới, quê hương xứ sở, hoặc thể chế chính trị của một quốc gia.",
+      "detail": "Danh từ chỉ quốc gia/đất nước. Thường dùng 一个国家, 哪个国家; không nhầm với nhà riêng.",
+      "keyPoint": "Danh từ chỉ quốc gia/đất nước. Thường dùng 一个国家, 哪个国家; không nhầm với nhà riêng.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi nói về lãnh thổ các nước trên thế giới, quê hương xứ sở, hoặc thể chế chính trị của một quốc gia. Danh từ chỉ quốc gia/đất nước. Thường dùng ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "一个国家",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "哪个国家",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; không nhầm với nhà riêng.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "一个国家 · 哪个国家 · 很多国家",
+       "note": "Danh từ chỉ quốc gia/đất nước. Thường dùng 一个国家, 哪个国家; không nhầm với nhà riêng.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Danh từ chỉ quốc gia/đất nước. Thường dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "一个国家",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ", ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "哪个国家",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": "; không nhầm với nhà riêng.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "你想去哪个国家？",
+       "note": "哪个 đứng trước 国家 để hỏi chọn quốc gia nào.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "你想去哪个国家？",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "哪个",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " đứng trước ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "国家",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " để hỏi chọn quốc gia nào.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "你去过哪些国家？",
+       "vi": "Bạn đã từng đi qua những quốc gia nào rồi?",
+       "situation": "Hỏi thăm kinh nghiệm đi du lịch hoặc công tác quốc tế của bạn bè.",
+       "analysis": "Đại từ nghi vấn số nhiều kết hợp trực tiếp với danh từ quốc gia.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Đại từ nghi vấn số nhiều kết hợp trực tiếp với danh từ quốc gia. Bạn đã từng đi qua những quốc gia nào rồi?",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "很多国家的人都喜欢喝茶。",
+       "vi": "Người của rất nhiều quốc gia đều thích uống trà.",
+       "situation": "Bàn về văn hóa ẩm thực trà phổ biến trên toàn cầu.",
+       "analysis": "Cụm danh từ số lượng làm định ngữ bổ nghĩa cho con người.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cụm danh từ số lượng làm định ngữ bổ nghĩa cho con người. Người của rất nhiều quốc gia đều thích uống trà.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "中国是一个很大、很有名的国家。",
+       "vi": "Trung Quốc là một quốc gia rất lớn và rất nổi tiếng.",
+       "situation": "Giới thiệu tổng quan về quy mô và danh tiếng của đất nước Trung Hoa.",
+       "analysis": "Danh từ quốc gia làm trung tâm ngữ tiếp nhận các tính từ bổ nghĩa.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Danh từ quốc gia làm trung tâm ngữ tiếp nhận các tính từ bổ nghĩa. Trung Quốc là một quốc gia rất lớn và rất nổi tiếng.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Hỏi bạn muốn đi quốc gia nào.",
+       "explanation": "Gắn 国家 sau mọi tên nước. Trong cách giới thiệu cơ bản nói 中国是一个国家 hoặc 我来自越南, không nói 我来自越南国家.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "你想去哪个国家？",
+       "tip": "哪个 đứng trước 国家 để hỏi chọn quốc gia nào.",
+       "boundary": "国家 là đất nước; 家 có thể là nhà/gia đình. Không dùng 国家 để hỏi địa chỉ nhà.",
+       "comparisons": [
+        {
+         "zh": "国家",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "家",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Gắn ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "国家",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " sau mọi tên nước. Trong cách giới thiệu cơ bản nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "中国是一个国家",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hoặc ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "我来自越南",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ", không nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "我来自越南国家",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "国家",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là đất nước; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "家",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " có thể là nhà/gia đình. Không dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "国家",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " để hỏi địa chỉ nhà.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh hai rồi thanh một. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh hai rồi thanh một.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "国家",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "国 có khung bao quanh; 家 có mái 宀. Nhận cả cụm tránh lẫn với 家.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "国",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có khung bao quanh; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "家",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có mái ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "宀",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Nhận cả cụm tránh lẫn với ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "家",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Danh từ chỉ quốc gia/đất nước. Thường dùng 一个国家, 哪个国家; không nhầm với nhà riêng.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Danh từ chỉ quốc gia/đất nước. Thường dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "一个国家",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "哪个国家",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "; không nhầm với nhà riêng.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "一个国家",
+       "vi": "một quốc gia"
+      },
+      {
+       "zh": "哪个国家",
+       "vi": "quốc gia nào"
+      },
+      {
+       "zh": "很多国家",
+       "vi": "nhiều quốc gia"
+      }
+     ],
+     "compare": {
+      "a": "国家",
+      "b": "家",
+      "why": "国家 là đất nước; 家 có thể là nhà/gia đình. Không dùng 国家 để hỏi địa chỉ nhà."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Danh từ chỉ quốc gia/đất nước. Thường dùng 一个国家, 哪个国家; không nhầm với nhà riêng."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "国家 / 家: 国家 là đất nước; 家 có thể là nhà/gia đình. Không dùng 国家 để hỏi địa chỉ nhà."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Gắn 国家 sau mọi tên nước. Trong cách giới thiệu cơ bản nói 中国是一个国家 hoặc 我来自越南, không nói 我来自越南国家."
+      }
+     ],
+     "context": {
+      "zh": "你想去哪个国家？",
+      "vi": "",
+      "note": "哪个 đứng trước 国家 để hỏi chọn quốc gia nào."
+     },
+     "activeTask": {
+      "prompt": "Hỏi bạn muốn đi quốc gia nào.",
+      "answer": "你想去哪个国家？",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Hỏi bạn muốn đi quốc gia nào.",
+      "answer": "你想去哪个国家？"
+     },
+     "deep": {
+      "etymology": "国 = nước, 家 = nhà: nước là “ngôi nhà lớn”.",
+      "psychology": "Dùng khi nói đất nước hoặc nhà nước.",
+      "position": "一个国家, 哪个国家.",
+      "trap": "Không dùng cho “quê hương” cá nhân: dùng 家乡.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "国",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= nước,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "家",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= nhà: nước là “ngôi nhà lớn”.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi nói đất nước hoặc nhà nước.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "一个国家",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ",",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "哪个国家",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Không dùng cho “quê hương” cá nhân: dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "家乡",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g3-w16",
+     "index": 16,
+     "hanzi": "书店",
+     "pinyin": "shūdiàn",
+     "coreMeaning": "Hiệu sách, nhà sách, cửa hàng bán sách",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "书店",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Hiệu sách, nhà sách, cửa hàng bán sách",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi bạn muốn đi mua sách giáo trình, tìm truyện tranh, mua từ điển hoặc hẹn bạn bè tại cửa hàng sách.",
+      "detail": "Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi 书店 chỉ có thể mua và không được đọc.",
+      "keyPoint": "Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi 书店 chỉ có thể mua và không được đọc.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi bạn muốn đi mua sách giáo trình, tìm truyện tranh, mua từ điển hoặc hẹn bạn bè tại cửa hàng sách. Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "书店",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " chỉ có thể mua và không được đọc.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "一家书店 · 去书店 · 在书店买书",
+       "note": "Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi 书店 chỉ có thể mua và không được đọc.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "书店",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " chỉ có thể mua và không được đọc.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "大学旁边有一家书店。",
+       "note": "家 là lượng từ thường dùng cho cửa hàng.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "大学旁边有一家书店。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "家",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là lượng từ thường dùng cho cửa hàng.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "大学对面有一家大书店。",
+       "vi": "Đối diện trường đại học có một hiệu sách lớn.",
+       "situation": "Chỉ đường cho tân sinh viên tìm chỗ mua tài liệu học tập.",
+       "analysis": "Sử dụng vị trí đối diện làm mốc, kết hợp lượng từ của cửa tiệm.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sử dụng vị trí đối diện làm mốc, kết hợp lượng từ của cửa tiệm. Đối diện trường đại học có một hiệu sách lớn.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "我打算后天去书店买一本汉语词典。",
+       "vi": "Tôi dự định ngày mốt sẽ đến hiệu sách mua một cuốn từ điển tiếng Trung.",
+       "situation": "Chia sẻ kế hoạch mua sắm tài liệu học ngoại ngữ.",
+       "analysis": "Kết hợp trạng ngữ thời gian ngày mốt và cấu trúc liên động mua từ điển.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Kết hợp trạng ngữ thời gian ngày mốt và cấu trúc liên động mua từ điển. Tôi dự định ngày mốt sẽ đến hiệu sách mua một cuốn từ điển tiếng Trung.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "这家书店里有很多外国书。",
+       "vi": "Trong hiệu sách này có rất nhiều sách nước ngoài.",
+       "situation": "Giới thiệu điểm đặc biệt về nguồn sách phong phú của cửa hàng.",
+       "analysis": "Danh từ hiệu sách kết hợp phương vị từ bên trong làm chủ ngữ nơi chốn.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Danh từ hiệu sách kết hợp phương vị từ bên trong làm chủ ngữ nơi chốn. Trong hiệu sách này có rất nhiều sách nước ngoài.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nói cạnh trường đại học có hiệu sách.",
+       "explanation": "Chấm 在书店看书 là sai chỉ vì không phải mua sách. Câu này đúng nếu tình huống cho phép đọc tại chỗ.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "大学旁边有一家书店。",
+       "tip": "家 là lượng từ thường dùng cho cửa hàng.",
+       "boundary": "Hiệu sách chủ yếu bán sách; thư viện phục vụ đọc/mượn theo quy định. Hoạt động đọc có thể xảy ra ở cả hai.",
+       "comparisons": [
+        {
+         "zh": "书店",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "图书馆",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Chấm ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "在书店看书",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là sai chỉ vì không phải mua sách. Câu này đúng nếu tình huống cho phép đọc tại chỗ. Hiệu sách chủ yếu bán sách; thư viện phục vụ đọc/mượn theo quy định. Hoạt động đọc có thể xảy ra ở cả hai.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh một rồi thanh bốn. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh một rồi thanh bốn.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "书店",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "书 là sách; 店 là cửa hàng. Nhớ cụm có nghĩa qua nơi mua sách.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "书",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là sách; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "店",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là cửa hàng. Nhớ cụm có nghĩa qua nơi mua sách.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi 书店 chỉ có thể mua và không được đọc.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "书店",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " chỉ có thể mua và không được đọc.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "一家书店",
+       "vi": "một hiệu sách"
+      },
+      {
+       "zh": "去书店",
+       "vi": "đi hiệu sách"
+      },
+      {
+       "zh": "在书店买书",
+       "vi": "mua sách ở hiệu sách"
+      }
+     ],
+     "compare": {
+      "a": "书店",
+      "b": "图书馆",
+      "why": "Hiệu sách chủ yếu bán sách; thư viện phục vụ đọc/mượn theo quy định. Hoạt động đọc có thể xảy ra ở cả hai."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi 书店 chỉ có thể mua và không được đọc."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "书店 / 图书馆: Hiệu sách chủ yếu bán sách; thư viện phục vụ đọc/mượn theo quy định. Hoạt động đọc có thể xảy ra ở cả hai."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Chấm 在书店看书 là sai chỉ vì không phải mua sách. Câu này đúng nếu tình huống cho phép đọc tại chỗ."
+      }
+     ],
+     "context": {
+      "zh": "大学旁边有一家书店。",
+      "vi": "cạnh trường đại học có hiệu sách.",
+      "note": "家 là lượng từ thường dùng cho cửa hàng."
+     },
+     "activeTask": {
+      "prompt": "Nói cạnh trường đại học có hiệu sách.",
+      "answer": "大学旁边有一家书店。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nói cạnh trường đại học có hiệu sách.",
+      "answer": "大学旁边有一家书店。"
+     },
+     "deep": {
+      "etymology": "书 = sách, 店 = tiệm: nơi bán sách.",
+      "psychology": "Dùng khi chỉ đường hoặc hẹn gặp.",
+      "position": "在 + 书店 + 买书/看书. Mốc: 学校右边的书店.",
+      "trap": "Thư viện là 图书馆, không phải 书店.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "书",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= sách,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "店",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= tiệm: nơi bán sách.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi chỉ đường hoặc hẹn gặp.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "在",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "书店",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "买书",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "/",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "看书",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Mốc:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "学校右边的书店",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Thư viện là",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "图书馆",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", không phải",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "书店",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g3-w17",
+     "index": 17,
+     "hanzi": "好看",
+     "pinyin": "hǎokàn",
+     "coreMeaning": "Đẹp, ưa nhìn (ngoại hình); hay, cuốn hút (phim ảnh, sách truyện)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "好看",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Đẹp, ưa nhìn (ngoại hình); hay, cuốn hút (phim ảnh, sách truyện)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng để khen ngợi diện mạo của người, màu sắc quần áo, phong cảnh (đẹp mắt) HOẶC khen ngợi nội dung phim, kịch, tiểu thuyết (hấp dẫn, cuốn hút).",
+      "detail": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+      "keyPoint": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng để khen ngợi diện mạo của người, màu sắc quần áo, phong cảnh (đẹp mắt) HOẶC khen ngợi nội dung phim, kịch, tiểu thuyết (hấp dẫn, cuốn hút). Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "衣服好看 · 电影好看 · 这本书好看",
+       "note": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "这部电影很好看。",
+       "note": "Ở đây khen phim hay, đáng xem; không chỉ nói hình ảnh đẹp.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "这部电影很好看。",
+         "pause": 800
+        },
+        {
+         "lang": "vi-VN",
+         "text": "Ở đây khen phim hay, đáng xem; không chỉ nói hình ảnh đẹp.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "昨晚我看了一部非常有名的电影，真的很好看！",
+       "vi": "Tối qua tôi đã xem một bộ phim rất nổi tiếng, thực sự rất hay!",
+       "situation": "Hào hứng review bộ phim điện ảnh kinh điển vừa xem xong cho bạn bè.",
+       "analysis": "Dùng tính từ để nhận xét nội dung cuốn hút của tác phẩm điện ảnh.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dùng tính từ để nhận xét nội dung cuốn hút của tác phẩm điện ảnh. Tối qua tôi đã xem một bộ phim rất nổi tiếng, thực sự rất hay!",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "你穿这件红色的衣服真好看。",
+       "vi": "Bạn mặc chiếc áo màu đỏ này trông thật đẹp.",
+       "situation": "Khen ngợi gu ăn mặc và diện mạo ưa nhìn của bạn gái khi đi dự tiệc.",
+       "analysis": "Tính từ miêu tả vẻ đẹp ngoại hình kết hợp phó từ xác thực chân thành.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Tính từ miêu tả vẻ đẹp ngoại hình kết hợp phó từ xác thực chân thành. Bạn mặc chiếc áo màu đỏ này trông thật đẹp.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "你在书店买的那本书好看吗？",
+       "vi": "Cuốn sách bạn mua ở hiệu sách có hay không?",
+       "situation": "Hỏi thăm cảm nhận của bạn sau khi đọc cuốn sách mới mua.",
+       "analysis": "Câu nghi vấn hỏi về chất lượng nội dung của cuốn sách.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Câu nghi vấn hỏi về chất lượng nội dung của cuốn sách. Cuốn sách bạn mua ở hiệu sách có hay không?",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Khen bộ phim này hay.",
+       "explanation": "Cho rằng 这本书很漂亮 là sai. Nó có thể khen hình thức cuốn sách, khác với khen nội dung hay.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "这部电影很好看。",
+       "tip": "Ở đây khen phim hay, đáng xem; không chỉ nói hình ảnh đẹp.",
+       "boundary": "好看 liên quan nhìn/xem/đọc; 好吃 khen món ăn ngon. Không chọn từ chỉ vì đều có 好.",
+       "comparisons": [
+        {
+         "zh": "好看",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "好吃",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cho rằng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "这本书很漂亮",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là sai. Nó có thể khen hình thức cuốn sách, khác với khen nội dung hay. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "好看",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " liên quan nhìn/xem/đọc; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "好吃",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " khen món ăn ngon. Không chọn từ chỉ vì đều có ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "好",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ".",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "好 thanh ba, 看 thanh bốn trong nghĩa đẹp/hay này. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "từ đang học thanh ba, từ đang học thanh bốn trong nghĩa đẹp/hay này.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "好看",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "好 + 看; trong tính từ này 好 đọc thanh ba, không phải thanh bốn như một số từ chỉ sở thích.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "好",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " + ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "看",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; trong tính từ này ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "好",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " đọc thanh ba, không phải thanh bốn như một số từ chỉ sở thích.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "衣服好看",
+       "vi": "quần áo đẹp"
+      },
+      {
+       "zh": "电影好看",
+       "vi": "phim hay"
+      },
+      {
+       "zh": "这本书好看",
+       "vi": "quyển sách hay/đẹp tùy ngữ cảnh"
+      }
+     ],
+     "compare": {
+      "a": "好看",
+      "b": "好吃",
+      "why": "好看 liên quan nhìn/xem/đọc; 好吃 khen món ăn ngon. Không chọn từ chỉ vì đều có 好."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "好看 / 好吃: 好看 liên quan nhìn/xem/đọc; 好吃 khen món ăn ngon. Không chọn từ chỉ vì đều có 好."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Cho rằng 这本书很漂亮 là sai. Nó có thể khen hình thức cuốn sách, khác với khen nội dung hay."
+      }
+     ],
+     "context": {
+      "zh": "这部电影很好看。",
+      "vi": "",
+      "note": "Ở đây khen phim hay, đáng xem; không chỉ nói hình ảnh đẹp."
+     },
+     "activeTask": {
+      "prompt": "Khen bộ phim này hay.",
+      "answer": "这部电影很好看。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Khen bộ phim này hay.",
+      "answer": "这部电影很好看。"
+     },
+     "deep": {
+      "etymology": "好 + 看: dễ nhìn.",
+      "psychology": "Dùng để khen người, phim, sách.",
+      "position": "很好看; 好看的 + danh từ.",
+      "trap": "Mùi ngon là 好吃, không dùng 好看 cho đồ ăn.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "好",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "看",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ": dễ nhìn.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng để khen người, phim, sách.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "很好看",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ";",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "好看的",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ danh từ.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mùi ngon là",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "好吃",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", không dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "好看",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "cho đồ ăn.",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g3-w18",
+     "index": 18,
+     "hanzi": "爸",
+     "pinyin": "bà",
+     "coreMeaning": "Bố, ba, cha (xưng hô thân mật trong gia đình)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "爸",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Bố, ba, cha (xưng hô thân mật trong gia đình)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng để gọi trực tiếp người cha, hoặc kết hợp thành danh từ xưng hô khi giới thiệu người thân với người khác.",
+      "detail": "Cách gọi bố thân mật; có thể gọi 爸 hoặc 爸爸. 我爸 và 我爸爸 đều thông dụng.",
+      "keyPoint": "Cách gọi bố thân mật; có thể gọi 爸 hoặc 爸爸. 我爸 và 我爸爸 đều thông dụng.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng để gọi trực tiếp người cha, hoặc kết hợp thành danh từ xưng hô khi giới thiệu người thân với người khác. Cách gọi bố thân mật; có thể gọi ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "爸",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " hoặc ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "爸爸",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "我爸",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " và ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "我爸爸",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " đều thông dụng.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "我爸 · 爸妈 · 爸爸",
+       "note": "Cách gọi bố thân mật; có thể gọi 爸 hoặc 爸爸. 我爸 và 我爸爸 đều thông dụng.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cách gọi bố thân mật; có thể gọi ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "爸",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hoặc ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "爸爸",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "我爸",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " và ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "我爸爸",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " đều thông dụng.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我爸今天不开车。",
+       "note": "我爸 là chủ ngữ; 不 phủ định hành động trong câu này.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我爸今天不开车。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "我爸",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là chủ ngữ; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "不",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " phủ định hành động trong câu này.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "我爸每天早上都喜欢喝茶、看报纸。",
+       "vi": "Bố tôi mỗi sáng đều thích uống trà, đọc báo.",
+       "situation": "Kể về sở thích sinh hoạt tao nhã của người bố trong gia đình.",
+       "analysis": "Dùng cụm xưng hô thân mật làm chủ ngữ chính của câu.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dùng cụm xưng hô thân mật làm chủ ngữ chính của câu. Bố tôi mỗi sáng đều thích uống trà, đọc báo.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "爸，后天我们去那家有名的书店吧！",
+       "vi": "Bố ơi, ngày mốt bố con mình đến hiệu sách nổi tiếng kia đi!",
+       "situation": "Rủ bố đưa mình đi mua sách vào ngày nghỉ sắp tới.",
+       "analysis": "Dùng làm từ xưng hô đầu câu kết hợp trạng ngữ thời gian ngày mốt.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dùng làm từ xưng hô đầu câu kết hợp trạng ngữ thời gian ngày mốt. Bố ơi, ngày mốt bố con mình đến hiệu sách nổi tiếng kia đi!",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "他爸爸是一名大学老师。",
+       "vi": "Bố của anh ấy là một giảng viên đại học.",
+       "situation": "Giới thiệu nghề nghiệp đáng kính của phụ huynh bạn học.",
+       "analysis": "Dạng hai âm tiết chuẩn mực làm chủ ngữ kết hợp danh từ nghề nghiệp.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dạng hai âm tiết chuẩn mực làm chủ ngữ kết hợp danh từ nghề nghiệp. Bố của anh ấy là một giảng viên đại học.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nói hôm nay bố bạn không lái xe.",
+       "explanation": "Cho rằng 我爸 thiếu 的 nên sai. Đây là cách nói rất tự nhiên trong gia đình và khẩu ngữ.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我爸今天不开车。",
+       "tip": "我爸 là chủ ngữ; 不 phủ định hành động trong câu này.",
+       "boundary": "Cả hai đúng; với người thân, thường có thể bỏ 的. Không có quy tắc phải bỏ trong mọi trường hợp.",
+       "comparisons": [
+        {
+         "zh": "我爸",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "我的爸爸",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cho rằng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "我爸",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " thiếu ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "的",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " nên sai. Đây là cách nói rất tự nhiên trong gia đình và khẩu ngữ. Cả hai đúng; với người thân, thường có thể bỏ ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "的",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Không có quy tắc phải bỏ trong mọi trường hợp.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "爸 thanh bốn. Trong 爸爸, âm sau thường đọc nhẹ. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "từ đang học thanh bốn. Trong từ đang học, âm sau thường đọc nhẹ.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "爸",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "爸 có 父 ở trên và 巴 phía dưới.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "爸",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "父",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " ở trên và ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "巴",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " phía dưới.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Cách gọi bố thân mật; có thể gọi 爸 hoặc 爸爸. 我爸 và 我爸爸 đều thông dụng.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Cách gọi bố thân mật; có thể gọi ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "爸",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " hoặc ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "爸爸",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ". ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "我爸",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " và ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "我爸爸",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " đều thông dụng.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "我爸",
+       "vi": "bố tôi"
+      },
+      {
+       "zh": "爸妈",
+       "vi": "bố mẹ"
+      },
+      {
+       "zh": "爸爸",
+       "vi": "bố"
+      }
+     ],
+     "compare": {
+      "a": "我爸",
+      "b": "我的爸爸",
+      "why": "Cả hai đúng; với người thân, thường có thể bỏ 的. Không có quy tắc phải bỏ trong mọi trường hợp."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Cách gọi bố thân mật; có thể gọi 爸 hoặc 爸爸. 我爸 và 我爸爸 đều thông dụng."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "我爸 / 我的爸爸: Cả hai đúng; với người thân, thường có thể bỏ 的. Không có quy tắc phải bỏ trong mọi trường hợp."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Cho rằng 我爸 thiếu 的 nên sai. Đây là cách nói rất tự nhiên trong gia đình và khẩu ngữ."
+      }
+     ],
+     "context": {
+      "zh": "我爸今天不开车。",
+      "vi": "hôm nay bố bạn không lái xe.",
+      "note": "我爸 là chủ ngữ; 不 phủ định hành động trong câu này."
+     },
+     "activeTask": {
+      "prompt": "Nói hôm nay bố bạn không lái xe.",
+      "answer": "我爸今天不开车。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nói hôm nay bố bạn không lái xe.",
+      "answer": "我爸今天不开车。"
+     },
+     "deep": {
+      "etymology": "Hình thức nói tắt của 爸爸, xưng hô thân mật.",
+      "psychology": "Dùng khi gọi trực tiếp hoặc kể về bố.",
+      "position": "我爸 hoặc 爸, đứng ở vị trí chủ ngữ hoặc tân ngữ.",
+      "trap": "Không dùng 爸 riêng khi văn viết trang trọng: viết 父亲.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Hình thức nói tắt của",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "爸爸",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", xưng hô thân mật.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi gọi trực tiếp hoặc kể về bố.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "我爸",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "hoặc",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "爸",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", đứng ở vị trí chủ ngữ hoặc tân ngữ.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Không dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "爸",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "riêng khi văn viết trang trọng: viết",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "父亲",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "hsk1-bai-16-g3-w13-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 有时候 có nghĩa chính nào?",
+     "options": [
+      "Có lúc, có khi, thỉnh thoảng (tần suất không cố định)",
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)"
+     ],
+     "correct": 0,
+     "reasonRight": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+     "reasonWrong": "Đối chiếu nghĩa của 有时候: Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "有时候",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w13-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Cuối tuần tôi thỉnh thoảng đi hiệu sách mua sách. Điền từ: 周末我____去书店买书。",
+     "options": [
+      "有时候",
+      "右",
+      "动作",
+      "大学"
+     ],
+     "correct": 0,
+     "reasonRight": "周末我有时候去书店买书。 Từ chỉ tần suất đứng giữa chủ ngữ tôi và cụm động từ đi hiệu sách.",
+     "reasonWrong": "Câu cần diễn đạt: 周末我有时候去书店买书。 Cuối tuần tôi thỉnh thoảng đi hiệu sách mua sách.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "周末我有时候去书店买书。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Cuối tuần tôi thỉnh thoảng đi hiệu sách mua sách.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w14-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 后天 có nghĩa chính nào?",
+     "options": [
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)",
+      "Ngày mốt, ngày kia (ngày sau ngày mai)"
+     ],
+     "correct": 3,
+     "reasonRight": "Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”.",
+     "reasonWrong": "Đối chiếu nghĩa của 后天: Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "后天",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Ngày kia/ngày mốt: hai ngày sau hôm nay theo mốc đang nói. Không phải mọi “ngày hôm sau”.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w14-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Chiều ngày kia chúng tôi phải đến trường đại học để thi. Điền từ: ____下午我们要去大学考试。",
+     "options": [
+      "右",
+      "动作",
+      "大学",
+      "后天"
+     ],
+     "correct": 3,
+     "reasonRight": "后天下午我们要去大学考试。 Mốc ngày kết hợp buổi chiều làm trạng ngữ thời gian đứng ở đầu câu.",
+     "reasonWrong": "Câu cần diễn đạt: 后天下午我们要去大学考试。 Chiều ngày kia chúng tôi phải đến trường đại học để thi.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "后天下午我们要去大学考试。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Chiều ngày kia chúng tôi phải đến trường đại học để thi.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w15-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 国家 có nghĩa chính nào?",
+     "options": [
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)",
+      "Quốc gia, đất nước, nhà nước",
+      "Bên phải, phía bên phải"
+     ],
+     "correct": 2,
+     "reasonRight": "Danh từ chỉ quốc gia/đất nước. Thường dùng 一个国家, 哪个国家; không nhầm với nhà riêng.",
+     "reasonWrong": "Đối chiếu nghĩa của 国家: Danh từ chỉ quốc gia/đất nước. Thường dùng 一个国家, 哪个国家; không nhầm với nhà riêng.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "国家",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Danh từ chỉ quốc gia/đất nước. Thường dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "一个国家",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "哪个国家",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "; không nhầm với nhà riêng.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w15-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Bạn đã từng đi qua những quốc gia nào rồi? Điền từ: 你去过哪些____？",
+     "options": [
+      "动作",
+      "大学",
+      "国家",
+      "右"
+     ],
+     "correct": 2,
+     "reasonRight": "你去过哪些国家？ Đại từ nghi vấn số nhiều kết hợp trực tiếp với danh từ quốc gia.",
+     "reasonWrong": "Câu cần diễn đạt: 你去过哪些国家？ Bạn đã từng đi qua những quốc gia nào rồi?",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "你去过哪些国家？",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Bạn đã từng đi qua những quốc gia nào rồi?",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w16-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 书店 có nghĩa chính nào?",
+     "options": [
+      "Đại học, trường đại học (bậc giáo dục đại học)",
+      "Hiệu sách, nhà sách, cửa hàng bán sách",
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể"
+     ],
+     "correct": 1,
+     "reasonRight": "Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi 书店 chỉ có thể mua và không được đọc.",
+     "reasonWrong": "Đối chiếu nghĩa của 书店: Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi 书店 chỉ có thể mua và không được đọc.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "书店",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Hiệu sách, nơi bán sách. Có cửa hàng cho đọc tại chỗ; đừng suy ra mọi ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "书店",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " chỉ có thể mua và không được đọc.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w16-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Đối diện trường đại học có một hiệu sách lớn. Điền từ: 大学对面有一家大____。",
+     "options": [
+      "大学",
+      "书店",
+      "右",
+      "动作"
+     ],
+     "correct": 1,
+     "reasonRight": "大学对面有一家大书店。 Sử dụng vị trí đối diện làm mốc, kết hợp lượng từ của cửa tiệm.",
+     "reasonWrong": "Câu cần diễn đạt: 大学对面有一家大书店。 Đối diện trường đại học có một hiệu sách lớn.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "大学对面有一家大书店。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Đối diện trường đại học có một hiệu sách lớn.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w17-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 好看 có nghĩa chính nào?",
+     "options": [
+      "Đẹp, ưa nhìn (ngoại hình); hay, cuốn hút (phim ảnh, sách truyện)",
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)"
+     ],
+     "correct": 0,
+     "reasonRight": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+     "reasonWrong": "Đối chiếu nghĩa của 好看: Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "好看",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w17-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Tối qua tôi đã xem một bộ phim rất nổi tiếng, thực sự rất hay! Điền từ: 昨晚我看了一部非常有名的电影，真的很____！",
+     "options": [
+      "好看",
+      "右",
+      "动作",
+      "大学"
+     ],
+     "correct": 0,
+     "reasonRight": "昨晚我看了一部非常有名的电影，真的很好看！ Dùng tính từ để nhận xét nội dung cuốn hút của tác phẩm điện ảnh.",
+     "reasonWrong": "Câu cần diễn đạt: 昨晚我看了一部非常有名的电影，真的很好看！ Tối qua tôi đã xem một bộ phim rất nổi tiếng, thực sự rất hay!",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "昨晚我看了一部非常有名的电影，真的很好看！",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Tối qua tôi đã xem một bộ phim rất nổi tiếng, thực sự rất hay!",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w18-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 爸 có nghĩa chính nào?",
+     "options": [
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)",
+      "Bố, ba, cha (xưng hô thân mật trong gia đình)"
+     ],
+     "correct": 3,
+     "reasonRight": "Cách gọi bố thân mật; có thể gọi 爸 hoặc 爸爸. 我爸 và 我爸爸 đều thông dụng.",
+     "reasonWrong": "Đối chiếu nghĩa của 爸: Cách gọi bố thân mật; có thể gọi 爸 hoặc 爸爸. 我爸 và 我爸爸 đều thông dụng.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "爸",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Cách gọi bố thân mật; có thể gọi ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "爸",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " hoặc ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "爸爸",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ". ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "我爸",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " và ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "我爸爸",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " đều thông dụng.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-w18-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Bố tôi mỗi sáng đều thích uống trà, đọc báo. Điền từ: 我____每天早上都喜欢喝茶、看报纸。",
+     "options": [
+      "右",
+      "动作",
+      "大学",
+      "爸"
+     ],
+     "correct": 3,
+     "reasonRight": "我爸每天早上都喜欢喝茶、看报纸。 Dùng cụm xưng hô thân mật làm chủ ngữ chính của câu.",
+     "reasonWrong": "Câu cần diễn đạt: 我爸每天早上都喜欢喝茶、看报纸。 Bố tôi mỗi sáng đều thích uống trà, đọc báo.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我爸每天早上都喜欢喝茶、看报纸。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Bố tôi mỗi sáng đều thích uống trà, đọc báo.",
+       "pause": 500
+      }
+     ]
+    }
+   ],
+   "selfUse": [
+    {
+     "id": "hsk1-bai-16-g3-su1",
+     "situation": "Tình huống: Bạn muốn rủ bạn học: 'Ngày mốt bạn có rảnh không? Chúng mình cùng đến hiệu sách kia mua một cuốn sách hay nhé.'",
+     "hint1": "Đặt mốc thời gian 'ngày mốt' lên đầu câu hỏi rảnh không, sau đó dùng động từ rủ rê 'cùng đi hiệu sách mua sách hay'.",
+     "hint2": "Khung câu gợi ý: 后天你有空吗？我们一起去那个书店 + 买一本好看的书吧。",
+     "modelAnswer": "后天你有时间吗？我们一起去那家书店买一本好看的书吧。",
+     "modelExplain": "Kết hợp mốc thời gian ngày kia, lượng từ của hiệu sách, và tính từ khen ngợi sách hay làm định ngữ.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nhiệm vụ 1: Hãy tự nói câu: Ngày mốt bạn có thời gian không? Chúng mình cùng đến hiệu sách kia mua một cuốn sách hay nhé.",
+       "pause": 300
+      }
+     ],
+     "hint1Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 1: Nêu mốc thời gian ngày mốt ở đầu, tiếp theo là lời mời cùng đi hiệu sách mua sách hay.",
+       "pause": 300
+      }
+     ],
+     "hint2Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 2: Khung câu gồm ngày mốt bạn có thời gian không, chúng ta cùng đi tiệm sách đó mua một cuốn sách hay nhé.",
+       "pause": 300
+      }
+     ],
+     "modelAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "后天你有时间吗？我们一起去那家书店买一本好看的书吧。",
+       "pause": 800
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Câu mẫu hoàn chỉnh: Ngày kia bạn có rảnh không? Tụi mình cùng tới hiệu sách đằng kia mua một quyển sách hay đi.",
+       "pause": 300
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-su2",
+     "situation": "Tình huống: Bạn kể về thói quen gia đình với đồng nghiệp: 'Bố tôi công việc rất bận, nhưng cuối tuần thỉnh thoảng vẫn lái xe đưa chúng tôi đi chơi.'",
+     "hint1": "Vế đầu nêu công việc của bố bận. Vế sau dùng từ tần suất 'thỉnh thoảng' đứng trước hành động 'lái xe đưa chúng tôi đi chơi'.",
+     "hint2": "Khung câu gợi ý: 我爸工作很忙，但是周末 + 有时候 + 开车带我们去玩儿。",
+     "modelAnswer": "我爸工作很忙，但是周末有时候会开车带我们去玩儿。",
+     "modelExplain": "Dùng đại từ thân mật bố tôi, từ chỉ tần suất có lúc đứng trước phương thức lái xe và mục đích đi chơi.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nhiệm vụ 2: Hãy tự diễn đạt câu: Bố tôi công việc rất bận, nhưng cuối tuần thỉnh thoảng vẫn lái xe đưa chúng tôi đi chơi.",
+       "pause": 300
+      }
+     ],
+     "hint1Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 1: Sử dụng cụm từ thân mật bố tôi, vế sau đặt từ thỉnh thoảng trước cụm từ lái xe đưa đi chơi.",
+       "pause": 300
+      }
+     ],
+     "hint2Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 2: Khung câu gồm bố tôi công việc rất bận, nhưng cuối tuần có lúc lái xe đưa chúng tôi đi chơi.",
+       "pause": 300
+      }
+     ],
+     "modelAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我爸工作很忙，但是周末有时候会开车带我们去玩儿。",
+       "pause": 800
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Câu mẫu hoàn chỉnh: Bố tôi công việc bận rộn lắm, cơ mà cuối tuần thỉnh thoảng vẫn lái xe đưa cả nhà đi chơi.",
+       "pause": 300
+      }
+     ]
+    }
+   ],
+   "reviews": [
+    {
+     "id": "hsk1-bai-16-g3-v2-review0",
+     "day": 1,
+     "type": "Nhớ nghĩa & Phân biệt vị trí",
+     "q": "Nói bạn thỉnh thoảng đến hiệu sách đọc sách.",
+     "answer": "我有时候去书店看书。",
+     "explain": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nói bạn thỉnh thoảng đến hiệu sách đọc sách.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "我有时候去书店看书。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Nói có lúc, thỉnh thoảng; thường ở trước vị ngữ, sau chủ ngữ hoặc ở đầu câu.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-v2-review1",
+     "day": 3,
+     "type": "Phân biệt bẫy thẩm mỹ",
+     "q": "Hỏi bạn muốn đi quốc gia nào.",
+     "answer": "你想去哪个国家？",
+     "explain": "Danh từ chỉ quốc gia/đất nước. Thường dùng 一个国家, 哪个国家; không nhầm với nhà riêng.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Hỏi bạn muốn đi quốc gia nào.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "你想去哪个国家？",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Danh từ chỉ quốc gia/đất nước. Thường dùng ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "一个国家",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "哪个国家",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "; không nhầm với nhà riêng.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g3-v2-review2",
+     "day": 7,
+     "type": "Vận dụng ngữ cảnh tổng hợp",
+     "q": "Khen bộ phim này hay.",
+     "answer": "这部电影很好看。",
+     "explain": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Khen bộ phim này hay.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "这部电影很好看。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Có thể khen vẻ ngoài đẹp hoặc nội dung phim/sách hấp dẫn, tùy đối tượng và ngữ cảnh.",
+       "pause": 350
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hsk1-bai-16-g4",
+   "title": "Nhóm 4: Thể Thao, Giao Thông, Học Tập & Hành Động Cụ Thể",
+   "desc": "Học cách dùng 打球、路口、读书、姐、车站、打开; tự nhớ trước khi mở đáp án, rồi dùng trong hội thoại.",
+   "words": [
+    {
+     "id": "hsk1-bai-16-g4-w19",
+     "index": 19,
+     "hanzi": "打球",
+     "pinyin": "dǎqiú",
+     "coreMeaning": "Chơi bóng, đánh bóng (các môn thể thao dùng tay/vợt)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "打球",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Chơi bóng, đánh bóng (các môn thể thao dùng tay/vợt)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi nói về hoạt động thể dục thể thao, rủ bạn bè đi chơi các môn bóng như bóng rổ, bóng bàn, cầu lông, bóng chuyền.",
+      "detail": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói 打篮球, 打网球…",
+      "keyPoint": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói 打篮球, 打网球…",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi nói về hoạt động thể dục thể thao, rủ bạn bè đi chơi các môn bóng như bóng rổ, bóng bàn, cầu lông, bóng chuyền. Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打篮球",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打网球",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "…",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "去打球 · 打篮球 · 打网球",
+       "note": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói 打篮球, 打网球…",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "打篮球",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ", ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "打网球",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": "…",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "下课后我们去打球。",
+       "note": "去打球 là đi chơi bóng; ngữ cảnh có thể xác định môn.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "下课后我们去打球。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "去打球",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là đi chơi bóng; ngữ cảnh có thể xác định môn.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "下午下课以后，我们去打球吧。",
+       "vi": "Chiều nay sau khi tan học, chúng mình đi chơi bóng đi.",
+       "situation": "Rủ bạn cùng lớp vận động thể thao giải tỏa căng thẳng sau giờ học.",
+       "analysis": "Kết hợp mốc thời gian sau khi tan học và cụm động từ chơi bóng.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Kết hợp mốc thời gian sau khi tan học và cụm động từ chơi bóng. Chiều nay sau khi tan học, chúng mình đi chơi bóng đi.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "我哥哥打球打得非常好。",
+       "vi": "Anh trai tôi chơi bóng rất giỏi.",
+       "situation": "Tự hào khoe với bạn bè về năng khiếu thể thao của người anh.",
+       "analysis": "Lặp lại động từ đánh kết hợp bổ ngữ trình độ đánh rất cừ.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Lặp lại động từ đánh kết hợp bổ ngữ trình độ đánh rất cừ. Anh trai tôi chơi bóng rất giỏi.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "周末你喜欢在家看书还是去外面打球？",
+       "vi": "Cuối tuần bạn thích ở nhà đọc sách hay là ra ngoài chơi bóng?",
+       "situation": "Hỏi thăm sở thích rèn luyện thể chất hay nghỉ ngơi tĩnh lặng của bạn.",
+       "analysis": "Câu hỏi lựa chọn giữa hai hoạt động đọc sách và chơi bóng ngoài trời.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Câu hỏi lựa chọn giữa hai hoạt động đọc sách và chơi bóng ngoài trời. Cuối tuần bạn thích ở nhà đọc sách hay là ra ngoài chơi bóng?",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Rủ bạn đi chơi bóng rổ.",
+       "explanation": "Nói 打球篮球. Khi nêu môn, thay 球 bằng tên môn: 打篮球.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "下课后我们去打球。",
+       "tip": "去打球 là đi chơi bóng; ngữ cảnh có thể xác định môn.",
+       "boundary": "Bóng đá dùng 踢足球. Không áp dụng 打 cho mọi môn thể thao.",
+       "comparisons": [
+        {
+         "zh": "打球",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "踢足球",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "打球篮球",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Khi nêu môn, thay ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "球",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " bằng tên môn: ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "打篮球",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Bóng đá dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "踢足球",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". Không áp dụng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "打",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " cho mọi môn thể thao.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh ba rồi thanh hai. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh ba rồi thanh hai.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打球",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "打 có 扌, liên hệ hoạt động tay để nhớ; không suy ra mọi động tác tay đều dùng 打.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "打",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "扌",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", liên hệ hoạt động tay để nhớ; không suy ra mọi động tác tay đều dùng ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói 打篮球, 打网球…",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "打篮球",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "打网球",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "…",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "去打球",
+       "vi": "đi chơi bóng"
+      },
+      {
+       "zh": "打篮球",
+       "vi": "chơi bóng rổ"
+      },
+      {
+       "zh": "打网球",
+       "vi": "chơi tennis"
+      }
+     ],
+     "compare": {
+      "a": "打球",
+      "b": "踢足球",
+      "why": "Bóng đá dùng 踢足球. Không áp dụng 打 cho mọi môn thể thao."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói 打篮球, 打网球…"
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "打球 / 踢足球: Bóng đá dùng 踢足球. Không áp dụng 打 cho mọi môn thể thao."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Nói 打球篮球. Khi nêu môn, thay 球 bằng tên môn: 打篮球."
+      }
+     ],
+     "context": {
+      "zh": "下课后我们去打球。",
+      "vi": "",
+      "note": "去打球 là đi chơi bóng; ngữ cảnh có thể xác định môn."
+     },
+     "activeTask": {
+      "prompt": "Rủ bạn đi chơi bóng rổ.",
+      "answer": "我们去打篮球吧。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Rủ bạn đi chơi bóng rổ.",
+      "answer": "我们去打篮球吧。"
+     },
+     "deep": {
+      "etymology": "打 = đánh, 球 = bóng: dùng cho môn dùng tay hoặc vợt.",
+      "psychology": "Dùng khi rủ nhau chơi thể thao.",
+      "position": "打 + 球: 打篮球, 打网球.",
+      "trap": "Bóng đá phải dùng 踢足球, không dùng 打.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= đánh,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "球",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= bóng: dùng cho môn dùng tay hoặc vợt.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi rủ nhau chơi thể thao.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "球",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ":",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打篮球",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ",",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打网球",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Bóng đá phải dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "踢足球",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", không dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g4-w20",
+     "index": 20,
+     "hanzi": "路口",
+     "pinyin": "lùkǒu",
+     "coreMeaning": "Ngã rẽ, nút giao, đầu đường, ngã tư, giao lộ",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "路口",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Ngã rẽ, nút giao, đầu đường, ngã tư, giao lộ",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi chỉ đường, đi taxi, hẹn địa điểm đón xe hoặc quan sát đèn tín hiệu giao thông.",
+      "detail": "Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ.",
+      "keyPoint": "Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi chỉ đường, đi taxi, hẹn địa điểm đón xe hoặc quan sát đèn tín hiệu giao thông. Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "在路口 · 下一个路口 · 到路口",
+       "note": "Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我们在路口见吧。",
+       "note": "在路口 xác định nơi gặp.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我们在路口见吧。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "在路口",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " xác định nơi gặp.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "往前走到路口，请往右拐。",
+       "vi": "Đi thẳng về phía trước đến ngã rẽ, xin vui lòng rẽ sang phải.",
+       "situation": "Bác bảo vệ chỉ đường cho khách tìm đến bến xe buýt.",
+       "analysis": "Kết hợp hành vi đi thẳng tới nút giao và chuyển hướng rẽ phải.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Kết hợp hành vi đi thẳng tới nút giao và chuyển hướng rẽ phải. Đi thẳng về phía trước đến ngã rẽ, xin vui lòng rẽ sang phải.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "我就在学校前面的路口等你。",
+       "vi": "Tôi đứng đợi bạn ngay ở ngã rẽ phía trước trường học.",
+       "situation": "Gọi điện thoại báo điểm đón xe cụ thể cho bạn bè dễ nhận diện.",
+       "analysis": "Trường học làm mốc kết hợp phương vị từ trước mặt bổ nghĩa cho ngã rẽ.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Trường học làm mốc kết hợp phương vị từ trước mặt bổ nghĩa cho ngã rẽ. Tôi đứng đợi bạn ngay ở ngã rẽ phía trước trường học.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "下一个路口有一家很大的书店。",
+       "vi": "Ở ngã rẽ tiếp theo có một hiệu sách rất to.",
+       "situation": "Chỉ vị trí địa điểm mua sắm nằm ngay góc nút giao kế tiếp.",
+       "analysis": "Sử dụng từ chỉ thứ tự tiếp theo bổ nghĩa cho danh từ ngã rẽ.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sử dụng từ chỉ thứ tự tiếp theo bổ nghĩa cho danh từ ngã rẽ. Ở ngã rẽ tiếp theo có một hiệu sách rất to.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Hẹn gặp nhau ở giao lộ.",
+       "explanation": "Dùng 路上 như địa điểm hẹn đủ cụ thể. Nếu cần điểm chính xác hãy nêu 路口 và đường/mốc.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我们在路口见吧。",
+       "tip": "在路口 xác định nơi gặp.",
+       "boundary": "路口 là một điểm; 路上 là trên đường/hành trình.",
+       "comparisons": [
+        {
+         "zh": "路口",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "路上",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dùng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "路上",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " như địa điểm hẹn đủ cụ thể. Nếu cần điểm chính xác hãy nêu ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "路口",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " và đường/mốc. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "路口",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là một điểm; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "路上",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là trên đường/hành trình.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh bốn rồi thanh ba. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh bốn rồi thanh ba.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "路口",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "路 có 足 bên trái, 口 là miệng/cửa; nhớ cụm qua điểm đường mở ra hoặc giao nhau.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "路",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "足",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " bên trái, ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "口",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là miệng/cửa; nhớ cụm qua điểm đường mở ra hoặc giao nhau.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "在路口",
+       "vi": "ở giao lộ"
+      },
+      {
+       "zh": "下一个路口",
+       "vi": "giao lộ tiếp theo"
+      },
+      {
+       "zh": "到路口",
+       "vi": "đến giao lộ"
+      }
+     ],
+     "compare": {
+      "a": "路口",
+      "b": "路上",
+      "why": "路口 là một điểm; 路上 là trên đường/hành trình."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "路口 / 路上: 路口 là một điểm; 路上 là trên đường/hành trình."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Dùng 路上 như địa điểm hẹn đủ cụ thể. Nếu cần điểm chính xác hãy nêu 路口 và đường/mốc."
+      }
+     ],
+     "context": {
+      "zh": "我们在路口见吧。",
+      "vi": "",
+      "note": "在路口 xác định nơi gặp."
+     },
+     "activeTask": {
+      "prompt": "Hẹn gặp nhau ở giao lộ.",
+      "answer": "我们在路口见吧。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Hẹn gặp nhau ở giao lộ.",
+      "answer": "我们在路口见吧。"
+     },
+     "deep": {
+      "etymology": "路 = đường, 口 = cửa: chỗ giao đường.",
+      "psychology": "Dùng khi chỉ điểm rẽ hoặc hẹn.",
+      "position": "在路口 + 往右/往左走.",
+      "trap": "Ngã rẽ lớn: 十字路口. Nhầm với 路上 (trên đường).",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "路",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= đường,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "口",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= cửa: chỗ giao đường.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi chỉ điểm rẽ hoặc hẹn.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "在路口",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "往右",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "/",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "往左走",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Ngã rẽ lớn:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "十字路口",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ". Nhầm với",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "路上",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "(trên đường).",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g4-w21",
+     "index": 21,
+     "hanzi": "读书",
+     "pinyin": "dúshū",
+     "coreMeaning": "Đọc sách (đọc to/ngâm cứu); đi học, theo học (tại trường lớp)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "读书",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Đọc sách (đọc to/ngâm cứu); đi học, theo học (tại trường lớp)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi nói về việc học tập ở trường đại học, thói quen đọc sách bồi dưỡng kiến thức, hoặc rèn luyện đọc thành tiếng.",
+      "detail": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định 读书 luôn phải đọc thành tiếng.",
+      "keyPoint": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định 读书 luôn phải đọc thành tiếng.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi nói về việc học tập ở trường đại học, thói quen đọc sách bồi dưỡng kiến thức, hoặc rèn luyện đọc thành tiếng. Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "读书",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " luôn phải đọc thành tiếng.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "喜欢读书 · 在大学读书 · 读一本书",
+       "note": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định 读书 luôn phải đọc thành tiếng.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "读书",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " luôn phải đọc thành tiếng.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我姐在北京读书。",
+       "note": "Trong ngữ cảnh giới thiệu cuộc sống, thường hiểu chị đang đi học ở Bắc Kinh.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我姐在北京读书。",
+         "pause": 800
+        },
+        {
+         "lang": "vi-VN",
+         "text": "Trong ngữ cảnh giới thiệu cuộc sống, thường hiểu chị đang đi học ở Bắc Kinh.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "我姐姐在一所很有名的大学读书。",
+       "vi": "Chị gái tôi đang theo học tại một trường đại học rất nổi tiếng.",
+       "situation": "Tự hào chia sẻ về con đường học vấn của chị gái với người quen.",
+       "analysis": "Sử dụng nghĩa mở rộng chỉ việc đi học, làm sinh viên của trường đại học.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sử dụng nghĩa mở rộng chỉ việc đi học, làm sinh viên của trường đại học. Chị gái tôi đang theo học tại một trường đại học rất nổi tiếng.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "他在房间里认真读书呢。",
+       "vi": "Cậu ấy đang chăm chú đọc sách trong phòng đấy.",
+       "situation": "Nói khẽ nhắc nhở người khác không làm phiền bạn đang tập trung học.",
+       "analysis": "Sử dụng trạng ngữ chăm chỉ bổ nghĩa cho hành vi đọc sách.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sử dụng trạng ngữ chăm chỉ bổ nghĩa cho hành vi đọc sách. Cậu ấy đang chăm chú đọc sách trong phòng đấy.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "从小到大，他都非常喜欢读书。",
+       "vi": "Từ nhỏ đến lớn, anh ấy đều vô cùng yêu thích việc đọc sách.",
+       "situation": "Khen ngợi tinh thần hiếu học và thói quen đọc rộng hiểu nhiều của một người bạn.",
+       "analysis": "Cụm thời gian từ nhỏ đến lớn đứng đầu câu làm nền tảng cho thói quen.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Cụm thời gian từ nhỏ đến lớn đứng đầu câu làm nền tảng cho thói quen. Từ nhỏ đến lớn, anh ấy đều vô cùng yêu thích việc đọc sách.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nói chị bạn đang đi học ở Bắc Kinh.",
+       "explanation": "Nghe 在大学读书 rồi hiểu chỉ là đang đọc một cuốn sách trong trường. Câu có thể nói đang theo học đại học.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我姐在北京读书。",
+       "tip": "Trong ngữ cảnh giới thiệu cuộc sống, thường hiểu chị đang đi học ở Bắc Kinh.",
+       "boundary": "Cả hai có thể nói đọc sách. 读书 còn thường dùng nói việc theo học; không chia cứng đọc to/đọc thầm.",
+       "comparisons": [
+        {
+         "zh": "读书",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "看书",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Nghe ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "在大学读书",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " rồi hiểu chỉ là đang đọc một cuốn sách trong trường. Câu có thể nói đang theo học đại học. Cả hai có thể nói đọc sách. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "读书",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " còn thường dùng nói việc theo học; không chia cứng đọc to/đọc thầm.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh hai rồi thanh một. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh hai rồi thanh một.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "读书",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "读 có 讠; học cả cụm với 在大学 để nhớ nghĩa theo học.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "读",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "讠",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; học cả cụm với ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "在大学",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " để nhớ nghĩa theo học.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định 读书 luôn phải đọc thành tiếng.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "读书",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " luôn phải đọc thành tiếng.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "喜欢读书",
+       "vi": "thích đọc sách"
+      },
+      {
+       "zh": "在大学读书",
+       "vi": "học đại học"
+      },
+      {
+       "zh": "读一本书",
+       "vi": "đọc một quyển sách"
+      }
+     ],
+     "compare": {
+      "a": "读书",
+      "b": "看书",
+      "why": "Cả hai có thể nói đọc sách. 读书 còn thường dùng nói việc theo học; không chia cứng đọc to/đọc thầm."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định 读书 luôn phải đọc thành tiếng."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "读书 / 看书: Cả hai có thể nói đọc sách. 读书 còn thường dùng nói việc theo học; không chia cứng đọc to/đọc thầm."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Nghe 在大学读书 rồi hiểu chỉ là đang đọc một cuốn sách trong trường. Câu có thể nói đang theo học đại học."
+      }
+     ],
+     "context": {
+      "zh": "我姐在北京读书。",
+      "vi": "chị bạn đang đi học ở Bắc Kinh.",
+      "note": "Trong ngữ cảnh giới thiệu cuộc sống, thường hiểu chị đang đi học ở Bắc Kinh."
+     },
+     "activeTask": {
+      "prompt": "Nói chị bạn đang đi học ở Bắc Kinh.",
+      "answer": "我姐在北京读书。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nói chị bạn đang đi học ở Bắc Kinh.",
+      "answer": "我姐在北京读书。"
+     },
+     "deep": {
+      "etymology": "读 = đọc ra; 读书 trở thành cụm cố định “đi học”.",
+      "psychology": "Dùng khi nói về việc theo học.",
+      "position": "在 + nơi + 读书.",
+      "trap": "Đọc một cuốn sách cụ thể → 看书.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "读",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= đọc ra;",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "读书",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "trở thành cụm cố định “đi học”.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi nói về việc theo học.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "在",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ nơi +",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "读书",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Đọc một cuốn sách cụ thể →",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "看书",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g4-w22",
+     "index": 22,
+     "hanzi": "姐",
+     "pinyin": "jiě",
+     "coreMeaning": "Chị, chị gái (xưng hô thân tộc hoặc giao tiếp thân mật)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "姐",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Chị, chị gái (xưng hô thân tộc hoặc giao tiếp thân mật)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng để gọi trực tiếp người chị gái trong gia đình, hoặc kết hợp với họ để xưng hô lịch thiệp với phụ nữ lớn tuổi hơn mình ở chỗ làm.",
+      "detail": "Chị gái; 姐姐 là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như 王姐, tùy quan hệ.",
+      "keyPoint": "Chị gái; 姐姐 là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như 王姐, tùy quan hệ.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng để gọi trực tiếp người chị gái trong gia đình, hoặc kết hợp với họ để xưng hô lịch thiệp với phụ nữ lớn tuổi hơn mình ở chỗ làm. Chị gái; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "姐姐",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "王姐",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", tùy quan hệ.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "我姐 · 姐姐 · 王姐",
+       "note": "Chị gái; 姐姐 là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như 王姐, tùy quan hệ.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Chị gái; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "姐姐",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "王姐",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ", tùy quan hệ.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我姐比我大三岁。",
+       "note": "比我大三岁 nêu chị lớn hơn tôi ba tuổi.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我姐比我大三岁。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "比我大三岁",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " nêu chị lớn hơn tôi ba tuổi.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "我姐在北京的一所大学读书。",
+       "vi": "Chị tôi đang học ở một trường đại học tại Bắc Kinh.",
+       "analysis": "我姐 là cách nói tự nhiên không cần 的 trong cụm này.",
+       "situation": "Giới thiệu người thân.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Chị tôi đang học ở một trường đại học tại Bắc Kinh.",
+         "pause": 400
+        }
+       ]
+      },
+      {
+       "zh": "姐，今天晚上我们一起去吃中国菜吧！",
+       "vi": "Chị ơi, tối nay hai chị em mình cùng đi ăn món Trung Quốc đi!",
+       "situation": "Rủ chị ruột đi ăn nhà hàng sau giờ làm việc vất vả.",
+       "analysis": "Dùng làm từ hô ngữ đứng ở đầu câu giao tiếp trực tiếp.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dùng làm từ hô ngữ đứng ở đầu câu giao tiếp trực tiếp. Chị ơi, tối nay hai chị em mình cùng đi ăn món Trung Quốc đi!",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "王姐工作很认真，大家都很喜欢她。",
+       "vi": "Chị Vương làm việc rất chăm chỉ, ai cũng đều quý mến chị ấy.",
+       "situation": "Khen ngợi tác phong của một người chị đồng nghiệp chung phòng ban.",
+       "analysis": "Ghép họ của người chị với danh xưng để gọi nơi làm việc.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Ghép họ của người chị với danh xưng để gọi nơi làm việc. Chị Vương làm việc rất chăm chỉ, ai cũng đều quý mến chị ấy.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Gọi chị và rủ cùng đi hiệu sách.",
+       "explanation": "Gọi mọi phụ nữ lạ là 姐 hoặc 美女 và cho rằng luôn lịch sự. Cách gọi phụ thuộc quan hệ; khi chưa biết, mở lời bằng 您好 hoặc 不好意思 thường dễ dùng hơn.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我姐比我大三岁。",
+       "tip": "比我大三岁 nêu chị lớn hơn tôi ba tuổi.",
+       "boundary": "姐 là chị gái lớn tuổi hơn; 妹 là em gái. Hai từ đều có 女.",
+       "comparisons": [
+        {
+         "zh": "姐",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "妹",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Gọi mọi phụ nữ lạ là ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "姐",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hoặc ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "美女",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " và cho rằng luôn lịch sự. Cách gọi phụ thuộc quan hệ; khi chưa biết, mở lời bằng ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "您好",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " hoặc ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "不好意思",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " thường dễ dùng hơn. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "姐",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là chị gái lớn tuổi hơn; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "妹",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là em gái. Hai từ đều có ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "女",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ".",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "姐 thanh ba. Trong 姐姐, âm sau thường đọc nhẹ. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "từ đang học thanh ba. Trong từ đang học, âm sau thường đọc nhẹ.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "姐",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "姐 có 女 và 且; so sánh với 妹 có 女 và 未.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "姐",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "女",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " và ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "且",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; so sánh với ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "妹",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "女",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " và ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "未",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Chị gái; 姐姐 là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như 王姐, tùy quan hệ.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chị gái; ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "姐姐",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "王姐",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", tùy quan hệ.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "我姐",
+       "vi": "chị tôi"
+      },
+      {
+       "zh": "姐姐",
+       "vi": "chị gái"
+      },
+      {
+       "zh": "王姐",
+       "vi": "chị Vương"
+      }
+     ],
+     "compare": {
+      "a": "姐",
+      "b": "妹",
+      "why": "姐 là chị gái lớn tuổi hơn; 妹 là em gái. Hai từ đều có 女."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Chị gái; 姐姐 là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như 王姐, tùy quan hệ."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "姐 / 妹: 姐 là chị gái lớn tuổi hơn; 妹 là em gái. Hai từ đều có 女."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Gọi mọi phụ nữ lạ là 姐 hoặc 美女 và cho rằng luôn lịch sự. Cách gọi phụ thuộc quan hệ; khi chưa biết, mở lời bằng 您好 hoặc 不好意思 thường dễ dùng hơn."
+      }
+     ],
+     "context": {
+      "zh": "我姐比我大三岁。",
+      "vi": "",
+      "note": "比我大三岁 nêu chị lớn hơn tôi ba tuổi."
+     },
+     "activeTask": {
+      "prompt": "Gọi chị và rủ cùng đi hiệu sách.",
+      "answer": "姐，我们一起去书店吧。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Gọi chị và rủ cùng đi hiệu sách.",
+      "answer": "姐，我们一起去书店吧。"
+     },
+     "deep": {
+      "etymology": "Dạng thân mật của 姐姐.",
+      "psychology": "Dùng khi gọi chị hoặc kể về chị.",
+      "position": "我姐 hoặc 姐 + động từ.",
+      "trap": "Không dùng khi nói với người lạ: lúc đó dùng 姐姐 hoặc 小姐.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dạng thân mật của",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "姐姐",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi gọi chị hoặc kể về chị.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "我姐",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "hoặc",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "姐",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ động từ.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Không dùng khi nói với người lạ: lúc đó dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "姐姐",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "hoặc",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "小姐",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g4-w23",
+     "index": 23,
+     "hanzi": "车站",
+     "pinyin": "chēzhàn",
+     "coreMeaning": "Ga xe, bến xe, trạm xe (nơi đón trả khách)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "车站",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Ga xe, bến xe, trạm xe (nơi đón trả khách)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi bạn cần bắt xe buýt, đón tàu hỏa, tiễn người thân đi xa hoặc hẹn nhau ở điểm trung chuyển giao thông công cộng.",
+      "detail": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+      "keyPoint": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi bạn cần bắt xe buýt, đón tàu hỏa, tiễn người thân đi xa hoặc hẹn nhau ở điểm trung chuyển giao thông công cộng. Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "在车站等 · 火车站 · 公共汽车站",
+       "note": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "我在车站等你。",
+       "note": "Nêu điểm chờ; nếu có nhiều ga, cần thêm tên hoặc vị trí.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "我在车站等你。",
+         "pause": 800
+        },
+        {
+         "lang": "vi-VN",
+         "text": "Nêu điểm chờ; nếu có nhiều ga, cần thêm tên hoặc vị trí.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "我后天要去车站接我姐姐。",
+       "vi": "Ngày mốt tôi phải ra bến xe đón chị gái tôi.",
+       "situation": "Giải thích lý do bận việc gia đình vào ngày kia với bạn bè.",
+       "analysis": "Kết hợp trạng ngữ thời gian ngày kia và mục đích đi bến xe đón chị gái.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Kết hợp trạng ngữ thời gian ngày kia và mục đích đi bến xe đón chị gái. Ngày mốt tôi phải ra bến xe đón chị gái tôi.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "我们大学的右边就是一个公共汽车站。",
+       "vi": "Phía bên phải trường đại học chúng tôi chính là một trạm xe buýt.",
+       "situation": "Chỉ vị trí trạm xe công cộng tiện lợi ngay sát cạnh khuôn viên trường.",
+       "analysis": "Kết hợp mốc phương vị bên phải trường học và danh từ trạm xe buýt.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Kết hợp mốc phương vị bên phải trường học và danh từ trạm xe buýt. Phía bên phải trường đại học chúng tôi chính là một trạm xe buýt.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "这家饭馆离火车站非常近。",
+       "vi": "Quán ăn này cách ga tàu hỏa vô cùng gần.",
+       "situation": "Gợi ý địa điểm ăn uống tiện lợi cho khách sắp lên tàu khởi hành.",
+       "analysis": "Dùng cấu trúc khoảng cách kết hợp từ ga tàu hỏa cụ thể.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dùng cấu trúc khoảng cách kết hợp từ ga tàu hỏa cụ thể. Quán ăn này cách ga tàu hỏa vô cùng gần.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nói bạn đang đợi người kia ở ga tàu.",
+       "explanation": "Dịch mọi 车站 thành ga tàu dù đoạn nói xe buýt. Dựa vào phương tiện và ngữ cảnh.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "我在车站等你。",
+       "tip": "Nêu điểm chờ; nếu có nhiều ga, cần thêm tên hoặc vị trí.",
+       "boundary": "车站 rộng hơn; 火车站 nói rõ ga tàu. Khi hẹn nhau cần nêu đúng loại và tên địa điểm.",
+       "comparisons": [
+        {
+         "zh": "车站",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "火车站",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dịch mọi ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "车站",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " thành ga tàu dù đoạn nói xe buýt. Dựa vào phương tiện và ngữ cảnh. ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "车站",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " rộng hơn; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "火车站",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " nói rõ ga tàu. Khi hẹn nhau cần nêu đúng loại và tên địa điểm.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh một rồi thanh bốn. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh một rồi thanh bốn.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "车站",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "车 là xe, 站 là đứng/trạm; nhớ bằng hình dung nơi xe dừng đón khách.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "车",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là xe, ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "站",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là đứng/trạm; nhớ bằng hình dung nơi xe dừng đón khách.",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "在车站等",
+       "vi": "chờ ở bến/ga"
+      },
+      {
+       "zh": "火车站",
+       "vi": "ga tàu"
+      },
+      {
+       "zh": "公共汽车站",
+       "vi": "trạm xe buýt"
+      }
+     ],
+     "compare": {
+      "a": "车站",
+      "b": "火车站",
+      "why": "车站 rộng hơn; 火车站 nói rõ ga tàu. Khi hẹn nhau cần nêu đúng loại và tên địa điểm."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "车站 / 火车站: 车站 rộng hơn; 火车站 nói rõ ga tàu. Khi hẹn nhau cần nêu đúng loại và tên địa điểm."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Dịch mọi 车站 thành ga tàu dù đoạn nói xe buýt. Dựa vào phương tiện và ngữ cảnh."
+      }
+     ],
+     "context": {
+      "zh": "我在车站等你。",
+      "vi": "bạn đang đợi người kia ở ga tàu.",
+      "note": "Nêu điểm chờ; nếu có nhiều ga, cần thêm tên hoặc vị trí."
+     },
+     "activeTask": {
+      "prompt": "Nói bạn đang đợi người kia ở ga tàu.",
+      "answer": "我在火车站等你。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nói bạn đang đợi người kia ở ga tàu.",
+      "answer": "我在火车站等你。"
+     },
+     "deep": {
+      "etymology": "车 = xe, 站 = trạm đứng: nơi xe dừng.",
+      "psychology": "Dùng khi hẹn gặp và chỉ đường.",
+      "position": "在车站 + 见.",
+      "trap": "Sân bay là 机场, không dùng 车站.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "车",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= xe,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "站",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= trạm đứng: nơi xe dừng.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi hẹn gặp và chỉ đường.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "在车站",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "见",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Sân bay là",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "机场",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", không dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "车站",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    },
+    {
+     "id": "hsk1-bai-16-g4-w24",
+     "index": 24,
+     "hanzi": "打开",
+     "pinyin": "dǎkāi",
+     "coreMeaning": "Mở, mở ra, bật (sách vở, cửa nẻo, hộp quà, thiết bị điện)",
+     "introAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "打开",
+       "pause": 500
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Mở, mở ra, bật (sách vở, cửa nẻo, hộp quà, thiết bị điện)",
+       "pause": 500
+      }
+     ],
+     "meaning": {
+      "situation": "Dùng khi giáo viên yêu cầu lật mở sách giáo trình, bảo ai đó mở cửa sổ cho thoáng, mở hộp bưu kiện hoặc bật máy tính, ti vi.",
+      "detail": "Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý.",
+      "keyPoint": "Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Dùng khi giáo viên yêu cầu lật mở sách giáo trình, bảo ai đó mở cửa sổ cho thoáng, mở hộp bưu kiện hoặc bật máy tính, ti vi. Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý.",
+        "pause": 350
+       }
+      ]
+     },
+     "structures": [
+      {
+       "title": "Mẫu thường gặp",
+       "pattern": "打开书 · 打开电脑 · 打开文件",
+       "note": "Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý.",
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "title": "Câu áp dụng",
+       "pattern": "请打开书，看第十页。",
+       "note": "打开书 là mở sách; 看第十页 là xem trang mười.",
+       "audio": [
+        {
+         "lang": "zh-CN",
+         "text": "请打开书，看第十页。",
+         "pause": 800
+        },
+        {
+         "lang": "zh-CN",
+         "text": "打开书",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là mở sách; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "看第十页",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là xem trang mười.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "examples": [
+      {
+       "zh": "同学们，请打开书，看第二十页。",
+       "vi": "Các em học sinh, xin mời mở sách ra, xem trang số hai mươi.",
+       "situation": "Giáo viên bắt đầu bài giảng mới trên lớp học.",
+       "analysis": "Động từ mang bổ ngữ kết quả kết hợp tân ngữ cuốn sách.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Động từ mang bổ ngữ kết quả kết hợp tân ngữ cuốn sách. Các em học sinh, xin mời mở sách ra, xem trang số hai mươi.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "屋里有点儿热，请把窗户打开吧。",
+       "vi": "Trong phòng hơi nóng một chút, xin hãy mở cửa sổ ra nhé.",
+       "situation": "Nhờ người ngồi cạnh mở cửa đón gió mát vào phòng.",
+       "analysis": "Sử dụng câu chữ bả nhấn mạnh xử lý sự vật dịch chuyển trạng thái mở.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Sử dụng câu chữ bả nhấn mạnh xử lý sự vật dịch chuyển trạng thái mở. Trong phòng hơi nóng một chút, xin hãy mở cửa sổ ra nhé.",
+         "pause": 350
+        }
+       ]
+      },
+      {
+       "zh": "他打开电脑，开始写作业。",
+       "vi": "Cậu ấy bật máy vi tính lên và bắt đầu làm bài tập.",
+       "situation": "Miêu tả chuỗi thao tác bắt đầu buổi tự học tại bàn của học sinh.",
+       "analysis": "Dùng với nghĩa bật khởi động thiết bị máy móc vi tính trong khẩu ngữ.",
+       "explainAudio": [
+        {
+         "lang": "vi-VN",
+         "text": "Dùng với nghĩa bật khởi động thiết bị máy móc vi tính trong khẩu ngữ. Cậu ấy bật máy vi tính lên và bắt đầu làm bài tập.",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "traps": [
+      {
+       "name": "Bẫy cách dùng",
+       "situation": "Nhờ bạn mở cửa sổ.",
+       "explanation": "Nói 打开车 với ý lái xe. Muốn lái nói 开车; muốn mở cửa xe nói 打开车门.",
+       "wrong": "Không áp dụng quy tắc một cách máy móc.",
+       "right": "请打开书，看第十页。",
+       "tip": "打开书 là mở sách; 看第十页 là xem trang mười.",
+       "boundary": "打开 nói mở; 开车 là lái xe. Không suy ra thêm 打 vào mọi cụm có 开.",
+       "comparisons": [
+        {
+         "zh": "打开",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        },
+        {
+         "zh": "开车",
+         "vi": "Đối chiếu cách dùng trong lời giải"
+        }
+       ],
+       "audio": [
+        {
+         "lang": "vi-VN",
+         "text": "Nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "打开车",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " với ý lái xe. Muốn lái nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "开车",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": "; muốn mở cửa xe nói ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "打开车门",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ". ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "打开",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " nói mở; ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "开车",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " là lái xe. Không suy ra thêm ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "打",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": " vào mọi cụm có ",
+         "pause": 350
+        },
+        {
+         "lang": "zh-CN",
+         "text": "开",
+         "pause": 350
+        },
+        {
+         "lang": "vi-VN",
+         "text": ".",
+         "pause": 350
+        }
+       ]
+      }
+     ],
+     "pron": {
+      "guide": "Thanh ba rồi thanh một. Nghe mẫu rồi nhắc lại ở tốc độ thoải mái.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Thanh ba rồi thanh một.",
+        "pause": 500
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打开",
+        "pause": 1200
+       }
+      ]
+     },
+     "write": {
+      "desc": "打 có 扌; 开 là mở. Học qua cả đối tượng như 书、窗户、文件.",
+      "audio": [
+       {
+        "lang": "zh-CN",
+        "text": "打",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " có ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "扌",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": "; ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "开",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": " là mở. Học qua cả đối tượng như ",
+        "pause": 350
+       },
+       {
+        "lang": "zh-CN",
+        "text": "书、窗户、文件",
+        "pause": 350
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 350
+       }
+      ]
+     },
+     "summary": "Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý.",
+     "summaryAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý.",
+       "pause": 350
+      }
+     ],
+     "collocations": [
+      {
+       "zh": "打开书",
+       "vi": "mở sách"
+      },
+      {
+       "zh": "打开电脑",
+       "vi": "bật/mở máy tính"
+      },
+      {
+       "zh": "打开文件",
+       "vi": "mở tệp"
+      }
+     ],
+     "compare": {
+      "a": "打开",
+      "b": "开车",
+      "why": "打开 nói mở; 开车 là lái xe. Không suy ra thêm 打 vào mọi cụm có 开."
+     },
+     "usage": [
+      {
+       "title": "Dùng thế nào?",
+       "text": "Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý."
+      },
+      {
+       "title": "Phân biệt gần nghĩa",
+       "text": "打开 / 开车: 打开 nói mở; 开车 là lái xe. Không suy ra thêm 打 vào mọi cụm có 开."
+      },
+      {
+       "title": "Bẫy cần tránh",
+       "text": "Nói 打开车 với ý lái xe. Muốn lái nói 开车; muốn mở cửa xe nói 打开车门."
+      }
+     ],
+     "context": {
+      "zh": "请打开书，看第十页。",
+      "vi": "",
+      "note": "打开书 là mở sách; 看第十页 là xem trang mười."
+     },
+     "activeTask": {
+      "prompt": "Nhờ bạn mở cửa sổ.",
+      "answer": "请打开窗户。",
+      "criteria": [
+       "Truyền đạt đúng ý trong tình huống.",
+       "Chọn từ và vị trí phù hợp.",
+       "Tự nói trước khi mở câu mẫu."
+      ]
+     },
+     "recall": {
+      "prompt": "Nhờ bạn mở cửa sổ.",
+      "answer": "请打开窗户。"
+     },
+     "deep": {
+      "etymology": "打 = làm, 开 = mở: làm cho mở ra.",
+      "psychology": "Dùng với đồ vật có nắp, cửa, sách, thiết bị.",
+      "position": "打开 + tân ngữ: 打开书.",
+      "trap": "Mở cửa hàng (bắt đầu kinh doanh) → 开门, không dùng 打开.",
+      "audio": [
+       {
+        "lang": "vi-VN",
+        "text": "Bản chất từ nguyên.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= làm,",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "开",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "= mở: làm cho mở ra.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Tâm lý khi nói.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Dùng với đồ vật có nắp, cửa, sách, thiết bị.",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Vị trí trong câu.",
+        "pause": 250
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打开",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": "+ tân ngữ:",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打开书",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mẹo loại trừ bẫy.",
+        "pause": 250
+       },
+       {
+        "lang": "vi-VN",
+        "text": "Mở cửa hàng (bắt đầu kinh doanh) →",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "开门",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ", không dùng",
+        "pause": 300
+       },
+       {
+        "lang": "zh-CN",
+        "text": "打开",
+        "pause": 300
+       },
+       {
+        "lang": "vi-VN",
+        "text": ".",
+        "pause": 600
+       }
+      ]
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "hsk1-bai-16-g4-w19-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 打球 có nghĩa chính nào?",
+     "options": [
+      "Chơi bóng, đánh bóng (các môn thể thao dùng tay/vợt)",
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)"
+     ],
+     "correct": 0,
+     "reasonRight": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói 打篮球, 打网球…",
+     "reasonWrong": "Đối chiếu nghĩa của 打球: Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói 打篮球, 打网球…",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "打球",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "打篮球",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "打网球",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "…",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w19-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Chiều nay sau khi tan học, chúng mình đi chơi bóng đi. Điền từ: 下午下课以后，我们去____吧。",
+     "options": [
+      "打球",
+      "右",
+      "动作",
+      "大学"
+     ],
+     "correct": 0,
+     "reasonRight": "下午下课以后，我们去打球吧。 Kết hợp mốc thời gian sau khi tan học và cụm động từ chơi bóng.",
+     "reasonWrong": "Câu cần diễn đạt: 下午下课以后，我们去打球吧。 Chiều nay sau khi tan học, chúng mình đi chơi bóng đi.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "下午下课以后，我们去打球吧。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Chiều nay sau khi tan học, chúng mình đi chơi bóng đi.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w20-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 路口 có nghĩa chính nào?",
+     "options": [
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)",
+      "Ngã rẽ, nút giao, đầu đường, ngã tư, giao lộ"
+     ],
+     "correct": 3,
+     "reasonRight": "Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ.",
+     "reasonWrong": "Đối chiếu nghĩa của 路口: Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "路口",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Điểm giao hoặc lối vào/ra của đường; thường dùng làm điểm hẹn hoặc mốc rẽ.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w20-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Đi thẳng về phía trước đến ngã rẽ, xin vui lòng rẽ sang phải. Điền từ: 往前走到____，请往右拐。",
+     "options": [
+      "右",
+      "动作",
+      "大学",
+      "路口"
+     ],
+     "correct": 3,
+     "reasonRight": "往前走到路口，请往右拐。 Kết hợp hành vi đi thẳng tới nút giao và chuyển hướng rẽ phải.",
+     "reasonWrong": "Câu cần diễn đạt: 往前走到路口，请往右拐。 Đi thẳng về phía trước đến ngã rẽ, xin vui lòng rẽ sang phải.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "往前走到路口，请往右拐。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Đi thẳng về phía trước đến ngã rẽ, xin vui lòng rẽ sang phải.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w21-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 读书 có nghĩa chính nào?",
+     "options": [
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)",
+      "Đọc sách (đọc to/ngâm cứu); đi học, theo học (tại trường lớp)",
+      "Bên phải, phía bên phải"
+     ],
+     "correct": 2,
+     "reasonRight": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định 读书 luôn phải đọc thành tiếng.",
+     "reasonWrong": "Đối chiếu nghĩa của 读书: Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định 读书 luôn phải đọc thành tiếng.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "读书",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "读书",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " luôn phải đọc thành tiếng.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w21-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Chị gái tôi đang theo học tại một trường đại học rất nổi tiếng. Điền từ: 我姐姐在一所很有名的大学____。",
+     "options": [
+      "动作",
+      "大学",
+      "读书",
+      "右"
+     ],
+     "correct": 2,
+     "reasonRight": "我姐姐在一所很有名的大学读书。 Sử dụng nghĩa mở rộng chỉ việc đi học, làm sinh viên của trường đại học.",
+     "reasonWrong": "Câu cần diễn đạt: 我姐姐在一所很有名的大学读书。 Chị gái tôi đang theo học tại một trường đại học rất nổi tiếng.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我姐姐在一所很有名的大学读书。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Chị gái tôi đang theo học tại một trường đại học rất nổi tiếng.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w22-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 姐 có nghĩa chính nào?",
+     "options": [
+      "Đại học, trường đại học (bậc giáo dục đại học)",
+      "Chị, chị gái (xưng hô thân tộc hoặc giao tiếp thân mật)",
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể"
+     ],
+     "correct": 1,
+     "reasonRight": "Chị gái; 姐姐 là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như 王姐, tùy quan hệ.",
+     "reasonWrong": "Đối chiếu nghĩa của 姐: Chị gái; 姐姐 là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như 王姐, tùy quan hệ.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "姐",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chị gái; ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "姐姐",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " là dạng hai âm tiết. Cũng có cách gọi thân mật với người quen như ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "王姐",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", tùy quan hệ.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w22-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Chị tôi đang học ở một trường đại học tại Bắc Kinh. Điền từ: 我____在北京的一所大学读书。",
+     "options": [
+      "大学",
+      "姐",
+      "右",
+      "动作"
+     ],
+     "correct": 1,
+     "reasonRight": "我姐在北京的一所大学读书。 我姐 là cách nói tự nhiên không cần 的 trong cụm này.",
+     "reasonWrong": "Câu cần diễn đạt: 我姐在北京的一所大学读书。 Chị tôi đang học ở một trường đại học tại Bắc Kinh.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我姐在北京的一所大学读书。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Chị tôi đang học ở một trường đại học tại Bắc Kinh.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w23-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 车站 có nghĩa chính nào?",
+     "options": [
+      "Ga xe, bến xe, trạm xe (nơi đón trả khách)",
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)"
+     ],
+     "correct": 0,
+     "reasonRight": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+     "reasonWrong": "Đối chiếu nghĩa của 车站: Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "车站",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w23-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Ngày mốt tôi phải ra bến xe đón chị gái tôi. Điền từ: 我后天要去____接我姐姐。",
+     "options": [
+      "车站",
+      "右",
+      "动作",
+      "大学"
+     ],
+     "correct": 0,
+     "reasonRight": "我后天要去车站接我姐姐。 Kết hợp trạng ngữ thời gian ngày kia và mục đích đi bến xe đón chị gái.",
+     "reasonWrong": "Câu cần diễn đạt: 我后天要去车站接我姐姐。 Ngày mốt tôi phải ra bến xe đón chị gái tôi.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我后天要去车站接我姐姐。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Ngày mốt tôi phải ra bến xe đón chị gái tôi.",
+       "pause": 500
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w24-v2-meaning",
+     "type": "Nhận diện nghĩa",
+     "prompt": "Trong bài này, 打开 có nghĩa chính nào?",
+     "options": [
+      "Bên phải, phía bên phải",
+      "Động tác, hành động, thao tác cụ thể",
+      "Đại học, trường đại học (bậc giáo dục đại học)",
+      "Mở, mở ra, bật (sách vở, cửa nẻo, hộp quà, thiết bị điện)"
+     ],
+     "correct": 3,
+     "reasonRight": "Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý.",
+     "reasonWrong": "Đối chiếu nghĩa của 打开: Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý.",
+     "questionAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "打开",
+       "pause": 600
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Mở một vật hoặc bật/mở thiết bị, tệp, ứng dụng tùy đối tượng. Không chỉ dùng cho vật bung mở về mặt vật lý.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-w24-v2-use",
+     "type": "Dùng từ trong câu",
+     "prompt": "Các em học sinh, xin mời mở sách ra, xem trang số hai mươi. Điền từ: 同学们，请____书，看第二十页。",
+     "options": [
+      "右",
+      "动作",
+      "大学",
+      "打开"
+     ],
+     "correct": 3,
+     "reasonRight": "同学们，请打开书，看第二十页。 Động từ mang bổ ngữ kết quả kết hợp tân ngữ cuốn sách.",
+     "reasonWrong": "Câu cần diễn đạt: 同学们，请打开书，看第二十页。 Các em học sinh, xin mời mở sách ra, xem trang số hai mươi.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Chọn từ phù hợp với nghĩa tiếng Việt của câu.",
+       "pause": 350
+      }
+     ],
+     "explainAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "同学们，请打开书，看第二十页。",
+       "pause": 600
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Các em học sinh, xin mời mở sách ra, xem trang số hai mươi.",
+       "pause": 500
+      }
+     ]
+    }
+   ],
+   "selfUse": [
+    {
+     "id": "hsk1-bai-16-g4-su1",
+     "situation": "Tình huống: Bạn chỉ đường cho một người bạn đến thăm nhà: 'Đi thẳng đến ngã rẽ phía trước, rẽ sang bên phải là nhìn thấy một bến xe buýt lớn.'",
+     "hint1": "Đi thẳng đến mốc 'ngã rẽ phía trước', dùng giới từ chỉ hướng 'rẽ sang phải' rồi nêu sự tồn tại của bến xe buýt.",
+     "hint2": "Khung câu gợi ý: 往前走到前边的路口 + 往右拐 + 就能看到一个大车站。",
+     "modelAnswer": "一直往前走到前面的路口，往右拐，就是一个大车站。",
+     "modelExplain": "Kết hợp chỉ đường đi thẳng tới giao lộ, giới từ hướng rẽ phải và phó từ phán đoán nêu sự hiện diện của trạm xe.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nhiệm vụ 1: Hãy tự nói câu: Đi thẳng đến ngã rẽ phía trước, rẽ phải là thấy một bến xe lớn.",
+       "pause": 300
+      }
+     ],
+     "hint1Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 1: Nêu rõ hành động đi thẳng tới ngã rẽ, sau đó mới tới hướng rẽ phải và bến xe.",
+       "pause": 300
+      }
+     ],
+     "hint2Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 2: Khung câu gồm đi thẳng tới ngã rẽ phía trước, hướng về bên phải rẽ, chính là một trạm xe lớn.",
+       "pause": 300
+      }
+     ],
+     "modelAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "一直往前走到前面的路口，往右拐，就是一个大车站。",
+       "pause": 800
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Câu mẫu hoàn chỉnh: Cứ đi thẳng tới ngã rẽ phía trước rồi quẹo phải là tới ngay một bến xe lớn.",
+       "pause": 300
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-su2",
+     "situation": "Tình huống: Bạn khoe với bạn bè về gia đình: 'Chị gái tôi học đại học ở Bắc Kinh, chị ấy vừa thích đọc sách vừa thích chơi bóng rổ.'",
+     "hint1": "Vế đầu dùng cụm 'học đại học'. Vế sau dùng cấu trúc song hành 'vừa... vừa...' với sở thích đọc sách và chơi bóng rổ.",
+     "hint2": "Khung câu gợi ý: 我姐在北京上大学，她 + 一边喜欢读书 + 一边喜欢打篮球。",
+     "modelAnswer": "我姐在北京读大学，她很喜欢读书，周末也经常去打球。",
+     "modelExplain": "Sử dụng từ xưng hô thân mật chị tôi, động từ học đại học, danh từ đọc sách và động từ chơi bóng.",
+     "questionAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nhiệm vụ 2: Hãy tự diễn đạt câu: Chị gái tôi học đại học ở Bắc Kinh, chị ấy rất thích đọc sách và thường đi chơi bóng.",
+       "pause": 300
+      }
+     ],
+     "hint1Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 1: Nêu địa điểm học đại học của người chị trước, sau đó nối tiếp hai sở thích đọc sách và đánh bóng.",
+       "pause": 300
+      }
+     ],
+     "hint2Audio": [
+      {
+       "lang": "vi-VN",
+       "text": "Gợi ý tầng 2: Khung câu gồm chị tôi học đại học ở Bắc Kinh, rất thích đọc sách, cuối tuần cũng hay đi đánh bóng.",
+       "pause": 300
+      }
+     ],
+     "modelAudio": [
+      {
+       "lang": "zh-CN",
+       "text": "我姐在北京读大学，她很喜欢读书，周末也经常去打球。",
+       "pause": 800
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Câu mẫu hoàn chỉnh: Chị tôi học đại học ở Bắc Kinh, chị ấy rất mê đọc sách và cuối tuần cũng hay đi chơi bóng.",
+       "pause": 300
+      }
+     ]
+    }
+   ],
+   "reviews": [
+    {
+     "id": "hsk1-bai-16-g4-v2-review0",
+     "day": 1,
+     "type": "Nhớ nghĩa & Bổ ngữ kết quả",
+     "q": "Rủ bạn đi chơi bóng rổ.",
+     "answer": "我们去打篮球吧。",
+     "explain": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói 打篮球, 打网球…",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Rủ bạn đi chơi bóng rổ.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "我们去打篮球吧。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Chơi các môn bóng dùng tay/vợt theo ngữ cảnh, thường hiểu môn đang được nói tới. Muốn rõ môn thì nói ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "打篮球",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": ", ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "打网球",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": "…",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-v2-review1",
+     "day": 3,
+     "type": "Phân biệt bẫy động từ",
+     "q": "Nói chị bạn đang đi học ở Bắc Kinh.",
+     "answer": "我姐在北京读书。",
+     "explain": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định 读书 luôn phải đọc thành tiếng.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nói chị bạn đang đi học ở Bắc Kinh.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "我姐在北京读书。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Có thể là đọc sách hoặc đi học/theo học tùy ngữ cảnh. Không mặc định ",
+       "pause": 350
+      },
+      {
+       "lang": "zh-CN",
+       "text": "读书",
+       "pause": 350
+      },
+      {
+       "lang": "vi-VN",
+       "text": " luôn phải đọc thành tiếng.",
+       "pause": 350
+      }
+     ]
+    },
+    {
+     "id": "hsk1-bai-16-g4-v2-review2",
+     "day": 7,
+     "type": "Vận dụng ngữ cảnh tổng hợp toàn khóa",
+     "q": "Nói bạn đang đợi người kia ở ga tàu.",
+     "answer": "我在火车站等你。",
+     "explain": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+     "listenAudio": [
+      {
+       "lang": "vi-VN",
+       "text": "Nói bạn đang đợi người kia ở ga tàu.",
+       "pause": 350
+      }
+     ],
+     "audio": [
+      {
+       "lang": "zh-CN",
+       "text": "我在火车站等你。",
+       "pause": 700
+      },
+      {
+       "lang": "vi-VN",
+       "text": "Điểm/nhà ga đón trả khách của phương tiện; cần ngữ cảnh để biết là bến xe buýt, xe khách hay ga tàu.",
+       "pause": 350
+      }
+     ]
+    }
+   ]
   }
-})();
-/**
- * HSK STUDIO - DỮ LIỆU BÀI 16 (PHẦN 2/3)
- * Bao gồm: Nhóm 3 (Từ 13 - 18) & Nhóm 4 (Từ 19 - 24)
- * Tiêu chuẩn: Đầy đủ 6 chiều tiếp cận, chuyên đề bẫy tư duy Việt - Trung, Audio queues chuẩn xác.
- */
-
-(function(){
-  // Khởi tạo hoặc lấy đối tượng lưu trữ dùng chung của Bài 16
-  window.HSK_BAI16_DATA = window.HSK_BAI16_DATA || {
-    id: "hsk1-bai-16",
-    number: 16,
-    title: "Bài 16: Từ vựng trong đời sống và giao tiếp",
-    level: "HSK1",
-    desc: "24 từ vựng mở rộng chuyên sâu bẫy người Việt, cùng 4 đoạn hội thoại đường dài 16-24 lượt tương tác giọng Nam – Nữ.",
-    objectives: [
-      "Nắm vững 24 từ vựng thực tế và bản chất ngữ dụng phân biệt với tiếng Việt.",
-      "Vượt qua 24 bẫy chuyển di ngôn ngữ tiêu cực thường gặp của người học Việt Nam.",
-      "Luyện phản xạ giao tiếp qua 4 đoạn hội thoại thực tế đường dài (16-24 lượt thoại)."
+ ],
+ "schemaVersion": 3,
+ "contentVersion": 3,
+ "desc": "24 từ học sâu (từ nguyên, tâm lý, vị trí, bẫy), 4 cặp từ dễ nhầm, 3 quy tắc trật tự từ và 4 hội thoại dài nghe bằng giọng Nam–Nữ.",
+ "objectives": [
+  "Nhớ 24 từ qua nghĩa, chữ và âm thanh.",
+  "Phân biệt từ gần nghĩa và chọn cách nói đúng tình huống.",
+  "Nghe–đọc 4 hội thoại rồi tự đóng vai.",
+  "Hiểu bản chất từ để chọn đúng từ, không học thuộc nghĩa tiếng Việt.",
+  "Nghe hai giọng Nam–Nữ để nhận ra ai đang nói mà không cần nhìn màn hình."
+ ],
+ "dialogues": [
+  {
+   "id": "b16-d1",
+   "title": "Hẹn nhau sau giờ học",
+   "context": "Hai bạn hẹn gặp tại khu đại học. Nghe kỹ nơi hẹn cuối cùng và thời gian sau khi hai người sửa thông tin.",
+   "speakers": {
+    "A": "小林",
+    "B": "小安"
+   },
+   "turns": [
+    {
+     "id": "b16-d1-t1",
+     "speaker": "A",
+     "zh": "你今天几点下课？",
+     "vi": "Hôm nay bạn mấy giờ hết tiết?",
+     "wordIds": [
+      "hsk1-bai-16-g2-w9"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d1-t2",
+     "speaker": "B",
+     "zh": "四点。你也在这里上课吗？",
+     "vi": "Bốn giờ. Bạn cũng học ở đây à?",
+     "wordIds": [
+      "hsk1-bai-16-g2-w12"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d1-t3",
+     "speaker": "A",
+     "zh": "对。我姐在这所大学读书，我来这里学汉语。",
+     "vi": "Đúng. Chị tôi học ở trường đại học này, tôi đến đây học tiếng Trung.",
+     "wordIds": [
+      "hsk1-bai-16-g2-w11",
+      "hsk1-bai-16-g2-w12",
+      "hsk1-bai-16-g4-w21",
+      "hsk1-bai-16-g4-w22"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d1-t4",
+     "speaker": "B",
+     "zh": "真的？这所大学很有名。",
+     "vi": "Thật à? Trường đại học này nổi tiếng lắm.",
+     "wordIds": [
+      "hsk1-bai-16-g2-w8",
+      "hsk1-bai-16-g2-w10",
+      "hsk1-bai-16-g2-w11"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d1-t5",
+     "speaker": "A",
+     "zh": "是啊。下课以后，我们去书店吧。",
+     "vi": "Ừ. Hết tiết chúng ta đi hiệu sách nhé.",
+     "wordIds": [
+      "hsk1-bai-16-g2-w9",
+      "hsk1-bai-16-g3-w16"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d1-t6",
+     "speaker": "B",
+     "zh": "好。书店在哪儿？在大学北边吗？",
+     "vi": "Được. Hiệu sách ở đâu? Phía bắc trường à?",
+     "wordIds": [
+      "hsk1-bai-16-g1-w4",
+      "hsk1-bai-16-g2-w11",
+      "hsk1-bai-16-g3-w16"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d1-t7",
+     "speaker": "A",
+     "zh": "不是。车站在北边，书店在学校右边。",
+     "vi": "Không. Nhà ga ở phía bắc, hiệu sách bên phải trường.",
+     "wordIds": [
+      "hsk1-bai-16-g1-w1",
+      "hsk1-bai-16-g1-w4",
+      "hsk1-bai-16-g3-w16",
+      "hsk1-bai-16-g4-w23"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d1-t8",
+     "speaker": "B",
+     "zh": "那我们在车站见？",
+     "vi": "Vậy mình gặp ở nhà ga nhé?",
+     "wordIds": [
+      "hsk1-bai-16-g4-w23"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d1-t9",
+     "speaker": "A",
+     "zh": "车站有点儿远。在学校门口见吧。",
+     "vi": "Nhà ga hơi xa. Gặp ở cổng trường nhé.",
+     "wordIds": [
+      "hsk1-bai-16-g4-w23"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d1-t10",
+     "speaker": "B",
+     "zh": "好，四点在学校门口见。",
+     "vi": "Được, bốn giờ gặp ở cổng trường.",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d1-t11",
+     "speaker": "A",
+     "zh": "等一下，我四点十分才下课。四点二十可以吗？",
+     "vi": "Chờ chút, tôi bốn giờ mười mới hết tiết. Bốn giờ hai mươi được không?",
+     "wordIds": [
+      "hsk1-bai-16-g2-w9"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d1-t12",
+     "speaker": "B",
+     "zh": "可以。你想买什么书？",
+     "vi": "Được. Bạn muốn mua sách gì?",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d1-t13",
+     "speaker": "A",
+     "zh": "我想买一本介绍不同国家的书。",
+     "vi": "Tôi muốn mua một quyển giới thiệu các quốc gia khác nhau.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w15"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d1-t14",
+     "speaker": "B",
+     "zh": "我也想看看。我有时候去那家书店。",
+     "vi": "Tôi cũng muốn xem. Thỉnh thoảng tôi đến hiệu sách đó.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w13",
+      "hsk1-bai-16-g3-w16"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d1-t15",
+     "speaker": "A",
+     "zh": "那太好了，你知道怎么走。",
+     "vi": "Vậy tốt quá, bạn biết đi thế nào.",
+     "wordIds": [],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d1-t16",
+     "speaker": "B",
+     "zh": "知道。我们到时候一起去。",
+     "vi": "Biết. Đến lúc đó cùng đi nhé.",
+     "wordIds": [],
+     "gender": "m"
+    }
+   ],
+   "checks": [
+    {
+     "id": "b16-d1-q1",
+     "prompt": "Lúc cuối họ hẹn mấy giờ?",
+     "options": [
+      "4 giờ",
+      "4 giờ 10",
+      "4 giờ 20",
+      "5 giờ"
+     ],
+     "correct": 2,
+     "why": "小林 sửa giờ, 小安 đồng ý.",
+     "evidence": [
+      "b16-d1-t11",
+      "b16-d1-t12"
+     ]
+    },
+    {
+     "id": "b16-d1-q2",
+     "prompt": "Họ gặp ở đâu?",
+     "options": [
+      "Nhà ga",
+      "Cổng trường",
+      "Trong hiệu sách",
+      "Ở nhà"
+     ],
+     "correct": 1,
+     "why": "Họ đổi đề xuất nhà ga thành cổng trường.",
+     "evidence": [
+      "b16-d1-t8",
+      "b16-d1-t9",
+      "b16-d1-t10"
+     ]
+    },
+    {
+     "id": "b16-d1-q3",
+     "prompt": "Địa điểm nào ở phía bắc trường?",
+     "options": [
+      "Nhà ga",
+      "Hiệu sách",
+      "Nhà của chị",
+      "Không nói rõ"
+     ],
+     "correct": 0,
+     "why": "小林 phân biệt hai vị trí.",
+     "evidence": [
+      "b16-d1-t7"
+     ]
+    },
+    {
+     "id": "b16-d1-q4",
+     "prompt": "Chị của 小林 làm gì ở trường?",
+     "options": [
+      "Đi dạy",
+      "Theo học",
+      "Bán sách",
+      "Lái xe"
+     ],
+     "correct": 1,
+     "why": "在大学读书 ở đây là theo học.",
+     "evidence": [
+      "b16-d1-t3"
+     ]
+    },
+    {
+     "id": "b16-d1-q5",
+     "prompt": "Tại sao thay đổi giờ?",
+     "options": [
+      "Hiệu sách đóng cửa",
+      "小林 hết tiết lúc 4 giờ 10",
+      "Trời mưa",
+      "Không muốn đi"
+     ],
+     "correct": 1,
+     "why": "Lượt 11 nêu giờ hết tiết.",
+     "evidence": [
+      "b16-d1-t11"
+     ]
+    },
+    {
+     "id": "b16-d1-q6",
+     "prompt": "有时候 cho biết điều gì?",
+     "options": [
+      "Đi mỗi ngày",
+      "Chưa từng đi",
+      "Thỉnh thoảng đi",
+      "Đã đi đúng một lần"
+     ],
+     "correct": 2,
+     "why": "Có lúc đi, không khẳng định đều đặn hằng ngày.",
+     "evidence": [
+      "b16-d1-t14"
+     ]
+    }
+   ],
+   "task": {
+    "prompt": "Bạn hết tiết lúc 5 giờ. Hẹn bạn ở cổng trường lúc 5 giờ 10, rồi cùng đi hiệu sách.",
+    "hints": [
+     "Nói giờ hết tiết trước.",
+     "Dùng 下课、学校门口、书店."
     ],
-    groups: [],
-    dialogues: []
-  };
-
-  // ==========================================
-  // NHÓM 3: THỜI GIAN, XÃ HỘI, THẨM MỸ & GIA ĐÌNH
-  // ==========================================
-  const group3 = {
-    id: "hsk1-bai-16-g3",
-    title: "Nhóm 3: Thời Gian, Xã Hội, Thẩm Mỹ & Gia Đình",
-    desc: "Học cách dùng chuyên sâu các từ: 有时候, 后天, 国家, 书店, 好看, 爸; phân biệt tần suất, mốc tương đối và sắc thái thẩm mỹ.",
-    words: [
-      // --- TỪ 13: 有时候 ---
-      {
-        id: "hsk1-bai-16-g3-w13",
-        index: 13,
-        hanzi: "有时候",
-        pinyin: "yǒushíhou",
-        coreMeaning: "Có lúc, có khi, thỉnh thoảng (tần suất thất thường, không liên tục)",
-        introAudio: [
-          { lang: "zh-CN", text: "有时候", pause: 500 },
-          { lang: "vi-VN", text: "Có lúc, có khi, thỉnh thoảng, tần suất không cố định", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi miêu tả thói quen, hiện tượng thời tiết hoặc sự việc thỉnh thoảng mới diễn ra, không xảy ra đều đặn mỗi ngày.",
-          detail: "Phó từ chỉ tần suất. Đứng trước vị ngữ động từ hoặc tính từ. Có thể dùng độc lập hoặc đi thành cặp song hành: 有时候……，有时候…… (Có lúc thế này, có lúc thế kia).",
-          keyPoint: "Biểu thị TẦN SUẤT THẤT THƯỜNG. Tuyệt đối không nhầm với mốc thời gian diễn ra một sự việc.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ mười ba: Hữu thời hậu, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "有时候", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là có lúc, thỉnh thoảng, biểu thị tần suất không cố định.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Vị trí phó từ chỉ tần suất trong câu",
-            pattern: "[Chủ ngữ] + 有时候 + [Động từ / Tính từ]",
-            note: "Ví dụ: 我有时候去书店 (Tôi thỉnh thoảng đi hiệu sách).",
-            audio: [
-              { lang: "zh-CN", text: "我有时候去书店看书。", pause: 800 },
-              { lang: "vi-VN", text: "Tôi thỉnh thoảng đến hiệu sách đọc sách.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Cấu trúc hai trạng thái đan xen",
-            pattern: "有时候……，有时候……",
-            note: "Miêu tả hai trạng thái hoặc hành vi luân phiên thay đổi.",
-            audio: [
-              { lang: "zh-CN", text: "这里的春天，有时候冷，有时候热。", pause: 800 },
-              { lang: "vi-VN", text: "Mùa xuân ở đây có lúc lạnh, có lúc nóng.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "周末我有时候去学校打球，有时候在家看书。",
-            vi: "Cuối tuần tôi có lúc đến trường chơi bóng, có lúc ở nhà đọc sách.",
-            situation: "Chia sẻ về các hoạt động giải trí linh hoạt vào dịp cuối tuần.",
-            analysis: "Sử dụng cặp liên từ 有时候……，有时候…… để kết nối hai hoạt động diễn ra tùy hứng.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Cuối tuần có lúc chơi bóng, có lúc đọc sách.", pause: 300 },
-              { lang: "zh-CN", text: "周末我有时候去学校打球，有时候在家看书。", pause: 800 }
-            ]
-          },
-          {
-            zh: "爸爸工作很忙，有时候晚上不回家吃饭。",
-            vi: "Bố tôi công việc rất bận, có khi buổi tối không về nhà ăn cơm.",
-            situation: "Kể về lịch trình làm việc bận rộn và thất thường của người cha.",
-            analysis: "有时候 đứng trước cụm phủ định 晚上不回家吃饭.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Bố bận việc, có khi không về ăn cơm tối.", pause: 300 },
-              { lang: "zh-CN", text: "爸爸工作很忙，有时候晚上不回家吃饭。", pause: 800 }
-            ]
-          },
-          {
-            zh: "这个字的意思很难，有时候我也记不住。",
-            vi: "Nghĩa của chữ này rất khó, thỉnh thoảng chính tôi cũng không nhớ nổi.",
-            situation: "Đồng cảm và động viên bạn học khi gặp chữ Hán khó nhớ.",
-            analysis: "有时候 kết hợp phó từ 也 bổ trợ cho vị ngữ phủ định khả năng.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Chữ khó, thỉnh thoảng tôi cũng quên.", pause: 300 },
-              { lang: "zh-CN", text: "这个字的意思很难，有时候我也记不住。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy nhầm lẫn giữa 有时候 (tần suất) và ……的时候 (mốc thời gian)",
-            situation: "Bạn muốn nói 'Khi tan học tôi sẽ gọi cho bạn' nhưng lại nói nhầm thành '有时候下课...'.",
-            explanation: "Người Việt hay nhầm vì cả hai đều có chữ 'thời điểm/lúc'. Nhưng: 有时候 là phó từ chỉ tần suất (thỉnh thoảng). Còn ……的时候 là định ngữ thời gian (lúc/khi một sự việc diễn ra). Khi muốn nói 'Lúc tan học' bắt buộc phải dùng 下课的时候, tuyệt đối không dùng 有时候下课.",
-            wrong: "有时候下课，我给你打电话。 (Sai logic thời gian)",
-            right: "下课的时候，我给你打电话。 (Chuẩn xác)",
-            tip: "Tần suất (thỉnh thoảng, có lúc) -> 有时候. Mốc sự kiện (khi làm việc gì) -> [Hành động] + 的时候.",
-            boundary: "Trong khẩu ngữ thân mật, 有时候 có thể rút gọn thành 有时 (yǒushí).",
-            comparisons: [
-              { zh: "有时候去", vi: "Thỉnh thoảng mới đi (Chỉ tần suất thất thường)" },
-              { zh: "去的时候", vi: "Lúc đi / Khi đi (Mốc thời điểm diễn ra hành động)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Cảnh báo bẫy: Thỉnh thoảng làm gì dùng hữu thời hậu ", pause: 300 },
-              { lang: "zh-CN", text: "有时候", pause: 400 },
-              { lang: "vi-VN", text: ". Lúc làm việc gì phải dùng chữ đích thời hậu đứng sau hành động ", pause: 300 },
-              { lang: "zh-CN", text: "的时候", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "yǒu (thanh 3) + shí (thanh 2) + hou (thanh nhẹ, lướt nhanh và ngắn).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "有时候", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Hữu (有), chữ Thời (时) có bộ Nhật (日) chỉ thời gian, chữ Hậu (候) có nét sổ nhân đứng bên trái.",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Thời có bộ Nhật bên trái chỉ ánh mặt trời thời gian.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Tần suất = 有时候; Cặp luân phiên = 有时候……，有时候……; Lúc làm gì = [V] + 的时候.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Thỉnh thoảng dùng hữu thời hậu, không nhầm với đích thời hậu.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 14: 后天 ---
-      {
-        id: "hsk1-bai-16-g3-w14",
-        index": 14,
-        hanzi: "后天",
-        pinyin: "hòutiān",
-        coreMeaning: "Ngày kia, ngày mốt (ngày sau ngày mai)",
-        introAudio: [
-          { lang: "zh-CN", text: "后天", pause: 500 },
-          { lang: "vi-VN", text: "Ngày kia, ngày mốt, ngày sau ngày mai", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng để ấn định lịch hẹn, thời hạn nộp bài, hoặc kế hoạch di chuyển trong tương lai gần cách mốc hôm nay đúng hai ngày.",
-          detail: "Danh từ chỉ thời gian tương đối. Luôn lấy ngày hôm nay làm mốc chuẩn (+2 ngày). Thường làm trạng ngữ thời gian ở đầu câu hoặc đứng ngay sau chủ ngữ.",
-          keyPoint: "Mốc cố định so với HÔM NAY (+2 ngày).",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ mười bốn: Hậu thiên, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "后天", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là ngày mốt hoặc ngày kia.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Trạng ngữ thời gian chỉ lịch hẹn",
-            pattern: "后天 + [Buổi / Giờ] + [Hành động]",
-            note: "Ví dụ: 后天下午见 (Hẹn gặp vào chiều ngày kia).",
-            audio: [
-              { lang: "zh-CN", text: "后天下午我们一起去买书。", pause: 800 },
-              { lang: "vi-VN", text: "Chiều ngày kia chúng mình cùng nhau đi mua sách.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Câu phán đoán mốc ngày",
-            pattern: "后天是 + [Thứ trong tuần / Ngày tháng]",
-            note: "Ví dụ: 后天是星期天 (Ngày kia là chủ nhật).",
-            audio: [
-              { lang: "zh-CN", text: "后天是星期天，不用上课。", pause: 800 },
-              { lang: "vi-VN", text: "Ngày kia là chủ nhật, không cần đi học.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "我们后天下午在学校门口见吧。",
-            vi: "Chúng mình hẹn gặp nhau ở cổng trường vào chiều ngày mốt nhé.",
-            situation: "Thống nhất thời gian và địa điểm hẹn gặp với bạn cùng lớp.",
-            analysis: "后天下午 là trạng ngữ thời gian; 在学校门口 là trạng ngữ nơi chốn đứng trước động từ 见.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Hẹn gặp ở cổng trường chiều ngày mốt.", pause: 300 },
-              { lang: "zh-CN", text: "我们后天下午在学校门口见吧。", pause: 800 }
-            ]
-          },
-          {
-            zh: "后天我们要去参加汉语考试。",
-            vi: "Ngày kia chúng tôi phải đi tham gia kỳ thi tiếng Trung.",
-            situation: "Thông báo kế hoạch thi cử quan trọng sắp tới cho người nhà.",
-            analysis: "后天 đứng ở đầu câu làm trạng ngữ xác định khung thời gian của sự kiện.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Ngày kia đi thi tiếng Trung.", pause: 300 },
-              { lang: "zh-CN", text: "后天我们要去参加汉语考试。", pause: 800 }
-            ]
-          },
-          {
-            zh: "我姐姐后天从北京坐火车回来。",
-            vi: "Chị gái tôi ngày kia sẽ đi tàu hỏa từ Bắc Kinh trở về.",
-            situation: "Kể về lịch trình về thăm nhà của người thân ở xa.",
-            analysis: "从北京坐火车回來 là cụm liên động chỉ phương thức và hướng di chuyển.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Chị gái ngày kia đi tàu về từ Bắc Kinh.", pause: 300 },
-              { lang: "zh-CN", text: "我姐姐后天从北京坐火车回来。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy dùng 后天 khi tự sự câu chuyện quá khứ",
-            situation: "Bạn kể: 'Năm ngoái tôi đến Bắc Kinh, ngày hôm sau/ngày kia tôi đi Vạn Lý Trường Thành.'",
-            explanation: "后天 CHỈ ĐƯỢC DÙNG so với mốc HÔM NAY trong thời gian thực. Khi kể một câu chuyện trong quá khứ hoặc mốc tương lai xa khác, muốn nói 'ngày tiếp theo/ngày sau đó', người bản xứ bắt buộc phải dùng 第二天 (ngày hôm sau) hoặc 过两天 (hai ngày sau). Tuyệt đối không dùng 后天 trong ngữ cảnh tự sự quá khứ.",
-            wrong: "去年我去北京，后天我去了长城。 (Sai logic dòng thời gian)",
-            right: "去年我去北京，过了两天我去了长城。 (Chuẩn mực tự sự)",
-            tip: "So với hôm nay -> Dùng 后天. So với một mốc quá khứ -> Dùng 第二天 / 过了两天.",
-            boundary: "Trục thời gian 5 ngày: 前天 (hôm kia) -> 昨天 (hôm qua) -> 今天 (hôm nay) -> 明天 (ngày mai) -> 后天 (ngày kia).",
-            comparisons: [
-              { zh: "后天见", vi: "Ngày kia gặp (So với hôm nay)" },
-              { zh: "第二天", vi: "Ngày hôm sau (So với mốc sự kiện kể lại)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý trục thời gian: Hậu thiên chỉ dùng tính từ hôm nay. Trong lời kể chuyện quá khứ phải dùng đệ nhị thiên ", pause: 300 },
-              { lang: "zh-CN", text: "第二天", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "hòu (thanh 4 giáng mạnh) + tiān (thanh 1 bằng phẳng, ngân dài).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "后天", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Hậu (后) có nét phẩy, ngang, sổ và chữ Khẩu bên dưới. Chữ Thiên (天) có hai nét ngang và chữ Đại (大).",
-          audio: [
-            { lang: "vi-VN", text: "Nhận diện mặt chữ: Nhớ trục tiền thiên, tạc thiên, kim thiên, minh thiên, hậu thiên.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Hôm nay + 2 ngày = 后天; Lịch hẹn: 后天 + [Thời gian] + 见.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Ngày mốt là hậu thiên, hẹn gặp dùng hậu thiên kiến.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 15: 国家 ---
-      {
-        id: "hsk1-bai-16-g3-w15",
-        index": 15,
-        hanzi: "国家",
-        pinyin: "guójiā",
-        coreMeaning: "Quốc gia, đất nước, nhà nước",
-        introAudio: [
-          { lang: "zh-CN", text: "国家", pause: 500 },
-          { lang: "vi-VN", text: "Quốc gia, đất nước, nhà nước", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi nói về lãnh thổ các nước trên thế giới, văn hóa đa quốc gia, hoặc thể chế của một dân tộc.",
-          detail: "Danh từ chung chỉ quốc gia hoặc đất nước. Lượng từ tiêu chuẩn là '个' (gè): 一个国家. Thường dùng trong câu hỏi lựa chọn: 哪个国家 (nước nào) hoặc 哪些国家 (những nước nào).",
-          keyPoint: "Danh từ chung chỉ ĐẤT NƯỚC. Không nhầm với 家 (nhà riêng/gia đình).",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ mười lăm: Quốc gia, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "国家", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là đất nước, quốc gia trên thế giới.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Hỏi về quốc gia lựa chọn",
-            pattern: "哪个 / 哪些 + 国家？",
-            note: "Ví dụ: 你想去哪个国家？ (Bạn muốn đi quốc gia nào?).",
-            audio: [
-              { lang: "zh-CN", text: "你想去哪个国家？", pause: 800 },
-              { lang: "vi-VN", text: "Bạn muốn đi quốc gia nào?", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Lượng từ và bổ nghĩa số lượng",
-            pattern: "一个 / 很多 + 国家 + 的 + [Danh từ]",
-            note: "Ví dụ: 很多国家的人 (Người của rất nhiều quốc gia).",
-            audio: [
-              { lang: "zh-CN", text: "中国是一个很有名的国家。", pause: 800 },
-              { lang: "vi-VN", text: "Trung Quốc là một quốc gia rất nổi tiếng.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "你想去哪个国家旅游？",
-            vi: "Bạn muốn đi du lịch ở quốc gia nào?",
-            situation: "Hỏi thăm sở thích và kế hoạch khám phá thế giới của bạn bè.",
-            analysis: "哪个国家 làm tân ngữ chỉ địa điểm hướng tới của động từ 旅游.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Bạn muốn đi du lịch quốc gia nào?", pause: 300 },
-              { lang: "zh-CN", text: "你想去哪个国家旅游？", pause: 800 }
-            ]
-          },
-          {
-            zh: "我们大学里有来自很多国家的留学生。",
-            vi: "Trong trường đại học của chúng tôi có lưu học sinh đến từ rất nhiều quốc gia.",
-            situation: "Giới thiệu môi trường học tập đa văn hóa và quốc tế tại giảng đường.",
-            analysis: "来自很多国家 là cụm giới từ xuất xứ bổ nghĩa cho du học sinh (留学生).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Sinh viên đến từ nhiều quốc gia.", pause: 300 },
-              { lang: "zh-CN", text: "我们大学里有来自很多国家的留学生。", pause: 800 }
-            ]
-          },
-          {
-            zh: "我想买一本介绍世界各国的书。",
-            vi: "Tôi muốn mua một cuốn sách giới thiệu về các quốc gia trên thế giới.",
-            situation: "Hỏi nhân viên hiệu sách tìm tài liệu địa lý văn hóa các nước.",
-            analysis: "各国 là cách nói cô đọng của 各个国家 (từng quốc gia/các nước).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Mua sách giới thiệu các quốc gia.", pause: 300 },
-              { lang: "zh-CN", text: "我想买一本介绍世界各国的书。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy nhét từ 国家 vào sau tên riêng đất nước",
-            situation: "Bạn muốn giới thiệu 'Tôi đến từ đất nước Việt Nam' và dịch thành '我来自越南国家'.",
-            explanation: "Trong tiếng Trung, tên các nước (như 中国, 越南, 日本) bản thân nó đã mang trọn vẹn tư cách của một quốc gia độc lập. Tuyệt đối không được nói '越南国家' hay '中国国家'. Chỉ dùng từ 国家 khi nói khái niệm chung: 哪个国家 (nước nào), 很多国家 (nhiều nước).",
-            wrong: "我来自越南国家。 (Dư thừa chữ 国家)",
-            right: "我来自越南。 / 越南是一个美丽的国家。 (Chuẩn người bản xứ)",
-            tip: "Tên riêng nước đứng độc lập. Chỉ dùng 国家 khi làm danh từ chung (nước nào, quốc gia lớn).",
-            boundary: "Phân biệt 国家 (đất nước) với 家 (ngôi nhà, gia đình riêng). Không dùng 国家 để hỏi địa chỉ nhà ở.",
-            comparisons: [
-              { zh: "我回国", vi: "Tôi về nước (Về tổ quốc)" },
-              { zh: "我回家", vi: "Tôi về nhà (Về mái ấm gia đình riêng)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Cảnh báo bẫy: Tên đất nước đứng một mình như Việt Nam, Trung Quốc; tuyệt đối không ghép thêm quốc gia phía sau.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "guó (thanh 2 vuốt cao) + jiā (thanh 1 cao và bằng).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "国家", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Quốc (国) có bộ Vi (囗) bao quanh ngọc quý (玉). Chữ Gia (家) có bộ Miên (宀) là mái nhà che cho đàn lợn (豕).",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Quốc có khung thành bao quanh bảo vệ viên ngọc quý bên trong.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Quốc gia nào = 哪个国家; Tên riêng nước đứng độc lập (không thêm 国家).",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Quốc gia nào là ná cá quốc gia, tên nước đứng độc lập.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 16: 书店 ---
-      {
-        id: "hsk1-bai-16-g3-w16",
-        index": 16,
-        hanzi: "书店",
-        pinyin: "shūdiàn",
-        coreMeaning: "Hiệu sách, nhà sách, cửa hàng bán sách",
-        introAudio: [
-          { lang: "zh-CN", text: "书店", pause: 500 },
-          { lang: "vi-VN", text: "Hiệu sách, nhà sách, cửa hàng bán sách", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi bạn muốn đi mua sách giáo trình, từ điển, tìm truyện tranh, hoặc hẹn bạn bè tại cửa hàng sách.",
-          detail: "Danh từ chỉ nơi kinh doanh sách. Lượng từ tiêu chuẩn cho hiệu sách là '家' (jiā): 一家书店. Có thể kết hợp động từ: 去书店 (đi hiệu sách), 在书店买书/读书 (mua/đọc sách ở hiệu sách).",
-          keyPoint: "Cửa hàng bán sách. Lượng từ chuẩn: 一家书店.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ mười sáu: Thư điếm, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "书店", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là hiệu sách, nhà sách bán tài liệu.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Lượng từ chuẩn của hiệu sách",
-            pattern: "一家 + (很有名的) + 书店",
-            note: "Lượng từ 家 dùng cho các cửa hàng, công ty, doanh nghiệp.",
-            audio: [
-              { lang: "zh-CN", text: "大学旁边有一家书店。", pause: 800 },
-              { lang: "vi-VN", text: "Bên cạnh trường đại học có một hiệu sách.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Hành động tại hiệu sách",
-            pattern: "去书店 + [买书 / 看书 / 找朋友]",
-            note: "Ví dụ: 下课以后去书店 (Tan học xong đi hiệu sách).",
-            audio: [
-              { lang: "zh-CN", text: "我们去书店买汉语书吧。", pause: 800 },
-              { lang: "vi-VN", text: "Chúng mình đi hiệu sách mua sách tiếng Trung nhé.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "学校右边有一家很大的书店。",
-            vi: "Phía bên phải trường học có một hiệu sách rất lớn.",
-            situation: "Chỉ đường cho tân sinh viên tìm địa điểm mua giáo trình học tập.",
-            analysis: "学校右边 là mốc vị trí đứng trước; 一家很大的书店 là tân ngữ tồn tại.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Bên phải trường có hiệu sách lớn.", pause: 300 },
-              { lang: "zh-CN", text: "学校右边有一家很大的书店。", pause: 800 }
-            ]
-          },
-          {
-            zh: "这家书店里有很多桌子和椅子，可以在这里看书。",
-            vi: "Trong hiệu sách này có rất nhiều bàn ghế, có thể đọc sách ở đây.",
-            situation: "Giới thiệu không gian yên tĩnh của hiệu sách kết hợp quán cà phê.",
-            analysis: "书店里 là danh từ chỉ nơi chốn (bên trong hiệu sách).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Hiệu sách có bàn ghế để đọc tại chỗ.", pause: 300 },
-              { lang: "zh-CN", text: "这家书店里有很多桌子和椅子，可以在这里看书。", pause: 800 }
-            ]
-          },
-          {
-            zh: "我想去书店买一本介绍不同国家的书。",
-            vi: "Tôi muốn đến hiệu sách mua một cuốn sách giới thiệu về các quốc gia khác nhau.",
-            situation: "Bàn bạc với bạn cùng phòng về mục đích ghé thăm nhà sách chiều nay.",
-            analysis: "Câu liên động: 去书店 (đi hiệu sách) để 买书 (mua sách).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Đi hiệu sách mua sách về các nước.", pause: 300 },
-              { lang: "zh-CN", text: "我想去书店买一本介绍不同国家的书。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy định kiến: Nghĩ 书店 chỉ được mua sách, không được ngồi đọc",
-            situation: "Bạn thấy câu '他在书店看书' và nghĩ câu này sai vì đọc sách phải ở thư viện (图书馆).",
-            explanation: "Thực tế tại Trung Quốc và hiện đại: Các hiệu sách lớn (như Tân Hoa Thư Điếm) đều có khu vực đọc sách tại chỗ miễn phí hoặc kèm cà phê sách. Do đó cụm 在书店看书 (đọc sách ở hiệu sách) là hoàn toàn tự nhiên và đúng 100%.",
-            wrong: "Đồng nhất máy móc: Đọc sách chỉ dùng 图书馆, hiệu sách chỉ được nói 买书.",
-            right: "在书店买书 和 在书店看书 đều chuẩn xác.",
-            tip: "Hiệu sách (kinh doanh) -> 书店. Thư viện (mượn sách công cộng) -> 图书馆.",
-            boundary: "Lượng từ của hiệu sách là 家 (一家书店), không dùng *一个书店* trong văn cảnh trang trọng.",
-            comparisons: [
-              { zh: "书店", vi: "Hiệu sách (Cửa hàng mua bán sách)" },
-              { zh: "图书馆", vi: "Thư viện (Nơi mượn, tra cứu sách công cộng)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Phân biệt hiệu sách và thư viện: Hiệu sách thư điếm dùng lượng từ gia ", pause: 300 },
-              { lang: "zh-CN", text: "一家书店", pause: 400 },
-              { lang: "vi-VN", text: ". Thư viện mượn sách công cộng dùng đồ thư quán ", pause: 300 },
-              { lang: "zh-CN", text: "图书馆", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "shū (thanh 1 cao dài, uốn lưỡi nhẹ) + diàn (thanh 4 dứt khoát).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "书店", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Thư (书) gồm nét ngang gập móc, nét sổ và dấu chấm ở trên. Chữ Điếm (店) có bộ Nghiễm (广) che phía trên chữ Chiêm (占).",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Điếm có bộ Nghiễm là mái nhà của cửa hàng.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Lượng từ = 一家书店; Đi hiệu sách = 去书店买书 / 看书.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Một hiệu sách là nhất gia thư điếm, đi hiệu sách là khứ thư điếm.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 17: 好看 ---
-      {
-        id: "hsk1-bai-16-g3-w17",
-        index": 17,
-        hanzi: "好看",
-        pinyin: "hǎokàn",
-        coreMeaning: "Đẹp, ưa nhìn (ngoại hình); hay, cuốn hút (nội dung phim ảnh, sách báo)",
-        introAudio: [
-          { lang: "zh-CN", text: "好看", pause: 500 },
-          { lang: "vi-VN", text: "Đẹp mắt, ưa nhìn về ngoại hình; hay, hấp dẫn về nội dung phim sách", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng để khen ngợi diện mạo người, màu sắc kiểu dáng quần áo (đẹp) HOẶC khen ngợi nội dung phim, kịch, tiểu thuyết, truyện tranh (hay, hấp dẫn).",
-          detail: "Hình dung từ đa năng thuộc giác quan thị giác. Có thể làm vị ngữ: 很好看 HOẶC làm định ngữ: 好看的电影 (bộ phim hay), 好看的衣服 (bộ quần áo đẹp).",
-          keyPoint: "Thị giác: Ngoại hình = ĐẸP; Tác phẩm thị giác (phim/sách) = HAY.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ mười bảy: Hảo khán, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "好看", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là đẹp mắt hoặc nội dung phim truyện rất hay.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Khen ngợi nội dung phim ảnh hoặc sách",
-            pattern: "[Phim / Sách] + 很好看 / 真的很好看",
-            note: "Ví dụ: 这部电影很好看 (Bộ phim này rất hay).",
-            audio: [
-              { lang: "zh-CN", text: "这部电影真的很好看。", pause: 800 },
-              { lang: "vi-VN", text: "Bộ phim này thật sự rất hay.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Khen ngợi diện mạo trang phục",
-            pattern: "[Người / Quần áo] + 穿起来 + 很好看",
-            note: "Ví dụ: 这件衣服真好看 (Chiếc áo này đẹp thật đấy).",
-            audio: [
-              { lang: "zh-CN", text: "你穿这件衣服真好看！", pause: 800 },
-              { lang: "vi-VN", text: "Bạn mặc chiếc áo này đẹp thật đấy!", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "这本书的封面很漂亮，里面的故事也很好看。",
-            vi: "Bìa cuốn sách này rất đẹp, câu chuyện bên trong cũng rất hay.",
-            situation: "Nhận xét toàn diện cả về hình thức bên ngoài lẫn chất lượng nội dung của cuốn sách.",
-            analysis: "Đối chiếu tinh tế giữa 漂亮 (đẹp hình thức bìa) và 好看 (hay về nội dung cốt truyện).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Bìa đẹp và câu chuyện bên trong rất hay.", pause: 300 },
-              { lang: "zh-CN", text: "这本书的封面很漂亮，里面的故事也很好看。", pause: 800 }
-            ]
-          },
-          {
-            zh: "昨天晚上我看了一部很有名的中国电影，非常好看。",
-            vi: "Tối hôm qua tôi đã xem một bộ phim Trung Quốc rất nổi tiếng, hay vô cùng.",
-            situation: "Khen ngợi và chia sẻ bộ phim điện ảnh chất lượng với bạn bè.",
-            analysis: "非常好看 làm vị ngữ tính từ nhận xét đỉnh cao về tác phẩm nghệ thuật.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Phim Trung Quốc rất nổi tiếng và hay.", pause: 300 },
-              { lang: "zh-CN", text: "昨天晚上我看了一部很有名的中国电影，非常好看。", pause: 800 }
-            ]
-          },
-          {
-            zh: "你在书店买的那本书好看吗？",
-            vi: "Cuốn sách bạn mua ở hiệu sách đọc có hay không?",
-            situation: "Hỏi thăm cảm nhận của bạn sau khi đọc thử tác phẩm mới mua.",
-            analysis: "好看吗 là câu hỏi đánh giá chất lượng trải nghiệm đọc.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Cuốn sách bạn mua đọc có hay không?", pause: 300 },
-              { lang: "zh-CN", text: "你在书店买的那本书好看吗？", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy phân biệt hệ từ giác quan: 好看 vs 好听 vs 好吃",
-            situation: "Nghe một bài hát hay nhưng buột miệng khen là '这首歌很好看'.",
-            explanation: "Tiếng Trung phân biệt cực kỳ rạch ròi theo cơ quan thụ cảm giác quan: Mắt thấy (ngoại hình, tranh ảnh, phim, sách) -> Dùng 好看. Tai nghe (bài hát, âm nhạc, giọng nói) -> Bắt buộc dùng 好听. Miệng nếm (món ăn, đồ uống) -> Dùng 好吃 / 好喝. Không được dùng 好看 cho âm nhạc.",
-            wrong: "这首歌真的很好看。 (Sai cơ quan cảm thụ)",
-            right: "这首歌真的很好听。 (Bài hát dùng 好听)",
-            tip: "Thấy bằng mắt (phim, sách, người) -> 好看. Nghe bằng tai (nhạc, giọng) -> 好听. Ăn bằng miệng -> 好吃.",
-            boundary: "Khen người: 漂亮 thường dùng riêng cho phái nữ; 好看 dùng được cho cả nam, nữ và đồ vật.",
-            comparisons: [
-              { zh: "电影好看", vi: "Phim hay (Thị giác xem)" },
-              { zh: "音乐好听", vi: "Nhạc hay (Thính giác nghe)" },
-              { zh: "菜好吃", vi: "Món ăn ngon (Vị giác nếm)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Phân biệt hệ giác quan: Phim sách mắt thấy dùng hảo khán ", pause: 300 },
-              { lang: "zh-CN", text: "好看", pause: 400 },
-              { lang: "vi-VN", text: ". Bài hát tai nghe dùng hảo thính ", pause: 300 },
-              { lang: "zh-CN", text: "好听", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "hǎo (thanh 3 trầm sâu) + kàn (thanh 4 giáng mạnh dứt khoát).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "好看", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Hảo (好) có bộ Nữ (女) và Tử (子). Chữ Khán (看) có bộ Thủ (手) che trên mắt bộ Mục (目) để phóng tầm mắt nhìn xa.",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Khán tượng hình bàn tay che trên mắt nhìn ra xa.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Phim/sách hay = 电影/书很好看; Quần áo đẹp = 衣服好看; Nhạc hay = 好听.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Phim sách hay hoặc áo đẹp dùng hảo khán, bài hát hay dùng hảo thính.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 18: 爸 ---
-      {
-        id: "hsk1-bai-16-g3-w18",
-        index": 18,
-        hanzi: "爸",
-        pinyin: "bà",
-        coreMeaning: "Bố, ba, cha (xưng hô thân tộc trong gia đình)",
-        introAudio: [
-          { lang: "zh-CN", text: "爸", pause: 500 },
-          { lang: "vi-VN", text: "Bố, ba, cha, cách gọi thân mật trong gia đình", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi xưng hô gọi trực tiếp người cha, hoặc dùng khi kể về người bố với bạn bè, đồng nghiệp thân thiết.",
-          detail: "Danh từ thân tộc. Trong khẩu ngữ có thể gọi đơn âm tiết là '爸' hoặc trùng điệp '爸爸'. Khi biểu thị quan hệ sở hữu gia đình ruột thịt, khẩu ngữ thường lược bỏ trợ từ 的: 我爸 (bố tôi).",
-          keyPoint: "Khẩu ngữ thân mật: Bố tôi = 我爸 (thường lược bỏ 的).",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ mười tám: Ba, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "爸", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là bố, ba, cha trong gia đình.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Khẩu ngữ thân mật gia đình (lược bỏ 的)",
-            pattern: "我爸 / 你爸 / 他爸",
-            note: "Trong khẩu ngữ, nói 我爸 nghe gần gũi và tự nhiên hơn 我的爸爸.",
-            audio: [
-              { lang: "zh-CN", text: "我爸每天开车去上班。", pause: 800 },
-              { lang: "vi-VN", text: "Bố tôi mỗi ngày đều lái xe đi làm.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Gọi chung cha mẹ",
-            pattern: "爸妈 (Bố mẹ / Ba má)",
-            note: "Cách gọi tắt thân thương của 爸爸妈妈.",
-            audio: [
-              { lang: "zh-CN", text: "我爸妈都在家呢。", pause: 800 },
-              { lang: "vi-VN", text: "Bố mẹ tôi đều đang ở nhà đấy.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "我爸今天不开车，他坐地铁去上班。",
-            vi: "Bố tôi hôm nay không lái xe, ông ấy đi tàu điện ngầm đi làm.",
-            situation: "Kể về sự thay đổi phương tiện di chuyển của người cha trong ngày mưa gió.",
-            analysis: "我爸 làm chủ ngữ; 开车 và 坐地铁 tạo thế đối lập rõ ràng.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Bố hôm nay không lái xe, đi tàu điện ngầm.", pause: 300 },
-              { lang: "zh-CN", text: "我爸今天不开车，他坐地铁去上班。", pause: 800 }
-            ]
-          },
-          {
-            zh: "爸，后天下午我们去那家书店买书吧！",
-            vi: "Bố ơi, chiều ngày kia bố con mình đến hiệu sách kia mua sách nhé!",
-            situation: "Hô ngữ trực tiếp rủ người cha cùng đi mua sách vào ngày nghỉ.",
-            analysis: "Chữ 爸 đứng đơn độc ở đầu câu đóng vai trò thưa gửi trực tiếp.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Bố ơi, chiều ngày kia đi hiệu sách nhé.", pause: 300 },
-              { lang: "zh-CN", text: "爸，后天下午我们去那家书店买书吧！", pause: 800 }
-            ]
-          },
-          {
-            zh: "周末我有时候跟我爸一起去打球。",
-            vi: "Cuối tuần tôi thỉnh thoảng cùng bố đi chơi bóng.",
-            situation: "Kể về hoạt động gắn kết tình cảm phụ tử qua thể thao.",
-            analysis: "跟我爸一起 là trạng ngữ đồng hành: cùng với bố tôi.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Cuối tuần thỉnh thoảng cùng bố chơi bóng.", pause: 300 },
-              { lang: "zh-CN", text: "周末我有时候跟我爸一起去打球。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy ép buộc chèn chữ '的' máy móc (Tư duy của người nước ngoài)",
-            situation: "Nhiều người nghĩ 'Bố của tôi' bắt buộc phải dịch thành '我的爸爸', cho rằng '我爸' là thiếu chữ.",
-            explanation: "Trong tư duy ngôn ngữ Hán ngữ bản xứ: Đối với những mối quan hệ gia đình ruột thịt thân cận nhất (bố, mẹ, anh, chị, em) hoặc cơ quan đơn vị gắn bó, người bản xứ LUÔN LƯỢC BỎ chữ 的 để thể hiện sự gắn kết ruột thịt tự nhiên. Nói 我爸, 我妈 nghe như người bản xứ. Nói 我的爸 nghe rất gượng gạo và xa cách.",
-            wrong: "今天我的爸送我去学校。 (Kém tự nhiên)",
-            right: "今天我爸送我去学校。 (Chuẩn khẩu ngữ bản xứ)",
-            tip: "Người thân ruột thịt (bố, mẹ, anh, chị) -> Bỏ chữ 的 (我爸, 我妈, 我姐).",
-            boundary: "爸爸 hai âm tiết đọc: âm đầu thanh 4 (bà), âm sau thanh nhẹ (ba).",
-            comparisons: [
-              { zh: "我爸", vi: "Bố tôi (Khẩu ngữ thân mật bản xứ)" },
-              { zh: "我的老师", vi: "Thầy giáo của tôi (Mối quan hệ xã hội -> Giữ chữ 的)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý khẩu ngữ: Với bố mẹ ruột thịt, người bản xứ luôn nói ngã ba ngã ma lược bỏ chữ đích để tạo sự gần gũi.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "Thanh bốn (bà): phát âm dứt khoát từ cao độ 5 giáng xuống 1.",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "爸", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Ba (爸) gồm bộ Phụ (父) là người cha ở trên, chữ Ba (巴) đóng vai trò biểu âm ở dưới.",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Ba có bộ Phụ chỉ người cha ở phần trên.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Khẩu ngữ gần gũi = 我爸 (bỏ 的); Bố mẹ = 爸妈; Bố lái xe = 我爸开车.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Bố thân mật dùng ngã ba, bố mẹ nói tắt là ba ma.", pause: 400 }
-        ]
-      }
+    "sample": "我五点下课。我们五点十分在学校门口见，然后一起去书店吧。"
+   },
+   "supportWords": [
+    {
+     "zh": "门口",
+     "vi": "cổng, cửa ra vào"
+    },
+    {
+     "zh": "介绍",
+     "vi": "giới thiệu"
+    },
+    {
+     "zh": "才",
+     "vi": "mãi đến… mới…"
+    },
+    {
+     "zh": "不同",
+     "vi": "khác nhau"
+    }
+   ],
+   "voices": {
+    "A": "f",
+    "B": "m"
+   },
+   "mode": {
+    "listen": true,
+    "read": true,
+    "shadow": true,
+    "role": true
+   }
+  },
+  {
+   "id": "b16-d2",
+   "title": "Đi tới hiệu sách",
+   "context": "Một người lái xe, người còn lại chỉ đường. Theo dõi chỗ rẽ và việc hai người quyết định làm khi đến nơi.",
+   "speakers": {
+    "A": "小林",
+    "B": "小安"
+   },
+   "turns": [
+    {
+     "id": "b16-d2-t1",
+     "speaker": "A",
+     "zh": "今天我爸开车送我们去书店。",
+     "vi": "Hôm nay bố tôi lái xe đưa chúng ta đến hiệu sách.",
+     "wordIds": [
+      "hsk1-bai-16-g1-w3",
+      "hsk1-bai-16-g3-w16",
+      "hsk1-bai-16-g3-w18"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d2-t2",
+     "speaker": "B",
+     "zh": "谢谢！我们现在到哪儿了？",
+     "vi": "Cảm ơn! Bây giờ chúng ta đến đâu rồi?",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d2-t3",
+     "speaker": "A",
+     "zh": "前面是一个路口。你知道往哪边走吗？",
+     "vi": "Phía trước là một giao lộ. Bạn biết đi về phía nào không?",
+     "wordIds": [
+      "hsk1-bai-16-g4-w20"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d2-t4",
+     "speaker": "B",
+     "zh": "到路口往右走。书店在车站旁边。",
+     "vi": "Đến giao lộ đi sang phải. Hiệu sách cạnh nhà ga.",
+     "wordIds": [
+      "hsk1-bai-16-g1-w1",
+      "hsk1-bai-16-g3-w16",
+      "hsk1-bai-16-g4-w20",
+      "hsk1-bai-16-g4-w23"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d2-t5",
+     "speaker": "A",
+     "zh": "右边那座楼是书店吗？",
+     "vi": "Tòa nhà bên phải kia là hiệu sách à?",
+     "wordIds": [
+      "hsk1-bai-16-g1-w1",
+      "hsk1-bai-16-g3-w16"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d2-t6",
+     "speaker": "B",
+     "zh": "不是，那是大学。书店还在前面。",
+     "vi": "Không, đó là trường đại học. Hiệu sách còn ở phía trước.",
+     "wordIds": [
+      "hsk1-bai-16-g2-w11",
+      "hsk1-bai-16-g3-w16"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d2-t7",
+     "speaker": "A",
+     "zh": "我看到车站了。这里人真多。",
+     "vi": "Tôi thấy nhà ga rồi. Ở đây đông người thật.",
+     "wordIds": [
+      "hsk1-bai-16-g2-w12",
+      "hsk1-bai-16-g4-w23"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d2-t8",
+     "speaker": "B",
+     "zh": "他们都在等车。书店就在车站右边。",
+     "vi": "Họ đều đang chờ xe. Hiệu sách ở ngay bên phải nhà ga.",
+     "wordIds": [
+      "hsk1-bai-16-g1-w1",
+      "hsk1-bai-16-g1-w5",
+      "hsk1-bai-16-g3-w16",
+      "hsk1-bai-16-g4-w23"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d2-t9",
+     "speaker": "A",
+     "zh": "到了。我爸先找地方停车，我们下车等他。",
+     "vi": "Đến rồi. Bố tôi tìm chỗ đỗ trước, chúng ta xuống xe đợi bố.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w18"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d2-t10",
+     "speaker": "B",
+     "zh": "好。别着急，注意看车。",
+     "vi": "Được. Đừng vội, chú ý nhìn xe.",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d2-t11",
+     "speaker": "A",
+     "zh": "这家书店真大！我可以在这里读书吗？",
+     "vi": "Hiệu sách này lớn thật! Tôi có thể đọc sách ở đây không?",
+     "wordIds": [
+      "hsk1-bai-16-g2-w12",
+      "hsk1-bai-16-g3-w16",
+      "hsk1-bai-16-g4-w21"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d2-t12",
+     "speaker": "B",
+     "zh": "可以。里面有桌子和椅子。",
+     "vi": "Được. Bên trong có bàn và ghế.",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d2-t13",
+     "speaker": "A",
+     "zh": "我想一边看书一边做笔记。",
+     "vi": "Tôi muốn vừa đọc sách vừa ghi chú.",
+     "wordIds": [
+      "hsk1-bai-16-g2-w7"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d2-t14",
+     "speaker": "B",
+     "zh": "好。我先找那本介绍国家的书。",
+     "vi": "Được. Tôi tìm quyển giới thiệu các quốc gia trước.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w15"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d2-t15",
+     "speaker": "A",
+     "zh": "请问，可以打开这本书看一下吗？",
+     "vi": "Xin hỏi, có thể mở quyển này xem một chút không?",
+     "wordIds": [
+      "hsk1-bai-16-g4-w24"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d2-t16",
+     "speaker": "B",
+     "zh": "我刚问过店员，可以。",
+     "vi": "Tôi vừa hỏi nhân viên rồi, được.",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d2-t17",
+     "speaker": "A",
+     "zh": "好，我们坐下来慢慢看吧。",
+     "vi": "Được, mình ngồi xuống từ từ đọc nhé.",
+     "wordIds": [],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d2-t18",
+     "speaker": "B",
+     "zh": "好。我给你爸发个消息，告诉他我们在里面。",
+     "vi": "Được. Tôi gửi tin cho bố bạn, nói chúng ta ở bên trong.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w18"
+     ],
+     "gender": "m"
+    }
+   ],
+   "checks": [
+    {
+     "id": "b16-d2-q1",
+     "prompt": "Ai trực tiếp lái xe?",
+     "options": [
+      "小林",
+      "小安",
+      "Bố của 小林",
+      "Nhân viên"
+     ],
+     "correct": 2,
+     "why": "开车送我们 cho biết bố là tài xế.",
+     "evidence": [
+      "b16-d2-t1"
+     ]
+    },
+    {
+     "id": "b16-d2-q2",
+     "prompt": "Đến giao lộ họ cần đi hướng nào?",
+     "options": [
+      "Bắc",
+      "Trái",
+      "Phải",
+      "Quay lại"
+     ],
+     "correct": 2,
+     "why": "Lời chỉ đường nói 往右走.",
+     "evidence": [
+      "b16-d2-t4"
+     ]
+    },
+    {
+     "id": "b16-d2-q3",
+     "prompt": "Hiệu sách ở đâu so với nhà ga?",
+     "options": [
+      "Bên phải",
+      "Bên trái",
+      "Phía bắc",
+      "Không nói"
+     ],
+     "correct": 0,
+     "why": "Lượt 8 xác định lại vị trí.",
+     "evidence": [
+      "b16-d2-t8"
+     ]
+    },
+    {
+     "id": "b16-d2-q4",
+     "prompt": "Những người ở nhà ga đang làm gì?",
+     "options": [
+      "Mua sách",
+      "Chờ xe",
+      "Chơi bóng",
+      "Ghi chú"
+     ],
+     "correct": 1,
+     "why": "他们都在等车.",
+     "evidence": [
+      "b16-d2-t7",
+      "b16-d2-t8"
+     ]
+    },
+    {
+     "id": "b16-d2-q5",
+     "prompt": "Họ có thể đọc sách tại hiệu sách không?",
+     "options": [
+      "Không bao giờ",
+      "Có, theo tình huống này",
+      "Chỉ bố được đọc",
+      "Chỉ được mua"
+     ],
+     "correct": 1,
+     "why": "Ở đây có bàn ghế và đã hỏi nhân viên.",
+     "evidence": [
+      "b16-d2-t11",
+      "b16-d2-t12",
+      "b16-d2-t15",
+      "b16-d2-t16"
+     ]
+    },
+    {
+     "id": "b16-d2-q6",
+     "prompt": "一边…一边… diễn tả gì?",
+     "options": [
+      "Đọc xong mới ghi",
+      "Vừa đọc vừa ghi chú",
+      "Chỉ đọc một bên trang",
+      "Đợi ngoài cửa"
+     ],
+     "correct": 1,
+     "why": "Hai hoạt động kết hợp trong cùng quá trình.",
+     "evidence": [
+      "b16-d2-t13"
+     ]
+    }
+   ],
+   "task": {
+    "prompt": "Bạn là hành khách. Nói bố đang lái xe và hướng dẫn: đến giao lộ rẽ phải, đợi ở nhà ga.",
+    "hints": [
+     "Phân biệt người lái với người ngồi xe.",
+     "Dùng 我爸开车、路口、往右、车站."
     ],
-
-    // BÀI TẬP TRẮC NGHIỆM NGỮ DỤNG CHO NHÓM 3
-    exercises: [
-      {
-        id: "hsk1-b16-g3-ex1",
-        type: "Phân biệt 有时候 và 的时候",
-        prompt: "Chọn câu đúng nhất để diễn đạt: 'Lúc tan học, xin hãy gọi điện thoại cho tôi.'",
-        options: [
-          "有时候下课，请给我打电话。",
-          "下课的时候，请给我打电话。",
-          "下课有的时候，请给我打电话。",
-          "在有时候下课，请打电话。"
-        ],
-        correct: 1,
-        reasonRight: "Chính xác! Mốc thời điểm diễn ra một hành động bắt buộc dùng cấu trúc: [Hành động] + 的时候.",
-        reasonWrong: "Chưa đúng: 有时候 là phó từ chỉ tần suất thỉnh thoảng, không dùng làm mốc sự kiện.",
-        questionAudio: [{ lang: "vi-VN", text: "Lúc tan học hãy gọi điện cho tôi, nói thế nào đúng?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "下课的时候，请给我打电话。", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g3-ex2",
-        type: "Trục thời gian tương đối 后天",
-        prompt: "Hôm nay là thứ Sáu (星期五). Vậy 后天 là thứ mấy?",
-        options: ["星期六 (Thứ Bảy)", "星期天 (Chủ Nhật)", "星期一 (Thứ Hai)", "星期二 (Thứ Ba)"],
-        correct: 1,
-        reasonRight: "Tuyệt vời! 后天 là ngày kia (+2 ngày kể từ hôm nay). Thứ Sáu + 2 ngày = Chủ Nhật (星期天).",
-        reasonWrong: "Chưa đúng: Thứ Sáu + 1 ngày là ngày mai (明天 - Thứ Bảy); ngày kia (后天) phải là Chủ Nhật.",
-        questionAudio: [{ lang: "vi-VN", text: "Hôm nay là thứ sáu, hậu thiên là thứ mấy?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "后天是星期天。", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g3-ex3",
-        type: "Bẫy danh từ riêng 国家",
-        prompt: "Chọn câu giới thiệu quê hương tự nhiên và chuẩn mực nhất của người bản xứ:",
-        options: [
-          "我来自越南国家，很高兴认识你。",
-          "我来自越南，很高兴认识你。",
-          "越南国家是一个很大的国家。",
-          "我是国家越南人。"
-        ],
-        correct: 1,
-        reasonRight: "Chuẩn xác! Tên riêng quốc gia đứng độc lập: 我来自越南. Không ghép thừa chữ 国家 phía sau.",
-        reasonWrong: "Chưa đúng: Ghép 越南国家 là lỗi dịch từng chữ từ tiếng mẹ đẻ sang tiếng Trung.",
-        questionAudio: [{ lang: "vi-VN", text: "Câu giới thiệu quê hương nào chuẩn bản xứ nhất?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "我来自越南，很高兴认识你。", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g3-ex4",
-        type: "Lượng từ cho hiệu sách 书店",
-        prompt: "Điền lượng từ thích hợp vào chỗ trống: '学校旁边有一____很有名的书店。'",
-        options: ["本", "家", "个", "所"],
-        correct: 1,
-        reasonRight: "Chính xác! Lượng từ tiêu chuẩn cho hiệu sách, cửa hàng, công ty là 家 (jiā): 一家书店.",
-        reasonWrong: "Chưa đúng: 本 là lượng từ của cuốn sách; 所 là lượng từ của trường học/bệnh viện.",
-        questionAudio: [{ lang: "zh-CN", text: "有一什么很有名的书店？", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "有一家很有名的书店", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g3-ex5",
-        type: "Phân biệt hệ giác quan 好看 vs 好听",
-        prompt: "Muốn khen 'Bài hát tiếng Trung này nghe hay thật đấy!', câu nào chuẩn xác?",
-        options: [
-          "这首中文歌真好看！",
-          "这首中文歌真好听！",
-          "这首中文歌真好吃！",
-          "这首中文歌真好读！"
-        ],
-        correct: 1,
-        reasonRight: "Tuyệt vời! Âm nhạc cảm nhận qua thính giác tai nghe bắt buộc dùng 好听; 好看 chỉ dùng cho thị giác mắt nhìn.",
-        reasonWrong: "Chưa đúng: 好看 chỉ dùng cho phim ảnh, sách báo hoặc ngoại hình đẹp mắt.",
-        questionAudio: [{ lang: "vi-VN", text: "Khen bài hát nghe hay dùng từ nào?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "这首中文歌真好听！", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g3-ex6",
-        type: "Khẩu ngữ thân tộc 我爸",
-        prompt: "Trong giao tiếp khẩu ngữ tự nhiên hàng ngày, cách nói nào được người bản xứ ưa chuộng nhất?",
-        options: ["我的爸每天开车去上班。", "我爸每天开车去上班。", "我和爸每天开车去上班。", "有的爸每天开车去上班。"],
-        correct: 1,
-        reasonRight: "Chuẩn xác! Người thân ruột thịt trong khẩu ngữ luôn lược bỏ chữ 的 để tăng sự gần gũi: 我爸.",
-        reasonWrong: "Chưa đúng: Nói 我的爸 nghe trang trọng quá mức và tạo cảm giác xa cách, thiếu tự nhiên.",
-        questionAudio: [{ lang: "vi-VN", text: "Khẩu ngữ tự nhiên nói Bố tôi lái xe đi làm thế nào?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "我爸每天开车去上班。", pause: 600 }
-        ]
-      }
+    "sample": "我爸开车，我坐车。到路口往右走，我们在车站等你。"
+   },
+   "supportWords": [
+    {
+     "zh": "停车",
+     "vi": "đỗ xe"
+    },
+    {
+     "zh": "做笔记",
+     "vi": "ghi chú"
+    },
+    {
+     "zh": "店员",
+     "vi": "nhân viên cửa hàng"
+    },
+    {
+     "zh": "消息",
+     "vi": "tin nhắn"
+    }
+   ],
+   "voices": {
+    "A": "f",
+    "B": "m"
+   },
+   "mode": {
+    "listen": true,
+    "read": true,
+    "shadow": true,
+    "role": true
+   }
+  },
+  {
+   "id": "b16-d3",
+   "title": "Chọn sách và kể chuyện gia đình",
+   "context": "Hai bạn chọn sách cho người thân. Có một cuốn đẹp về bìa, một cuốn hấp dẫn về nội dung; nghe xem họ chọn thế nào.",
+   "speakers": {
+    "A": "小林",
+    "B": "小安"
+   },
+   "turns": [
+    {
+     "id": "b16-d3-t1",
+     "speaker": "A",
+     "zh": "你找到想买的书了吗？",
+     "vi": "Bạn tìm được sách muốn mua chưa?",
+     "wordIds": [],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d3-t2",
+     "speaker": "B",
+     "zh": "找到了。这本书介绍很多国家。",
+     "vi": "Tìm được rồi. Quyển này giới thiệu nhiều quốc gia.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w15"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d3-t3",
+     "speaker": "A",
+     "zh": "这本书的封面真好看。里面怎么样？",
+     "vi": "Bìa quyển này đẹp thật. Bên trong thế nào?",
+     "wordIds": [
+      "hsk1-bai-16-g3-w17"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d3-t4",
+     "speaker": "B",
+     "zh": "里面也很好看，有照片，还有小故事。",
+     "vi": "Bên trong cũng hay, có ảnh và truyện ngắn.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w17"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d3-t5",
+     "speaker": "A",
+     "zh": "你买给自己看吗？",
+     "vi": "Bạn mua cho mình đọc à?",
+     "wordIds": [],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d3-t6",
+     "speaker": "B",
+     "zh": "不是，我想送给我姐。她喜欢读书。",
+     "vi": "Không, tôi muốn tặng chị. Chị thích đọc sách.",
+     "wordIds": [
+      "hsk1-bai-16-g4-w21",
+      "hsk1-bai-16-g4-w22"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d3-t7",
+     "speaker": "A",
+     "zh": "你姐现在在哪儿？",
+     "vi": "Bây giờ chị bạn ở đâu?",
+     "wordIds": [
+      "hsk1-bai-16-g4-w22"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d3-t8",
+     "speaker": "B",
+     "zh": "她在北京读书，后天回来。",
+     "vi": "Chị đang đi học ở Bắc Kinh, ngày kia về.",
+     "wordIds": [
+      "hsk1-bai-16-g1-w4",
+      "hsk1-bai-16-g3-w14",
+      "hsk1-bai-16-g4-w21"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d3-t9",
+     "speaker": "A",
+     "zh": "后天？那我们可以一起吃饭。",
+     "vi": "Ngày kia à? Vậy chúng ta có thể cùng ăn cơm.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w14"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d3-t10",
+     "speaker": "B",
+     "zh": "好啊。我爸也在家。",
+     "vi": "Được đấy. Bố tôi cũng ở nhà.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w18"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d3-t11",
+     "speaker": "A",
+     "zh": "你爸喜欢什么书？",
+     "vi": "Bố bạn thích sách gì?",
+     "wordIds": [
+      "hsk1-bai-16-g3-w18"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d3-t12",
+     "speaker": "B",
+     "zh": "他喜欢历史书，有时候也看小说。",
+     "vi": "Bố thích sách lịch sử, thỉnh thoảng cũng đọc tiểu thuyết.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w13"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d3-t13",
+     "speaker": "A",
+     "zh": "我想买那位有名的老师写的书。",
+     "vi": "Tôi muốn mua sách do người thầy nổi tiếng kia viết.",
+     "wordIds": [
+      "hsk1-bai-16-g2-w10"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d3-t14",
+     "speaker": "B",
+     "zh": "是教汉语的那位老师吗？",
+     "vi": "Là thầy dạy tiếng Trung đó à?",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d3-t15",
+     "speaker": "A",
+     "zh": "对。我以前得到了他的帮助。",
+     "vi": "Đúng. Trước đây tôi đã được thầy giúp đỡ.",
+     "wordIds": [
+      "hsk1-bai-16-g1-w2"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d3-t16",
+     "speaker": "B",
+     "zh": "真的？他帮你做了什么？",
+     "vi": "Thật à? Thầy giúp bạn làm gì?",
+     "wordIds": [
+      "hsk1-bai-16-g2-w8"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d3-t17",
+     "speaker": "A",
+     "zh": "他帮我练习说汉语。我现在敢开口了。",
+     "vi": "Thầy giúp tôi luyện nói tiếng Trung. Giờ tôi dám mở lời rồi.",
+     "wordIds": [],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d3-t18",
+     "speaker": "B",
+     "zh": "那真好。这本书我们也可以一起读。",
+     "vi": "Vậy tốt thật. Quyển này mình cũng có thể đọc cùng nhau.",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d3-t19",
+     "speaker": "A",
+     "zh": "可以。先买这两本吧。",
+     "vi": "Được. Trước tiên mua hai quyển này nhé.",
+     "wordIds": [],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d3-t20",
+     "speaker": "B",
+     "zh": "好，买完书我们去吃点儿东西。",
+     "vi": "Được, mua sách xong mình đi ăn chút gì đó.",
+     "wordIds": [],
+     "gender": "m"
+    }
+   ],
+   "checks": [
+    {
+     "id": "b16-d3-q1",
+     "prompt": "Quyển giới thiệu quốc gia được mua cho ai?",
+     "options": [
+      "Bố",
+      "Chị",
+      "Giáo viên",
+      "Nhân viên"
+     ],
+     "correct": 1,
+     "why": "Lượt 6 xác nhận người nhận.",
+     "evidence": [
+      "b16-d3-t5",
+      "b16-d3-t6"
+     ]
+    },
+    {
+     "id": "b16-d3-q2",
+     "prompt": "Chị về khi nào?",
+     "options": [
+      "Hôm nay",
+      "Ngày mai",
+      "Ngày kia",
+      "Tuần sau"
+     ],
+     "correct": 2,
+     "why": "后天 là ngày kia tính từ hôm nay.",
+     "evidence": [
+      "b16-d3-t8"
+     ]
+    },
+    {
+     "id": "b16-d3-q3",
+     "prompt": "在北京读书 trong đoạn có ý gì?",
+     "options": [
+      "Đang đọc đúng lúc này",
+      "Theo học ở Bắc Kinh",
+      "Bán sách ở Bắc Kinh",
+      "Chưa từng đến Bắc Kinh"
+     ],
+     "correct": 1,
+     "why": "Đang giới thiệu nơi chị học và thời điểm về.",
+     "evidence": [
+      "b16-d3-t7",
+      "b16-d3-t8"
+     ]
+    },
+    {
+     "id": "b16-d3-q4",
+     "prompt": "好看 ở lượt 3 khen điều gì?",
+     "options": [
+      "Bìa sách",
+      "Giọng nói",
+      "Món ăn",
+      "Giá rẻ"
+     ],
+     "correct": 0,
+     "why": "Câu nêu rõ 封面, tức bìa sách.",
+     "evidence": [
+      "b16-d3-t3"
+     ]
+    },
+    {
+     "id": "b16-d3-q5",
+     "prompt": "小林 đã có được điều gì từ thầy?",
+     "options": [
+      "Một chiếc xe",
+      "Sự giúp đỡ luyện nói",
+      "Một vé tàu",
+      "Một quốc gia"
+     ],
+     "correct": 1,
+     "why": "Lượt 17 giải thích sự giúp đỡ.",
+     "evidence": [
+      "b16-d3-t15",
+      "b16-d3-t17"
+     ]
+    },
+    {
+     "id": "b16-d3-q6",
+     "prompt": "Bố có đọc tiểu thuyết mỗi ngày không?",
+     "options": [
+      "Có, đoạn nói rõ",
+      "Không bao giờ",
+      "Chỉ biết thỉnh thoảng đọc",
+      "Chỉ đọc truyện tranh"
+     ],
+     "correct": 2,
+     "why": "有时候 không khẳng định mỗi ngày.",
+     "evidence": [
+      "b16-d3-t12"
+     ]
+    }
+   ],
+   "task": {
+    "prompt": "Bạn muốn mua sách cho bố; chị về ngày mai chứ không phải ngày kia. Hãy nói lại hai thông tin mới này.",
+    "hints": [
+     "Đổi người nhận và mốc thời gian.",
+     "Dùng 我爸、我姐、明天、不是后天."
     ],
-
-    // THỰC HÀNH TỰ ĐẶT CÂU (ACTIVE OUTPUT) 3 TẦNG TRỢ GIÚP
-    selfUse: [
-      {
-        id: "hsk1-b16-g3-su1",
-        situation: "Tình huống: Bạn muốn hẹn bạn học: 'Chiều ngày mốt bạn có thời gian không? Chúng mình cùng đến hiệu sách bên phải trường học mua một cuốn sách hay nhé!'",
-        hint1: "1. Mốc thời gian: Chiều ngày mốt (后天下午). Lời hỏi rảnh không: Có thời gian không (有时间吗). Địa điểm: Hiệu sách bên phải trường (学校右边的书店). Mục đích: Mua một cuốn sách hay (买一本好看的书).",
-        hint2: "2. Khung cấu trúc chữ Hán: 后天下午你有时间吗？我们一起去学校右边的书店买一本好看的书吧。",
-        modelAnswer: "后天下午你有时间吗？我们一起去学校右边的书店买一本好看的书吧。",
-        modelExplain: "Kết hợp trạng ngữ ngày kia, mốc chuẩn trường học đứng trước bên phải, lượng từ của sách và tính từ sách hay.",
-        questionAudio: [{ lang: "vi-VN", text: "Tình huống 1: Hẹn bạn chiều ngày mốt đến hiệu sách bên phải trường mua sách hay.", pause: 400 }],
-        hint1Audio: [{ lang: "vi-VN", text: "Gợi ý 1: Chiều ngày mốt rảnh không, cùng đi hiệu sách bên phải trường mua sách hay.", pause: 300 }],
-        hint2Audio: [{ lang: "vi-VN", text: "Gợi ý 2: Hậu thiên hạ ngọ nhĩ hữu thời gian ma, ngã môn nhất khởi khứ học hiệu hữu biên đích thư điếm...", pause: 400 }],
-        modelAudio: [
-          { lang: "zh-CN", text: "后天下午你有时间吗？我们一起去学校右边的书店买一本好看的书吧。", pause: 800 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g3-su2",
-        situation: "Tình huống: Bạn kể về gia đình: 'Bố tôi công việc rất bận, nhưng cuối tuần thỉnh thoảng bố vẫn lái xe đưa cả nhà đi chơi.'",
-        hint1: "1. Vế đầu: Bố tôi công việc rất bận (我爸工作很忙). Vế sau: Nhưng cuối tuần (但是周末), thỉnh thoảng (有时候), lái xe đưa chúng tôi đi chơi (开车送/带我们去玩儿).",
-        hint2: "2. Khung cấu trúc chữ Hán: 我爸工作很忙，但是周末有时候会开车带我们去玩儿。",
-        modelAnswer: "我爸工作很忙，但是周末有时候会开车带我们去玩儿。",
-        modelExplain: "Sử dụng đại từ thân mật bố tôi, liên từ chuyển ngoặt đán thị, phó từ tần suất hữu thời hậu và cụm lái xe đi chơi.",
-        questionAudio: [{ lang: "vi-VN", text: "Tình huống 2: Kể bố tôi bận việc nhưng cuối tuần thỉnh thoảng lái xe đưa đi chơi.", pause: 400 }],
-        hint1Audio: [{ lang: "vi-VN", text: "Gợi ý 1: Bố tôi công việc rất bận, nhưng cuối tuần thỉnh thoảng lái xe đưa đi chơi.", pause: 300 }],
-        hint2Audio: [{ lang: "vi-VN", text: "Gợi ý 2: Ngã ba công tác ngận mang, đán thị chu mạt hữu thời hậu hội khai xa đới ngã môn khứ ngoạn nhi.", pause: 400 }],
-        modelAudio: [
-          { lang: "zh-CN", text: "我爸工作很忙，但是周末有时候会开车带我们去玩儿。", pause: 800 }
-        ]
-      }
+    "sample": "这本书是买给我爸的。我姐明天回来，不是后天。"
+   },
+   "supportWords": [
+    {
+     "zh": "封面",
+     "vi": "bìa sách"
+    },
+    {
+     "zh": "历史",
+     "vi": "lịch sử"
+    },
+    {
+     "zh": "小说",
+     "vi": "tiểu thuyết"
+    },
+    {
+     "zh": "敢",
+     "vi": "dám"
+    }
+   ],
+   "voices": {
+    "A": "f",
+    "B": "m"
+   },
+   "mode": {
+    "listen": true,
+    "read": true,
+    "shadow": true,
+    "role": true
+   }
+  },
+  {
+   "id": "b16-d4",
+   "title": "Hẹn chơi bóng và học một động tác",
+   "context": "Hai bạn lên lịch chơi bóng sau giờ học. Nghe sự thay đổi kế hoạch, nơi hẹn và cách họ học một động tác mới.",
+   "speakers": {
+    "A": "小林",
+    "B": "小安"
+   },
+   "turns": [
+    {
+     "id": "b16-d4-t1",
+     "speaker": "A",
+     "zh": "后天你有时间吗？我们去打球吧。",
+     "vi": "Ngày kia bạn có thời gian không? Mình đi chơi bóng nhé.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w14",
+      "hsk1-bai-16-g4-w19"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t2",
+     "speaker": "B",
+     "zh": "有。打篮球吗？",
+     "vi": "Có. Chơi bóng rổ à?",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t3",
+     "speaker": "A",
+     "zh": "对。我姐和她的同学也想去。",
+     "vi": "Đúng. Chị tôi và các bạn học của chị cũng muốn đi.",
+     "wordIds": [
+      "hsk1-bai-16-g4-w22"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t4",
+     "speaker": "B",
+     "zh": "他们在哪儿打球？",
+     "vi": "Họ chơi ở đâu?",
+     "wordIds": [
+      "hsk1-bai-16-g1-w5",
+      "hsk1-bai-16-g4-w19"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t5",
+     "speaker": "A",
+     "zh": "在大学北边的球场。",
+     "vi": "Ở sân phía bắc trường đại học.",
+     "wordIds": [
+      "hsk1-bai-16-g1-w4",
+      "hsk1-bai-16-g2-w11"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t6",
+     "speaker": "B",
+     "zh": "我没去过。我们在哪里见？",
+     "vi": "Tôi chưa đến đó. Chúng ta gặp ở đâu?",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t7",
+     "speaker": "A",
+     "zh": "在车站旁边的路口见吧。",
+     "vi": "Gặp ở giao lộ cạnh nhà ga nhé.",
+     "wordIds": [
+      "hsk1-bai-16-g4-w20",
+      "hsk1-bai-16-g4-w23"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t8",
+     "speaker": "B",
+     "zh": "好。几点？",
+     "vi": "Được. Mấy giờ?",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t9",
+     "speaker": "A",
+     "zh": "下午四点，可以吗？",
+     "vi": "Bốn giờ chiều được không?",
+     "wordIds": [],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t10",
+     "speaker": "B",
+     "zh": "我四点才下课，四点半可以吗？",
+     "vi": "Tôi bốn giờ mới hết tiết, bốn rưỡi được không?",
+     "wordIds": [
+      "hsk1-bai-16-g2-w9"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t11",
+     "speaker": "A",
+     "zh": "可以。下课后别着急，慢慢来。",
+     "vi": "Được. Sau giờ học đừng vội, cứ từ từ.",
+     "wordIds": [
+      "hsk1-bai-16-g2-w9"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t12",
+     "speaker": "B",
+     "zh": "谢谢。我打球不太好，你们能教我吗？",
+     "vi": "Cảm ơn. Tôi chơi chưa giỏi, các bạn dạy tôi được không?",
+     "wordIds": [
+      "hsk1-bai-16-g4-w19"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t13",
+     "speaker": "A",
+     "zh": "当然可以。我手机里有一个视频。",
+     "vi": "Tất nhiên. Trong điện thoại tôi có một video.",
+     "wordIds": [],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t14",
+     "speaker": "B",
+     "zh": "那我们现在打开看看吧。",
+     "vi": "Vậy bây giờ mở xem nhé.",
+     "wordIds": [
+      "hsk1-bai-16-g4-w24"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t15",
+     "speaker": "A",
+     "zh": "你看，老师正在做这个动作。",
+     "vi": "Bạn xem, thầy đang làm động tác này.",
+     "wordIds": [
+      "hsk1-bai-16-g1-w6"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t16",
+     "speaker": "B",
+     "zh": "他的动作真快。我看不清楚。",
+     "vi": "Động tác của thầy nhanh thật. Tôi nhìn không rõ.",
+     "wordIds": [
+      "hsk1-bai-16-g1-w6"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t17",
+     "speaker": "A",
+     "zh": "我们慢一点儿放，一边看一边学。",
+     "vi": "Mình phát chậm hơn một chút, vừa xem vừa học.",
+     "wordIds": [
+      "hsk1-bai-16-g2-w7"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t18",
+     "speaker": "B",
+     "zh": "好。先看，再做一次。",
+     "vi": "Được. Xem trước, rồi làm một lần.",
+     "wordIds": [],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t19",
+     "speaker": "A",
+     "zh": "对，别一直看手机，做的时候要注意周围。",
+     "vi": "Đúng, đừng nhìn điện thoại mãi, lúc làm cần chú ý xung quanh.",
+     "wordIds": [],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t20",
+     "speaker": "B",
+     "zh": "我懂了。我有时候跟我爸一起打球。",
+     "vi": "Tôi hiểu rồi. Thỉnh thoảng tôi chơi bóng cùng bố.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w13",
+      "hsk1-bai-16-g3-w18",
+      "hsk1-bai-16-g4-w19"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t21",
+     "speaker": "A",
+     "zh": "那很好。多练习，就会慢慢进步。",
+     "vi": "Vậy tốt. Luyện nhiều sẽ dần tiến bộ.",
+     "wordIds": [],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t22",
+     "speaker": "B",
+     "zh": "今天我得到了你的帮助，谢谢你。",
+     "vi": "Hôm nay tôi được bạn giúp đỡ, cảm ơn bạn.",
+     "wordIds": [
+      "hsk1-bai-16-g1-w2"
+     ],
+     "gender": "m"
+    },
+    {
+     "id": "b16-d4-t23",
+     "speaker": "A",
+     "zh": "不客气。后天四点半见。",
+     "vi": "Không có gì. Ngày kia bốn rưỡi gặp nhé.",
+     "wordIds": [
+      "hsk1-bai-16-g3-w14"
+     ],
+     "gender": "f"
+    },
+    {
+     "id": "b16-d4-t24",
+     "speaker": "B",
+     "zh": "好，在车站旁边的路口见！",
+     "vi": "Được, gặp ở giao lộ cạnh nhà ga!",
+     "wordIds": [
+      "hsk1-bai-16-g4-w20",
+      "hsk1-bai-16-g4-w23"
+     ],
+     "gender": "m"
+    }
+   ],
+   "checks": [
+    {
+     "id": "b16-d4-q1",
+     "prompt": "Hai người sẽ chơi môn gì?",
+     "options": [
+      "Bóng đá",
+      "Bóng rổ",
+      "Tennis",
+      "Không nhắc"
+     ],
+     "correct": 1,
+     "why": "Câu hỏi và xác nhận ở đầu đoạn.",
+     "evidence": [
+      "b16-d4-t2",
+      "b16-d4-t3"
+     ]
+    },
+    {
+     "id": "b16-d4-q2",
+     "prompt": "Hẹn cuối cùng lúc nào?",
+     "options": [
+      "Ngày kia 4 giờ",
+      "Ngày kia 4 giờ 30",
+      "Ngày mai 4 giờ 30",
+      "Hôm nay 4 giờ"
+     ],
+     "correct": 1,
+     "why": "Sau khi đổi giờ, lượt 23 xác nhận.",
+     "evidence": [
+      "b16-d4-t10",
+      "b16-d4-t11",
+      "b16-d4-t23"
+     ]
+    },
+    {
+     "id": "b16-d4-q3",
+     "prompt": "Địa điểm hẹn khác sân chơi thế nào?",
+     "options": [
+      "Hẹn giao lộ cạnh ga; sân ở bắc trường",
+      "Hẹn ở sân; chơi ở ga",
+      "Cả hai ở hiệu sách",
+      "Không nói địa điểm"
+     ],
+     "correct": 0,
+     "why": "Lượt 5 nói sân, lượt 7 nói nơi gặp.",
+     "evidence": [
+      "b16-d4-t5",
+      "b16-d4-t7"
+     ]
+    },
+    {
+     "id": "b16-d4-q4",
+     "prompt": "Tại sao cần phát video chậm?",
+     "options": [
+      "Không có mạng",
+      "Động tác quá nhanh, nhìn không rõ",
+      "Video không hay",
+      "Hết giờ học"
+     ],
+     "correct": 1,
+     "why": "Lượt 16 nêu khó khăn.",
+     "evidence": [
+      "b16-d4-t16",
+      "b16-d4-t17"
+     ]
+    },
+    {
+     "id": "b16-d4-q5",
+     "prompt": "打开 ở đoạn này dùng với gì?",
+     "options": [
+      "Video trên điện thoại",
+      "Lái xe",
+      "Mở cửa hàng",
+      "Đá bóng"
+     ],
+     "correct": 0,
+     "why": "Đang bàn về video trong điện thoại.",
+     "evidence": [
+      "b16-d4-t13",
+      "b16-d4-t14"
+     ]
+    },
+    {
+     "id": "b16-d4-q6",
+     "prompt": "先看，再做一次 khác 一边看一边学 ở điểm nào?",
+     "options": [
+      "Đều chỉ ngày kia",
+      "Một bên có trình tự trước–sau; bên kia nói kết hợp trong quá trình",
+      "Không có khác biệt nào",
+      "Một bên nói sở hữu"
+     ],
+     "correct": 1,
+     "why": "Lượt 18 nêu thứ tự rõ; lượt 17 nói kết hợp xem và học.",
+     "evidence": [
+      "b16-d4-t17",
+      "b16-d4-t18"
+     ]
+    }
+   ],
+   "task": {
+    "prompt": "Bạn không thể đi ngày kia. Đề nghị gặp ngày mai lúc 3 giờ ở cổng trường để chơi bóng rổ.",
+    "hints": [
+     "Nêu không đi ngày kia, rồi đề nghị kế hoạch mới.",
+     "Dùng 后天、明天下午三点、学校门口、打篮球."
     ],
-
-    // NGÂN HÀNG ÔN TẬP SRS MỐC 1 - 3 - 7 NGÀY
-    reviews: [
-      {
-        id: "hsk1-b16-g3-rev1",
-        day: 1,
-        type: "Khắc phục bẫy tần suất",
-        q: "Hãy nói câu: 'Tôi thỉnh thoảng đến hiệu sách đó đọc sách.' bằng tiếng Trung chuẩn xác.",
-        answer: "我有时候去那家书店看书。",
-        explain: "Phó từ tần suất 有时候 đứng trước động từ 去; hiệu sách dùng lượng từ 家: 那家书店.",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói Tôi thỉnh thoảng đến hiệu sách đó đọc sách.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "我有时候去那家书店看书。", pause: 700 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g3-rev2",
-        day: 3,
-        type: "Khẩu ngữ thân tộc tự nhiên",
-        q: "Bạn muốn nói 'Bố tôi hôm nay không lái xe đi làm', hãy dùng khẩu ngữ gần gũi nhất.",
-        answer: "我爸今天不开车去上班。",
-        explain: "Lược bỏ chữ 的 khi nói về người thân ruột thịt: 我爸 (bố tôi); 开车去上班 (lái xe đi làm).",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói Bố tôi hôm nay không lái xe đi làm bằng khẩu ngữ thân mật.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "我爸今天不开车去上班。", pause: 700 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g3-rev3",
-        day: 7,
-        type: "Vận dụng ngữ cảnh tổng hợp",
-        q: "Hãy nói: 'Chiều ngày kia chúng mình cùng đi xem bộ phim rất nổi tiếng và hay đó nhé!'",
-        answer: "后天下午我们一起去看看那部很有名、很好看的电影吧！",
-        explain: "Kết hợp trạng ngữ 后天下午, cụm đồng hành 一起, lượng từ 部 cho phim ảnh và cặp tính từ 有名, 好看.",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói Chiều ngày kia cùng đi xem bộ phim nổi tiếng và hay đó nhé.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "后天下午我们一起去看看那部很有名、很好看的电影吧！", pause: 800 }
-        ]
-      }
-    ]
-  };
-
-  // ==========================================
-  // NHÓM 4: THỂ THAO, GIAO THÔNG, HỌC TẬP & THAO TÁC CỤ THỂ
-  // ==========================================
-  const group4 = {
-    id: "hsk1-bai-16-g4",
-    title: "Nhóm 4: Thể Thao, Giao Thông, Học Tập & Thao Tác Cụ Thể",
-    desc: "Học cách dùng chuyên sâu các từ: 打球, 路口, 读书, 姐, 车站, 打开; nắm vững động từ thể thao, điểm hẹn giao thông và ý nghĩa kép của từ đọc sách.",
-    words: [
-      // --- TỪ 19: 打球 ---
-      {
-        id: "hsk1-bai-16-g4-w19",
-        index: 19,
-        hanzi: "打球",
-        pinyin: "dǎqiú",
-        coreMeaning: "Chơi bóng, đánh bóng (các môn thể thao dùng tay hoặc vợt)",
-        introAudio: [
-          { lang: "zh-CN", text: "打球", pause: 500 },
-          { lang: "vi-VN", text: "Chơi bóng, đánh bóng các môn dùng tay hoặc vợt", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi nói về hoạt động thể dục thể thao rèn luyện sức khỏe, rủ bạn bè đi chơi bóng rổ, bóng bàn, cầu lông sau giờ tan học.",
-          detail: "Động từ ly hợp (打 + 球). Chỉ áp dụng cho các môn bóng dùng tay đập, ném, bắt hoặc cầm vợt đánh. Khi nói rõ môn cụ thể, thay thế chữ 球 bằng tên môn: 打篮球 (chơi bóng rổ), 打羽毛球 (đánh cầu lông).",
-          keyPoint: "Môn bóng DÙNG TAY/VỢT = 打. Môn bóng đá DÙNG CHÂN = 踢 (tī).",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ mười chín: Đả cầu, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "打球", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là chơi bóng các môn dùng tay hoặc vợt.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Rủ nhau đi chơi bóng sau giờ học",
-            pattern: "下课以后 + 去打球",
-            note: "Ví dụ: 我们去打球吧 (Chúng mình đi chơi bóng đi).",
-            audio: [
-              { lang: "zh-CN", text: "下课以后我们去打球吧。", pause: 800 },
-              { lang: "vi-VN", text: "Tan học xong chúng mình đi chơi bóng nhé.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Nêu môn thể thao cụ thể",
-            pattern: "打 + [Tên môn bóng: 篮球 / 网球 / 羽毛球]",
-            note: "Thay thế chữ 球 bằng tên môn thể thao tương ứng.",
-            audio: [
-              { lang: "zh-CN", text: "你喜欢打篮球还是打网球？", pause: 800 },
-              { lang: "vi-VN", text: "Bạn thích chơi bóng rổ hay chơi quần vợt?", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "下午下课以后，我和同学去学校北边打球。",
-            vi: "Chiều nay sau khi tan học, tôi và bạn học đến phía bắc trường chơi bóng.",
-            situation: "Kể về kế hoạch thể thao thư giãn sau một ngày học tập căng thẳng.",
-            analysis: "学校北边 là trạng ngữ chỉ địa điểm sân bóng; 去打球 là vị ngữ hành động.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Tan học đến phía bắc trường chơi bóng.", pause: 300 },
-              { lang: "zh-CN", text: "下午下课以后，我和同学去学校北边打球。", pause: 800 }
-            ]
-          },
-          {
-            zh: "我哥哥打球打得非常好，大家都喜欢看他比赛。",
-            vi: "Anh trai tôi chơi bóng rất cừ, ai cũng đều thích xem anh ấy thi đấu.",
-            situation: "Khoe về tài năng và phong độ chơi bóng xuất sắc của người anh.",
-            analysis: "Cấu trúc bổ ngữ trạng thái lặp lại động từ: 打球打得非常好.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Anh trai chơi bóng rất cừ khôi.", pause: 300 },
-              { lang: "zh-CN", text: "我哥哥打球打得非常好，大家都喜欢看他比赛。", pause: 800 }
-            ]
-          },
-          {
-            zh: "周末你喜欢在宿舍看书还是去外面打球？",
-            vi: "Cuối tuần bạn thích ở ký túc xá đọc sách hay là ra ngoài chơi bóng?",
-            situation: "Hỏi thăm sở thích nghỉ ngơi thư giãn của người bạn cùng lớp.",
-            analysis: "Câu hỏi lựa chọn 还是 giữa hai hoạt động đọc sách tĩnh và chơi bóng động.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Thích ở ký túc xá đọc sách hay ra ngoài chơi bóng?", pause: 300 },
-              { lang: "zh-CN", text: "周末你喜欢在宿舍看书还是去外面打球？", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy ghép thừa từ '打球篮球' & Bẫy dùng '打' cho bóng đá",
-            situation: "1. Nói 'Tôi chơi bóng rổ' thành '我打球篮球'. 2. Nói 'Đi đá bóng' thành '去打足球'.",
-            explanation: "Hai lỗi nghiêm trọng: 1. Chữ 球 là danh từ chung, khi có tên môn cụ thể thì phải bỏ 球 và thay bằng tên môn: 打篮球 (chơi bóng rổ), tuyệt đối không nói 打球篮球. 2. Bóng đá là môn thể thao dùng bàn chân sút, người Trung Quốc bắt buộc dùng động từ 踢 (tī - đá): 踢足球. Nói 打足球 là sai bản chất thể thao.",
-            wrong: "我下课去打足球。 / 我喜欢打球篮球。 (Sai hoàn toàn)",
-            right: "我下课去踢足球。 / 我喜欢打篮球。 (Chuẩn người bản xứ)",
-            tip: "Môn dùng tay (bóng rổ, bóng chuyền, cầu lông) -> Dùng 打. Môn dùng chân (bóng đá) -> Dùng 踢 (踢足球).",
-            boundary: "Đánh bóng bàn là 打乒乓球.",
-            comparisons: [
-              { zh: "打篮球", vi: "Chơi bóng rổ (Dùng tay -> 打)" },
-              { zh: "踢足球", vi: "Đá bóng đá (Dùng chân -> 踢)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý bẫy thể thao: Môn dùng tay như bóng rổ dùng đả lan cầu. Riêng môn bóng đá dùng chân bắt buộc dùng thích túc cầu ", pause: 300 },
-              { lang: "zh-CN", text: "踢足球", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "dǎ (thanh 3 trầm) + qiú (thanh 2 vuốt cao). Bật nhẹ hơi ở âm q.",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "打球", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Đả (打) có bộ Thủ (扌) chỉ bàn tay tác động. Chữ Cầu (球) có bộ Vương (王) là ngọc tròn quý và chữ Cầu (求).",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Đả có bộ Tài gảy tay bên trái chỉ động tác tay cầm ném.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Môn dùng tay = 打 + [Môn]; Bóng đá = 踢足球; Chơi bóng = 打球.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Chơi bóng rổ dùng đả lan cầu, đá bóng dùng thích túc cầu.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 20: 路口 ---
-      {
-        id: "hsk1-bai-16-g4-w20",
-        index": 20,
-        hanzi: "路口",
-        pinyin: "lùkǒu",
-        coreMeaning: "Ngã rẽ, nút giao, đầu đường, ngã tư, giao lộ",
-        introAudio: [
-          { lang: "zh-CN", text: "路口", pause: 500 },
-          { lang: "vi-VN", text: "Ngã rẽ, nút giao thông, đầu đường, giao lộ", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi chỉ đường đi, hướng dẫn tài xế taxi rẽ hướng, hoặc hẹn bạn bè đứng đón xe tại một nút giao cắt cụ thể.",
-          detail: "Danh từ chỉ điểm giao cắt của hai hay nhiều tuyến đường, hoặc cửa ngõ mở ra của một con phố. Thường đi với giới từ: 在路口 (ở ngã rẽ), 到路口 (đến ngã rẽ), 下一个路口 (ngã rẽ tiếp theo).",
-          keyPoint: "Điểm giao lộ cố định làm mốc chuyển hướng hoặc điểm đón hẹn.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ hai mươi: Lộ khẩu, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "路口", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là ngã rẽ, nút giao lộ hoặc đầu đường.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Điểm đón hẹn tại nút giao",
-            pattern: "在 + [Mốc] + 前面的路口 + 等 / 见",
-            note: "Ví dụ: 在学校前面的路口见 (Gặp ở ngã rẽ phía trước trường).",
-            audio: [
-              { lang: "zh-CN", text: "我们在前面的路口见吧。", pause: 800 },
-              { lang: "vi-VN", text: "Chúng mình gặp nhau ở ngã rẽ phía trước nhé.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Hướng dẫn chuyển hướng giao thông",
-            pattern: "到 + (下一个) + 路口，往 + [右 / 左] + 拐",
-            note: "Đến ngã rẽ (tiếp theo) thì rẽ sang phải/trái.",
-            audio: [
-              { lang: "zh-CN", text: "到前面的路口请往右拐。", pause: 800 },
-              { lang: "vi-VN", text: "Đến ngã rẽ phía trước xin vui lòng rẽ sang phải.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "一直往前走到路口，请往右拐。",
-            vi: "Cứ đi thẳng về phía trước đến ngã rẽ, xin vui lòng rẽ sang bên phải.",
-            situation: "Chỉ đường chi tiết cho khách du lịch tìm đến bến xe buýt.",
-            analysis: "一直往前走 là hành động đi thẳng; 到路口 là mốc chuyển hướng 往右拐.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Đi thẳng đến ngã rẽ thì rẽ phải.", pause: 300 },
-              { lang: "zh-CN", text: "一直往前走到路口，请往右拐。", pause: 800 }
-            ]
-          },
-          {
-            zh: "我就在车站旁边的路口等你，你到了就给我打电话。",
-            vi: "Tôi đứng đợi bạn ngay ở ngã rẽ cạnh nhà ga, bạn đến nơi thì gọi điện cho tôi nhé.",
-            situation: "Hẹn đón bạn bè bằng xe máy hoặc ô tô tại góc giao lộ thoáng đãng.",
-            analysis: "车站旁边的路口 là cụm định ngữ xác định chính xác tọa độ điểm hẹn.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Đợi bạn ở ngã rẽ cạnh nhà ga.", pause: 300 },
-              { lang: "zh-CN", text: "我就在车站旁边的路口等你，你到了就给我打电话。", pause: 800 }
-            ]
-          },
-          {
-            zh: "下一个路口有一家很大的书店。",
-            vi: "Ở ngã rẽ tiếp theo có một hiệu sách rất to.",
-            situation: "Chỉ vị trí của cửa hàng sách nằm ngay nút giao kế tiếp trên đại lộ.",
-            analysis: "下一个路口 làm trạng ngữ nơi chốn đứng đầu câu tồn hiện.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Ngã rẽ tiếp theo có hiệu sách to.", pause: 300 },
-              { lang: "zh-CN", text: "下一个路口有一家很大的书店。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy nói chung chung 路上 khi cần xác định điểm hẹn",
-            situation: "Bạn gọi điện thoại bảo bạn mình: 'Tớ đứng chờ cậu trên đường nhé!'.",
-            explanation: "路上 chỉ không gian chung chung trên lộ trình di chuyển (hoặc đang đi trên đường: 我在路上). Khi bạn hẹn người khác đón xe hoặc gặp mặt tại một vị trí cụ thể, bắt buộc phải dùng mốc giao lộ: 路口 hoặc tên tòa nhà. Nói 在路上等你 khiến người nghe không biết bạn đang đứng ở đoạn nào của cả con đường dài hàng cây số.",
-            wrong: "我在路上等你。 (Mơ hồ, không thể tìm thấy)",
-            right: "我在学校前面的路口等你。 (Chính xác điểm hẹn)",
-            tip: "Đang trên đường di chuyển -> 在路上. Điểm hẹn nút giao -> 在路口.",
-            boundary: "Ngã tư lớn có đèn tín hiệu giao thông thường gọi là 十字路口 (ngã tư chữ Thập).",
-            comparisons: [
-              { zh: "路口", vi: "Ngã rẽ / Nút giao (Tọa độ cụ thể để rẽ hoặc hẹn đón)" },
-              { zh: "路上", vi: "Trên đường (Không gian di chuyển chung chung)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Phân biệt lộ khẩu và lộ thượng: Hẹn đón cụ thể phải dùng lộ khẩu ", pause: 300 },
-              { lang: "zh-CN", text: "路口", pause: 400 },
-              { lang: "vi-VN", text: ". Đang đi trên đường mới dùng tại lộ thượng ", pause: 300 },
-              { lang: "zh-CN", text: "在路上", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "lù (thanh 4 dứt khoát) + kǒu (thanh 3 trầm sâu).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "路口", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Lộ (路) có bộ Túc (足) là bước chân đi trên đường và chữ Các (各). Chữ Khẩu (口) là cái miệng hoặc cửa ngõ.",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Lộ có bộ Túc chỉ bàn chân bước đi trên con đường.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Đến ngã rẽ = 到路口; Ngã rẽ tiếp theo = 下一个路口; Hẹn ở ngã rẽ = 在路口等.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Ngã rẽ là lộ khẩu, đến ngã rẽ rẽ phải là đáo lộ khẩu vãng hữu quải.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 21: 读书 ---
-      {
-        id: "hsk1-bai-16-g4-w21",
-        index": 21,
-        hanzi: "读书",
-        pinyin: "dúshū",
-        coreMeaning: "Đọc sách (ngâm cứu, đọc to); đi học, theo học (ở trường lớp bậc cao)",
-        introAudio: [
-          { lang: "zh-CN", text: "读书", pause: 500 },
-          { lang: "vi-VN", text: "Đọc sách, ngâm cứu tài liệu; đi học, theo học đại học", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi nói về thói quen đọc sách bồi dưỡng tri thức HOẶC nói về việc theo học sinh viên tại các trường đại học lớn.",
-          detail: "Động từ mang 2 tầng nghĩa cực kỳ quan trọng: 1. Đọc sách: 喜欢读书 (thích đọc sách). 2. Đi học/Theo học tại cơ sở giáo dục: 在大学读书 (học đại học), 在北京读书 (theo học ở Bắc Kinh).",
-          keyPoint: "Nghĩa mở rộng quan trọng: 在 + [Trường/Nơi chốn] + 读书 = THEO HỌC TẠI ĐÓ.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ hai mươi mốt: Độc thư, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "读书", pause: 400 },
-            { lang: "vi-VN", text: "vừa có nghĩa đọc sách, vừa có nghĩa là đi học đại học.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Biểu thị theo học sinh viên",
-            pattern: "在 + [Đại học / Thành phố] + 读书",
-            note: "Đồng nghĩa với 上大学 (theo học đại học).",
-            audio: [
-              { lang: "zh-CN", text: "我姐在北京的一所大学读书。", pause: 800 },
-              { lang: "vi-VN", text: "Chị tôi đang học tại một trường đại học ở Bắc Kinh.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Thói quen đọc sách mở mang",
-            pattern: "喜欢 / 认真 + 读书",
-            note: "Yêu thích việc đọc sách báo, tài liệu.",
-            audio: [
-              { lang: "zh-CN", text: "他从小就很喜欢读书。", pause: 800 },
-              { lang: "vi-VN", text: "Cậu ấy từ nhỏ đã rất thích đọc sách.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "我姐姐在一所很有名的大学读书。",
-            vi: "Chị gái tôi đang theo học tại một trường đại học rất nổi tiếng.",
-            situation: "Giới thiệu học vấn của chị gái với niềm tự hào trong buổi gặp mặt.",
-            analysis: "在大学读书 ở đây mang nghĩa là sinh viên đang theo học, không phải hành vi cầm sách đọc trong vài phút.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Chị gái theo học trường đại học nổi tiếng.", pause: 300 },
-              { lang: "zh-CN", text: "我姐姐在一所很有名的大学读书。", pause: 800 }
-            ]
-          },
-          {
-            zh: "他在房间里认真读书呢，请大家小声一点儿。",
-            vi: "Cậu ấy đang chăm chú đọc sách trong phòng đấy, xin mọi người nói nhỏ một chút.",
-            situation: "Nhắc nhở người nhà giữ trật tự để bạn tập trung ôn thi.",
-            analysis: "认真读书 thể hiện thái độ học tập và đọc sách nghiêm túc.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Chăm chú đọc sách trong phòng.", pause: 300 },
-              { lang: "zh-CN", text: "他在房间里认真读书呢，请大家小声一点儿。", pause: 800 }
-            ]
-          },
-          {
-            zh: "现代很多年轻人喜欢一边喝咖啡一边读书。",
-            vi: "Rất nhiều người trẻ hiện đại thích vừa uống cà phê vừa đọc sách.",
-            situation: "Miêu tả lối sống văn hóa thư giãn thịnh hành của giới trẻ tại các đô thị.",
-            analysis: "Kết hợp cấu trúc song hành 一边……一边…… với hai hành vi tao nhã.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Vừa uống cà phê vừa đọc sách.", pause: 300 },
-              { lang: "zh-CN", text: "现代很多年轻人喜欢一边喝咖啡一边读书。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy hiểu máy móc '读书' chỉ là cầm cuốn sách đọc to",
-            situation: "Nghe người ta nói '我姐姐在北京读书', bạn lại tưởng chị gái sang Bắc Kinh chỉ để đọc một cuốn sách.",
-            explanation: "Trong văn hóa Hán ngữ, từ 读书 (độc thư) từ xa xưa đã đồng nghĩa với việc dùi mài kinh sử, đi học, thụ hưởng nền giáo dục chính quy. Khi nói '在大学读书' tức là người đó đang là sinh viên đại học. Khác với 看书 (khán thư) chỉ đơn thuần là hành động thị giác đọc một tờ báo hay cuốn truyện bất kỳ.",
-            wrong: "Hiểu 在大学读书 là ngồi trong trường mở sách ra đọc.",
-            right: "在大学读书 = Đang học đại học (Sinh viên).",
-            tip: "Nêu con đường học vấn, đi học xa -> Dùng 读书. Đọc cuốn sách, tờ báo cụ thể -> Dùng 看书 / 读书.",
-            boundary: "Người chăm chỉ đèn sách, học thức cao thời xưa gọi là 读书人 (kẻ sĩ, người có học).",
-            comparisons: [
-              { zh: "在大学读书", vi: "Học đại học (Con đường học vấn)" },
-              { zh: "看这本书", vi: "Xem/đọc cuốn sách này (Hành vi cụ thể)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Lưu ý nghĩa rộng: Tại đại học độc thư nghĩa là theo học đại học, không phải hành vi đọc sách đơn thuần.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "dú (thanh 2 vuốt lên) + shū (thanh 1 bằng phẳng, uốn lưỡi nhẹ).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "读书", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Độc (读) có bộ Ngôn (讠) chỉ lời nói câu từ. Chữ Thư (书) là cuốn sách vở.",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Độc có bộ Ngôn đứng đầu chỉ ngôn từ tri thức.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Học đại học = 在大学读书; Thích đọc sách = 喜欢读书.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Độc thư vừa là đọc sách vừa là theo học tại giảng đường đại học.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 22: 姐 ---
-      {
-        id: "hsk1-bai-16-g4-w22",
-        index": 22,
-        hanzi: "姐",
-        pinyin: "jiě",
-        coreMeaning: "Chị, chị gái (quan hệ thân tộc hoặc xưng hô thân mật)",
-        introAudio: [
-          { lang: "zh-CN", text: "姐", pause: 500 },
-          { lang: "vi-VN", text: "Chị, chị gái, xưng hô thân tộc trong gia đình", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng để gọi trực tiếp người chị gái ruột trong gia đình, hoặc kết hợp với họ để xưng hô lịch thiệp, thân thiện với nữ đồng nghiệp lớn tuổi hơn mình ở công sở.",
-          detail: "Danh từ xưng hô. Dạng đơn âm tiết: 姐; dạng trùng điệp: 姐姐. Khẩu ngữ thân mật gia đình thường lược bỏ 的: 我姐 (chị tôi). Nơi công sở, ghép họ trước chữ 姐: 王姐 (chị Vương), 李姐 (chị Lý).",
-          keyPoint: "Chị gái ruột: 我姐; Nữ đồng nghiệp thân quen: [Họ] + 姐.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ hai mươi hai: Tỷ, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "姐", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là chị gái trong gia đình hoặc xưng hô nơi công sở.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Khẩu ngữ thân mật gia đình",
-            pattern: "我姐 / 我姐姐",
-            note: "Ví dụ: 我姐在北京读书 (Chị tôi đang học ở Bắc Kinh).",
-            audio: [
-              { lang: "zh-CN", text: "我姐比我大两岁。", pause: 800 },
-              { lang: "vi-VN", text: "Chị tôi lớn hơn tôi hai tuổi.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Xưng hô đồng nghiệp công sở",
-            pattern: "[Họ người nữ] + 姐",
-            note: "Ví dụ: 王姐 (Chị Vương), 张姐 (Chị Trương).",
-            audio: [
-              { lang: "zh-CN", text: "王姐工作非常认真。", pause: 800 },
-              { lang: "vi-VN", text: "Chị Vương làm việc hết sức chăm chỉ.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "我姐在北京的一所大学读书，后天下午回来。",
-            vi: "Chị tôi đang học tại một trường đại học ở Bắc Kinh, chiều ngày kia sẽ về.",
-            situation: "Khoe với bạn học về lịch trình của người chị gái sắp về thăm nhà.",
-            analysis: "我姐 lược bỏ chữ 的 tạo cảm giác ruột thịt gần gũi; 后天下午 chỉ mốc thời gian trở về.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Chị học ở Bắc Kinh, chiều ngày kia về.", pause: 300 },
-              { lang: "zh-CN", text: "我姐在北京的一所大学读书，后天下午回来。", pause: 800 }
-            ]
-          },
-          {
-            zh: "姐，后天我们一起去那家有名的书店买书吧！",
-            vi: "Chị ơi, chiều ngày kia hai chị em mình cùng đến hiệu sách nổi tiếng kia mua sách nhé!",
-            situation: "Hô ngữ trực tiếp đầu câu khi rủ chị gái cùng đi mua sắm.",
-            analysis: "Chữ 姐 đứng đầu câu làm từ xưng hô thưa gửi thân thuộc.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Chị ơi, ngày kia cùng đi hiệu sách nhé.", pause: 300 },
-              { lang: "zh-CN", text: "姐，后天我们一起去那家有名的书店买书吧！", pause: 800 }
-            ]
-          },
-          {
-            zh: "王姐对大家很好，经常帮助新来的同学。",
-            vi: "Chị Vương đối xử với mọi người rất tốt, thường xuyên giúp đỡ bạn học mới đến.",
-            situation: "Khen ngợi và bày tỏ lòng kính trọng với người chị khóa trên trong hội sinh viên.",
-            analysis: "王姐 ghép họ Vương với danh xưng chị thể hiện sự tôn trọng vừa phải.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Chị Vương rất tốt bụng, hay giúp người mới.", pause: 300 },
-              { lang: "zh-CN", text: "王姐对大家很好，经常帮助新来的同学。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy gọi người phụ nữ lạ ngoài đường là '姐' theo thói quen tiếng Việt",
-            situation: "Ra đường hỏi đường một người phụ nữ trẻ lạ mặt, bạn buột miệng gọi: '姐，请问……'.",
-            explanation: "Ở Việt Nam, gọi phụ nữ lạ trạc tuổi là 'chị' là rất lịch sự. Nhưng ở Trung Quốc, phụ nữ trẻ rất sợ bị gọi là 姐 vì cảm giác bị xem là 'già đi'. Với người lạ chưa quen biết, an toàn và lịch thiệp nhất là mở lời bằng '您好' (Chào bạn/chị) hoặc '不好意思' (Xin lỗi làm phiền), hoặc trong giao tiếp thương mại gọi là '美女' (người đẹp). Chỉ dùng 姐 khi là chị ruột hoặc đồng nghiệp đã quen biết.",
-            wrong: "Gặp phụ nữ lạ chưa quen mà đon đả gọi 姐, 大姐.",
-            right: "你好 / 不好意思，请问去车站在哪儿？ (Lịch thiệp chuẩn mực)",
-            tip: "Chị ruột / Đồng nghiệp quen biết -> Dùng 姐 (我姐, 王姐). Người lạ ngoài đường -> Dùng 您好 / 不好意思.",
-            boundary: "Trái nghĩa: 妹 / 妹妹 (em gái). Cả hai chữ đều có bộ Nữ (女).",
-            comparisons: [
-              { zh: "我姐", vi: "Chị gái tôi (Ruột thịt)" },
-              { zh: "王姐", vi: "Chị Vương (Đồng nghiệp quen biết)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Cảnh báo văn hóa: Người lạ ngoài đường không tùy tiện gọi là tỷ tỷ. Hãy mở lời bằng ninh hảo hoặc bất hảo ý tư.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "Thanh ba (jiě): hạ giọng xuống trầm rồi bật nhẹ lên. Trong từ 姐姐, âm sau đọc thanh nhẹ (jiějie).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "姐", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Tỷ (姐) gồm bộ Nữ (女) bên trái chỉ phái nữ và chữ Thả (且) bên phải đóng vai trò cấu trúc.",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Tỷ có bộ Nữ chỉ người phụ nữ bên trái.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Chị tôi = 我姐 (bỏ 的); Đồng nghiệp = [Họ] + 姐; Người lạ = 您好.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng từ Tỷ: Chị gái ruột dùng ngã tỷ, đồng nghiệp ghép họ với tỷ.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 23: 车站 ---
-      {
-        id: "hsk1-bai-16-g4-w23",
-        index": 23,
-        hanzi: "车站",
-        pinyin: "chēzhàn",
-        coreMeaning: "Bến xe, nhà ga, trạm dừng xe (nơi đón trả khách)",
-        introAudio: [
-          { lang: "zh-CN", text: "车站", pause: 500 },
-          { lang: "vi-VN", text: "Bến xe, nhà ga, trạm dừng xe trung chuyển khách", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi bạn cần bắt xe buýt, đón tàu hỏa, tiễn người thân đi xa hoặc hẹn nhau ở điểm trung chuyển giao thông công cộng.",
-          detail: "Danh từ chung chỉ bến xe hoặc nhà ga. Muốn cụ thể hóa phương tiện, ghép tên phương tiện phía trước: 公共汽车站 (trạm xe buýt), 火车站 (ga xe lửa), 地铁站 (ga tàu điện ngầm).",
-          keyPoint: "Bến xe / Nhà ga công cộng. Hẹn ở bến xe = 在车站等.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ hai mươi ba: Xa trạm, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "车站", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là bến xe, nhà ga đón trả khách.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Vị trí bến xe so với vật mốc",
-            pattern: "[Vật mốc] + (的) + [Phương vị: 北边 / 右边] + 是车站",
-            note: "Ví dụ: 学校北边是车站 (Phía bắc trường là nhà ga).",
-            audio: [
-              { lang: "zh-CN", text: "车站在学校北边。", pause: 800 },
-              { lang: "vi-VN", text: "Nhà ga nằm ở phía bắc trường học.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Chờ đón tại bến xe",
-            pattern: "在车站 + [等 / 接] + [Ai đó]",
-            note: "Ví dụ: 在车站接我姐 (Đón chị tôi ở bến xe).",
-            audio: [
-              { lang: "zh-CN", text: "我后天要去车站接我姐。", pause: 800 },
-              { lang: "vi-VN", text: "Ngày mốt tôi phải ra bến xe đón chị gái tôi.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "车站在学校北边，书店在学校右边。",
-            vi: "Nhà ga nằm ở phía bắc trường học, hiệu sách nằm ở phía bên phải trường.",
-            situation: "Phân biệt rõ ràng hai tọa độ khác nhau cho người hỏi đường trước cổng trường.",
-            analysis: "Đối chiếu rõ hai mốc phương vị: 北边 (phía bắc) và 右边 (bên phải).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Nhà ga ở phía bắc, hiệu sách ở bên phải.", pause: 300 },
-              { lang: "zh-CN", text: "车站在学校北边，书店在学校右边。", pause: 800 }
-            ]
-          },
-          {
-            zh: "很多大学生都在车站等车呢。",
-            vi: "Rất nhiều sinh viên đại học đều đang đứng ở trạm xe đợi xe buýt đấy.",
-            situation: "Miêu tả cảnh tượng đông đúc nhộn nhịp tại bến xe buýt vào giờ tan tầm.",
-            analysis: "在车站等车 là cụm giới từ chỉ địa điểm kết hợp hành động chờ xe buýt.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Sinh viên đang đợi xe ở trạm xe.", pause: 300 },
-              { lang: "zh-CN", text: "很多大学生都在车站等车呢。", pause: 800 }
-            ]
-          },
-          {
-            zh: "我后天下午去火车站接我姐姐。",
-            vi: "Chiều ngày mốt tôi sẽ đến ga tàu hỏa đón chị gái tôi.",
-            situation: "Thông báo kế hoạch ra ga xe lửa đón chị đi học xa về thăm nhà.",
-            analysis: "火车站 chỉ định cụ thể là ga xe lửa, tránh nhầm với bến xe buýt.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Chiều ngày mốt ra ga tàu hỏa đón chị.", pause: 300 },
-              { lang: "zh-CN", text: "我后天下午去火车站接我姐姐。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy dịch mọi 车站 thành 'Ga tàu hỏa'",
-            situation: "Nghe trong đoạn hội thoại nói '在车站等', bạn vội dịch ngay thành 'đợi ở ga xe lửa'.",
-            explanation: "车站 là danh từ chung bao quát tất cả các loại bến đỗ (bến xe buýt, bến xe khách liên tỉnh, ga tàu). Phải dựa vào ngữ cảnh: Nếu người nói đi học hàng ngày bằng xe buýt thì 车站 chính là trạm xe buýt (公交站). Muốn nói rõ ga xe lửa, người Trung Quốc luôn dùng 火车站.",
-            wrong: "Mặc định 车站 luôn là ga tàu hỏa đường sắt.",
-            right: "车站 = Bến xe nói chung; 火车站 = Ga tàu hỏa; 公共汽车站 = Trạm xe buýt.",
-            tip: "Chung chung -> 车站. Rõ ga tàu hỏa -> 火车站. Rõ xe buýt -> 公共汽车站.",
-            boundary: "Ga tàu điện ngầm ngầm dưới lòng đất gọi là 地铁站.",
-            comparisons: [
-              { zh: "公共汽车站", vi: "Trạm xe buýt (Xe công cộng nội đô)" },
-              { zh: "火车站", vi: "Ga xe lửa (Tàu hỏa đường dài)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Phân biệt bến ga: Xa trạm là bến xe chung, ga tàu hỏa phải nói rõ là hỏa xa trạm ", pause: 300 },
-              { lang: "zh-CN", text: "火车站", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "chē (thanh 1 bằng phẳng) + zhàn (thanh 4 giáng mạnh dứt khoát). Cả hai đều uốn lưỡi nhẹ.",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "车站", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Xa (车) là chiếc xe. Chữ Trạm (站) có bộ Lập (立) là đứng thẳng và chữ Chiêm (占) chỉ vị trí dừng chân đứng đợi.",
-          audio: [
-            { lang: "vi-VN", text: "Chữ Trạm có bộ Lập chỉ người đứng đợi bên cạnh trục xe.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Bến xe nói chung = 车站; Ga tàu hỏa = 火车站; Trạm xe buýt = 公共汽车站.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Bến xe chung là xa trạm, đón người ở bến xe là tại xa trạm tiếp.", pause: 400 }
-        ]
-      },
-
-      // --- TỪ 24: 打开 ---
-      {
-        id: "hsk1-bai-16-g4-w24",
-        index": 24,
-        hanzi: "打开",
-        pinyin: "dǎkāi",
-        coreMeaning: "Mở, mở ra, bật (sách vở, cửa nẻo, hộp quà, máy tính, ứng dụng)",
-        introAudio: [
-          { lang: "zh-CN", text: "打开", pause: 500 },
-          { lang: "vi-VN", text: "Mở, mở ra, bật lên đồ vật hoặc thiết bị điện tử", pause: 500 }
-        ],
-        meaning: {
-          situation: "Dùng khi giáo viên yêu cầu lật mở sách giáo trình, nhờ ai đó mở cửa sổ cho thoáng, mở gói quà hoặc bật máy tính, mở video trên điện thoại.",
-          detail: "Động từ mang bổ ngữ kết quả (打 + 开). Áp dụng đa năng: 1. Mở vật thể vật lý: 打开书 (mở sách), 打开门/窗户 (mở cửa/cửa sổ), 打开盒子 (mở hộp). 2. Khởi động phần mềm, thiết bị: 打开电脑 (bật máy tính), 打开手机/视频 (mở điện thoại/video).",
-          keyPoint: "Bổ ngữ kết quả: Làm cho sự vật chuyển từ trạng thái ĐÓNG sang MỞ.",
-          audio: [
-            { lang: "vi-VN", text: "Từ thứ hai mươi tư: Đả khai, đọc là ", pause: 300 },
-            { lang: "zh-CN", text: "打开", pause: 400 },
-            { lang: "vi-VN", text: "nghĩa là mở sách, mở cửa hoặc bật máy tính, video.", pause: 400 }
-          ]
-        },
-        structures: [
-          {
-            title: "1. Yêu cầu mở sách giáo trình",
-            pattern: "请打开书，看第 + [Số trang] + 页",
-            note: "Mẫu câu lớp học kinh điển của giáo viên.",
-            audio: [
-              { lang: "zh-CN", text: "同学们，请打开书，看第十页。", pause: 800 },
-              { lang: "vi-VN", text: "Các em học sinh, xin mời mở sách, xem trang mười.", pause: 400 }
-            ]
-          },
-          {
-            title: "2. Mở thiết bị điện tử hoặc tệp tin",
-            pattern: "打开 + [电脑 / 手机 / 视频 / 文件]",
-            note: "Bật hoặc truy cập dữ liệu trên thiết bị.",
-            audio: [
-              { lang: "zh-CN", text: "他打开电脑开始工作。", pause: 800 },
-              { lang: "vi-VN", text: "Anh ấy bật máy tính lên bắt đầu làm việc.", pause: 400 }
-            ]
-          }
-        ],
-        examples: [
-          {
-            zh: "同学们，请打开书，看第二十页的生词。",
-            vi: "Các em học sinh, xin mời mở sách ra, xem từ mới ở trang hai mươi.",
-            situation: "Lời giáo viên bắt đầu bài học mới trên bục giảng trường đại học.",
-            analysis: "打开书 là cụm động tân chuẩn; 看第二十页 là hành động tiếp nối.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ một: Mở sách xem từ mới ở trang hai mươi.", pause: 300 },
-              { lang: "zh-CN", text: "同学们，请打开书，看第二十页的生词。", pause: 800 }
-            ]
-          },
-          {
-            zh: "屋里有点儿热，请你把窗户打开吧。",
-            vi: "Trong phòng hơi nóng một chút, bạn mở giúp tôi cửa sổ ra nhé.",
-            situation: "Nhờ người bạn ngồi gần cửa sổ mở cửa đón gió mát vào phòng học.",
-            analysis: "Cấu trúc câu chữ 把 tác động trực tiếp vào cửa sổ (窗户) đạt trạng thái mở (打开).",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ hai: Trong phòng hơi nóng, mở cửa sổ ra nhé.", pause: 300 },
-              { lang: "zh-CN", text: "屋里有点儿热，请你把窗户打开吧。", pause: 800 }
-            ]
-          },
-          {
-            zh: "我手机里有一个视频，我们现在打开看看吧。",
-            vi: "Trong điện thoại của tôi có một video, bây giờ chúng mình mở lên xem nhé.",
-            situation: "Mở video clip trên điện thoại để cả hai cùng theo dõi động tác bóng rổ.",
-            analysis: "打开看看 kết hợp lặp động từ xem thử một chút.",
-            explainAudio: [
-              { lang: "vi-VN", text: "Ví dụ ba: Mở video trong điện thoại lên xem.", pause: 300 },
-              { lang: "zh-CN", text: "我手机里有一个视频，我们现在打开看看吧。", pause: 800 }
-            ]
-          }
-        ],
-        traps: [
-          {
-            name: "Bẫy suy đoán máy móc: Ghép '打开车' để nói 'lái xe'",
-            situation: "Biết chữ 开 là mở, chữ 打 trong 打开, bèn ghép thành '打开车' với ý định nói lái xe.",
-            explanation: "Tuyệt đối không suy diễn máy móc: 1. Lái xe ô tô chỉ dùng động từ 开: 开车 (không có 打). 2. 打开 xe chỉ có thể đi với cánh cửa xe vật lý: 打开车门 (mở cửa xe ô tô để bước vào). Ghép 打开车 là câu vô nghĩa.",
-            wrong: "今天我爸打开车送我去上学。 (Sai hoàn toàn)",
-            right: "今天我爸开车送我去上学。 (Chuẩn mực lái xe)",
-            tip: "Cầm vô lăng lái xe -> 开车. Mở cánh cửa xe -> 打开车门. Mở sách/máy tính -> 打开书/电脑.",
-            boundary: "Trái nghĩa với 打开 là 关 (guān - đóng, tắt): 关门 (đóng cửa), 关电脑 (tắt máy tính).",
-            comparisons: [
-              { zh: "开车", vi: "Lái xe ô tô (Cầm lái điều khiển)" },
-              { zh: "打开车门", vi: "Mở cửa xe ô tô (Thao tác mở cánh cửa)" }
-            ],
-            audio: [
-              { lang: "vi-VN", text: "Cảnh báo: Lái xe là khai xa, mở cửa xe mới dùng đả khai xa môn, không ghép bừa thành đả khai xa.", pause: 400 }
-            ]
-          }
-        ],
-        pron: {
-          guide: "dǎ (thanh 3 trầm) + kāi (thanh 1 bằng phẳng, ngân dài).",
-          audio: [
-            { lang: "vi-VN", text: "Luyện phát âm:", pause: 300 },
-            { lang: "zh-CN", text: "打开", pause: 800 }
-          ]
-        },
-        write: {
-          desc: "Chữ Đả (打) có bộ Thủ (扌). Chữ Khai (开) gồm hai nét ngang và hai nét sổ thẳng.",
-          audio: [
-            { lang: "vi-VN", text: "Nhận diện mặt chữ: Nhớ cụm từ đả khai thư, đả khai điện não.", pause: 400 }
-          ]
-        },
-        summary: "Quy tắc vàng: Mở sách = 打开书; Bật máy tính/video = 打开电脑/视频; Mở cửa sổ = 打开窗户; Lái xe = 开车.",
-        summaryAudio: [
-          { lang: "vi-VN", text: "Chốt cách dùng: Đả khai là mở sách, mở cửa, bật máy vi tính; đối lập với đóng tắt là quan.", pause: 400 }
-        ]
-      }
-    ],
-
-    // BÀI TẬP TRẮC NGHIỆM NGỮ DỤNG CHO NHÓM 4
-    exercises: [
-      {
-        id: "hsk1-b16-g4-ex1",
-        type: "Phân biệt động từ thể thao 打 vs 踢",
-        prompt: "Điền động từ đúng vào chỗ trống: '下课以后，我们去学校操场____足球吧！'",
-        options: ["打", "踢", "开", "做"],
-        correct: 1,
-        reasonRight: "Chính xác! Môn bóng đá (足球) dùng chân đá nên bắt buộc dùng động từ 踢: 踢足球.",
-        reasonWrong: "Chưa đúng: 打 chỉ dùng cho các môn bóng dùng tay hoặc vợt (bóng rổ, bóng bàn, cầu lông).",
-        questionAudio: [{ lang: "zh-CN", text: "去操场什么足球？", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "踢足球", pause: 600 },
-          { lang: "vi-VN", text: "Bóng đá bắt buộc dùng thích túc cầu.", pause: 400 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g4-ex2",
-        type: "Phân biệt điểm hẹn 路口 vs 路上",
-        prompt: "Bạn muốn thông báo vị trí chính xác đứng đón xe với tài xế taxi, nên dùng câu nào?",
-        options: [
-          "我在马路上，你快来吧。",
-          "我就在学校前面的路口等您。",
-          "我在开车上等您。",
-          "我正在路上走呢。"
-        ],
-        correct: 1,
-        reasonRight: "Tuyệt vời! Điểm hẹn đón xe chính xác phải có mốc ngã rẽ cụ thể: 学校前面的路口 (ngã rẽ trước trường).",
-        reasonWrong: "Chưa đúng: 在马路上 chỉ nói chung chung trên đường lớn, tài xế không thể biết bạn đứng ở đâu.",
-        questionAudio: [{ lang: "vi-VN", text: "Hẹn đón xe với tài xế dùng câu nào chuẩn xác?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "我就在学校前面的路口等您。", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g4-ex3",
-        type: "Nghĩa mở rộng của 读书",
-        prompt: "Khi nghe người bản xứ giới thiệu: '我姐姐在北京的一所大学读书', câu này mang ý nghĩa gì?",
-        options: [
-          "Chị tôi sang Bắc Kinh đọc một cuốn sách.",
-          "Chị tôi đang là sinh viên theo học tại trường đại học ở Bắc Kinh.",
-          "Chị tôi làm nhân viên bán sách ở trường đại học Bắc Kinh.",
-          "Chị tôi đến Bắc Kinh đọc to thành tiếng."
-        ],
-        correct: 1,
-        reasonRight: "Chuẩn xác! 在大学读书 là cách nói chuẩn mực biểu thị việc theo học đại học (làm sinh viên).",
-        reasonWrong: "Chưa đúng: Bạn đã hiểu máy móc chữ 读书 theo nghĩa đen hành vi đọc một cuốn sách.",
-        questionAudio: [{ lang: "vi-VN", text: "Ở trường đại học độc thư mang nghĩa là gì?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "在大学读书就是上大学的意思。", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g4-ex4",
-        type: "Xưng hô công sở với từ 姐",
-        prompt: "Trong cơ quan, đồng nghiệp nữ họ Vương lớn tuổi hơn bạn, bạn nên xưng hô thế nào cho lịch sự và thân thiết?",
-        options: ["姐王", "王姐", "我的王姐", "美女王"],
-        correct: 1,
-        reasonRight: "Chính xác! Quy tắc Hán ngữ công sở: [Họ người nữ] + 姐 -> 王姐 (chị Vương).",
-        reasonWrong: "Chưa đúng: Tiếng Trung luôn đặt họ lên trước danh xưng; không nói đảo ngược 姐王.",
-        questionAudio: [{ lang: "vi-VN", text: "Xưng hô với chị đồng nghiệp họ Vương thế nào?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "王姐", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g4-ex5",
-        type: "Phân biệt các loại bến ga 车站",
-        prompt: "Bạn muốn nói 'Tôi ra ga xe lửa để đón chị gái đi tàu từ Bắc Kinh về', dùng từ nào chuẩn nhất?",
-        options: ["公共汽车站", "火车站", "出租车站", "飞车站"],
-        correct: 1,
-        reasonRight: "Tuyệt vời! Ga đón tàu hỏa đường sắt bắt buộc dùng 火车站 (hỏa xa trạm).",
-        reasonWrong: "Chưa đúng: 公共汽车站 là trạm xe buýt; 出租车站 là điểm đón taxi.",
-        questionAudio: [{ lang: "vi-VN", text: "Ga đón tàu hỏa tiếng Trung là gì?", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "火车站", pause: 600 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g4-ex6",
-        type: "Bẫy dùng từ 打开 vs 开车",
-        prompt: "Chọn câu đúng ngữ pháp khi giáo viên yêu cầu học sinh mở sách bài tập:",
-        options: [
-          "同学们，请开车载书，看第十页。",
-          "同学们，请把书打开，看第十页。",
-          "同学们，请打车书，看第十页。",
-          "同学们，请打开车，看第十页。"
-        ],
-        correct: 1,
-        reasonRight: "Chuẩn xác! Mở sách ra dùng cụm 把书打开 hoặc 请打开书; 开车 chỉ dùng cho lái xe.",
-        reasonWrong: "Chưa đúng: Các câu khác đều nhầm lẫn tai hại giữa 打开 (mở ra) và 开车 (lái xe).",
-        questionAudio: [{ lang: "zh-CN", text: "老师请同学们做什么？", pause: 400 }],
-        explainAudio: [
-          { lang: "zh-CN", text: "请把书打开，看第十页。", pause: 600 }
-        ]
-      }
-    ],
-
-    // THỰC HÀNH TỰ ĐẶT CÂU (ACTIVE OUTPUT) 3 TẦNG TRỢ GIÚP
-    selfUse: [
-      {
-        id: "hsk1-b16-g4-su1",
-        situation: "Tình huống: Bạn hướng dẫn đường đi cho người quen: 'Cứ đi thẳng đến ngã rẽ phía trước, rẽ sang bên phải là nhìn thấy một bến xe buýt rất lớn.'",
-        hint1: "1. Vế một: Cứ đi thẳng đến ngã rẽ phía trước (一直往前走到前面的路口). Vế hai: Rẽ sang phải (往右拐). Vế ba: Liền có thể nhìn thấy một trạm xe lớn (就能看见一个大车站).",
-        hint2: "2. Khung cấu trúc chữ Hán: 一直往前走到前面的路口，往右拐，就能看见一个大车站。",
-        modelAnswer: "一直往前走到前面的路口，往右拐，就能看见一个大车站。",
-        modelExplain: "Kết hợp phó từ đi thẳng nhất trực vãng tiền tẩu, mốc giao lộ tiền diện đích lộ khẩu, giới từ hướng rẽ và danh từ trạm xe.",
-        questionAudio: [{ lang: "vi-VN", text: "Tình huống 1: Đi thẳng đến ngã rẽ phía trước rẽ phải là thấy bến xe lớn.", pause: 400 }],
-        hint1Audio: [{ lang: "vi-VN", text: "Gợi ý 1: Đi thẳng đến ngã rẽ phía trước, quẹo phải, nhìn thấy bến xe lớn.", pause: 300 }],
-        hint2Audio: [{ lang: "vi-VN", text: "Gợi ý 2: Nhất trực vãng tiền tẩu đáo tiền diện đích lộ khẩu, vãng hữu quải, tựu năng khán kiến nhất cá đại xa trạm.", pause: 400 }],
-        modelAudio: [
-          { lang: "zh-CN", text: "一直往前走到前面的路口，往右拐，就能看见一个大车站。", pause: 800 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g4-su2",
-        situation: "Tình huống: Bạn tự hào khoe với bạn bè: 'Chị gái tôi học đại học ở Bắc Kinh, chị ấy vừa thích đọc sách vừa thích chơi bóng rổ.'",
-        hint1: "1. Vế đầu: Chị tôi học đại học ở Bắc Kinh (我姐在北京的大学读书). Vế sau: Chị ấy vừa thích đọc sách vừa thích chơi bóng rổ (她一边喜欢读书，一边喜欢打篮球).",
-        hint2: "2. Khung cấu trúc chữ Hán: 我姐在北京的大学读书，她一边喜欢读书，一边喜欢打篮球。",
-        modelAnswer: "我姐在北京的大学读书，她一边喜欢读书，一边喜欢打篮球。",
-        modelExplain: "Sử dụng đại từ chị gái thân mật ngã tỷ, cụm theo học đại học tại đại học độc thư và cấu trúc hành động song hành nhất biên nhất biên.",
-        questionAudio: [{ lang: "vi-VN", text: "Tình huống 2: Khoe chị gái học đại học ở Bắc Kinh, vừa thích đọc sách vừa thích chơi bóng rổ.", pause: 400 }],
-        hint1Audio: [{ lang: "vi-VN", text: "Gợi ý 1: Chị gái tôi học đại học ở Bắc Kinh, vừa thích đọc sách vừa thích chơi bóng rổ.", pause: 300 }],
-        hint2Audio: [{ lang: "vi-VN", text: "Gợi ý 2: Ngã tỷ tại Bắc Kinh đích đại học độc thư, tha nhất biên hỷ hoan độc thư, nhất biên hỷ hoan đả lan cầu.", pause: 400 }],
-        modelAudio: [
-          { lang: "zh-CN", text: "我姐在北京的大学读书，她一边喜欢读书，一边喜欢打篮球。", pause: 800 }
-        ]
-      }
-    ],
-
-    // NGÂN HÀNG ÔN TẬP SRS MỐC 1 - 3 - 7 NGÀY
-    reviews: [
-      {
-        id: "hsk1-b16-g4-rev1",
-        day: 1,
-        type: "Khắc phục bẫy thể thao",
-        q: "Rủ bạn học cùng lớp: 'Tan học chúng mình cùng đi chơi bóng rổ nhé!', nói thế nào không mắc bẫy?",
-        answer: "下课以后我们一起去打篮球吧！",
-        explain: "Bóng rổ dùng tay nên dùng động từ 打; thay thế chữ 球 bằng tên môn: 打篮球 (không nói 打球篮球).",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Rủ tan học cùng đi chơi bóng rổ mà không mắc bẫy.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "下课以后我们一起去打篮球吧！", pause: 700 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g4-rev2",
-        day: 3,
-        type: "Thao tác thiết bị mở video",
-        q: "Bạn muốn bảo bạn mình: 'Trong điện thoại tớ có một video, mở lên xem thử nhé!', nói thế nào?",
-        answer: "我手机里有一个视频，打开看看吧！",
-        explain: "Mở video trên thiết bị điện thoại di động dùng động từ mang bổ ngữ kết quả: 打开 (đả khai).",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói Trong điện thoại có video, mở lên xem thử nhé.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "我手机里有一个视频，打开看看吧！", pause: 700 }
-        ]
-      },
-      {
-        id: "hsk1-b16-g4-rev3",
-        day: 7,
-        type: "Vận dụng ngữ cảnh tổng hợp toàn bộ 24 từ",
-        q: "Hãy nói: 'Chị tôi ngày kia về, tôi đứng ở ngã rẽ cạnh nhà ga đón chị ấy.'",
-        answer: "我姐后天回来，我在车站旁边的路口接她。",
-        explain: "Kết hợp đại từ 我姐, mốc thời gian 后天, danh từ 车站 và điểm hẹn cụ thể 路口.",
-        listenAudio: [{ lang: "vi-VN", text: "Hỏi: Nói Chị tôi ngày kia về, tôi đứng ở ngã rẽ cạnh nhà ga đón chị.", pause: 300 }],
-        audio: [
-          { lang: "zh-CN", text: "我姐后天回来，我在车站旁边的路口接她。", pause: 800 }
-        ]
-      }
-    ]
-  };
-
-  // Đăng ký Nhóm 3 và Nhóm 4 vào đối tượng bài học chung
-  window.HSK_BAI16_DATA.groups.push(group3, group4);
-
-  // Tự động cập nhật đăng ký với ứng dụng HSK Studio để hoàn thiện đầy đủ 24 từ vựng
-  if (typeof window.HSK_REGISTER === 'function') {
-    window.HSK_REGISTER(window.HSK_BAI16_DATA);
+    "sample": "我后天没有时间。我们明天下午三点在学校门口见，一起去打篮球，可以吗？"
+   },
+   "supportWords": [
+    {
+     "zh": "球场",
+     "vi": "sân bóng"
+    },
+    {
+     "zh": "视频",
+     "vi": "video"
+    },
+    {
+     "zh": "清楚",
+     "vi": "rõ"
+    },
+    {
+     "zh": "周围",
+     "vi": "xung quanh"
+    }
+   ],
+   "voices": {
+    "A": "f",
+    "B": "m"
+   },
+   "mode": {
+    "listen": true,
+    "read": true,
+    "shadow": true,
+    "role": true
+   }
   }
-})();
+ ],
+ "confusables": [
+  {
+   "id": "b16-cf1",
+   "title": "得到 vs 收到",
+   "a": {
+    "zh": "得到",
+    "pinyin": "dédào",
+    "vi": "đạt được, giành được (sau nỗ lực)"
+   },
+   "b": {
+    "zh": "收到",
+    "pinyin": "shōudào",
+    "vi": "nhận được (thứ người khác gửi)"
+   },
+   "why": "得 = “được, thu về”, 到 = “tới nơi”: kết quả đạt được. 收 = “thu về từ tay người gửi”. Tâm lý: nói 得到 khi bạn muốn nhấn mạnh công sức; 收到 khi bạn xác nhận “đã tới tay mình”.",
+   "examples": [
+    "我得到了一个机会。",
+    "我收到了你的短信。"
+   ],
+   "tip": "Hỏi mình: có người GỬI không? Có → 收到. Không, là kết quả cố gắng/cơ hội → 得到.",
+   "audio": [
+    {
+     "lang": "zh-CN",
+     "text": "我得到了一个机会。",
+     "pause": 700
+    },
+    {
+     "lang": "zh-CN",
+     "text": "我收到了你的短信。",
+     "pause": 700
+    }
+   ]
+  },
+  {
+   "id": "b16-cf2",
+   "title": "读书 vs 看书",
+   "a": {
+    "zh": "读书",
+    "pinyin": "dúshū",
+    "vi": "đi học / học hành (nghĩa rộng)"
+   },
+   "b": {
+    "zh": "看书",
+    "pinyin": "kànshū",
+    "vi": "đọc sách (hành động cụ thể)"
+   },
+   "why": "读书 là cụm cố định chỉ việc “theo học”: 我姐在大学读书. 看书 là dùng mắt xem một cuốn sách.",
+   "examples": [
+    "我姐在这所大学读书。",
+    "我在书店看书。"
+   ],
+   "tip": "Có nơi học (大学/学校) đi kèm → 读书. Có cuốn sách trước mắt → 看书.",
+   "audio": [
+    {
+     "lang": "zh-CN",
+     "text": "我姐在这所大学读书。",
+     "pause": 700
+    },
+    {
+     "lang": "zh-CN",
+     "text": "我在书店看书。",
+     "pause": 700
+    }
+   ]
+  },
+  {
+   "id": "b16-cf3",
+   "title": "开车 vs 坐车",
+   "a": {
+    "zh": "开车",
+    "pinyin": "kāichē",
+    "vi": "lái xe (bạn cầm lái)"
+   },
+   "b": {
+    "zh": "坐车",
+    "pinyin": "zuòchē",
+    "vi": "đi xe (bạn là hành khách)"
+   },
+   "why": "开 = “vận hành”, 坐 = “ngồi”. Vai trò khác nhau: người điều khiển và người được chở.",
+   "examples": [
+    "我开车去学校。",
+    "我们坐车去车站。"
+   ],
+   "tip": "Tay bạn có đặt trên vô-lăng không? Có → 开车. Không → 坐车.",
+   "audio": [
+    {
+     "lang": "zh-CN",
+     "text": "我开车去学校。",
+     "pause": 700
+    },
+    {
+     "lang": "zh-CN",
+     "text": "我们坐车去车站。",
+     "pause": 700
+    }
+   ]
+  },
+  {
+   "id": "b16-cf4",
+   "title": "有时候 vs 的时候",
+   "a": {
+    "zh": "有时候",
+    "pinyin": "yǒu shíhou",
+    "vi": "đôi khi (tần suất)"
+   },
+   "b": {
+    "zh": "……的时候",
+    "pinyin": "…de shíhou",
+    "vi": "lúc … / khi … (mốc thời gian)"
+   },
+   "why": "有时候 độc lập, đứng đầu vế: “có lúc”. 的时候 luôn đứng SAU một cụm động từ/danh từ để tạo mốc.",
+   "examples": [
+    "有时候我们去北边吃饭。",
+    "下课的时候，我们在门口见。"
+   ],
+   "tip": "Cần chữ gì đứng TRƯỚC 的时候? Có → mốc. Không có gì trước → 有时候.",
+   "audio": [
+    {
+     "lang": "zh-CN",
+     "text": "有时候我们去北边吃饭。",
+     "pause": 700
+    },
+    {
+     "lang": "zh-CN",
+     "text": "下课的时候，我们在门口见。",
+     "pause": 700
+    }
+   ]
+  }
+ ],
+ "positionRules": [
+  {
+   "title": "Mốc + Phương vị",
+   "text": "Mốc đứng trước, phương vị đứng sau: 学校右边, 车站北边. Không bao giờ đảo thành 右边学校.",
+   "audio": [
+    {
+     "lang": "vi-VN",
+     "text": "Mốc + Phương vị. Mốc đứng trước, phương vị đứng sau:",
+     "pause": 300
+    },
+    {
+     "lang": "zh-CN",
+     "text": "学校右边",
+     "pause": 300
+    },
+    {
+     "lang": "vi-VN",
+     "text": ",",
+     "pause": 300
+    },
+    {
+     "lang": "zh-CN",
+     "text": "车站北边",
+     "pause": 300
+    },
+    {
+     "lang": "vi-VN",
+     "text": ". Không bao giờ đảo thành",
+     "pause": 300
+    },
+    {
+     "lang": "zh-CN",
+     "text": "右边学校",
+     "pause": 300
+    },
+    {
+     "lang": "vi-VN",
+     "text": ".",
+     "pause": 600
+    }
+   ]
+  },
+  {
+   "title": "Trạng ngữ thời gian/địa điểm trước động từ",
+   "text": "我们五点在门口见 (mốc giờ → nơi → động từ). Không nói 我们见在门口.",
+   "audio": [
+    {
+     "lang": "vi-VN",
+     "text": "Trạng ngữ thời gian/địa điểm trước động từ.",
+     "pause": 300
+    },
+    {
+     "lang": "zh-CN",
+     "text": "我们五点在门口见",
+     "pause": 300
+    },
+    {
+     "lang": "vi-VN",
+     "text": "(mốc giờ → nơi → động từ). Không nói",
+     "pause": 300
+    },
+    {
+     "lang": "zh-CN",
+     "text": "我们见在门口",
+     "pause": 300
+    },
+    {
+     "lang": "vi-VN",
+     "text": ".",
+     "pause": 600
+    }
+   ]
+  },
+  {
+   "title": "Động từ năng nguyện + động từ chính",
+   "text": "想 / 会 / 能 đứng ngay trước động từ chính: 我想开车去, không nói 我开车想去.",
+   "audio": [
+    {
+     "lang": "vi-VN",
+     "text": "Động từ năng nguyện + động từ chính.",
+     "pause": 300
+    },
+    {
+     "lang": "zh-CN",
+     "text": "想",
+     "pause": 300
+    },
+    {
+     "lang": "vi-VN",
+     "text": "/",
+     "pause": 300
+    },
+    {
+     "lang": "zh-CN",
+     "text": "会",
+     "pause": 300
+    },
+    {
+     "lang": "vi-VN",
+     "text": "/",
+     "pause": 300
+    },
+    {
+     "lang": "zh-CN",
+     "text": "能",
+     "pause": 300
+    },
+    {
+     "lang": "vi-VN",
+     "text": "đứng ngay trước động từ chính:",
+     "pause": 300
+    },
+    {
+     "lang": "zh-CN",
+     "text": "我想开车去",
+     "pause": 300
+    },
+    {
+     "lang": "vi-VN",
+     "text": ", không nói",
+     "pause": 300
+    },
+    {
+     "lang": "zh-CN",
+     "text": "我开车想去",
+     "pause": 300
+    },
+    {
+     "lang": "vi-VN",
+     "text": ".",
+     "pause": 600
+    }
+   ]
+  }
+ ]
+}); })();
