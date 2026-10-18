@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>HSK Studio · Nền Tảng Học Tiếng Trung Giao Tiếp Thực Chiến</title>
+
+  <!-- PWA & Mobile Meta Tags -->
+  <meta name="theme-color" content="#4f46e5" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- Google Fonts: Inter & Noto Sans SC (Typography chuẩn mực nét bút chữ Hán) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            hanzi: ['"Noto Sans SC"', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --app-font-size: 16px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    html {
+      font-size: var(--app-font-size);
+      -webkit-tap-highlight-color: transparent;
+      scroll-behavior: smooth;
+    }
+    body.app-body {
+      padding-bottom: calc(7.5rem + var(--safe-bottom));
+      color: #0f172a;
+      background:
+        radial-gradient(900px 420px at 0% -8%, rgba(99,102,241,.15), transparent 60%),
+        radial-gradient(700px 420px at 105% 6%, rgba(168,85,247,.12), transparent 55%),
+        #f8fafc;
+      background-attachment: fixed;
+    }
+    .dark body.app-body {
+      color: #f1f5f9;
+      background:
+        radial-gradient(900px 460px at 0% -8%, rgba(99,102,241,.22), transparent 60%),
+        radial-gradient(700px 460px at 105% 6%, rgba(147,51,234,.16), transparent 55%),
+        #0b0f19;
+      background-attachment: fixed;
+    }
+
+    .hanzi-text {
+      font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+    .target-word-hl {
+      color: #d97706;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .dark .target-word-hl {
+      color: #fbbf24;
+    }
+
+    /* Equalizer Sound Waves Animation */
+    @keyframes eqBarBounce {
+      0%, 100% { height: 4px; }
+      50% { height: 16px; }
+    }
+    .eq-playing .eq-bar:nth-child(1) { animation: eqBarBounce 0.8s ease-in-out infinite; }
+    .eq-playing .eq-bar:nth-child(2) { animation: eqBarBounce 0.6s ease-in-out infinite 0.15s; }
+    .eq-playing .eq-bar:nth-child(3) { animation: eqBarBounce 0.9s ease-in-out infinite 0.3s; }
+    .eq-playing .eq-bar:nth-child(4) { animation: eqBarBounce 0.7s ease-in-out infinite 0.45s; }
+
+    /* Custom Glassmorphism & Floating Navigation */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px) saturate(1.4);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+    }
+    .dark .glass-card {
+      background: rgba(19, 27, 46, 0.82);
+      backdrop-filter: blur(14px) saturate(1.4);
+      border-color: rgba(30, 41, 59, 0.8);
+      box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-floating-shell {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px) saturate(1.6);
+      border: 1px solid rgba(203, 213, 225, 0.6);
+      border-radius: 26px;
+      box-shadow: 0 20px 40px -15px rgba(30, 27, 75, 0.25);
+    }
+    .dark .nav-floating-shell {
+      background: rgba(15, 23, 42, 0.92);
+      border-color: rgba(51, 65, 85, 0.7);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8);
+    }
+    .nav-btn-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      height: 3.6rem;
+      border-radius: 18px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748b;
+      transition: all 0.2s ease;
+    }
+    .dark .nav-btn-item { color: #94a3b8; }
+    .nav-btn-item.active-tab {
+      color: #4f46e5;
+      background: linear-gradient(180deg, rgba(99,102,241,0.18), rgba(99,102,241,0.06));
+    }
+    .dark .nav-btn-item.active-tab {
+      color: #a5b4fc;
+      background: linear-gradient(180deg, rgba(99,102,241,0.3), rgba(99,102,241,0.1));
+    }
+
+    /* Floating Dock */
+    .dock-capsule {
+      background: linear-gradient(135deg, rgba(24, 23, 48, 0.96), rgba(15, 23, 42, 0.96));
+      border: 1px solid rgba(129, 140, 248, 0.35);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.75);
+    }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    .dark ::-webkit-scrollbar-thumb { background: #475569; }
+    details summary::-webkit-details-marker { display: none; }
+    .touch-target { min-height: 44px; min-width: 44px; }
+  </style>
+</head>
+
+<body class="app-body min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- ================= TOP APP BAR ================= -->
+  <header class="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 cursor-pointer min-w-0" onclick="Router.navigate('home')">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-black text-base hanzi-text shadow-md bg-gradient-to-br from-indigo-500 via-violet-600 to-pink-500">
+          华
+        </div>
+        <div class="min-w-0">
+          <h1 class="text-sm font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight truncate">HSK Studio · Thực Chiến</h1>
+          <p id="top-lesson-indicator" class="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 leading-none truncate">Đang tải...</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5">
+        <button onclick="Renderer.toggleDarkMode()" aria-label="Đổi giao diện Sáng / Tối" class="touch-target p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition flex items-center justify-center">
+          <span id="header-theme-icon" class="text-base">🌙</span>
+        </button>
+        <button onclick="Router.navigate('search')" aria-label="Tìm kiếm từ vựng" class="touch-target p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </button>
+        <button onclick="Router.navigate('settings')" aria-label="Cài đặt âm thanh & cá nhân" class="touch-target p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT VIEWPORT ================= -->
+  <main id="app-viewport" class="flex-1 max-w-5xl w-full mx-auto px-4 py-4 sm:py-6" role="main">
+    <!-- Nội dung được kết xuất động theo Router -->
+  </main>
+
+  <!-- ================= FLOATING AUDIO DOCK (PODCAST & EQUALIZER) ================= -->
+  <aside id="audio-dock" class="fixed bottom-[5.8rem] left-0 right-0 z-30 px-3 transition-transform duration-300 ease-in-out pointer-events-none" aria-label="Bộ điều khiển âm thanh thông minh">
+    <div class="dock-capsule max-w-3xl mx-auto text-white p-2.5 sm:p-3 flex items-center justify-between gap-3 pointer-events-auto">
+      <div class="flex items-center gap-3 min-w-0 flex-1">
+        <!-- Equalizer Sound Wave Animation -->
+        <div id="dock-equalizer" class="flex items-end gap-0.5 h-4 shrink-0">
+          <span class="eq-bar w-1 bg-amber-400 rounded-full h-1.5"></span>
+          <span class="eq-bar w-1 bg-amber-400 rounded-full h-3"></span>
+          <span class="eq-bar w-1 bg-amber-400 rounded-full h-2"></span>
+          <span class="eq-bar w-1 bg-amber-400 rounded-full h-3.5"></span>
+        </div>
+
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-1.5">
+            <span id="audio-speaker-badge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 shrink-0 truncate">🎓 Lời giảng</span>
+            <div id="audio-title-bar" class="text-[11px] text-slate-300 font-semibold truncate leading-tight">Sẵn sàng</div>
+          </div>
+          <div id="audio-caption-bar" class="text-xs sm:text-sm font-bold text-amber-300 truncate hanzi-text mt-0.5">Nhấn để nghe giảng hoặc hội thoại</div>
+        </div>
+      </div>
+
+      <!-- Nút dành riêng cho chế độ Đóng vai (Role-play) -->
+      <button id="btn-audio-user-turn" class="hidden px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs shadow-md animate-pulse shrink-0" onclick="TTS.nextTurn()">
+        Đến lượt tôi · Tiếp tục ➔
+      </button>
+
+      <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+        <button onclick="TTS.togglePause()" id="btn-audio-playpause" title="Phát / Tạm dừng" class="touch-target px-2.5 sm:px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs flex items-center gap-1 shadow-sm">
+          <span id="label-audio-playpause">⏸ Tạm dừng</span>
+        </button>
+        <button onclick="TTS.replay()" title="Nghe lại đoạn này" class="touch-target px-2 sm:px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-slate-200 text-xs">↺</button>
+        <button onclick="TTS.stop()" title="Dừng âm thanh" class="touch-target px-2 sm:px-2.5 py-1.5 rounded-xl bg-rose-600/80 hover:bg-rose-600 text-white text-xs">⏹</button>
+        <button onclick="TTS.cycleRate()" id="btn-audio-rate" title="Tốc độ đọc" class="touch-target px-2 sm:px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-amber-300 font-mono text-xs font-bold">1.0×</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================= BOTTOM FLOATING NAVIGATION BAR ================= -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 px-3 pointer-events-none" style="padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 0.6rem)" aria-label="Thanh điều hướng chính">
+    <div class="nav-floating-shell max-w-xl mx-auto grid grid-cols-6 pointer-events-auto px-1.5 py-1">
+      <button onclick="Router.navigate('home')" id="nav-btn-home" class="nav-btn-item">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+        <span>Trang chủ</span>
+      </button>
+      <button onclick="Router.navigate('lesson')" id="nav-btn-lesson" class="nav-btn-item">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+        <span>24 Từ</span>
+      </button>
+      <button onclick="Router.navigate('dialogs')" id="nav-btn-dialogs" class="nav-btn-item">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+        <span>Đối thoại</span>
+      </button>
+      <button onclick="Router.navigate('passive')" id="nav-btn-passive" class="nav-btn-item">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15v-3a8 8 0 1116 0v3M4 15a2 2 0 012-2h1v6H6a2 2 0 01-2-2v-2zm16 0a2 2 0 00-2-2h-1v6h1a2 2 0 002-2v-2z"></path></svg>
+        <span>Nghe podcast</span>
+      </button>
+      <button onclick="Router.navigate('exercise')" id="nav-btn-exercise" class="nav-btn-item">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+        <span>Luyện tập</span>
+      </button>
+      <button onclick="Router.navigate('review')" id="nav-btn-review" class="nav-btn-item">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+        <span>Ôn SRS</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ================= ĐĂNG KÝ HỌC LIỆU & NẠP DỮ LIỆU TỰ ĐỘNG ================= -->
+  <script>
+    // Đăng ký toàn cục trước khi nạp dữ liệu từ các file bên ngoài
+    window.HSK_PENDING_REGISTRATIONS = [];
+    window.HSK_REGISTER = function(raw) {
+      if (window.DataStore && typeof window.DataStore.register === 'function') {
+        window.DataStore.register(raw);
+      } else {
+        window.HSK_PENDING_REGISTRATIONS.push(raw);
+      }
+    };
+  </script>
+
+  <!-- Nạp dữ liệu danh mục & bài học -->
+  <script src="manifest.js"></script>
+  <script src="bai-16.js"></script>
+
+  <!-- ================= CLIENT CORE ENGINE SCRIPT ================= -->
+  <script>
+    /**
+     * HSK STUDIO V5 - ADVANCED SINGLE-FILE ENGINE
+     * Tích hợp Dual-Voice Nam-Nữ, Audio Equalizer, 4 Dialogue Modes & Audio Recorder
+     */
+
+    // 1. CẤU HÌNH & LƯU TRỮ TRẠNG THÁI (STORAGE ENGINE)
+    const APP_CONFIG = {
+      STORAGE_KEY: 'HSK_STUDIO_V5_PROGRESS',
+      SETTINGS_KEY: 'HSK_STUDIO_V5_SETTINGS',
+      VERSION: 5.0
+    };
+
+    const Storage = {
+      getSettings() {
+        try {
+          const raw = localStorage.getItem(APP_CONFIG.SETTINGS_KEY);
+          return raw ? JSON.parse(raw) : {
+            theme: 'system',
+            fontSize: '16',
+            rate: 1.0,
+            voiceVi: '',
+            voiceZhMale: '',
+            voiceZhFemale: '',
+            playChime: true
+          };
+        } catch (e) {
+          return { theme: 'system', fontSize: '16', rate: 1.0, voiceVi: '', voiceZhMale: '', voiceZhFemale: '', playChime: true };
+        }
+      },
+      saveSettings(settings) {
+        try { localStorage.setItem(APP_CONFIG.SETTINGS_KEY, JSON.stringify(settings)); } catch (e) {}
+      },
+      getProgress() {
+        try {
+          const raw = localStorage.getItem(APP_CONFIG.STORAGE_KEY);
+          return raw ? JSON.parse(raw) : {
+            version: APP_CONFIG.VERSION,
+            completedWords: {},
+            completedExercises: {},
+            selfUseAnswers: {},
+            notes: {},
+            bookmarks: {},
+            reviewsSchedule: {},
+            activeRecall: {},
+            dialogProgress: {},
+            lastLessonId: null,
+            lastGroupId: null,
+            lastWordId: null
+          };
+        } catch (e) {
+          return { completedWords: {}, completedExercises: {}, selfUseAnswers: {}, notes: {}, bookmarks: {}, reviewsSchedule: {}, activeRecall: {}, dialogProgress: {} };
+        }
+      },
+      saveProgress(data) {
+        try { localStorage.setItem(APP_CONFIG.STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+      },
+      exportBackupJSON() {
+        const payload = {
+          version: APP_CONFIG.VERSION,
+          exportedAt: new Date().toISOString(),
+          settings: this.getSettings(),
+          progress: this.getProgress()
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `HSK_Studio_Backup_${new Date().toISOString().slice(0, 10)}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      },
+      importBackupJSON(jsonString) {
+        try {
+          const parsed = JSON.parse(jsonString);
+          if (!parsed.progress) throw new Error("Tệp sao lưu không hợp lệ.");
+          this.saveProgress(parsed.progress);
+          if (parsed.settings) this.saveSettings(parsed.settings);
+          return { success: true };
+        } catch (err) {
+          return { success: false, error: err.message };
+        }
+      },
+      resetAll() {
+        localStorage.removeItem(APP_CONFIG.STORAGE_KEY);
+      }
+    };
+
+    // 2. WEB AUDIO API CHIME & SOUND EFFECTS GENERATOR
+    const SoundFX = {
+      ctx: null,
+      getCtx() {
+        if (!this.ctx && (window.AudioContext || window.webkitAudioContext)) {
+          this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+        return this.ctx;
+      },
+      playTurnChime() {
+        const settings = Storage.getSettings();
+        if (!settings.playChime) return;
+        try {
+          const ctx = this.getCtx();
+          if (!ctx) return;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+          osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.12); // G5
+          gain.gain.setValueAtTime(0.08, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.28);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.28);
+        } catch (e) {}
+      },
+      playSuccessChime() {
+        try {
+          const ctx = this.getCtx();
+          if (!ctx) return;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+          osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.18); // A5
+          gain.gain.setValueAtTime(0.1, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.35);
+        } catch (e) {}
+      }
+    };
+
+    // 3. DUAL-VOICE AUDIO ENGINE (NAM - NỮ LUÂN PHIÊN & TRÍ THÔNG MINH ÂM HỌC)
+    const TTS = {
+      queue: [],
+      currentIndex: 0,
+      isPlaying: false,
+      isPaused: false,
+      waitingUserTurn: false,
+      token: 0,
+      timer: null,
+      currentUtterance: null,
+      rates: [0.75, 0.9, 1.0, 1.15, 1.25],
+
+      // Cache giọng đọc phân vai Nam - Nữ
+      cachedVoices: {
+        vi: null,
+        zhMale: null,
+        zhFemale: null,
+        zhFallback: null
+      },
+
+      init() {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.onvoiceschanged = () => this.refreshVoiceCache();
+          this.refreshVoiceCache();
+        }
+      },
+
+      refreshVoiceCache() {
+        if (!('speechSynthesis' in window)) return;
+        const voices = window.speechSynthesis.getVoices() || [];
+        const settings = Storage.getSettings();
+
+        // 1. Giọng Tiếng Việt
+        if (settings.voiceVi) {
+          this.cachedVoices.vi = voices.find(v => v.voiceURI === settings.voiceVi) || null;
+        }
+        if (!this.cachedVoices.vi) {
+          this.cachedVoices.vi = voices.find(v => v.lang.toLowerCase().startsWith('vi')) || null;
+        }
+
+        // 2. Giọng Tiếng Trung
+        const zhVoices = voices.filter(v => v.lang.toLowerCase().startsWith('zh'));
+        this.cachedVoices.zhFallback = zhVoices[0] || null;
+
+        const femaleKeywords = ['xiaoxiao', 'huihui', 'yaoyao', 'tingting', 'female', 'woman', 'nv', 'linh', 'mai', 'meijia', 'sinji', 'hanhan'];
+        const maleKeywords = ['yunxi', 'yunjian', 'yunyang', 'male', 'man', 'nan', 'kangkang', 'nam', 'minh', 'danny', 'bobby'];
+
+        // Ưu tiên chọn từ cài đặt người dùng
+        if (settings.voiceZhMale) {
+          this.cachedVoices.zhMale = zhVoices.find(v => v.voiceURI === settings.voiceZhMale) || null;
+        }
+        if (settings.voiceZhFemale) {
+          this.cachedVoices.zhFemale = zhVoices.find(v => v.voiceURI === settings.voiceZhFemale) || null;
+        }
+
+        // Tự động nhận diện nếu chưa gán
+        if (!this.cachedVoices.zhFemale) {
+          this.cachedVoices.zhFemale = zhVoices.find(v => femaleKeywords.some(kw => v.name.toLowerCase().includes(kw))) || zhVoices[0] || null;
+        }
+        if (!this.cachedVoices.zhMale) {
+          this.cachedVoices.zhMale = zhVoices.find(v => maleKeywords.some(kw => v.name.toLowerCase().includes(kw))) ||
+            zhVoices.find(v => v !== this.cachedVoices.zhFemale) || zhVoices[0] || null;
+        }
+      },
+
+      playQueue(items, title = "Đang phát...") {
+        Passive.halt(true);
+        this.stop();
+        if (!items || !items.length) return;
+        if (!('speechSynthesis' in window)) {
+          this.setUIStatus("Thiết bị không hỗ trợ Web Speech API.", false);
+          return;
+        }
+
+        this.queue = items.map(it => ({ ...it }));
+        this.currentIndex = 0;
+        this.isPlaying = true;
+        this.isPaused = false;
+        this.waitingUserTurn = false;
+        this.token++;
+
+        this.setDockVisible(true);
+        this.setUIStatus(title, true);
+        this.processNext();
+      },
+
+      processNext() {
+        if (!this.isPlaying || this.isPaused || this.waitingUserTurn) return;
+
+        if (this.currentIndex >= this.queue.length) {
+          this.isPlaying = false;
+          this.setUIStatus("Đã hoàn thành bài nghe.", false);
+          this.updateVisualizer(false);
+          this.hideUserTurnButton();
+          return;
+        }
+
+        const localToken = this.token;
+        const item = this.queue[this.currentIndex];
+        const cleanText = String(item.text || '').replace(/\[.*?\]/g, '').trim();
+
+        if (!cleanText) {
+          this.currentIndex++;
+          this.processNext();
+          return;
+        }
+
+        // Xử lý Highlight lượt thoại nếu đang trong Hội thoại
+        if (typeof item.dialogTurn === 'number') {
+          document.querySelectorAll('.dialog-turn-bubble').forEach(el => el.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-50/40', 'dark:bg-indigo-950/40'));
+          const turnEl = document.getElementById(`dialog-turn-${item.dialogTurn}`);
+          if (turnEl) {
+            turnEl.classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50/40', 'dark:bg-indigo-950/40');
+            turnEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          }
+        }
+
+        // Kiểm tra lượt thoại đóng vai của Người học (Interactive Role-Play)
+        if (item.hold) {
+          this.waitingUserTurn = true;
+          this.updateVisualizer(false);
+          this.showUserTurnButton(item.speaker);
+          SoundFX.playTurnChime();
+          const cap = document.getElementById('audio-caption-bar');
+          if (cap) cap.textContent = `🎯 Đến lượt bạn nói! Hãy tự phát âm câu thoại rồi bấm nút bên cạnh.`;
+          return;
+        }
+
+        const lang = item.lang || 'vi-VN';
+        const isZh = lang.startsWith('zh');
+        const settings = Storage.getSettings();
+        const baseRate = Number(settings.rate) || 1.0;
+
+        const utter = new SpeechSynthesisUtterance(cleanText);
+        this.currentUtterance = utter;
+        utter.lang = lang;
+
+        // THUẬT TOÁN ĐIỀU BIẾN TẦN SỐ ÂM HỌC & PHÂN VAI NAM - NỮ
+        let speakerLabel = "🎓 Lời giảng";
+        let speakerClass = "bg-indigo-500/30 text-indigo-200 border-indigo-400/30";
+
+        if (isZh) {
+          if (item.speaker === 'A' || item.gender === 'male') {
+            // Nhân vật A: Tiểu Lâm (Nam)
+            speakerLabel = "👨 Tiểu Lâm (Nam)";
+            speakerClass = "bg-sky-500/30 text-sky-200 border-sky-400/30";
+            if (this.cachedVoices.zhMale) utter.voice = this.cachedVoices.zhMale;
+            // Ép tần số âm trầm cho nam
+            utter.pitch = 0.86;
+            utter.rate = baseRate * 0.96;
+          } else if (item.speaker === 'B' || item.gender === 'female') {
+            // Nhân vật B: Tiểu An (Nữ)
+            speakerLabel = "👩 Tiểu An (Nữ)";
+            speakerClass = "bg-rose-500/30 text-rose-200 border-rose-400/30";
+            if (this.cachedVoices.zhFemale) utter.voice = this.cachedVoices.zhFemale;
+            // Nâng cao độ thanh âm trong trẻo cho nữ
+            utter.pitch = 1.22;
+            utter.rate = baseRate * 1.03;
+          } else {
+            // Giọng chuẩn tiếng Trung
+            if (this.cachedVoices.zhFallback) utter.voice = this.cachedVoices.zhFallback;
+            utter.pitch = 1.0;
+            utter.rate = baseRate;
+          }
+        } else {
+          // Lời giảng Tiếng Việt
+          if (this.cachedVoices.vi) utter.voice = this.cachedVoices.vi;
+          utter.pitch = 1.0;
+          utter.rate = baseRate;
+        }
+
+        // Cập nhật nhãn nhân vật đang phát trên Floating Dock
+        const badgeEl = document.getElementById('audio-speaker-badge');
+        if (badgeEl) {
+          badgeEl.textContent = speakerLabel;
+          badgeEl.className = `px-2 py-0.5 rounded-full text-[10px] font-bold border shrink-0 truncate ${speakerClass}`;
+        }
+
+        const capEl = document.getElementById('audio-caption-bar');
+        if (capEl) {
+          if (item.conceal) {
+            capEl.textContent = `[Đang ẩn lời thoại để bạn luyện nghe phản xạ]`;
+          } else {
+            capEl.textContent = cleanText;
+          }
+        }
+
+        const stepToNext = () => {
+          if (localToken !== this.token || !this.isPlaying || this.isPaused || this.waitingUserTurn) return;
+          const pauseMs = typeof item.pause === 'number' ? Math.max(0, item.pause) : 400;
+          this.timer = setTimeout(() => {
+            if (localToken !== this.token) return;
+            this.currentIndex++;
+            this.processNext();
+          }, pauseMs);
+        };
+
+        utter.onend = stepToNext;
+        utter.onerror = (e) => {
+          if (e.error === 'canceled' || e.error === 'interrupted') return;
+          console.warn("TTS Error:", e.error);
+          stepToNext();
+        };
+
+        this.updateVisualizer(true);
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utter);
+      },
+
+      nextTurn() {
+        if (!this.isPlaying || !this.waitingUserTurn) return;
+        this.waitingUserTurn = false;
+        this.hideUserTurnButton();
+        SoundFX.playSuccessChime();
+        this.currentIndex++;
+        this.processNext();
+      },
+
+      showUserTurnButton(speaker) {
+        const btn = document.getElementById('btn-audio-user-turn');
+        if (btn) {
+          btn.classList.remove('hidden');
+          btn.textContent = `🎤 Đến lượt bạn (${speaker === 'A' ? 'Tiểu Lâm' : 'Tiểu An'}) · Tiếp tục ➔`;
+        }
+      },
+
+      hideUserTurnButton() {
+        const btn = document.getElementById('btn-audio-user-turn');
+        if (btn) btn.classList.add('hidden');
+      },
+
+      togglePause() {
+        if (!this.isPlaying) return;
+        if (this.isPaused) {
+          this.isPaused = false;
+          window.speechSynthesis.resume();
+          this.updateVisualizer(true);
+          const lbl = document.getElementById('label-audio-playpause');
+          if (lbl) lbl.textContent = "⏸ Tạm dừng";
+          this.processNext();
+        } else {
+          this.isPaused = true;
+          this.token++;
+          clearTimeout(this.timer);
+          window.speechSynthesis.cancel();
+          this.updateVisualizer(false);
+          const lbl = document.getElementById('label-audio-playpause');
+          if (lbl) lbl.textContent = "▶ Tiếp tục";
+        }
+      },
+
+      replay() {
+        if (this.queue.length > 0) {
+          this.playQueue(this.queue, "Phát lại từ đầu...");
+        }
+      },
+
+      stop() {
+        this.token++;
+        clearTimeout(this.timer);
+        this.isPlaying = false;
+        this.isPaused = false;
+        this.waitingUserTurn = false;
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        this.updateVisualizer(false);
+        this.hideUserTurnButton();
+        this.setUIStatus("Đã dừng âm thanh.", false);
+        const lbl = document.getElementById('label-audio-playpause');
+        if (lbl) lbl.textContent = "▶ Phát";
+      },
+
+      cycleRate() {
+        const settings = Storage.getSettings();
+        let curRate = Number(settings.rate) || 1.0;
+        let nextIdx = (this.rates.indexOf(curRate) + 1) % this.rates.length;
+        if (nextIdx < 0) nextIdx = 2;
+        const newRate = this.rates[nextIdx];
+        settings.rate = newRate;
+        Storage.saveSettings(settings);
+        const btn = document.getElementById('btn-audio-rate');
+        if (btn) btn.textContent = `${newRate}×`;
+      },
+
+      setDockVisible(visible) {
+        const dock = document.getElementById('audio-dock');
+        if (!dock) return;
+        if (visible) dock.classList.remove('translate-y-24', 'opacity-0');
+        else dock.classList.add('translate-y-24', 'opacity-0');
+      },
+
+      setUIStatus(title, isPlaying) {
+        const tEl = document.getElementById('audio-title-bar');
+        if (tEl) tEl.textContent = title;
+      },
+
+      updateVisualizer(isPlaying) {
+        const eq = document.getElementById('dock-equalizer');
+        if (!eq) return;
+        if (isPlaying) eq.classList.add('eq-playing');
+        else eq.classList.remove('eq-playing');
+      }
+    };
+
+    // 4. BỘ ĐIỀU HƯỚNG & KHO DỮ LIỆU TẬP TRUNG (ROUTER & DATA STORE)
+    const AppStore = {
+      lessons: [],
+      currentLesson: null,
+      currentGroup: null,
+      currentWord: null,
+      currentDialogue: null,
+      dialogueMode: 'listen', // 'listen', 'read', 'shadow', 'role'
+      dialogueRole: 'B',       // Người học mặc định đóng vai Tiểu An (Nữ)
+      currentTab: 'home',
+      searchQuery: '',
+      libLevel: 'HSK1'
+    };
+
+    const DataStore = {
+      manifest: [],
+      loadingIds: {},
+      failed: {},
+
+      init() {
+        const list = Array.isArray(window.HSK_MANIFEST) ? window.HSK_MANIFEST : [];
+        list.forEach(m => {
+          if (!m || !m.id) return;
+          this.manifest.push({
+            id: String(m.id),
+            level: String(m.level || 'HSK1').toUpperCase().replace(/\s+/g, ''),
+            number: Number(m.number) || 0,
+            title: m.title || m.id,
+            words: Number(m.words) || 0,
+            dialogues: Number(m.dialogues) || 0,
+            file: m.file || null
+          });
+        });
+
+        // Xử lý các bài nạp sẵn trong hàng đợi
+        if (Array.isArray(window.HSK_PENDING_REGISTRATIONS)) {
+          window.HSK_PENDING_REGISTRATIONS.forEach(raw => this.register(raw));
+          window.HSK_PENDING_REGISTRATIONS = [];
+        }
+      },
+
+      register(raw) {
+        if (!raw || !raw.id) return;
+        const existingIdx = AppStore.lessons.findIndex(l => l.id === raw.id);
+        if (existingIdx >= 0) {
+          AppStore.lessons[existingIdx] = raw;
+        } else {
+          AppStore.lessons.push(raw);
+        }
+        let m = this.manifest.find(it => it.id === raw.id);
+        if (!m) {
+          this.manifest.push({
+            id: raw.id,
+            level: raw.level || 'HSK1',
+            number: raw.number || 1,
+            title: raw.title || raw.id,
+            words: raw.groups ? raw.groups.reduce((a, g) => a + (g.words ? g.words.length : 0), 0) : 0,
+            dialogues: raw.dialogues ? raw.dialogues.length : 0,
+            file: null
+          });
+        }
+      },
+
+      levels() {
+        const set = new Set(this.manifest.map(m => m.level));
+        return Array.from(set).sort();
+      },
+
+      lessonsOf(level) {
+        return this.manifest.filter(m => m.level === level);
+      },
+
+      async loadLesson(id) {
+        const found = AppStore.lessons.find(l => l.id === id);
+        if (found) return found;
+        const entry = this.manifest.find(m => m.id === id);
+        if (!entry || !entry.file) throw new Error(`Không tìm thấy file cho bài ${id}`);
+
+        return new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = entry.file;
+          script.async = true;
+          script.onload = () => {
+            const loaded = AppStore.lessons.find(l => l.id === id);
+            if (loaded) resolve(loaded);
+            else reject(new Error("File tải xong nhưng chưa đăng ký được bài học."));
+          };
+          script.onerror = () => reject(new Error("Lỗi tải tệp học liệu từ máy chủ."));
+          document.head.appendChild(script);
+        });
+      }
+    };
+
+    const Router = {
+      navigate(tab, params = {}) {
+        TTS.stop();
+        if (tab !== 'passive') Passive.halt(true);
+        AppStore.currentTab = tab;
+
+        if (params.lessonId) {
+          const l = AppStore.lessons.find(item => item.id === params.lessonId);
+          if (l) {
+            AppStore.currentLesson = l;
+            AppStore.currentGroup = l.groups ? l.groups[0] : null;
+            AppStore.currentWord = AppStore.currentGroup && AppStore.currentGroup.words ? AppStore.currentGroup.words[0] : null;
+            AppStore.currentDialogue = l.dialogues ? l.dialogues[0] : null;
+          }
+        }
+        if (params.groupId && AppStore.currentLesson) {
+          const g = AppStore.currentLesson.groups.find(item => item.id === params.groupId);
+          if (g) {
+            AppStore.currentGroup = g;
+            AppStore.currentWord = g.words ? g.words[0] : null;
+          }
+        }
+        if (params.wordId && AppStore.currentGroup) {
+          const w = AppStore.currentGroup.words.find(item => item.id === params.wordId);
+          if (w) AppStore.currentWord = w;
+        }
+        if (params.dialogueId && AppStore.currentLesson) {
+          const d = AppStore.currentLesson.dialogues.find(item => item.id === params.dialogueId);
+          if (d) AppStore.currentDialogue = d;
+        }
+
+        this.updateNavButtons(tab);
+        this.updateTopIndicator();
+        Renderer.renderCurrentView();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+
+      updateNavButtons(tab) {
+        ['home', 'lesson', 'dialogs', 'passive', 'exercise', 'review'].forEach(key => {
+          const el = document.getElementById(`nav-btn-${key}`);
+          if (!el) return;
+          if (key === tab || (key === 'dialogs' && tab === 'dialog-view')) {
+            el.classList.add('active-tab');
+          } else {
+            el.classList.remove('active-tab');
+          }
+        });
+      },
+
+      updateTopIndicator() {
+        const el = document.getElementById('top-lesson-indicator');
+        if (!el) return;
+        const cur = AppStore.currentLesson;
+        el.textContent = cur ? `${cur.level} · ${cur.title}` : 'Kho học liệu HSK';
+      }
+    };
+
+    // 5. THIẾT KẾ VÀ KẾT XUẤT GIAO DIỆN HIỆN ĐẠI (VIEW RENDERER)
+    const Renderer = {
+      escapeHtml(str) {
+        return String(str ?? '').replace(/[&<>"']/g, c => ({
+          '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+        }[c]));
+      },
+
+      highlightWord(sentence, target) {
+        if (!sentence || !target) return this.escapeHtml(sentence);
+        const safe = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const re = new RegExp(`(${safe})`, 'g');
+        return this.escapeHtml(sentence).replace(re, `<span class="target-word-hl">$1</span>`);
+      },
+
+      renderCurrentView() {
+        const viewport = document.getElementById('app-viewport');
+        if (!viewport) return;
+
+        if (AppStore.lessons.length === 0) {
+          viewport.innerHTML = this.renderEmptyNotice();
+          return;
+        }
+
+        switch (AppStore.currentTab) {
+          case 'home':
+            viewport.innerHTML = this.renderHomeView();
+            break;
+          case 'lesson':
+            viewport.innerHTML = this.renderLessonView();
+            break;
+          case 'dialogs':
+            viewport.innerHTML = this.renderDialoguesListView();
+            break;
+          case 'dialog-view':
+            viewport.innerHTML = this.renderDialogueDetailView();
+            break;
+          case 'passive':
+            viewport.innerHTML = this.renderPassiveView();
+            Passive.syncUI();
+            break;
+          case 'exercise':
+            viewport.innerHTML = this.renderExerciseView();
+            break;
+          case 'review':
+            viewport.innerHTML = this.renderReviewView();
+            break;
+          case 'search':
+            viewport.innerHTML = this.renderSearchView();
+            break;
+          case 'settings':
+            viewport.innerHTML = this.renderSettingsView();
+            break;
+          default:
+            viewport.innerHTML = this.renderHomeView();
+        }
+      },
+
+      renderEmptyNotice() {
+        return `
+          <div class="glass-card rounded-3xl p-8 text-center max-w-lg mx-auto my-12 space-y-4">
+            <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mx-auto">⏳</div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Đang khởi tạo học liệu HSK</h2>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Vui lòng đảm bảo các tệp <code>manifest.js</code> và <code>bai-16.js</code> đang nằm cùng thư mục máy chủ hoặc trình duyệt.
+            </p>
+            <button onclick="location.reload()" class="touch-target px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md">
+              Tải lại ứng dụng ⟳
+            </button>
+          </div>
+        `;
+      },
+
+      // --- A. GIAO DIỆN TRANG CHỦ (HOME DASHBOARD) ---
+      renderHomeView() {
+        const curLesson = AppStore.currentLesson || AppStore.lessons[0];
+        const progress = Storage.getProgress();
+        const totalWords = curLesson.groups ? curLesson.groups.reduce((a, g) => a + (g.words ? g.words.length : 0), 0) : 24;
+        const learnedWords = Object.keys(progress.completedWords || {}).length;
+        const progressPercent = Math.min(100, Math.round((learnedWords / totalWords) * 100));
+
+        return `
+          <div class="space-y-6">
+            <!-- Hero Banner với Gradient hiện đại & Thông tin tiến độ -->
+            <section class="relative overflow-hidden rounded-3xl p-6 sm:p-8 text-white shadow-xl bg-gradient-to-br from-indigo-600 via-violet-600 to-pink-600">
+              <div class="hanzi-text absolute -right-6 -bottom-10 text-[10rem] font-black leading-none opacity-10 select-none">
+                语
+              </div>
+              <div class="relative flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                <div class="space-y-3 max-w-lg">
+                  <div class="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-indigo-100 bg-white/15 backdrop-blur-md rounded-full px-3.5 py-1">
+                    <span>${curLesson.level}</span> • <span>Bài ${curLesson.number || 16}</span>
+                  </div>
+                  <h2 class="text-2xl sm:text-3xl font-black tracking-tight leading-snug">
+                    ${this.escapeHtml(curLesson.title)}
+                  </h2>
+                  <p class="text-xs sm:text-sm text-indigo-100/90 leading-relaxed">
+                    24 từ vựng mở rộng chuyên sâu bẫy người Việt, cùng 4 đoạn hội thoại đường dài 16-24 lượt tương tác giọng Nam – Nữ.
+                  </p>
+                  <div class="pt-2 flex flex-wrap gap-2.5">
+                    <button onclick="Router.navigate('lesson')" class="touch-target px-5 py-2.5 rounded-2xl bg-white text-indigo-900 font-extrabold text-xs sm:text-sm shadow-lg hover:bg-slate-100 transition">
+                      Bắt đầu học 24 từ ➔
+                    </button>
+                    <button onclick="Router.navigate('dialogs')" class="touch-target px-5 py-2.5 rounded-2xl bg-white/20 hover:bg-white/30 text-white font-extrabold text-xs sm:text-sm backdrop-blur-md border border-white/30 transition">
+                      4 Hội thoại thực chiến 💬
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Vòng tròn tỷ lệ tiến độ -->
+                <div class="relative shrink-0 w-28 h-28 self-center">
+                  <svg viewBox="0 0 80 80" class="w-full h-full -rotate-90">
+                    <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="7"></circle>
+                    <circle cx="40" cy="40" r="34" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"
+                      stroke-dasharray="213.6" stroke-dashoffset="${(213.6 * (1 - progressPercent / 100)).toFixed(1)}"></circle>
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center leading-none">
+                    <span class="text-2xl font-black">${progressPercent}%</span>
+                    <span class="text-[10px] font-semibold text-indigo-100 mt-1">${learnedWords}/${totalWords} từ</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 4 Thẻ Chức Năng Nhanh (Quick Action Cards) -->
+            <section class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+              <div onclick="Router.navigate('lesson')" class="cursor-pointer glass-card rounded-2xl p-4 hover:scale-[1.02] transition border-l-4 border-l-indigo-500">
+                <div class="text-2xl mb-1.5">📖</div>
+                <h3 class="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white">24 Từ Vựng Mở Rộng</h3>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Phân tích bẫy & ngữ cảnh</p>
+              </div>
+
+              <div onclick="Router.navigate('dialogs')" class="cursor-pointer glass-card rounded-2xl p-4 hover:scale-[1.02] transition border-l-4 border-l-pink-500">
+                <div class="text-2xl mb-1.5">👥</div>
+                <h3 class="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white">Đối Thoại Nam – Nữ</h3>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">4 đoạn dài 16-24 lượt</p>
+              </div>
+
+              <div onclick="Router.navigate('passive')" class="cursor-pointer glass-card rounded-2xl p-4 hover:scale-[1.02] transition border-l-4 border-l-violet-500">
+                <div class="text-2xl mb-1.5">🎧</div>
+                <h3 class="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white">Podcast Nghe Rảnh Tay</h3>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Lặp lại & Hẹn giờ tắt</p>
+              </div>
+
+              <div onclick="Router.navigate('review')" class="cursor-pointer glass-card rounded-2xl p-4 hover:scale-[1.02] transition border-l-4 border-l-amber-500">
+                <div class="text-2xl mb-1.5">🔁</div>
+                <h3 class="font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white">Ôn Tập Spaced SRS</h3>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Mốc 1 - 3 - 7 - 14 ngày</p>
+              </div>
+            </section>
+
+            <!-- Danh sách các nhóm bài học -->
+            <section class="space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="font-extrabold text-base text-slate-900 dark:text-white">Các Nhóm Bài Học Trong Bài 16</h3>
+                <span class="text-xs text-indigo-600 dark:text-indigo-400 font-semibold">${curLesson.groups ? curLesson.groups.length : 0} Nhóm Từ</span>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-3.5">
+                ${(curLesson.groups || []).map((grp, gIdx) => {
+                  const grpWords = grp.words ? grp.words.length : 0;
+                  const grpLearned = (grp.words || []).filter(w => progress.completedWords && progress.completedWords[w.id]).length;
+                  return `
+                    <div onclick="Router.navigate('lesson', { groupId: '${grp.id}' })" class="cursor-pointer glass-card rounded-2xl p-4 hover:border-indigo-400 transition space-y-2">
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950 px-2.5 py-1 rounded-lg">Nhóm ${gIdx + 1}</span>
+                        <span class="text-xs font-semibold text-slate-500">${grpLearned}/${grpWords} từ</span>
+                      </div>
+                      <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">${this.escapeHtml(grp.title)}</h4>
+                      <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">${this.escapeHtml(grp.desc)}</p>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </section>
+          </div>
+        `;
+      },
+
+      // --- B. GIAO DIỆN BÀI GIẢNG 24 TỪ VỰNG CHUYÊN SÂU ---
+      renderLessonView() {
+        const curLesson = AppStore.currentLesson || AppStore.lessons[0];
+        const curGroup = AppStore.currentGroup || (curLesson.groups ? curLesson.groups[0] : null);
+        const curWord = AppStore.currentWord || (curGroup && curGroup.words ? curGroup.words[0] : null);
+
+        if (!curGroup || !curWord) {
+          return `<div class="p-8 text-center text-slate-500">Chưa tìm thấy từ vựng trong nhóm này.</div>`;
+        }
+
+        const words = curGroup.words || [];
+        const curIdx = words.findIndex(w => w.id === curWord.id);
+        const prevWord = curIdx > 0 ? words[curIdx - 1] : null;
+        const nextWord = curIdx < words.length - 1 ? words[curIdx + 1] : null;
+
+        const progress = Storage.getProgress();
+        const isDone = Boolean(progress.completedWords[curWord.id]);
+        const isFav = Boolean(progress.bookmarks[curWord.id]);
+
+        return `
+          <div class="space-y-5">
+            <!-- Header Nhóm & Lựa chọn từ vựng -->
+            <div class="glass-card rounded-2xl p-4 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+                <div>
+                  <button onclick="Router.navigate('home')" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline">
+                    ◀ Về Trang Chủ • ${this.escapeHtml(curLesson.title)}
+                  </button>
+                  <h3 class="text-base font-extrabold text-slate-900 dark:text-white">${this.escapeHtml(curGroup.title)}</h3>
+                </div>
+                <select onchange="Renderer.onSelectGroup(this.value)" class="bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs font-bold rounded-xl px-3 py-1.5 focus:outline-none">
+                  ${(curLesson.groups || []).map(g => `<option value="${g.id}" ${g.id === curGroup.id ? 'selected' : ''}>${this.escapeHtml(g.title)}</option>`).join('')}
+                </select>
+              </div>
+
+              <!-- Thanh cuộn ngang 6 từ của nhóm -->
+              <div class="flex items-center gap-2 overflow-x-auto pb-1">
+                ${words.map(w => `
+                  <button onclick="Router.navigate('lesson', { groupId: '${curGroup.id}', wordId: '${w.id}' })"
+                    class="touch-target px-3 py-1.5 rounded-xl border text-xs font-bold whitespace-nowrap transition flex items-center gap-1.5 ${w.id === curWord.id ? 'bg-indigo-600 text-white border-indigo-600 shadow-md' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}">
+                    <span class="opacity-70">#${w.index}</span>
+                    <span class="hanzi-text font-black text-sm">${w.hanzi}</span>
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- THẺ HỌC TỪ VỰNG CHUYÊN SÂU (6 CHIỀU TIẾP CẬN) -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-6">
+              <!-- Phần Đầu: Chữ Hán, Pinyin & Nghĩa Cốt Lõi -->
+              <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-6">
+                <div class="flex items-center gap-4 sm:gap-6">
+                  <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-100 dark:from-indigo-950/80 dark:to-violet-900/60 border border-indigo-200 dark:border-indigo-800 flex items-center justify-center shrink-0 shadow-inner">
+                    <span class="hanzi-text text-4xl sm:text-5xl font-black text-indigo-600 dark:text-indigo-400">${curWord.hanzi}</span>
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Từ vựng #${curWord.index}</span>
+                      <button onclick="Renderer.toggleBookmark('${curWord.id}')" class="text-base ${isFav ? 'text-amber-500' : 'text-slate-300 dark:text-slate-600'} hover:scale-110 transition">★</button>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-0.5">${this.escapeHtml(curWord.coreMeaning)}</h2>
+                    <div class="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs font-bold text-amber-900 dark:text-amber-200">
+                      <span>Pinyin:</span>
+                      <span class="font-mono text-sm tracking-wide font-black">${curWord.pinyin}</span>
+                      <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(curWord.introAudio)}, 'Giới thiệu #${curWord.index}: ${curWord.hanzi}')" class="ml-1 px-2 py-0.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-bold text-[11px] shadow-sm">
+                        🔊 Phát âm
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <button onclick="Renderer.playFullLecture('${curWord.id}')" class="touch-target w-full sm:w-auto px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center justify-center gap-2">
+                  <span>▶ Nghe giảng tuần tự từ này</span>
+                </button>
+              </div>
+
+              <!-- 5.2 HIỂU NGHĨA & NGỮ CẢNH TÂM LÝ KHI DÙNG -->
+              <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-800 space-y-2">
+                <div class="flex items-center justify-between">
+                  <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">5.2. Bản chất ngữ nghĩa & Điều kiện sử dụng</h4>
+                  <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(curWord.meaning ? curWord.meaning.audio : [])}, 'Nghĩa từ #${curWord.index}')" class="px-2.5 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200 text-xs font-bold">
+                    🔊 Nghe giảng nghĩa
+                  </button>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300"><strong>• Tình huống áp dụng:</strong> ${this.escapeHtml(curWord.meaning ? curWord.meaning.situation : '')}</p>
+                <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300"><strong>• Phân tích bản chất:</strong> ${this.escapeHtml(curWord.meaning ? curWord.meaning.detail : '')}</p>
+                <p class="text-xs sm:text-sm font-bold text-indigo-900 dark:text-indigo-300"><strong>• Chốt ý cốt lõi:</strong> ${this.escapeHtml(curWord.meaning ? curWord.meaning.keyPoint : '')}</p>
+              </div>
+
+              <!-- 5.3 KHUNG CÂU & TRẬT TỰ TỪ TUYỆT ĐỐI -->
+              <div class="space-y-3">
+                <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">5.3. Khung cấu trúc ngữ pháp chuẩn</h4>
+                <div class="grid gap-3">
+                  ${(curWord.structures || []).map((st, sIdx) => `
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2">
+                      <div class="flex items-center justify-between">
+                        <span class="font-bold text-xs text-indigo-700 dark:text-indigo-300">${this.escapeHtml(st.title)}</span>
+                        <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(st.audio)}, 'Cấu trúc #${sIdx + 1}')" class="px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs font-bold">
+                          🔊 Nghe khung câu
+                        </button>
+                      </div>
+                      <div class="hanzi-text text-base font-bold text-slate-900 dark:text-white bg-amber-50/70 dark:bg-amber-950/30 px-3.5 py-2 rounded-xl border border-amber-200/80 dark:border-amber-900/60">
+                        ${Renderer.highlightWord(st.pattern, curWord.hanzi)}
+                      </div>
+                      <p class="text-xs text-slate-600 dark:text-slate-400">${this.escapeHtml(st.note)}</p>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- 5.4 VÍ DỤ THỰC TẾ ĐA TẦNG -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">5.4. Các câu ví dụ thực tế trong đời sống</h4>
+                  <span class="text-[11px] text-slate-400">Chạm để xem phân tích</span>
+                </div>
+                <div class="grid gap-3">
+                  ${(curWord.examples || []).map((ex) => `
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                      <div class="space-y-1">
+                        <div class="hanzi-text text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-wide">
+                          ${Renderer.highlightWord(ex.zh, curWord.hanzi)}
+                        </div>
+                        <details class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 cursor-pointer">
+                          <summary class="text-indigo-600 dark:text-indigo-400 font-bold hover:underline">👁 Xem nghĩa tiếng Việt & Phân tích cấu trúc</summary>
+                          <div class="pt-1.5 font-semibold text-slate-800 dark:text-slate-200">${this.escapeHtml(ex.vi)}</div>
+                          ${ex.analysis ? `<div class="text-[11px] text-slate-500 mt-1">${this.escapeHtml(ex.analysis)}</div>` : ''}
+                        </details>
+                      </div>
+                      <div class="flex items-center gap-2 self-end sm:self-center shrink-0">
+                        ${ex.explainAudio && ex.explainAudio.length ? `
+                          <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(ex.explainAudio)}, 'Phân tích ví dụ')" class="px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs font-bold">
+                            🔊 Lời giảng
+                          </button>
+                        ` : ''}
+                        <button onclick="TTS.playQueue([{lang:'zh-CN', text:${JSON.stringify(ex.zh)}, pause:1200}, {lang:'vi-VN', text:'Mời bạn nhắc lại.'}], 'Nghe và nhại âm')" class="px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 text-emerald-800 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800 text-xs font-extrabold">
+                          🔊 Nhại âm
+                        </button>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- 5.5 CHUYÊN ĐỀ BẪY NGỮ PHÁP CHO NGƯỜI VIỆT (TRAPS & PITFALLS) -->
+              ${(curWord.traps && curWord.traps.length > 0) ? `
+                <div class="space-y-3">
+                  <h4 class="font-extrabold text-sm text-rose-600 dark:text-rose-400">⚠️ 5.5. Bẫy tư duy người Việt hay mắc & Cách khắc phục chuẩn xác</h4>
+                  <div class="grid gap-3.5">
+                    ${curWord.traps.map((t, tIdx) => `
+                      <div class="p-4 sm:p-5 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/60 space-y-3">
+                        <div class="flex items-center justify-between">
+                          <span class="font-black text-rose-900 dark:text-rose-200 text-sm">${this.escapeHtml(t.name)}</span>
+                          <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(t.audio)}, 'Phân tích bẫy #${tIdx + 1}')" class="px-3 py-1 rounded-lg bg-rose-200 dark:bg-rose-900/60 text-rose-900 dark:text-rose-100 text-xs font-bold">
+                            🔊 Nghe phân tích bẫy
+                          </button>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300"><strong>• Lỗi tư duy:</strong> ${this.escapeHtml(t.explanation)}</p>
+
+                        <!-- Thẻ Đúng / Sai rõ ràng -->
+                        <div class="grid sm:grid-cols-2 gap-2 pt-1">
+                          <div class="p-3 rounded-xl bg-rose-100/80 dark:bg-rose-900/40 border border-rose-300 dark:border-rose-800 text-xs sm:text-sm">
+                            <span class="font-bold text-rose-800 dark:text-rose-300">❌ Câu sai thường gặp:</span>
+                            <span class="hanzi-text font-bold text-rose-950 dark:text-rose-100 ml-1">${this.escapeHtml(t.wrong || 'Xem câu đối chiếu')}</span>
+                          </div>
+                          <div class="p-3 rounded-xl bg-emerald-100/80 dark:bg-emerald-900/40 border border-emerald-300 dark:border-emerald-800 text-xs sm:text-sm">
+                            <span class="font-bold text-emerald-800 dark:text-emerald-300">✅ Chuẩn người bản xứ:</span>
+                            <span class="hanzi-text font-bold text-emerald-950 dark:text-emerald-100 ml-1">${Renderer.highlightWord(t.right, curWord.hanzi)}</span>
+                          </div>
+                        </div>
+
+                        <p class="text-xs font-extrabold text-rose-900 dark:text-rose-300">💡 Quy tắc vàng: ${this.escapeHtml(t.tip)}</p>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+              ` : ''}
+
+              <!-- 5.6 - 5.7 - 5.8: LUYỆN ĐỌC, MẸO MẶT CHỮ & TỔNG KẾT -->
+              <div class="grid sm:grid-cols-3 gap-3">
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <h5 class="font-extrabold text-xs text-slate-900 dark:text-white">5.6. Luyện đọc ngữ âm</h5>
+                    <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(curWord.pron ? curWord.pron.audio : [])}, 'Luyện đọc')" class="px-2 py-0.5 rounded bg-emerald-600 text-white text-[11px] font-bold">🔊 Nghe</button>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-400">${this.escapeHtml(curWord.pron ? curWord.pron.guide : '')}</p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <h5 class="font-extrabold text-xs text-slate-900 dark:text-white">5.7. Mẹo nhớ chữ Hán</h5>
+                    <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(curWord.write ? curWord.write.audio : [])}, 'Mẹo nhớ chữ')" class="px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 text-[11px] font-bold">🔊 Nghe</button>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-400">${this.escapeHtml(curWord.write ? curWord.write.desc : '')}</p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <h5 class="font-extrabold text-xs text-indigo-950 dark:text-indigo-200">5.8. Chốt cách dùng</h5>
+                    <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(curWord.summaryAudio || [{lang:'vi-VN', text: curWord.summary}])}, 'Chốt dùng')" class="px-2 py-0.5 rounded bg-indigo-600 text-white text-[11px] font-bold">🔊 Nghe</button>
+                  </div>
+                  <p class="text-xs text-indigo-900 dark:text-indigo-300 font-semibold">${this.escapeHtml(curWord.summary || '')}</p>
+                </div>
+              </div>
+
+              <!-- Chuyển từ & Đánh dấu hoàn thành -->
+              <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <div class="flex items-center gap-2">
+                  ${prevWord ? `
+                    <button onclick="Router.navigate('lesson', { groupId: '${curGroup.id}', wordId: '${prevWord.id}' })" class="touch-target px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-slate-200">
+                      ← #${prevWord.index} ${prevWord.hanzi}
+                    </button>
+                  ` : ''}
+                  ${nextWord ? `
+                    <button onclick="Router.navigate('lesson', { groupId: '${curGroup.id}', wordId: '${nextWord.id}' })" class="touch-target px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-slate-200">
+                      #${nextWord.index} ${nextWord.hanzi} →
+                    </button>
+                  ` : ''}
+                </div>
+
+                <button onclick="Renderer.toggleCompleteWord('${curWord.id}')" class="touch-target px-5 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm transition flex items-center gap-2 ${isDone ? 'bg-emerald-600 text-white hover:bg-emerald-700' : 'bg-indigo-600 text-white hover:bg-indigo-700'}">
+                  <span>${isDone ? '✓ Đã thuộc từ này (Chạm để bỏ)' : 'Đánh dấu đã hiểu từ này ➔'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      },
+
+      // --- C. GIAO DIỆN DANH SÁCH 4 HỘI THOẠI THỰC CHIẾN ĐƯỜNG DÀI ---
+      renderDialoguesListView() {
+        const curLesson = AppStore.currentLesson || AppStore.lessons[0];
+        const dialogues = curLesson.dialogues || [];
+
+        return `
+          <div class="space-y-5">
+            <div class="glass-card rounded-3xl p-6 space-y-2">
+              <span class="text-xs font-extrabold text-pink-600 dark:text-pink-400 uppercase tracking-wider">Hội Thoại Đường Dài · Giọng Nam - Nữ Luân Phiên</span>
+              <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">4 Kịch Bản Giao Tiếp Thực Chiến Đời Sống</h2>
+              <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                Các đoạn hội thoại từ 16 đến 24 lượt thoại giữa <strong>Tiểu Lâm (小林 - Giọng Nam)</strong> và <strong>Tiểu An (小安 - Giọng Nữ)</strong>. Luyện phản xạ đổi giờ, đổi điểm đón và thương lượng tình huống.
+              </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              ${dialogues.map((d, dIdx) => `
+                <div class="glass-card rounded-3xl p-5 hover:border-pink-400 transition flex flex-col justify-between space-y-4">
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                      <span class="px-2.5 py-1 rounded-xl bg-pink-50 dark:bg-pink-950/80 text-pink-600 dark:text-pink-300 text-xs font-black">Kịch bản #${dIdx + 1}</span>
+                      <span class="text-xs font-bold text-slate-400">${d.turns ? d.turns.length : 0} lượt thoại</span>
+                    </div>
+                    <h3 class="font-black text-base text-slate-900 dark:text-white">${this.escapeHtml(d.title)}</h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${this.escapeHtml(d.context)}</p>
+                  </div>
+
+                  <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+                    <span class="text-[11px] font-semibold text-slate-400">👦 ${d.speakers ? d.speakers.A : 'A'} & 👧 ${d.speakers ? d.speakers.B : 'B'}</span>
+                    <button onclick="Router.navigate('dialog-view', { dialogueId: '${d.id}' })" class="touch-target px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-pink-600 text-white font-extrabold text-xs shadow-md hover:opacity-95">
+                      Vào luyện tập ➔
+                    </button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      },
+
+      // --- D. GIAO DIỆN CHI TIẾT HỘI THOẠI & 4 CHẾ ĐỘ LUYỆN TẬP ---
+      renderDialogueDetailView() {
+        const curLesson = AppStore.currentLesson || AppStore.lessons[0];
+        const d = AppStore.currentDialogue || (curLesson.dialogues ? curLesson.dialogues[0] : null);
+
+        if (!d) {
+          return `<div class="p-8 text-center text-slate-500">Chưa tìm thấy kịch bản hội thoại.</div>`;
+        }
+
+        const mode = AppStore.dialogueMode; // 'listen', 'read', 'shadow', 'role'
+        const role = AppStore.dialogueRole; // 'A' hoặc 'B'
+
+        return `
+          <div class="space-y-5">
+            <!-- Header Kịch bản -->
+            <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+                <button onclick="Router.navigate('dialogs')" class="text-xs font-bold text-pink-600 dark:text-pink-400 hover:underline">
+                  ◀ Về Danh Sách 4 Hội Thoại
+                </button>
+                <span class="text-xs font-extrabold text-slate-500">${d.turns ? d.turns.length : 0} Lượt Thoại • Luân Phiên Nam – Nữ</span>
+              </div>
+
+              <div>
+                <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">${this.escapeHtml(d.title)}</h2>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">${this.escapeHtml(d.context)}</p>
+              </div>
+
+              <!-- Bộ chọn 4 Chế độ luyện tập -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
+                <button onclick="Renderer.setDialogueMode('listen')" class="touch-target p-2.5 rounded-xl border text-xs font-bold transition text-center ${mode === 'listen' ? 'bg-indigo-600 text-white border-indigo-600 shadow-md' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}">
+                  🎧 1. Nghe Mù
+                </button>
+                <button onclick="Renderer.setDialogueMode('read')" class="touch-target p-2.5 rounded-xl border text-xs font-bold transition text-center ${mode === 'read' ? 'bg-indigo-600 text-white border-indigo-600 shadow-md' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}">
+                  📖 2. Đọc Phân Tích
+                </button>
+                <button onclick="Renderer.setDialogueMode('shadow')" class="touch-target p-2.5 rounded-xl border text-xs font-bold transition text-center ${mode === 'shadow' ? 'bg-indigo-600 text-white border-indigo-600 shadow-md' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}">
+                  🗣️ 3. Nhại Âm
+                </button>
+                <button onclick="Renderer.setDialogueMode('role')" class="touch-target p-2.5 rounded-xl border text-xs font-bold transition text-center ${mode === 'role' ? 'bg-indigo-600 text-white border-indigo-600 shadow-md' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300'}">
+                  🎭 4. Đóng Vai
+                </button>
+              </div>
+
+              <!-- Hướng dẫn chế độ & Chọn vai -->
+              <div class="p-3 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 text-xs flex flex-wrap items-center justify-between gap-3">
+                <span class="text-indigo-900 dark:text-indigo-200 font-semibold">
+                  ${mode === 'listen' ? 'Chế độ Nghe Mù: Lời thoại bị ẩn để rèn luyện đôi tai tiếp nhận ngữ điệu bản xứ.' : ''}
+                  ${mode === 'read' ? 'Chế độ Đọc Phân Tích: Hiển thị đầy đủ chữ Hán, nghĩa tiếng Việt và từ vựng liên quan.' : ''}
+                  ${mode === 'shadow' ? 'Chế độ Nhại Âm: Máy phát từng câu kèm khoảng nghỉ 2.5s để bạn phát âm nhắc lại theo nhịp.' : ''}
+                  ${mode === 'role' ? 'Chế độ Đóng Vai: Máy đọc vai của đối phương, khi tới lượt bạn máy sẽ dừng chờ bạn nói.' : ''}
+                </span>
+
+                ${mode === 'role' ? `
+                  <div class="flex items-center gap-2">
+                    <span class="font-bold text-indigo-900 dark:text-indigo-200">Bạn muốn đóng vai:</span>
+                    <select onchange="Renderer.setDialogueRole(this.value)" class="bg-white dark:bg-slate-800 border border-indigo-300 dark:border-indigo-700 rounded-lg px-2.5 py-1 font-bold text-xs">
+                      <option value="A" ${role === 'A' ? 'selected' : ''}>${d.speakers.A} (Nam)</option>
+                      <option value="B" ${role === 'B' ? 'selected' : ''}>${d.speakers.B} (Nữ)</option>
+                    </select>
+                  </div>
+                ` : ''}
+              </div>
+
+              <!-- Nút phát audio toàn bộ kịch bản -->
+              <div class="flex items-center gap-3 pt-1">
+                <button onclick="Renderer.playFullDialogue()" class="touch-target px-5 py-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 text-white font-extrabold text-xs sm:text-sm shadow-md hover:opacity-95 flex items-center gap-2">
+                  <span>▶ Phát toàn bộ đoạn thoại (Giọng Nam - Nữ)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- DANH SÁCH LƯỢT THOẠI THEO PHONG CÁCH CHAT BUBBLE -->
+            <div class="space-y-3">
+              ${(d.turns || []).map((t, idx) => {
+                const isSpeakerA = t.speaker === 'A';
+                const speakerName = isSpeakerA ? d.speakers.A : d.speakers.B;
+                const genderIcon = isSpeakerA ? '👦' : '👧';
+
+                return `
+                  <div id="dialog-turn-${idx}" class="dialog-turn-bubble glass-card rounded-3xl p-4 sm:p-5 transition space-y-2 border-l-4 ${isSpeakerA ? 'border-l-sky-500' : 'border-l-pink-500'}">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-full flex items-center justify-center text-sm ${isSpeakerA ? 'bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300' : 'bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-300'}">
+                          ${genderIcon}
+                        </span>
+                        <span class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">${speakerName} (${isSpeakerA ? 'Giọng Nam' : 'Giọng Nữ'})</span>
+                        <span class="text-[10px] font-semibold text-slate-400">#${idx + 1}</span>
+                      </div>
+                      <button onclick="Renderer.playSingleTurn(${idx})" class="px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-xs font-bold text-slate-700 dark:text-slate-300">
+                        🔊 Nghe câu này
+                      </button>
+                    </div>
+
+                    <!-- Lời thoại: Ẩn khi ở chế độ Nghe mù -->
+                    <div class="pt-1">
+                      ${mode === 'listen' ? `
+                        <div class="hanzi-text text-lg sm:text-xl font-bold text-slate-400 tracking-wider select-none">
+                          ••••••••••••••••••••
+                        </div>
+                      ` : `
+                        <div class="hanzi-text text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-wide">
+                          ${this.escapeHtml(t.zh)}
+                        </div>
+                        <div class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 font-semibold">
+                          ${this.escapeHtml(t.vi)}
+                        </div>
+                      `}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- BÀI TẬP ĐỌC HIỂU HỘI THOẠI & BẰNG CHỨNG XÁC THỰC -->
+            ${(d.checks && d.checks.length > 0) ? `
+              <div class="glass-card rounded-3xl p-6 space-y-4">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-black text-base text-slate-900 dark:text-white">Kiểm Tra Nghe Hiểu Tình Huống (${d.checks.length} câu)</h3>
+                  <span class="text-xs text-indigo-600 dark:text-indigo-400 font-bold">Xác minh thông tin then chốt</span>
+                </div>
+
+                <div class="grid gap-4">
+                  ${d.checks.map((q, qIdx) => `
+                    <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-3">
+                      <div class="font-bold text-sm text-slate-900 dark:text-white">${qIdx + 1}. ${this.escapeHtml(q.prompt)}</div>
+                      <div class="grid sm:grid-cols-2 gap-2">
+                        ${q.options.map((opt, oIdx) => `
+                          <button onclick="Renderer.checkDialogueAnswer('${d.id}', '${q.id}', ${oIdx}, ${q.correct}, ${qIdx})" class="touch-target p-3 rounded-xl border text-xs font-bold text-left transition bg-white dark:bg-slate-900 hover:bg-slate-100 border-slate-200 dark:border-slate-700">
+                            ${this.escapeHtml(opt)}
+                          </button>
+                        `).join('')}
+                      </div>
+                      <div id="dialog-check-fb-${q.id}" class="hidden p-3 rounded-xl text-xs font-semibold"></div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            <!-- BỘ GHI ÂM TỰ ĐỐI CHIẾU CÂU THOẠI (AUDIO RECORDER) -->
+            <div class="glass-card rounded-3xl p-6 space-y-3">
+              <h3 class="font-black text-base text-slate-900 dark:text-white">🎙️ Thu Âm Đối Chiếu Phát Âm Của Bạn</h3>
+              <p class="text-xs text-slate-500">Ghi lại câu nói của bạn để tự nghe lại và đối chiếu với ngữ điệu của người bản xứ.</p>
+              <div class="flex flex-wrap items-center gap-3 pt-2">
+                <button id="btn-rec-start" onclick="VoiceRecorder.start()" class="touch-target px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-xs flex items-center gap-1.5 shadow">
+                  <span>● Bắt đầu ghi âm</span>
+                </button>
+                <button id="btn-rec-stop" onclick="VoiceRecorder.stop()" class="touch-target px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-xs hidden">
+                  <span>■ Dừng và nghe lại</span>
+                </button>
+                <span id="rec-status-indicator" class="text-xs font-bold text-slate-500"></span>
+              </div>
+              <audio id="recorded-audio-playback" controls class="hidden w-full mt-3 rounded-xl"></audio>
+            </div>
+          </div>
+        `;
+      },
+
+      // --- E. GIAO DIỆN PHÒNG NGHE THỤ ĐỘNG (PASSIVE STUDIO) ---
+      renderPassiveView() {
+        const curLesson = AppStore.currentLesson || AppStore.lessons[0];
+        const allWords = curLesson.groups ? curLesson.groups.flatMap(g => g.words || []) : [];
+
+        return `
+          <div class="space-y-6">
+            <div class="glass-card rounded-3xl p-6 space-y-2">
+              <span class="text-xs font-extrabold text-violet-600 dark:text-violet-400 uppercase tracking-wider">Phòng Thu Podcast Nghe Thụ Động</span>
+              <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Tắm Ngôn Ngữ & Nghe Rảnh Tay Không Nhìn Màn Hình</h2>
+              <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                Lý tưởng khi đang lái xe, đi bộ, nấu ăn hoặc thư giãn trước khi ngủ. Thiết bị tự động đọc liền mạch và lặp từ.
+              </p>
+            </div>
+
+            <!-- Bộ phát trung tâm Studio -->
+            <div class="rounded-3xl p-6 sm:p-8 text-white shadow-xl bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 relative overflow-hidden space-y-6">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-300">
+                  <span id="passive-studio-state">Sẵn sàng phát</span>
+                </div>
+                <span id="passive-counter" class="text-xs font-bold bg-white/10 px-3 py-1 rounded-full">0 / ${allWords.length}</span>
+              </div>
+
+              <div class="text-center py-4 space-y-2">
+                <div id="passive-hanzi" class="hanzi-text text-6xl sm:text-7xl font-black text-amber-300 leading-tight">🎧</div>
+                <div id="passive-pinyin" class="text-lg font-mono font-bold text-indigo-200 min-h-[1.75rem]"></div>
+                <div id="passive-meaning" class="text-sm font-semibold text-indigo-100 max-w-md mx-auto">Chạm nút ▶ để bắt đầu nghe bài giảng</div>
+              </div>
+
+              <!-- Thanh tiến độ -->
+              <div class="h-2 rounded-full bg-white/15 overflow-hidden">
+                <div id="passive-progress-bar" class="h-full bg-gradient-to-r from-amber-400 to-pink-500 transition-all duration-300" style="width: 0%"></div>
+              </div>
+
+              <!-- Các nút điều khiển chính -->
+              <div class="flex items-center justify-center gap-4">
+                <button onclick="Passive.skip(-1)" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-lg text-white">⏮</button>
+                <button id="btn-passive-play" onclick="Passive.toggle()" class="w-16 h-16 rounded-full bg-white text-indigo-950 font-black text-2xl flex items-center justify-center shadow-lg hover:scale-105 transition">▶</button>
+                <button onclick="Passive.skip(1)" class="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-lg text-white">⏭</button>
+              </div>
+            </div>
+
+            <!-- Tùy chọn chế độ phát -->
+            <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
+              <h3 class="font-extrabold text-sm text-slate-900 dark:text-white">Cấu Hình Lượt Nghe</h3>
+              <div class="grid sm:grid-cols-3 gap-3">
+                <div class="space-y-1">
+                  <label class="text-xs font-bold text-slate-500">Chế độ lặp lại:</label>
+                  <select id="sel-passive-mode" onchange="Passive.setMode(Number(this.value))" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold">
+                    <option value="1">1. Ôn nhanh (Từ → Nghĩa)</option>
+                    <option value="2" selected>2. Ngữ cảnh (Từ → Nghĩa → Ví dụ)</option>
+                    <option value="3">3. Podcast toàn diện (Kèm bẫy)</option>
+                    <option value="4">4. Chỉ tiếng Trung (Luyện nghe mù)</option>
+                  </select>
+                </div>
+
+                <div class="space-y-1">
+                  <label class="text-xs font-bold text-slate-500">Lặp tiếng Trung:</label>
+                  <select id="sel-passive-repeat" onchange="Passive.setRepeat(Number(this.value))" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold">
+                    <option value="1">Đọc 1 lần</option>
+                    <option value="2" selected>Lặp lại 2 lần</option>
+                    <option value="3">Lặp lại 3 lần</option>
+                  </select>
+                </div>
+
+                <div class="space-y-1">
+                  <label class="text-xs font-bold text-slate-500">Hẹn giờ tự tắt:</label>
+                  <select id="sel-passive-sleep" onchange="Passive.setSleep(this.value)" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-bold">
+                    <option value="end">Phát hết danh sách</option>
+                    <option value="15">15 phút</option>
+                    <option value="30">30 phút</option>
+                    <option value="60">60 phút</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      },
+
+      // --- F. GIAO DIỆN BÀI TẬP & TỰ ĐẶT CÂU 3 TẦNG TRỢ GIÚP ---
+      renderExerciseView() {
+        const curLesson = AppStore.currentLesson || AppStore.lessons[0];
+        const curGroup = AppStore.currentGroup || (curLesson.groups ? curLesson.groups[0] : null);
+
+        if (!curGroup) return `<div class="p-8 text-center text-slate-500">Chưa có bài tập.</div>`;
+
+        return `
+          <div class="space-y-6">
+            <div class="glass-card rounded-3xl p-6 space-y-2">
+              <span class="text-xs font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Luyện Tập Phản Xạ · ${this.escapeHtml(curGroup.title)}</span>
+              <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Trắc Nghiệm Tình Huống & Tự Dùng Từ</h2>
+              <p class="text-xs sm:text-sm text-slate-500">Giải các câu hỏi phân biệt bẫy và tự đặt câu với 3 tầng gợi ý lũy tiến.</p>
+            </div>
+
+            <!-- Bài tập trắc nghiệm -->
+            <div class="space-y-3">
+              <h3 class="font-black text-base text-slate-900 dark:text-white">1. Bài tập trắc nghiệm ngữ dụng (${(curGroup.exercises || []).length} câu)</h3>
+              <div class="grid gap-3.5">
+                ${(curGroup.exercises || []).map((ex, exIdx) => `
+                  <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs font-bold px-2.5 py-0.5 rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300">Câu #${exIdx + 1}: ${this.escapeHtml(ex.type)}</span>
+                      ${ex.questionAudio && ex.questionAudio.length ? `
+                        <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(ex.questionAudio)}, 'Đề câu ${exIdx + 1}')" class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white text-xs font-bold">
+                          🔊 Nghe đề
+                        </button>
+                      ` : ''}
+                    </div>
+                    <div class="font-bold text-sm text-slate-900 dark:text-white">${this.escapeHtml(ex.prompt)}</div>
+                    <div class="grid sm:grid-cols-2 gap-2">
+                      ${ex.options.map((opt, oIdx) => `
+                        <button onclick="Renderer.checkExerciseQuiz('${ex.id}', ${oIdx}, ${ex.correct})" class="touch-target p-3 rounded-xl border text-xs sm:text-sm font-semibold hanzi-text text-left transition bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 border-slate-200 dark:border-slate-700">
+                          ${this.escapeHtml(opt)}
+                        </button>
+                      `).join('')}
+                    </div>
+                    <div id="ex-feedback-${ex.id}" class="hidden p-3 rounded-xl text-xs font-bold"></div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Tự đặt câu với 3 tầng gợi ý -->
+            <div class="space-y-3">
+              <h3 class="font-black text-base text-slate-900 dark:text-white">2. Thực hành tự đặt câu theo tình huống mở (3 Tầng trợ giúp)</h3>
+              <div class="grid gap-4">
+                ${(curGroup.selfUse || []).map((su, sIdx) => `
+                  <div class="glass-card rounded-2xl p-5 space-y-3">
+                    <span class="text-xs font-black text-emerald-600 dark:text-emerald-400 uppercase">Tình huống #${sIdx + 1}</span>
+                    <p class="text-sm font-bold text-slate-900 dark:text-white">${this.escapeHtml(su.situation)}</p>
+
+                    <input type="text" placeholder="Nhập câu tiếng Trung của bạn để tự kiểm tra..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hanzi-text text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+
+                    <div class="space-y-2 pt-1">
+                      <details class="p-3 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-900 text-xs">
+                        <summary class="font-bold text-indigo-900 dark:text-indigo-200 cursor-pointer">1️⃣ Gợi ý Tầng 1 (Ý định giao tiếp)</summary>
+                        <div class="pt-2 text-slate-700 dark:text-slate-300">${this.escapeHtml(su.hint1)}</div>
+                      </details>
+
+                      <details class="p-3 rounded-xl bg-amber-50/70 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-xs">
+                        <summary class="font-bold text-amber-900 dark:text-amber-200 cursor-pointer">2️⃣ Gợi ý Tầng 2 (Khung cấu trúc Hán ngữ)</summary>
+                        <div class="pt-2 text-slate-700 dark:text-slate-300 hanzi-text font-bold text-sm">${this.escapeHtml(su.hint2)}</div>
+                      </details>
+
+                      <details class="p-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 text-xs">
+                        <summary class="font-bold text-emerald-900 dark:text-emerald-200 cursor-pointer">3️⃣ Đáp án mẫu hoàn chỉnh & Phân tích</summary>
+                        <div class="pt-2 space-y-1.5">
+                          <div class="hanzi-text font-black text-base text-emerald-950 dark:text-emerald-100">${this.escapeHtml(su.modelAnswer)}</div>
+                          <p class="text-slate-700 dark:text-slate-300">${this.escapeHtml(su.modelExplain)}</p>
+                          ${su.modelAudio && su.modelAudio.length ? `
+                            <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(su.modelAudio)}, 'Câu mẫu #${sIdx + 1}')" class="px-3 py-1 rounded-lg bg-emerald-700 text-white font-bold mt-1">
+                              🔊 Nghe câu mẫu chuẩn
+                            </button>
+                          ` : ''}
+                        </div>
+                      </details>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      },
+
+      // --- G. GIAO DIỆN ÔN TẬP NGẮT QUÃNG SRS (SPACED REPETITION) ---
+      renderReviewView() {
+        const curLesson = AppStore.currentLesson || AppStore.lessons[0];
+        const allReviews = curLesson.groups ? curLesson.groups.flatMap(g => g.reviews || []) : [];
+
+        return `
+          <div class="space-y-6">
+            <div class="glass-card rounded-3xl p-6 space-y-2">
+              <span class="text-xs font-extrabold text-amber-600 dark:text-amber-400 uppercase tracking-wider">Hệ Thống Lặp Lại Ngắt Quãng Spaced Repetition</span>
+              <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Ôn Tập Củng Cố Mốc 1 – 3 – 7 Ngày</h2>
+              <p class="text-xs sm:text-sm text-slate-500">
+                Tự phát âm câu trả lời trong đầu hoặc nói to thành tiếng, sau đó mở khóa đáp án để rèn luyện phản xạ ngôn ngữ dài hạn.
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              ${[1, 3, 7].map(day => {
+                const dayRev = allReviews.filter(r => r.day === day);
+                if (dayRev.length === 0) return '';
+                return `
+                  <details class="glass-card rounded-2xl p-5" ${day === 1 ? 'open' : ''}>
+                    <summary class="font-black text-base text-slate-900 dark:text-white cursor-pointer flex items-center justify-between">
+                      <span>Mốc ôn tập Ngày ${day} (${dayRev.length} câu)</span>
+                      <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Chạm để mở</span>
+                    </summary>
+
+                    <div class="grid gap-3 pt-4">
+                      ${dayRev.map((r, rIdx) => `
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2">
+                          <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-indigo-700 dark:text-indigo-300">Dạng: ${this.escapeHtml(r.type)}</span>
+                            ${r.listenAudio && r.listenAudio.length ? `
+                              <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(r.listenAudio)}, 'Câu hỏi')" class="px-2 py-0.5 rounded bg-indigo-600 text-white text-xs font-bold">
+                                🔊 Nghe câu hỏi
+                              </button>
+                            ` : ''}
+                          </div>
+                          <div class="font-bold text-sm text-slate-900 dark:text-white">${this.escapeHtml(r.q)}</div>
+
+                          <details class="text-xs pt-1">
+                            <summary class="text-indigo-600 dark:text-indigo-400 font-extrabold cursor-pointer hover:underline">
+                              🔓 Mở khóa đáp án & Lời giải
+                            </summary>
+                            <div class="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 space-y-1.5 mt-2">
+                              <div class="hanzi-text font-black text-sm text-emerald-950 dark:text-emerald-100">✅ Đáp án: ${this.escapeHtml(r.answer)}</div>
+                              <p class="text-slate-700 dark:text-slate-300">${this.escapeHtml(r.explain)}</p>
+                              ${r.audio && r.audio.length ? `
+                                <button onclick="TTS.playQueue(${Renderer.escapeJsonAttr(r.audio)}, 'Lời giải')" class="px-2.5 py-1 rounded bg-emerald-700 text-white font-bold mt-1">
+                                  🔊 Nghe lời giải
+                                </button>
+                              ` : ''}
+                            </div>
+                          </details>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </details>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      },
+
+      // --- H. TRA CỨU & CÀI ĐẶT ---
+      renderSearchView() {
+        const query = AppStore.searchQuery.toLowerCase().trim();
+        const curLesson = AppStore.currentLesson || AppStore.lessons[0];
+        let words = curLesson.groups ? curLesson.groups.flatMap(g => g.words || []) : [];
+
+        if (query) {
+          words = words.filter(w =>
+            w.hanzi.toLowerCase().includes(query) ||
+            w.pinyin.toLowerCase().includes(query) ||
+            w.coreMeaning.toLowerCase().includes(query)
+          );
+        }
+
+        return `
+          <div class="space-y-5">
+            <div class="glass-card rounded-3xl p-6 space-y-3">
+              <h2 class="text-xl font-black text-slate-900 dark:text-white">Tra Cứu Nhanh Từ Vựng</h2>
+              <input type="text" oninput="Renderer.onSearch(this.value)" value="${this.escapeHtml(AppStore.searchQuery)}" placeholder="Nhập chữ Hán (右, 开车), pinyin hoặc nghĩa..." class="w-full px-4 py-3 rounded-2xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
+
+            <div class="grid gap-3">
+              ${words.map(w => `
+                <div onclick="Router.navigate('lesson', { wordId: '${w.id}' })" class="cursor-pointer glass-card rounded-2xl p-4 hover:border-indigo-400 transition flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-2xl font-black text-indigo-600 dark:text-indigo-400 hanzi-text shrink-0">
+                      ${w.hanzi}
+                    </div>
+                    <div>
+                      <div class="text-xs text-slate-400 font-mono">${w.pinyin}</div>
+                      <div class="text-sm font-bold text-slate-900 dark:text-white">${this.escapeHtml(w.coreMeaning)}</div>
+                    </div>
+                  </div>
+                  <span class="text-xs font-bold text-indigo-600">Học từ ➔</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      },
+
+      renderSettingsView() {
+        const settings = Storage.getSettings();
+        const voices = ('speechSynthesis' in window) ? window.speechSynthesis.getVoices() : [];
+        const viVoices = voices.filter(v => v.lang.toLowerCase().startsWith('vi'));
+        const zhVoices = voices.filter(v => v.lang.toLowerCase().startsWith('zh'));
+
+        return `
+          <div class="space-y-6">
+            <div class="glass-card rounded-3xl p-6 space-y-1">
+              <h2 class="text-xl font-black text-slate-900 dark:text-white">Cài Đặt Hệ Thống</h2>
+              <p class="text-xs text-slate-500">Tùy chỉnh giọng đọc thiết bị, giao diện và sao lưu tiến trình học.</p>
+            </div>
+
+            <!-- Cấu hình giọng đọc đa nhân vật -->
+            <div class="glass-card rounded-2xl p-5 space-y-4">
+              <h3 class="font-black text-sm text-slate-900 dark:text-white">Giọng Đọc Phân Vai Nam – Nữ (Dual-Voice TTS)</h3>
+              <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                <div>
+                  <label class="block font-bold text-slate-600 dark:text-slate-400 mb-1">Giọng Tiếng Trung Nam (Tiểu Lâm):</label>
+                  <select onchange="Renderer.onSelectVoice('zhMale', this.value)" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2">
+                    <option value="">Tự động nhận diện giọng Nam</option>
+                    ${zhVoices.map(v => `<option value="${v.voiceURI}" ${settings.voiceZhMale === v.voiceURI ? 'selected' : ''}>${v.name}</option>`).join('')}
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block font-bold text-slate-600 dark:text-slate-400 mb-1">Giọng Tiếng Trung Nữ (Tiểu An):</label>
+                  <select onchange="Renderer.onSelectVoice('zhFemale', this.value)" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2">
+                    <option value="">Tự động nhận diện giọng Nữ</option>
+                    ${zhVoices.map(v => `<option value="${v.voiceURI}" ${settings.voiceZhFemale === v.voiceURI ? 'selected' : ''}>${v.name}</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sao lưu dữ liệu -->
+            <div class="glass-card rounded-2xl p-5 space-y-3">
+              <h3 class="font-black text-sm text-slate-900 dark:text-white">Sao Lưu Dữ Liệu Học Tập</h3>
+              <div class="flex flex-wrap gap-2">
+                <button onclick="Storage.exportBackupJSON()" class="touch-target px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs">
+                  📥 Xuất tệp tiến độ (.json)
+                </button>
+                <button onclick="Renderer.confirmReset()" class="touch-target px-4 py-2 rounded-xl bg-rose-50 text-rose-700 font-bold text-xs">
+                  ⚠️ Xóa dữ liệu học
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      },
+
+      // --- CÁC HÀM XỬ LÝ SỰ KIỆN TƯƠNG TÁC ---
+      escapeJsonAttr(obj) {
+        return this.escapeHtml(JSON.stringify(obj || []));
+      },
+
+      onSelectGroup(groupId) {
+        if (!AppStore.currentLesson) return;
+        const g = AppStore.currentLesson.groups.find(it => it.id === groupId);
+        if (g) {
+          AppStore.currentGroup = g;
+          AppStore.currentWord = g.words ? g.words[0] : null;
+          this.renderCurrentView();
+        }
+      },
+
+      setDialogueMode(mode) {
+        TTS.stop();
+        AppStore.dialogueMode = mode;
+        this.renderCurrentView();
+      },
+
+      setDialogueRole(role) {
+        TTS.stop();
+        AppStore.dialogueRole = role;
+      },
+
+      playFullDialogue() {
+        const d = AppStore.currentDialogue;
+        if (!d || !d.turns) return;
+
+        const queue = [];
+        const mode = AppStore.dialogueMode;
+        const role = AppStore.dialogueRole;
+
+        d.turns.forEach((t, idx) => {
+          const isUserTurn = mode === 'role' && t.speaker === role;
+          queue.push({
+            lang: 'zh-CN',
+            text: t.zh,
+            speaker: t.speaker,
+            dialogTurn: idx,
+            dialogId: d.id,
+            hold: isUserTurn,
+            conceal: mode === 'listen',
+            pause: mode === 'shadow' ? Math.max(2500, t.zh.length * 280) : 600
+          });
+        });
+
+        TTS.playQueue(queue, `Hội thoại: ${d.title}`);
+      },
+
+      playSingleTurn(idx) {
+        const d = AppStore.currentDialogue;
+        if (!d || !d.turns || !d.turns[idx]) return;
+        const t = d.turns[idx];
+        TTS.playQueue([{
+          lang: 'zh-CN',
+          text: t.zh,
+          speaker: t.speaker,
+          dialogTurn: idx,
+          dialogId: d.id,
+          pause: 500
+        }], `Câu thoại #${idx + 1}`);
+      },
+
+      checkDialogueAnswer(dialogueId, qId, chosenIdx, correctIdx, checkIdx) {
+        const fbEl = document.getElementById(`dialog-check-fb-${qId}`);
+        if (!fbEl) return;
+        fbEl.classList.remove('hidden');
+        if (chosenIdx === correctIdx) {
+          SoundFX.playSuccessChime();
+          fbEl.className = "p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-200";
+          fbEl.textContent = `🎉 Hoàn toàn chính xác! Bạn đã nắm đúng thông tin then chốt của cuộc hội thoại.`;
+        } else {
+          fbEl.className = "p-3 rounded-xl text-xs font-bold bg-rose-100 text-rose-900 dark:bg-rose-950 dark:text-rose-200";
+          fbEl.textContent = `💡 Chưa đúng: Hãy nghe kỹ lại mốc thời gian và điểm đổi hẹn trong audio.`;
+        }
+      },
+
+      checkExerciseQuiz(exId, chosenIdx, correctIdx) {
+        const fbEl = document.getElementById(`ex-feedback-${exId}`);
+        if (!fbEl) return;
+        fbEl.classList.remove('hidden');
+        if (chosenIdx === correctIdx) {
+          SoundFX.playSuccessChime();
+          fbEl.className = "p-3 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-200";
+          fbEl.textContent = `✅ Chuẩn xác theo cấu trúc ngữ pháp!`;
+        } else {
+          fbEl.className = "p-3 rounded-xl text-xs font-bold bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-200";
+          fbEl.textContent = `⚠️ Chưa đúng: Hãy đối chiếu lại quy tắc vị trí mốc và phương vị.`;
+        }
+      },
+
+      playFullLecture(wordId) {
+        const curGroup = AppStore.currentGroup;
+        if (!curGroup) return;
+        const w = (curGroup.words || []).find(it => it.id === wordId);
+        if (!w) return;
+
+        const queue = [];
+        queue.push(...(w.introAudio || []));
+        if (w.meaning && w.meaning.audio) queue.push(...w.meaning.audio);
+        (w.structures || []).forEach(st => { if (st.audio) queue.push(...st.audio); });
+        (w.examples || []).forEach(ex => {
+          queue.push({ lang: 'zh-CN', text: ex.zh, pause: 1000 });
+          queue.push({ lang: 'vi-VN', text: ex.vi, pause: 500 });
+        });
+        (w.traps || []).forEach(t => { if (t.audio) queue.push(...t.audio); });
+        if (w.summaryAudio && w.summaryAudio.length) queue.push(...w.summaryAudio);
+
+        TTS.playQueue(queue, `Giảng toàn diện: #${w.index} (${w.hanzi})`);
+      },
+
+      toggleCompleteWord(wordId) {
+        const p = Storage.getProgress();
+        if (p.completedWords[wordId]) {
+          delete p.completedWords[wordId];
+        } else {
+          p.completedWords[wordId] = Date.now();
+          SoundFX.playSuccessChime();
+        }
+        Storage.saveProgress(p);
+        this.renderCurrentView();
+      },
+
+      toggleBookmark(wordId) {
+        const p = Storage.getProgress();
+        p.bookmarks[wordId] = !p.bookmarks[wordId];
+        Storage.saveProgress(p);
+        this.renderCurrentView();
+      },
+
+      toggleDarkMode() {
+        const isDark = document.documentElement.classList.toggle('dark');
+        const icon = document.getElementById('header-theme-icon');
+        if (icon) icon.textContent = isDark ? '☀️' : '🌙';
+        const s = Storage.getSettings();
+        s.theme = isDark ? 'dark' : 'light';
+        Storage.saveSettings(s);
+      },
+
+      onSearch(val) {
+        AppStore.searchQuery = val;
+        this.renderCurrentView();
+      },
+
+      onSelectVoice(type, uri) {
+        const s = Storage.getSettings();
+        if (type === 'zhMale') s.voiceZhMale = uri;
+        if (type === 'zhFemale') s.voiceZhFemale = uri;
+        Storage.saveSettings(s);
+        TTS.refreshVoiceCache();
+      },
+
+      confirmReset() {
+        if (confirm("Bạn có chắc chắn muốn xóa toàn bộ lịch sử học tập không?")) {
+          Storage.resetAll();
+          location.reload();
+        }
+      }
+    };
+
+    // 6. MODULE THU ÂM TRỰC TIẾP TỰ ĐỐI CHIẾU (VOICE RECORDER)
+    const VoiceRecorder = {
+      mediaRecorder: null,
+      audioChunks: [],
+
+      async start() {
+        TTS.stop();
+        Passive.halt(true);
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          alert("Trình duyệt không hỗ trợ ghi âm trực tiếp.");
+          return;
+        }
+
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          this.audioChunks = [];
+          this.mediaRecorder = new MediaRecorder(stream);
+          this.mediaRecorder.ondataavailable = e => {
+            if (e.data.size > 0) this.audioChunks.push(e.data);
+          };
+          this.mediaRecorder.onstop = () => {
+            const blob = new Blob(this.audioChunks, { type: 'audio/webm' });
+            const audioUrl = URL.createObjectURL(blob);
+            const player = document.getElementById('recorded-audio-playback');
+            if (player) {
+              player.src = audioUrl;
+              player.classList.remove('hidden');
+            }
+            stream.getTracks().forEach(track => track.stop());
+          };
+
+          this.mediaRecorder.start();
+          document.getElementById('btn-rec-start').classList.add('hidden');
+          document.getElementById('btn-rec-stop').classList.remove('hidden');
+          document.getElementById('rec-status-indicator').textContent = "🔴 Đang thu âm... Hãy nói câu của bạn.";
+        } catch (err) {
+          alert("Không thể truy cập microphone. Vui lòng cấp quyền ghi âm.");
+        }
+      },
+
+      stop() {
+        if (this.mediaRecorder && this.mediaRecorder.state === 'recording') {
+          this.mediaRecorder.stop();
+          document.getElementById('btn-rec-start').classList.remove('hidden');
+          document.getElementById('btn-rec-stop').classList.add('hidden');
+          document.getElementById('rec-status-indicator').textContent = "✅ Đã thu xong! Bấm Play để nghe lại.";
+        }
+      }
+    };
+
+    // 7. BỘ PHÁT PODCAST THỤ ĐỘNG (PASSIVE ENGINE)
+    const Passive = {
+      playlist: [],
+      pos: 0,
+      mode: 2,
+      repeat: 2,
+      sleepTimeout: null,
+      isPlaying: false,
+
+      setMode(m) { this.mode = m; },
+      setRepeat(r) { this.repeat = r; },
+      setSleep(val) {
+        clearTimeout(this.sleepTimeout);
+        if (val !== 'end') {
+          this.sleepTimeout = setTimeout(() => {
+            this.halt();
+            alert("Đã hết giờ hẹn nghe thụ động.");
+          }, Number(val) * 60000);
+        }
+      },
+
+      toggle() {
+        if (this.isPlaying) {
+          this.halt();
+        } else {
+          this.start();
+        }
+      },
+
+      start() {
+        const curLesson = AppStore.currentLesson || AppStore.lessons[0];
+        if (!curLesson || !curLesson.groups) return;
+        this.playlist = curLesson.groups.flatMap(g => g.words || []);
+        if (this.playlist.length === 0) return;
+
+        this.isPlaying = true;
+        this.pos = 0;
+        this.playCurrentWord();
+      },
+
+      playCurrentWord() {
+        if (!this.isPlaying || this.pos >= this.playlist.length) {
+          this.halt();
+          return;
+        }
+
+        const w = this.playlist[this.pos];
+        this.syncUI();
+
+        const queue = [];
+        for (let i = 0; i < this.repeat; i++) {
+          queue.push({ lang: 'zh-CN', text: w.hanzi, pause: 800 });
+        }
+        queue.push({ lang: 'vi-VN', text: w.coreMeaning, pause: 800 });
+
+        if (this.mode === 2 || this.mode === 3) {
+          if (w.meaning && w.meaning.keyPoint) {
+            queue.push({ lang: 'vi-VN', text: w.meaning.keyPoint, pause: 600 });
+          }
+          (w.examples || []).forEach(ex => {
+            queue.push({ lang: 'zh-CN', text: ex.zh, pause: 1200 });
+            queue.push({ lang: 'vi-VN', text: ex.vi, pause: 600 });
+          });
+        }
+
+        TTS.playQueue(queue, `Podcast: #${w.index} (${w.hanzi})`);
+
+        // Tự động chuyển từ sau khi hàng đợi đọc xong
+        const checkDoneInterval = setInterval(() => {
+          if (!TTS.isPlaying) {
+            clearInterval(checkDoneInterval);
+            if (this.isPlaying) {
+              this.pos++;
+              this.playCurrentWord();
+            }
+          }
+        }, 500);
+      },
+
+      skip(delta) {
+        this.pos += delta;
+        if (this.pos < 0) this.pos = 0;
+        if (this.pos >= this.playlist.length) this.pos = 0;
+        if (this.isPlaying) this.playCurrentWord();
+        else this.syncUI();
+      },
+
+      halt(silent = false) {
+        this.isPlaying = false;
+        clearTimeout(this.sleepTimeout);
+        TTS.stop();
+        if (!silent) this.syncUI();
+      },
+
+      syncUI() {
+        const w = this.playlist[this.pos] || (AppStore.currentLesson && AppStore.currentLesson.groups ? AppStore.currentLesson.groups[0].words[0] : null);
+        if (!w) return;
+
+        const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+        set('passive-hanzi', w.hanzi);
+        set('passive-pinyin', w.pinyin);
+        set('passive-meaning', w.coreMeaning);
+        set('passive-counter', `${this.pos + 1} / ${this.playlist.length}`);
+        set('passive-studio-state', this.isPlaying ? 'Đang phát Podcast...' : 'Tạm dừng');
+
+        const btn = document.getElementById('btn-passive-play');
+        if (btn) btn.textContent = this.isPlaying ? '⏸' : '▶';
+
+        const bar = document.getElementById('passive-progress-bar');
+        if (bar && this.playlist.length) {
+          bar.style.width = `${Math.round(((this.pos + 1) / this.playlist.length) * 100)}%`;
+        }
+      }
+    };
+
+    // 8. KHỞI CHẠY HỆ THỐNG (APPLICATION BOOTSTRAP)
+    async function initApp() {
+      DataStore.init();
+      TTS.init();
+
+      const settings = Storage.getSettings();
+      if (settings.theme === 'dark' || (settings.theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        const icon = document.getElementById('header-theme-icon');
+        if (icon) icon.textContent = '☀️';
+      }
+
+      // Nạp bài mặc định nếu đã đăng ký qua file bai-16.js
+      if (AppStore.lessons.length > 0) {
+        AppStore.currentLesson = AppStore.lessons[0];
+        AppStore.currentGroup = AppStore.currentLesson.groups ? AppStore.currentLesson.groups[0] : null;
+        AppStore.currentWord = AppStore.currentGroup && AppStore.currentGroup.words ? AppStore.currentGroup.words[0] : null;
+        AppStore.currentDialogue = AppStore.currentLesson.dialogues ? AppStore.currentLesson.dialogues[0] : null;
+      }
+
+      Router.navigate('home');
+    }
+
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
