@@ -1,0 +1,34 @@
+/* HSK Studio V5 – Glassmorphism · Indigo–Violet–Amber · Noto Sans SC */
+:root{--v5-a:#4f46e5;--v5-b:#7c3aed;--v5-c:#f59e0b;--v5-glass:rgba(255,255,255,.62);--v5-line:rgba(255,255,255,.7);--v5-sh:0 10px 30px rgba(79,70,229,.14),0 2px 6px rgba(15,23,42,.06)}
+@media(prefers-color-scheme:dark){:root{--v5-glass:rgba(30,27,75,.55);--v5-line:rgba(165,180,252,.18);--v5-sh:0 10px 30px rgba(0,0,0,.45)}}
+body{background:radial-gradient(900px 500px at 0% -10%,rgba(124,58,237,.22),transparent 60%),radial-gradient(700px 500px at 100% 0%,rgba(245,158,11,.16),transparent 55%),#f5f3ff;background-attachment:fixed}
+@media(prefers-color-scheme:dark){body{background:radial-gradient(900px 500px at 0% -10%,rgba(124,58,237,.35),transparent 60%),radial-gradient(700px 500px at 100% 0%,rgba(245,158,11,.12),transparent 55%),#0f0c29;background-attachment:fixed}}
+.v-card,.v-hero,.v5-card{background:var(--v5-glass)!important;-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);border:1px solid var(--v5-line)!important;border-radius:24px!important;box-shadow:var(--v5-sh)!important;transition:transform .25s,box-shadow .25s}
+.v-card:active{transform:translateY(2px) scale(.995)}
+@media(hover:hover){.v-card:hover{transform:translateY(-3px) perspective(800px) rotateX(1.2deg)}}
+.v-hero{background:linear-gradient(135deg,rgba(79,70,229,.92),rgba(124,58,237,.9) 60%,rgba(245,158,11,.85))!important;color:#fff!important}
+.v-hero *{color:#fff!important}
+.v-btn{border-radius:14px!important;min-height:46px;border:1px solid var(--v5-line)!important;background:var(--v5-glass)!important;font-weight:700;box-shadow:0 3px 0 rgba(79,70,229,.18)}
+.v-btn:active{transform:translateY(2px);box-shadow:none}
+.v-btn[aria-pressed=true],.v-btn.v-on,.v-btn.primary{background:linear-gradient(135deg,var(--v5-a),var(--v5-b))!important;color:#fff!important;border-color:transparent!important}
+.v-tag,.v-eyebrow{background:linear-gradient(90deg,var(--v5-c),#fb7185);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;letter-spacing:.06em}
+.hanzi-text,.v-zh,[lang=zh]{font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif!important;font-weight:700;letter-spacing:.04em}
+.v-zh{font-size:clamp(22px,6vw,30px);line-height:1.5}
+/* Hội thoại dạng bong bóng chat, màu theo giọng */
+.v-turn{max-width:92%;margin:10px 0}
+.v-turn.v-a{border-left:5px solid var(--v5-a)!important}
+.v-turn.v-b{margin-left:auto;border-right:5px solid var(--v5-c)!important;border-left:0}
+.v5-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 8px;border-radius:99px;background:rgba(124,58,237,.14);color:var(--v5-b);font-weight:700}
+.v-turn.v5-speaking{box-shadow:0 0 0 3px var(--v5-b),var(--v5-sh)!important}
+/* Audio dock kiểu podcast + sóng âm */
+#audio-dock>*{-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-radius:22px!important;box-shadow:0 12px 36px rgba(79,70,229,.3)!important}
+.v5-wave{display:flex;gap:3px;align-items:flex-end;height:18px;margin:0 8px}
+.v5-wave i{width:3px;height:4px;border-radius:2px;background:linear-gradient(var(--v5-b),var(--v5-c));opacity:.5}
+body.v5-playing .v5-wave i{opacity:1;animation:v5w .9s ease-in-out infinite}
+.v5-wave i:nth-child(2){animation-delay:.12s!important}.v5-wave i:nth-child(3){animation-delay:.25s!important}.v5-wave i:nth-child(4){animation-delay:.37s!important}.v5-wave i:nth-child(5){animation-delay:.5s!important}
+@keyframes v5w{0%,100%{height:4px}50%{height:18px}}
+@media(prefers-reduced-motion:reduce){.v5-wave i,.v-card{animation:none!important;transition:none!important}}
+/* Thẻ phân biệt từ dễ nhầm */
+.v5-pair h3{font-size:18px;font-weight:800}.v5-pair .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.v5-pair .cell{padding:12px;border-radius:16px;background:rgba(124,58,237,.08)}.v5-pair .cell b{font-size:24px;display:block}
+.v5-pair p{font-size:14px;line-height:1.6;margin:6px 0}.v5-pair .tip{border-left:4px solid var(--v5-c);padding-left:10px}
