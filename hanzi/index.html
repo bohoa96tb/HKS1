@@ -22,8 +22,6 @@
       --accent-semantic-bg: #CCFBF1;
       --accent-phonetic: #D97706;
       --accent-phonetic-bg: #FEF3C7;
-      --accent-ancient: #854D0E;
-      --accent-ancient-bg: #FEF9C3;
       --success: #059669;
       --success-soft: #D1FAE5;
       --error: #DC2626;
@@ -93,16 +91,46 @@
       border-radius: 999px;
     }
 
-    /* Quick Selector */
-    .selector-row {
+    /* Quick Selector & Search Row */
+    .control-deck {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 8px;
     }
 
+    .search-box-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 42px;
+      padding: 0 12px 0 36px;
+      /* Cố định font-size 16px để ngăn Safari trên iPhone tự ý phóng to màn hình */
+      font-size: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #FFFFFF;
+      color: var(--text-main);
+      outline: none;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
     .selector-select {
-      flex: 1;
-      padding: 10px 12px;
+      width: 100%;
+      height: 42px;
+      padding: 0 12px;
       font-size: 15px;
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -591,8 +619,12 @@
       <span class="counter-badge" id="char-counter">Đang nạp...</span>
     </header>
 
-    <!-- Quick Jump Selector -->
-    <div class="selector-row">
+    <!-- Quick Search & Select Controls -->
+    <div class="control-deck">
+      <div class="search-box-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="char-search" class="search-input" placeholder="Tìm chữ, pinyin, nghĩa..." autocomplete="off">
+      </div>
       <select id="char-select" class="selector-select" aria-label="Chọn chữ Hán">
         <option>Đang nạp danh mục chữ...</option>
       </select>
@@ -623,13 +655,10 @@
         </div>
         
         <div class="writer-stage-wrapper">
-          <!-- Khung ô vẽ nét đa năng (Hỗ trợ Mễ tự cách và Điền tự cách) -->
           <div class="mige-box" id="grid-container">
             <svg class="mige-svg-grid" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <!-- Trục ngang và dọc (Điền tự cách) -->
               <line x1="0" y1="100" x2="200" y2="100" stroke="#FDA4AF" stroke-width="1.2" stroke-dasharray="4 4" />
               <line x1="100" y1="0" x2="100" y2="200" stroke="#FDA4AF" stroke-width="1.2" stroke-dasharray="4 4" />
-              <!-- Hai đường chéo phụ (Mễ tự cách) -->
               <g class="diagonal-lines" id="diagonal-lines">
                 <line x1="0" y1="0" x2="200" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
                 <line x1="200" y1="0" x2="0" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
@@ -638,14 +667,12 @@
             <div id="writer-target"></div>
           </div>
 
-          <!-- Nút điều khiển -->
           <div class="writer-actions">
             <button class="btn-action" id="btn-animate" title="Xem thứ tự nét">▶ Xem nét</button>
             <button class="btn-action primary" id="btn-quiz" title="Tự tay viết">✏️ Tập viết</button>
             <button class="btn-action" id="btn-reset" title="Xóa viết lại">🔄 Viết lại</button>
           </div>
 
-          <!-- Trạng thái hướng dẫn -->
           <div class="writer-status info" id="writer-status">
             Bấm "▶ Xem nét" để xem thứ tự viết, hoặc "✏️ Tập viết" để dùng ngón tay vẽ theo.
           </div>
@@ -666,11 +693,7 @@
         <h2 class="section-title">
           <span>📜</span> Diễn biến văn tự & Từ nguyên
         </h2>
-        
-        <!-- Bộ tranh diễn biến 4 giai đoạn -->
         <div class="evolution-gallery" id="evolution-gallery"></div>
-        
-        <!-- Câu chuyện ghi nhớ -->
         <div class="etymology-story" id="etymology-story"></div>
       </section>
 
@@ -693,7 +716,7 @@
   </footer>
 
   <script type="module">
-    // Kho hình ảnh vector (SVG) văn tự cổ đại chuẩn xác cho 15 chữ HSK1
+    // Kho hình ảnh vector (SVG) văn tự cổ đại chuẩn xác
     const ANCIENT_GLYPHS = {
       "人": {
         oracle: `<svg viewBox="0 0 100 100"><path d="M48 20 C48 35, 42 50, 26 80 M46 45 C55 60, 68 75, 76 82" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
@@ -740,6 +763,7 @@
     // Elements
     const charCounter = document.getElementById('char-counter');
     const charSelect = document.getElementById('char-select');
+    const charSearch = document.getElementById('char-search');
     const pinyinDisplay = document.getElementById('pinyin-display');
     const btnAudio = document.getElementById('btn-audio');
     const meaningDisplay = document.getElementById('meaning-display');
@@ -769,6 +793,26 @@
       writerStatus.className = `writer-status ${type}`;
     }
 
+    // Xử lý Liên Kết Sâu (Deep Link) từ URL parameters
+    function parseDeepLinkParams() {
+      const params = new URLSearchParams(window.location.search);
+      const targetChar = params.get('char') || params.get('c');
+      if (targetChar) {
+        const foundIdx = HSK1_DATA.findIndex(item => item.character === targetChar.trim());
+        if (foundIdx !== -1) {
+          currentIndex = foundIdx;
+          return;
+        }
+      }
+      const targetIdx = params.get('index') || params.get('id');
+      if (targetIdx !== null) {
+        const parsed = parseInt(targetIdx, 10);
+        if (!isNaN(parsed) && parsed >= 0 && parsed < HSK1_DATA.length) {
+          currentIndex = parsed;
+        }
+      }
+    }
+
     // Khởi tạo Hanzi Writer
     function setupWriter(char) {
       writerTarget.innerHTML = '';
@@ -784,10 +828,10 @@
         showOutline: true,
         strokeAnimationSpeed: 1.2,
         delayBetweenStrokes: 180,
-        strokeColor: '#BE123C',      // Nét chính màu đỏ hồng
-        radicalColor: '#0D9488',     // Bộ thủ nổi bật màu xanh ngọc
-        outlineColor: '#E2E8F0',     // Viền nét mờ chỉ dẫn
-        drawingColor: '#1D4ED8',     // Nét người học tự vẽ (Xanh dương)
+        strokeColor: '#BE123C',
+        radicalColor: '#0D9488',
+        outlineColor: '#E2E8F0',
+        drawingColor: '#1D4ED8',
         drawingWidth: 16,
         showCharacter: true
       });
@@ -795,7 +839,7 @@
       updateWriterStatus("Bấm '▶ Xem nét' để xem thứ tự viết, hoặc '✏️ Tập viết' để tự vẽ.", "info");
     }
 
-    // Chế độ xem chuyển động nét (Animation)
+    // Chế độ xem chuyển động nét
     function playAnimation() {
       if (!writerInstance) return;
       writerInstance.cancelQuiz();
@@ -808,7 +852,7 @@
       });
     }
 
-    // Chế độ thử thách tự viết (Quiz)
+    // Chế độ thử thách tự viết
     function startQuizMode() {
       if (!writerInstance) return;
       writerInstance.cancelQuiz();
@@ -833,7 +877,7 @@
       });
     }
 
-    // Phát âm giọng bản xứ
+    // Phát âm giọng chuẩn
     function playAudio(text) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
@@ -844,7 +888,7 @@
       }
     }
 
-    // Render bộ tranh diễn biến văn tự cổ đại
+    // Render diễn biến văn tự cổ
     function renderEvolutionGallery(item) {
       const char = item.character;
       const glyphs = ANCIENT_GLYPHS[char] || null;
@@ -875,7 +919,7 @@
       }).join('');
     }
 
-    // Điền danh sách chọn nhanh
+    // Danh sách chọn nhanh
     function initSelector() {
       charSelect.innerHTML = "";
       HSK1_DATA.forEach((item, idx) => {
@@ -891,6 +935,24 @@
       });
     }
 
+    // Tìm kiếm nhanh Hán tự / Pinyin / Tiếng Việt
+    charSearch.addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      if (!q) return;
+
+      const matchIndex = HSK1_DATA.findIndex(item => {
+        const charMatch = item.character === q;
+        const pinyinMatch = item.pinyin.some(p => p.toLowerCase().includes(q));
+        const meanMatch = (item.meaning_vi || '').toLowerCase().includes(q);
+        return charMatch || pinyinMatch || meanMatch;
+      });
+
+      if (matchIndex !== -1 && matchIndex !== currentIndex) {
+        currentIndex = matchIndex;
+        renderCurrent();
+      }
+    });
+
     // Cập nhật giao diện toàn trang
     function renderCurrent() {
       const item = HSK1_DATA[currentIndex];
@@ -899,7 +961,11 @@
       charCounter.textContent = `Chữ ${currentIndex + 1} / ${HSK1_DATA.length}`;
       charSelect.value = currentIndex;
 
-      // Cập nhật Hero Info
+      // Cập nhật URL trình duyệt ngầm mà không làm tải lại trang
+      const newUrl = `${window.location.pathname}?char=${encodeURIComponent(item.character)}`;
+      window.history.replaceState({ char: item.character }, '', newUrl);
+
+      // Hero Info
       pinyinDisplay.textContent = item.pinyin.join(', ');
       meaningDisplay.textContent = item.meaning_vi;
 
@@ -910,10 +976,10 @@
         <span class="pill">Mã: U+${item.unicode}</span>
       `;
 
-      // Cập nhật Động cơ Hanzi Writer
+      // Khởi tạo Hanzi Writer
       setupWriter(item.character);
 
-      // Phân rã Chiết tự & Tương tác chạm
+      // Chiết tự Lego
       componentsGrid.innerHTML = "";
       const components = item.structure?.tree?.components || item.structure?.components || [];
       components.forEach(comp => {
@@ -925,7 +991,6 @@
           <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 2px;">${comp.pinyin || ''}</div>
           <div class="comp-hint">${comp.hint_vi}</div>
         `;
-        // Tương tác chạm vào linh kiện Lego: Phát âm và đổi màu
         box.addEventListener('click', () => {
           playAudio(comp.character);
           updateWriterStatus(`Đang xem cấu kiện '${comp.character}': ${comp.hint_vi}`, "info");
@@ -936,7 +1001,7 @@
       const typeName = item.structure?.type_vi || item.structure?.type_name || item.structure?.type || '';
       structureSummary.innerHTML = `<strong>${typeName}:</strong> ${item.structure?.description || ''}`;
 
-      // Từ nguyên & Bộ tranh diễn biến cổ
+      // Từ nguyên & Diễn biến cổ
       etymologyStory.textContent = item.etymology?.story_vi || '';
       renderEvolutionGallery(item);
 
@@ -954,19 +1019,18 @@
       // Nút tới/lui
       btnPrev.disabled = currentIndex === 0;
       btnNext.disabled = currentIndex === HSK1_DATA.length - 1;
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Nạp gói dữ liệu JSON
+    // Nạp dữ liệu
     async function loadDataBundle() {
       try {
         const response = await fetch('./data/bundles/hsk1-core.json');
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         HSK1_DATA = await response.json();
+        
         initSelector();
+        // Kiểm tra xem người dùng có mở link dạng ?char=... không
+        parseDeepLinkParams();
         renderCurrent();
       } catch (err) {
         console.error("Lỗi nạp hsk1-core.json:", err);
@@ -974,7 +1038,7 @@
       }
     }
 
-    // Chuyển đổi giữa Ô Mễ tự cách và Điền tự cách
+    // Ô Mễ và Điền tự cách
     btnGridMi.addEventListener('click', () => {
       btnGridMi.classList.add('active');
       btnGridTian.classList.remove('active');
@@ -987,11 +1051,9 @@
       gridContainer.classList.add('tian-mode');
     });
 
-    // Gán sự kiện nút bấm
+    // Các nút bấm
     btnAudio.addEventListener('click', () => {
-      if (HSK1_DATA[currentIndex]) {
-        playAudio(HSK1_DATA[currentIndex].character);
-      }
+      if (HSK1_DATA[currentIndex]) playAudio(HSK1_DATA[currentIndex].character);
     });
 
     btnAnimate.addEventListener('click', playAnimation);
@@ -1017,17 +1079,7 @@
       }
     });
 
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft' && currentIndex > 0) {
-        currentIndex--;
-        renderCurrent();
-      } else if (e.key === 'ArrowRight' && currentIndex < HSK1_DATA.length - 1) {
-        currentIndex++;
-        renderCurrent();
-      }
-    });
-
-    // Bắt đầu nạp dữ liệu
+    // Bắt đầu
     loadDataBundle();
   </script>
 </body>
