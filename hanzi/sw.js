@@ -1,7 +1,8 @@
 /**
  * Service Worker hỗ trợ chạy Offline và lưu bộ nhớ đệm (Cache) cho Giải Mã Hán Tự
+ * Nâng cấp phiên bản v2 để tự động làm mới gói 25 chữ Hán
  */
-const CACHE_NAME = 'hanzi-pwa-v1';
+const CACHE_NAME = 'hanzi-pwa-v2';
 
 // Danh sách các tài nguyên tĩnh cốt lõi cần lưu đệm ngay
 const CORE_ASSETS = [
@@ -23,7 +24,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// 2. Kích hoạt và dọn dẹp các phiên bản cache cũ
+// 2. Kích hoạt và dọn dẹp các phiên bản cache cũ (tự động xóa hanzi-pwa-v1)
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -40,17 +41,14 @@ self.addEventListener('activate', (event) => {
 
 // 3. Đón bắt yêu cầu mạng: Ưu tiên nạp từ cache trước, nếu chưa có thì tải từ mạng
 self.addEventListener('fetch', (event) => {
-  // Chỉ xử lý các yêu cầu HTTP/HTTPS thông thường (GET)
   if (event.request.method !== 'GET') return;
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
-        // Có sẵn trong cache -> trả về ngay lập tức (siêu nhanh)
         return cachedResponse;
       }
 
-      // Chưa có trong cache -> tải từ mạng và tự động lưu vào cache cho lần sau
       return fetch(event.request).then((networkResponse) => {
         if (!networkResponse || networkResponse.status !== 200) {
           return networkResponse;
@@ -63,7 +61,6 @@ self.addEventListener('fetch', (event) => {
 
         return networkResponse;
       }).catch(() => {
-        // Khi mất mạng hoàn toàn và yêu cầu trang HTML, trả về index.html lưu sẵn
         if (event.request.headers.get('accept')?.includes('text/html')) {
           return caches.match('./index.html');
         }
