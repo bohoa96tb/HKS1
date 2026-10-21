@@ -27,29 +27,29 @@ window.HSK_MANIFEST = [
     btn.href = './hanzi/index.html';
     btn.setAttribute('aria-label', 'Giải mã Hán tự');
     btn.innerHTML = `
-      <span style="font-size: 18px; line-height: 1;">🧩</span>
+      <span style="font-size: 16px; line-height: 1;">🧩</span>
       <span>Giải mã Hán tự</span>
     `;
 
-    // 2. Thiết lập kiểu dáng (CSS inline) tối ưu tuyệt đối cho màn hình điện thoại
+    // 2. Thiết lập kiểu dáng: Đẩy cao lên trên thanh menu dưới đáy (cách đáy 85px)
     Object.assign(btn.style, {
       position: 'fixed',
-      bottom: 'calc(env(safe-area-inset-bottom, 0px) + 20px)',
+      bottom: 'calc(env(safe-area-inset-bottom, 0px) + 85px)',
       right: '16px',
       zIndex: '99999',
       display: 'inline-flex',
       alignItems: 'center',
-      gap: '8px',
-      padding: '11px 18px',
+      gap: '6px',
+      padding: '9px 15px',
       backgroundColor: '#BE123C',
       color: '#FFFFFF',
-      fontSize: '14px',
+      fontSize: '13px',
       fontWeight: '700',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       textDecoration: 'none',
       borderRadius: '999px',
-      boxShadow: '0 4px 16px rgba(190, 18, 60, 0.4), 0 2px 4px rgba(0, 0, 0, 0.1)',
-      border: '1.5px solid rgba(255, 255, 255, 0.3)',
+      boxShadow: '0 4px 16px rgba(190, 18, 60, 0.45), 0 2px 6px rgba(0, 0, 0, 0.25)',
+      border: '1.5px solid rgba(255, 255, 255, 0.35)',
       transition: 'transform 0.15s ease, box-shadow 0.15s ease',
       cursor: 'pointer',
       webkitTapHighlightColor: 'transparent'
@@ -57,7 +57,7 @@ window.HSK_MANIFEST = [
 
     // 3. Hiệu ứng nhún khi chạm ngón tay trên điện thoại
     btn.addEventListener('touchstart', function() {
-      btn.style.transform = 'scale(0.94)';
+      btn.style.transform = 'scale(0.93)';
     }, { passive: true });
 
     btn.addEventListener('touchend', function() {
@@ -65,7 +65,7 @@ window.HSK_MANIFEST = [
     }, { passive: true });
 
     btn.addEventListener('mousedown', function() {
-      btn.style.transform = 'scale(0.94)';
+      btn.style.transform = 'scale(0.93)';
     });
 
     btn.addEventListener('mouseup', function() {
