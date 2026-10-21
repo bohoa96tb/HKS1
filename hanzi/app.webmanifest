@@ -1,0 +1,19 @@
+{
+"name": "Giải Mã Hán Tự - HSK 1",
+"short_name": "Giải Mã HSK1",
+"description": "Ứng dụng giải mã chữ Hán đa tầng, tập viết bút thuận và ôn tập ngắt quãng FSRS",
+"start_url": "./index.html",
+"scope": "./",
+"display": "standalone",
+"background_color": "#F8FAFC",
+"theme_color": "#BE123C",
+"orientation": "portrait",
+"icons": [
+{
+"src": "icon.svg",
+"sizes": "any",
+"type": "image/svg+xml",
+"purpose": "any maskable"
+}
+]
+}
