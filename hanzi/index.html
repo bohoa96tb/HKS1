@@ -22,6 +22,8 @@
       --accent-semantic-bg: #CCFBF1;
       --accent-phonetic: #D97706;
       --accent-phonetic-bg: #FEF3C7;
+      --accent-ancient: #854D0E;
+      --accent-ancient-bg: #FEF9C3;
       --success: #059669;
       --success-soft: #D1FAE5;
       --error: #DC2626;
@@ -47,7 +49,7 @@
       justify-content: center;
       min-height: 100vh;
       padding-top: var(--safe-top);
-      padding-bottom: calc(var(--safe-bottom) + 80px);
+      padding-bottom: calc(var(--safe-bottom) + 85px);
     }
 
     #app-container {
@@ -64,7 +66,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 6px 0;
+      padding: 4px 0;
     }
 
     .btn-back {
@@ -75,7 +77,7 @@
       color: var(--text-muted);
       font-size: 14px;
       font-weight: 500;
-      padding: 8px 12px;
+      padding: 7px 12px;
       background: #FFFFFF;
       border: 1px solid var(--border);
       border-radius: 999px;
@@ -103,10 +105,11 @@
       padding: 10px 12px;
       font-size: 15px;
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       background: #FFFFFF;
       color: var(--text-main);
       outline: none;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     }
 
     /* Character Hero Card */
@@ -123,12 +126,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 4px;
+      gap: 10px;
+      margin-bottom: 6px;
     }
 
     .pinyin-text {
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--primary);
       letter-spacing: 0.5px;
@@ -138,19 +141,19 @@
       background: var(--primary-soft);
       border: none;
       color: var(--primary);
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 17px;
       transition: transform 0.1s ease;
     }
 
     .audio-btn:active {
-      transform: scale(0.92);
+      transform: scale(0.90);
     }
 
     .meaning-text {
@@ -185,19 +188,51 @@
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
     }
 
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
     .section-title {
       font-size: 14px;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    /* Hanzi Writer Stage & Ô Mễ Tự Cách */
+    /* Grid Style Toggle */
+    .grid-toggle-group {
+      display: flex;
+      gap: 4px;
+      background: #F1F5F9;
+      padding: 2px;
+      border-radius: 8px;
+    }
+
+    .grid-toggle-btn {
+      border: none;
+      background: transparent;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .grid-toggle-btn.active {
+      background: #FFFFFF;
+      color: var(--primary);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    /* Hanzi Writer Stage */
     .writer-stage-wrapper {
       display: flex;
       flex-direction: column;
@@ -227,6 +262,14 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
+    }
+
+    .diagonal-lines {
+      transition: opacity 0.2s ease;
+    }
+
+    .mige-box.tian-mode .diagonal-lines {
+      opacity: 0;
     }
 
     #writer-target {
@@ -326,6 +369,12 @@
       padding: 12px 10px;
       text-align: center;
       background: #FAFAFA;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .component-box:active {
+      transform: scale(0.97);
     }
 
     .component-box.semantic {
@@ -374,12 +423,61 @@
       font-size: 13px;
       background: #F8FAFC;
       border-radius: 8px;
-      padding: 8px 12px;
+      padding: 9px 12px;
       color: var(--text-main);
       border-left: 3px solid var(--primary);
     }
 
-    /* Etymology & Story */
+    /* Ancient Script Evolution Gallery */
+    .evolution-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .evo-card {
+      background: #FFFDF9;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 8px 4px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 82px;
+    }
+
+    .evo-stage-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .evo-glyph-box {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .evo-glyph-box svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .evo-modern-char {
+      font-family: "Noto Serif SC", "Kaiti", serif;
+      font-size: 26px;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
     .etymology-story {
       font-size: 14px;
       color: var(--text-main);
@@ -388,35 +486,6 @@
       padding: 12px 14px;
       border-radius: 10px;
       border-left: 3px solid var(--primary);
-      margin-bottom: 12px;
-    }
-
-    .evolution-timeline {
-      display: flex;
-      justify-content: space-between;
-      gap: 6px;
-      padding: 4px 0 2px 0;
-    }
-
-    .evo-step {
-      flex: 1;
-      text-align: center;
-      background: #F8FAFC;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 6px 2px;
-    }
-
-    .evo-name {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-    }
-
-    .evo-status {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--primary);
     }
 
     /* Compound Words */
@@ -430,7 +499,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 12px;
+      padding: 9px 12px;
       background: #F8FAFC;
       border-radius: 8px;
       border: 1px solid var(--border);
@@ -542,18 +611,29 @@
 
       <!-- Section: Interactive Handwriting Pad (Hanzi Writer) -->
       <section class="section-card" style="margin-top: 14px;">
-        <h2 class="section-title">
-          <span>✍️</span> Luyện viết bút thuận (Mễ tự cách)
-        </h2>
+        <div class="section-header">
+          <h2 class="section-title">
+            <span>✍️</span> Bút thuận & Luyện viết
+          </h2>
+          <!-- Nút chuyển đổi kiểu ô giấy tập viết -->
+          <div class="grid-toggle-group">
+            <button class="grid-toggle-btn active" id="btn-grid-mi" title="Ô Mễ tự cách (8 ô)">Mễ (米)</button>
+            <button class="grid-toggle-btn" id="btn-grid-tian" title="Ô Điền tự cách (4 ô)">Điền (田)</button>
+          </div>
+        </div>
         
         <div class="writer-stage-wrapper">
-          <!-- Ô Mễ tự cách chuẩn truyền thống -->
-          <div class="mige-box">
+          <!-- Khung ô vẽ nét đa năng (Hỗ trợ Mễ tự cách và Điền tự cách) -->
+          <div class="mige-box" id="grid-container">
             <svg class="mige-svg-grid" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <line x1="0" y1="100" x2="200" y2="100" stroke="#FDA4AF" stroke-width="1" stroke-dasharray="4 4" />
-              <line x1="100" y1="0" x2="100" y2="200" stroke="#FDA4AF" stroke-width="1" stroke-dasharray="4 4" />
-              <line x1="0" y1="0" x2="200" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
-              <line x1="200" y1="0" x2="0" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
+              <!-- Trục ngang và dọc (Điền tự cách) -->
+              <line x1="0" y1="100" x2="200" y2="100" stroke="#FDA4AF" stroke-width="1.2" stroke-dasharray="4 4" />
+              <line x1="100" y1="0" x2="100" y2="200" stroke="#FDA4AF" stroke-width="1.2" stroke-dasharray="4 4" />
+              <!-- Hai đường chéo phụ (Mễ tự cách) -->
+              <g class="diagonal-lines" id="diagonal-lines">
+                <line x1="0" y1="0" x2="200" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
+                <line x1="200" y1="0" x2="0" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
+              </g>
             </svg>
             <div id="writer-target"></div>
           </div>
@@ -572,7 +652,7 @@
         </div>
       </section>
 
-      <!-- Structure & Component Decomposition (Chiết tự) -->
+      <!-- Structure & Component Decomposition (Chiết tự tương tác) -->
       <section class="section-card" style="margin-top: 14px;">
         <h2 class="section-title">
           <span>🧩</span> Phân rã cấu trúc (Chiết tự)
@@ -581,13 +661,17 @@
         <div class="structure-summary" id="structure-summary"></div>
       </section>
 
-      <!-- Etymology & Mnemonic Story -->
+      <!-- Ancient Script Evolution Gallery & Story -->
       <section class="section-card" style="margin-top: 14px;">
         <h2 class="section-title">
-          <span>📜</span> Từ nguyên & Câu chuyện nhớ chữ
+          <span>📜</span> Diễn biến văn tự & Từ nguyên
         </h2>
+        
+        <!-- Bộ tranh diễn biến 4 giai đoạn -->
+        <div class="evolution-gallery" id="evolution-gallery"></div>
+        
+        <!-- Câu chuyện ghi nhớ -->
         <div class="etymology-story" id="etymology-story"></div>
-        <div class="evolution-timeline" id="evolution-timeline"></div>
       </section>
 
       <!-- Compound Words -->
@@ -609,7 +693,46 @@
   </footer>
 
   <script type="module">
-    // Biến lưu trữ dữ liệu nạp động từ gói JSON
+    // Kho hình ảnh vector (SVG) văn tự cổ đại chuẩn xác cho 15 chữ HSK1
+    const ANCIENT_GLYPHS = {
+      "人": {
+        oracle: `<svg viewBox="0 0 100 100"><path d="M48 20 C48 35, 42 50, 26 80 M46 45 C55 60, 68 75, 76 82" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><path d="M50 18 C50 38, 42 58, 28 82 M47 48 C58 62, 70 76, 76 82" fill="none" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><path d="M50 15 C50 45, 40 65, 26 85 M48 45 C60 65, 72 75, 76 85" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`
+      },
+      "大": {
+        oracle: `<svg viewBox="0 0 100 100"><line x1="50" y1="18" x2="50" y2="82" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/><line x1="20" y1="46" x2="80" y2="46" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/><path d="M50 48 L25 82 M50 48 L75 82" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><line x1="50" y1="16" x2="50" y2="84" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/><path d="M20 44 Q50 46 80 44" fill="none" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/><path d="M50 46 Q35 70 25 84 M50 46 Q65 70 75 84" fill="none" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><line x1="50" y1="15" x2="50" y2="85" stroke="#BE123C" stroke-width="7"/><path d="M20 42 C40 45, 60 45, 80 42" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M50 45 C35 70, 30 80, 24 85 M50 45 C65 70, 70 80, 76 85" fill="none" stroke="#BE123C" stroke-width="7"/></svg>`
+      },
+      "天": {
+        oracle: `<svg viewBox="0 0 100 100"><rect x="35" y="16" width="30" height="18" rx="6" fill="none" stroke="#BE123C" stroke-width="6"/><line x1="50" y1="34" x2="50" y2="82" stroke="#BE123C" stroke-width="6"/><line x1="20" y1="52" x2="80" y2="52" stroke="#BE123C" stroke-width="6"/><path d="M50 52 L26 82 M50 52 L74 82" stroke="#BE123C" stroke-width="6"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><circle cx="50" cy="22" r="10" fill="#BE123C"/><line x1="50" y1="32" x2="50" y2="82" stroke="#BE123C" stroke-width="7"/><line x1="20" y1="50" x2="80" y2="50" stroke="#BE123C" stroke-width="7"/><path d="M50 50 L26 84 M50 50 L74 84" stroke="#BE123C" stroke-width="7"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><line x1="25" y1="22" x2="75" y2="22" stroke="#BE123C" stroke-width="7"/><line x1="50" y1="22" x2="50" y2="84" stroke="#BE123C" stroke-width="7"/><path d="M22 45 Q50 46 78 45" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M50 46 C35 70, 30 80, 24 85 M50 46 C65 70, 70 80, 76 85" fill="none" stroke="#BE123C" stroke-width="7"/></svg>`
+      },
+      "木": {
+        oracle: `<svg viewBox="0 0 100 100"><line x1="50" y1="16" x2="50" y2="84" stroke="#BE123C" stroke-width="7"/><path d="M24 45 C38 40, 48 35, 50 35 C52 35, 62 40, 76 45" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M24 78 C38 65, 48 60, 50 60 C52 60, 62 65, 76 78" fill="none" stroke="#BE123C" stroke-width="7"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><line x1="50" y1="16" x2="50" y2="84" stroke="#BE123C" stroke-width="8"/><path d="M22 44 Q48 36 50 36 Q52 36 78 44" fill="none" stroke="#BE123C" stroke-width="8"/><path d="M22 80 Q48 62 50 62 Q52 62 78 80" fill="none" stroke="#BE123C" stroke-width="8"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><line x1="50" y1="14" x2="50" y2="86" stroke="#BE123C" stroke-width="7"/><path d="M22 42 C40 36, 50 36, 50 36 C50 36, 60 36, 78 42" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M24 82 C38 68, 48 60, 50 60 C52 60, 62 68, 76 82" fill="none" stroke="#BE123C" stroke-width="7"/></svg>`
+      },
+      "日": {
+        oracle: `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="#BE123C" stroke-width="7"/><circle cx="50" cy="50" r="5" fill="#BE123C"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="#BE123C" stroke-width="8"/><line x1="38" y1="50" x2="62" y2="50" stroke="#BE123C" stroke-width="6"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><rect x="30" y="22" width="40" height="56" rx="14" fill="none" stroke="#BE123C" stroke-width="7"/><line x1="32" y1="50" x2="68" y2="50" stroke="#BE123C" stroke-width="7"/></svg>`
+      },
+      "月": {
+        oracle: `<svg viewBox="0 0 100 100"><path d="M42 18 C68 34, 68 66, 42 82 C55 66, 55 34, 42 18 Z" fill="none" stroke="#BE123C" stroke-width="6"/><line x1="46" y1="50" x2="56" y2="50" stroke="#BE123C" stroke-width="6"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><path d="M40 20 C66 36, 66 64, 40 80 C54 64, 54 36, 40 20 Z" fill="none" stroke="#BE123C" stroke-width="7"/><line x1="44" y1="50" x2="54" y2="50" stroke="#BE123C" stroke-width="7"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><path d="M38 18 C64 32, 64 68, 38 82" fill="none" stroke="#BE123C" stroke-width="7"/><line x1="40" y1="42" x2="56" y2="42" stroke="#BE123C" stroke-width="6"/><line x1="40" y1="58" x2="56" y2="58" stroke="#BE123C" stroke-width="6"/></svg>`
+      },
+      "口": {
+        oracle: `<svg viewBox="0 0 100 100"><path d="M26 34 C26 68, 34 74, 50 74 C66 74, 74 68, 74 34" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><rect x="28" y="30" width="44" height="40" rx="8" fill="none" stroke="#BE123C" stroke-width="8"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><rect x="28" y="28" width="44" height="44" rx="6" fill="none" stroke="#BE123C" stroke-width="7"/></svg>`
+      }
+    };
+
+    // Dữ liệu ứng dụng
     let HSK1_DATA = [];
     let currentIndex = 0;
     let writerInstance = null;
@@ -624,10 +747,15 @@
     const componentsGrid = document.getElementById('components-grid');
     const structureSummary = document.getElementById('structure-summary');
     const etymologyStory = document.getElementById('etymology-story');
-    const evolutionTimeline = document.getElementById('evolution-timeline');
+    const evolutionGallery = document.getElementById('evolution-gallery');
     const compoundsList = document.getElementById('compounds-list');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
+
+    // Grid Switcher
+    const gridContainer = document.getElementById('grid-container');
+    const btnGridMi = document.getElementById('btn-grid-mi');
+    const btnGridTian = document.getElementById('btn-grid-tian');
 
     // Writer Elements
     const writerTarget = document.getElementById('writer-target');
@@ -641,7 +769,7 @@
       writerStatus.className = `writer-status ${type}`;
     }
 
-    // Khởi tạo Hanzi Writer cho chữ Hán hiện tại
+    // Khởi tạo Hanzi Writer
     function setupWriter(char) {
       writerTarget.innerHTML = '';
       if (!window.HanziWriter) {
@@ -656,10 +784,10 @@
         showOutline: true,
         strokeAnimationSpeed: 1.2,
         delayBetweenStrokes: 180,
-        strokeColor: '#BE123C',      // Màu nét chữ chính (Đỏ hồng)
-        radicalColor: '#0D9488',     // Nổi bật bộ thủ bằng màu xanh ngọc
+        strokeColor: '#BE123C',      // Nét chính màu đỏ hồng
+        radicalColor: '#0D9488',     // Bộ thủ nổi bật màu xanh ngọc
         outlineColor: '#E2E8F0',     // Viền nét mờ chỉ dẫn
-        drawingColor: '#1D4ED8',     // Nét vẽ tay ngón tay (Xanh dương)
+        drawingColor: '#1D4ED8',     // Nét người học tự vẽ (Xanh dương)
         drawingWidth: 16,
         showCharacter: true
       });
@@ -716,6 +844,37 @@
       }
     }
 
+    // Render bộ tranh diễn biến văn tự cổ đại
+    function renderEvolutionGallery(item) {
+      const char = item.character;
+      const glyphs = ANCIENT_GLYPHS[char] || null;
+
+      const stages = [
+        { key: 'oracle', name: 'Giáp cốt' },
+        { key: 'bronze', name: 'Kim văn' },
+        { key: 'seal', name: 'Tiểu triện' },
+        { key: 'regular', name: 'Khải thư' }
+      ];
+
+      evolutionGallery.innerHTML = stages.map(st => {
+        let contentHtml = '';
+        if (st.key === 'regular') {
+          contentHtml = `<span class="evo-modern-char">${char}</span>`;
+        } else if (glyphs && glyphs[st.key]) {
+          contentHtml = glyphs[st.key];
+        } else {
+          contentHtml = `<span style="font-size: 18px; color: #CBD5E1; font-weight: 600;">古文</span>`;
+        }
+
+        return `
+          <div class="evo-card">
+            <div class="evo-stage-title">${st.name}</div>
+            <div class="evo-glyph-box">${contentHtml}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
     // Điền danh sách chọn nhanh
     function initSelector() {
       charSelect.innerHTML = "";
@@ -754,7 +913,7 @@
       // Cập nhật Động cơ Hanzi Writer
       setupWriter(item.character);
 
-      // Phân rã Chiết tự
+      // Phân rã Chiết tự & Tương tác chạm
       componentsGrid.innerHTML = "";
       const components = item.structure?.tree?.components || item.structure?.components || [];
       components.forEach(comp => {
@@ -766,21 +925,20 @@
           <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 2px;">${comp.pinyin || ''}</div>
           <div class="comp-hint">${comp.hint_vi}</div>
         `;
+        // Tương tác chạm vào linh kiện Lego: Phát âm và đổi màu
+        box.addEventListener('click', () => {
+          playAudio(comp.character);
+          updateWriterStatus(`Đang xem cấu kiện '${comp.character}': ${comp.hint_vi}`, "info");
+        });
         componentsGrid.appendChild(box);
       });
 
       const typeName = item.structure?.type_vi || item.structure?.type_name || item.structure?.type || '';
       structureSummary.innerHTML = `<strong>${typeName}:</strong> ${item.structure?.description || ''}`;
 
-      // Từ nguyên & Câu chuyện
+      // Từ nguyên & Bộ tranh diễn biến cổ
       etymologyStory.textContent = item.etymology?.story_vi || '';
-      const evolutionList = item.etymology?.evolution || [];
-      evolutionTimeline.innerHTML = evolutionList.map(evo => `
-        <div class="evo-step">
-          <div class="evo-name">${evo.stage}</div>
-          <div class="evo-status">${evo.status}</div>
-        </div>
-      `).join('');
+      renderEvolutionGallery(item);
 
       // Từ vựng HSK1
       compoundsList.innerHTML = (item.compound_words || []).map(c => `
@@ -815,6 +973,19 @@
         updateWriterStatus("Không thể tải gói dữ liệu chữ Hán. Vui lòng kiểm tra lại kết nối mạng.", "mistake");
       }
     }
+
+    // Chuyển đổi giữa Ô Mễ tự cách và Điền tự cách
+    btnGridMi.addEventListener('click', () => {
+      btnGridMi.classList.add('active');
+      btnGridTian.classList.remove('active');
+      gridContainer.classList.remove('tian-mode');
+    });
+
+    btnGridTian.addEventListener('click', () => {
+      btnGridTian.classList.add('active');
+      btnGridMi.classList.remove('active');
+      gridContainer.classList.add('tian-mode');
+    });
 
     // Gán sự kiện nút bấm
     btnAudio.addEventListener('click', () => {
