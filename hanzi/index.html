@@ -1,1517 +1,1774 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Giải Mã Hán Tự - HSK 1</title>
-​<!-- Thẻ Cấu hình PWA & Biểu tượng -->
-<meta name="theme-color" content="#BE123C">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Giải Mã HSK1">
-<link rel="manifest" href="./app.webmanifest">
-<link rel="icon" type="image/svg+xml" href="./icon.svg">
-<link rel="apple-touch-icon" href="./icon.svg">
-​<!-- Thư viện nguồn mở Hanzi Writer (Giấy phép MIT) -->
-<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
-​<style>
-:root {
---bg: #F8FAFC;
---card-bg: #FFFFFF;
---primary: #BE123C;
---primary-soft: #FFE4E6;
---text-main: #0F172A;
---text-muted: #64748B;
---border: #E2E8F0;
---accent-semantic: #0D9488;
---accent-semantic-bg: #CCFBF1;
---accent-phonetic: #D97706;
---accent-phonetic-bg: #FEF3C7;
---success: #059669;
---success-soft: #D1FAE5;
---error: #DC2626;
---error-soft: #FEE2E2;
---radius: 16px;
---safe-top: env(safe-area-inset-top, 0px);
---safe-bottom: env(safe-area-inset-bottom, 0px);
-}
-​* {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
--webkit-tap-highlight-color: transparent;
-}
-​body {
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-background-color: var(--bg);
-color: var(--text-main);
-line-height: 1.5;
-display: flex;
-justify-content: center;
-min-height: 100vh;
-padding-top: var(--safe-top);
-padding-bottom: calc(var(--safe-bottom) + 95px);
-}
-​#app-container {
-width: 100%;
-max-width: 460px;
-padding: 12px 16px;
-display: flex;
-flex-direction: column;
-gap: 14px;
-}
-​/* Top Navigation */
-.top-bar {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 4px 0;
-}
-​.top-actions {
-display: flex;
-align-items: center;
-gap: 8px;
-}
-​.btn-back {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-text-decoration: none;
-color: var(--text-muted);
-font-size: 14px;
-font-weight: 500;
-padding: 7px 12px;
-background: #FFFFFF;
-border: 1px solid var(--border);
-border-radius: 999px;
-box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-}
-​.btn-icon-top {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-width: 34px;
-height: 34px;
-background: #FFFFFF;
-border: 1px solid var(--border);
-border-radius: 50%;
-font-size: 15px;
-cursor: pointer;
-color: var(--text-muted);
-box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-}
-​.counter-badge {
-font-size: 13px;
-font-weight: 600;
-color: var(--primary);
-background: var(--primary-soft);
-padding: 4px 10px;
-border-radius: 999px;
-}
-​/* Quick Selector & Filter Deck */
-.control-deck {
-display: flex;
-flex-direction: column;
-gap: 8px;
-}
-​.filter-tabs {
-display: flex;
-gap: 6px;
-background: #E2E8F0;
-padding: 3px;
-border-radius: 10px;
-}
-​.filter-tab {
-flex: 1;
-border: none;
-background: transparent;
-padding: 6px 0;
-font-size: 12px;
-font-weight: 600;
-color: var(--text-muted);
-border-radius: 8px;
-cursor: pointer;
-transition: all 0.15s ease;
-text-align: center;
-}
-​.filter-tab.active {
-background: #FFFFFF;
-color: var(--primary);
-box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
-​.search-box-wrapper {
-position: relative;
-width: 100%;
-}
-​.search-input {
-width: 100%;
-height: 40px;
-padding: 0 12px 0 36px;
-font-size: 16px;
-border: 1px solid var(--border);
-border-radius: 12px;
-background: #FFFFFF;
-color: var(--text-main);
-outline: none;
-}
-​.search-icon {
-position: absolute;
-left: 12px;
-top: 50%;
-transform: translateY(-50%);
-font-size: 14px;
-color: var(--text-muted);
-pointer-events: none;
-}
-​.selector-select {
-width: 100%;
-height: 40px;
-padding: 0 12px;
-font-size: 14px;
-border: 1px solid var(--border);
-border-radius: 12px;
-background: #FFFFFF;
-color: var(--text-main);
-outline: none;
-}
-​/* Character Hero Card */
-.char-card {
-background: var(--card-bg);
-border-radius: var(--radius);
-border: 1px solid var(--border);
-padding: 16px;
-text-align: center;
-box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-position: relative;
-}
-​.card-top-action {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 8px;
-}
-​.srs-status-tag {
-font-size: 11px;
-font-weight: 700;
-padding: 3px 8px;
-border-radius: 999px;
-background: #F1F5F9;
-color: var(--text-muted);
-}
-​.srs-status-tag.learning {
-background: #FEF3C7;
-color: #B45309;
-}
-​.srs-status-tag.mastered {
-background: #D1FAE5;
-color: #065F46;
-}
-​.flashcard-toggle-btn {
-border: 1px solid var(--border);
-background: #F8FAFC;
-color: var(--text-muted);
-font-size: 12px;
-font-weight: 600;
-padding: 4px 10px;
-border-radius: 8px;
-cursor: pointer;
-}
-​.flashcard-toggle-btn.active {
-background: #FFF1F2;
-color: var(--primary);
-border-color: #FECDD3;
-}
-​.pinyin-audio-row {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 10px;
-margin-bottom: 4px;
-min-height: 42px;
-}
-​.pinyin-text {
-font-size: 28px;
-font-weight: 700;
-color: var(--primary);
-letter-spacing: 0.5px;
-}
-​.audio-btn {
-background: var(--primary-soft);
-border: none;
-color: var(--primary);
-width: 36px;
-height: 36px;
-border-radius: 50%;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-font-size: 17px;
-}
-​.meaning-text {
-font-size: 18px;
-font-weight: 700;
-color: var(--text-main);
-margin-bottom: 8px;
-min-height: 27px;
-}
-​/* Ẩn đáp án trong chế độ Flashcard */
-.hidden-answer {
-filter: blur(8px);
-user-select: none;
-transition: filter 0.2s ease;
-}
-​.btn-reveal-answer {
-display: inline-flex;
-align-items: center;
-gap: 4px;
-background: var(--primary);
-color: #FFFFFF;
-font-size: 13px;
-font-weight: 600;
-border: none;
-padding: 7px 16px;
-border-radius: 8px;
-margin-bottom: 8px;
-cursor: pointer;
-box-shadow: 0 2px 6px rgba(190, 18, 60, 0.3);
-}
-​.meta-pills {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-gap: 6px;
-}
-​.pill {
-font-size: 12px;
-font-weight: 500;
-padding: 4px 10px;
-border-radius: 999px;
-background: #F1F5F9;
-color: var(--text-muted);
-}
-​/* SRS Rating Deck */
-.srs-rating-container {
-margin-top: 14px;
-padding-top: 12px;
-border-top: 1px dashed var(--border);
-}
-​.srs-rating-title {
-font-size: 12px;
-color: var(--text-muted);
-margin-bottom: 8px;
-font-weight: 500;
-}
-​.srs-buttons-row {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 6px;
-}
-​.btn-srs {
-border: 1px solid var(--border);
-background: #FFFFFF;
-border-radius: 10px;
-padding: 7px 2px;
-font-size: 12px;
-font-weight: 600;
-cursor: pointer;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 2px;
-transition: transform 0.1s ease;
-}
-​.btn-srs:active {
-transform: scale(0.94);
-}
-​.btn-srs.again {
-border-color: #FECACA;
-color: #DC2626;
-background: #FFF5F5;
-}
-​.btn-srs.hard {
-border-color: #FED7AA;
-color: #EA580C;
-background: #FFF7ED;
-}
-​.btn-srs.good {
-border-color: #A7F3D0;
-color: #059669;
-background: #F0FDF4;
-}
-​.btn-srs.easy {
-border-color: #BAE6FD;
-color: #0284C7;
-background: #F0F9FF;
-}
-​.btn-srs .time-hint {
-font-size: 10px;
-opacity: 0.75;
-font-weight: normal;
-}
-​/* Section Cards */
-.section-card {
-background: var(--card-bg);
-border-radius: var(--radius);
-border: 1px solid var(--border);
-padding: 16px;
-box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
-}
-​.section-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 12px;
-}
-​.section-title {
-font-size: 14px;
-font-weight: 700;
-color: var(--text-muted);
-text-transform: uppercase;
-letter-spacing: 0.8px;
-display: flex;
-align-items: center;
-gap: 6px;
-}
-​/* Grid Style Toggle */
-.grid-toggle-group {
-display: flex;
-gap: 4px;
-background: #F1F5F9;
-padding: 2px;
-border-radius: 8px;
-}
-​.grid-toggle-btn {
-border: none;
-background: transparent;
-font-size: 11px;
-font-weight: 600;
-padding: 3px 8px;
-border-radius: 6px;
-cursor: pointer;
-color: var(--text-muted);
-}
-​.grid-toggle-btn.active {
-background: #FFFFFF;
-color: var(--primary);
-box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-}
-​/* Hanzi Writer Stage */
-.writer-stage-wrapper {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 12px;
-}
-​.mige-box {
-width: 204px;
-height: 204px;
-position: relative;
-background-color: #FFFDF9;
-border: 2px solid #F43F5E;
-border-radius: 12px;
-box-shadow: 0 4px 12px rgba(244, 63, 94, 0.08);
-touch-action: none;
-overflow: hidden;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-​.mige-svg-grid {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none;
-}
-​.diagonal-lines {
-transition: opacity 0.2s ease;
-}
-​.mige-box.tian-mode .diagonal-lines {
-opacity: 0;
-}
-​#writer-target {
-position: relative;
-z-index: 2;
-width: 200px;
-height: 200px;
-}
-​.writer-actions {
-display: flex;
-gap: 8px;
-width: 100%;
-max-width: 320px;
-}
-​.btn-action {
-flex: 1;
-padding: 9px 0;
-font-size: 13px;
-font-weight: 600;
-border-radius: 10px;
-border: 1px solid var(--border);
-background: #FFFFFF;
-color: var(--text-main);
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 4px;
-}
-​.btn-action.primary {
-background: var(--primary);
-color: #FFFFFF;
-border-color: var(--primary);
-}
-​.writer-status {
-width: 100%;
-font-size: 13px;
-padding: 8px 12px;
-border-radius: 8px;
-text-align: center;
-background: #F8FAFC;
-color: var(--text-muted);
-border: 1px dashed var(--border);
-min-height: 38px;
-display: flex;
-align-items: center;
-justify-content: center;
-line-height: 1.3;
-}
-​.writer-status.info {
-color: #1E40AF;
-background: #EFF6FF;
-border-color: #BFDBFE;
-}
-​.writer-status.correct {
-color: var(--success);
-background: var(--success-soft);
-border-color: #A7F3D0;
-}
-​.writer-status.mistake {
-color: var(--error);
-background: var(--error-soft);
-border-color: #FECACA;
-}
-​.writer-status.success {
-color: #065F46;
-background: var(--success-soft);
-border-color: #34D399;
-font-weight: 600;
-}
-​/* Decomposition / Lego Blocks */
-.components-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 10px;
-margin-bottom: 12px;
-}
-​.component-box {
-border: 1px solid var(--border);
-border-radius: 12px;
-padding: 12px 10px;
-text-align: center;
-background: #FAFAFA;
-cursor: pointer;
-}
-​.component-box.semantic {
-border-color: #99F6E4;
-background: #F0FDFA;
-}
-​.component-box.phonetic {
-border-color: #FDE68A;
-background: #FFFBEB;
-}
-​.comp-char {
-font-family: "Noto Serif SC", "Kaiti", "STKaiti", serif;
-font-size: 34px;
-line-height: 1.1;
-margin-bottom: 4px;
-}
-​.comp-tag {
-font-size: 11px;
-font-weight: 700;
-padding: 2px 8px;
-border-radius: 999px;
-display: inline-block;
-margin-bottom: 4px;
-}
-​.component-box.semantic .comp-tag {
-background: var(--accent-semantic-bg);
-color: var(--accent-semantic);
-}
-​.component-box.phonetic .comp-tag {
-background: var(--accent-phonetic-bg);
-color: var(--accent-phonetic);
-}
-​.comp-hint {
-font-size: 12px;
-color: var(--text-muted);
-line-height: 1.3;
-}
-​.structure-summary {
-font-size: 13px;
-background: #F8FAFC;
-border-radius: 8px;
-padding: 9px 12px;
-color: var(--text-main);
-border-left: 3px solid var(--primary);
-}
-​/* Ancient Evolution Gallery */
-.evolution-gallery {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 6px;
-margin-bottom: 12px;
-}
-​.evo-card {
-background: #FFFDF9;
-border: 1px solid #E2E8F0;
-border-radius: 10px;
-padding: 8px 4px;
-text-align: center;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-min-height: 82px;
-}
-​.evo-stage-title {
-font-size: 11px;
-font-weight: 600;
-color: var(--text-muted);
-margin-bottom: 4px;
-}
-​.evo-glyph-box {
-width: 42px;
-height: 42px;
-display: flex;
-align-items: center;
-justify-content: center;
-color: var(--primary);
-}
-​.evo-glyph-box svg {
-width: 100%;
-height: 100%;
-}
-​.evo-modern-char {
-font-family: "Noto Serif SC", "Kaiti", serif;
-font-size: 26px;
-line-height: 1;
-font-weight: 700;
-color: var(--text-main);
-}
-​.etymology-story {
-font-size: 14px;
-color: var(--text-main);
-line-height: 1.6;
-background: #FFF1F2;
-padding: 12px 14px;
-border-radius: 10px;
-border-left: 3px solid var(--primary);
-}
-​/* Compound Words */
-.compounds-list {
-display: flex;
-flex-direction: column;
-gap: 8px;
-}
-​.compound-item {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 9px 12px;
-background: #F8FAFC;
-border-radius: 8px;
-border: 1px solid var(--border);
-}
-​.compound-hanzi {
-font-size: 18px;
-font-weight: 600;
-color: var(--text-main);
-font-family: "Noto Serif SC", serif;
-}
-​.compound-pinyin {
-font-size: 13px;
-color: var(--primary);
-margin-left: 6px;
-}
-​.compound-meaning {
-font-size: 13px;
-color: var(--text-muted);
-}
-​/* Bottom Navigation */
-.bottom-nav {
-position: fixed;
-bottom: 0;
-left: 0;
-right: 0;
-background: #FFFFFF;
-border-top: 1px solid var(--border);
-padding: 10px 16px calc(var(--safe-bottom) + 10px) 16px;
-display: flex;
-justify-content: center;
-box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-z-index: 100;
-}
-​.nav-inner {
-width: 100%;
-max-width: 460px;
-display: flex;
-gap: 12px;
-}
-​.nav-btn {
-flex: 1;
-height: 46px;
-border-radius: 12px;
-font-size: 15px;
-font-weight: 600;
-border: none;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 6px;
-}
-​.nav-btn.prev {
-background: #F1F5F9;
-color: var(--text-main);
-}
-​.nav-btn.next {
-background: var(--primary);
-color: #FFFFFF;
-}
-​.nav-btn:disabled {
-opacity: 0.4;
-cursor: not-allowed;
-}
-​/* Bảng Quản Lý Tiến Độ (Modal Dialog) */
-.modal-overlay {
-position: fixed;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: rgba(15, 23, 42, 0.6);
-backdrop-filter: blur(4px);
-z-index: 1000;
-display: none;
-align-items: center;
-justify-content: center;
-padding: 16px;
-}
-​.modal-overlay.open {
-display: flex;
-}
-​.modal-card {
-background: #FFFFFF;
-width: 100%;
-max-width: 400px;
-border-radius: 20px;
-padding: 20px;
-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-display: flex;
-flex-direction: column;
-gap: 14px;
-}
-​.modal-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-​.modal-title {
-font-size: 16px;
-font-weight: 700;
-color: var(--text-main);
-}
-​.btn-close-modal {
-background: #F1F5F9;
-border: none;
-width: 30px;
-height: 30px;
-border-radius: 50%;
-font-size: 14px;
-color: var(--text-muted);
-cursor: pointer;
-}
-​.stats-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 8px;
-text-align: center;
-}
-​.stat-box {
-background: #F8FAFC;
-border: 1px solid var(--border);
-border-radius: 12px;
-padding: 10px 4px;
-}
-​.stat-val {
-font-size: 20px;
-font-weight: 700;
-color: var(--primary);
-}
-​.stat-lbl {
-font-size: 11px;
-color: var(--text-muted);
-}
-​.modal-action-btn {
-width: 100%;
-padding: 11px 16px;
-border-radius: 12px;
-font-size: 14px;
-font-weight: 600;
-border: 1px solid var(--border);
-background: #FFFFFF;
-color: var(--text-main);
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-cursor: pointer;
-}
-​.modal-action-btn.export {
-background: #EFF6FF;
-color: #1D4ED8;
-border-color: #BFDBFE;
-}
-​.modal-action-btn.import {
-background: #F0FDF4;
-color: #059669;
-border-color: #BBF7D0;
-}
-​.modal-action-btn.danger {
-background: #FFF1F2;
-color: #DC2626;
-border-color: #FECDD3;
-margin-top: 6px;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Giải Mã Hán Tự - HSK 1</title>
+  
+  <!-- Thẻ Cấu hình PWA & Biểu tượng -->
+  <meta name="theme-color" content="#BE123C">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Giải Mã HSK1">
+  <link rel="manifest" href="./app.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="apple-touch-icon" href="./icon.svg">
+
+  <!-- Thư viện nguồn mở Hanzi Writer (Giấy phép MIT) -->
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --primary: #BE123C;
+      --primary-soft: #FFE4E6;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --accent-semantic: #0D9488;
+      --accent-semantic-bg: #CCFBF1;
+      --accent-phonetic: #D97706;
+      --accent-phonetic-bg: #FEF3C7;
+      --success: #059669;
+      --success-soft: #D1FAE5;
+      --error: #DC2626;
+      --error-soft: #FEE2E2;
+      --radius: 16px;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding-top: var(--safe-top);
+      padding-bottom: calc(var(--safe-bottom) + 95px);
+    }
+
+    #app-container {
+      width: 100%;
+      max-width: 460px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Top Navigation */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 7px 12px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .btn-icon-top {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      font-size: 15px;
+      cursor: pointer;
+      color: var(--text-muted);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .counter-badge {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* Quick Selector & Filter Deck */
+    .control-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 6px;
+      background: #E2E8F0;
+      padding: 3px;
+      border-radius: 10px;
+    }
+
+    .filter-tab {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 6px 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .filter-tab.active {
+      background: #FFFFFF;
+      color: var(--primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .search-box-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 40px;
+      padding: 0 12px 0 36px;
+      font-size: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #FFFFFF;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .selector-select {
+      width: 100%;
+      height: 40px;
+      padding: 0 12px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #FFFFFF;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    /* Character Hero Card */
+    .char-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+      position: relative;
+    }
+
+    .card-top-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .srs-status-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #F1F5F9;
+      color: var(--text-muted);
+    }
+
+    .srs-status-tag.learning {
+      background: #FEF3C7;
+      color: #B45309;
+    }
+
+    .srs-status-tag.mastered {
+      background: #D1FAE5;
+      color: #065F46;
+    }
+
+    .flashcard-toggle-btn {
+      border: 1px solid var(--border);
+      background: #F8FAFC;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .flashcard-toggle-btn.active {
+      background: #FFF1F2;
+      color: var(--primary);
+      border-color: #FECDD3;
+    }
+
+    .pinyin-audio-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 4px;
+      min-height: 42px;
+    }
+
+    .pinyin-text {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+
+    .audio-btn {
+      background: var(--primary-soft);
+      border: none;
+      color: var(--primary);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .meaning-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      min-height: 27px;
+    }
+
+    /* Ẩn đáp án trong chế độ Flashcard */
+    .hidden-answer {
+      filter: blur(8px);
+      user-select: none;
+      transition: filter 0.2s ease;
+    }
+
+    .btn-reveal-answer {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(190, 18, 60, 0.3);
+    }
+
+    .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .pill {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #F1F5F9;
+      color: var(--text-muted);
+    }
+
+    /* SRS Rating Deck */
+    .srs-rating-container {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .srs-rating-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .srs-buttons-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .btn-srs {
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      border-radius: 10px;
+      padding: 7px 2px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      transition: transform 0.1s ease;
+    }
+
+    .btn-srs:active {
+      transform: scale(0.94);
+    }
+
+    .btn-srs.again {
+      border-color: #FECACA;
+      color: #DC2626;
+      background: #FFF5F5;
+    }
+
+    .btn-srs.hard {
+      border-color: #FED7AA;
+      color: #EA580C;
+      background: #FFF7ED;
+    }
+
+    .btn-srs.good {
+      border-color: #A7F3D0;
+      color: #059669;
+      background: #F0FDF4;
+    }
+
+    .btn-srs.easy {
+      border-color: #BAE6FD;
+      color: #0284C7;
+      background: #F0F9FF;
+    }
+
+    .btn-srs .time-hint {
+      font-size: 10px;
+      opacity: 0.75;
+      font-weight: normal;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Grid Style Toggle */
+    .grid-toggle-group {
+      display: flex;
+      gap: 4px;
+      background: #F1F5F9;
+      padding: 2px;
+      border-radius: 8px;
+    }
+
+    .grid-toggle-btn {
+      border: none;
+      background: transparent;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .grid-toggle-btn.active {
+      background: #FFFFFF;
+      color: var(--primary);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    /* Hanzi Writer Stage */
+    .writer-stage-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mige-box {
+      width: 204px;
+      height: 204px;
+      position: relative;
+      background-color: #FFFDF9;
+      border: 2px solid #F43F5E;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(244, 63, 94, 0.08);
+      touch-action: none;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mige-svg-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .diagonal-lines {
+      transition: opacity 0.2s ease;
+    }
+
+    .mige-box.tian-mode .diagonal-lines {
+      opacity: 0;
+    }
+
+    #writer-target {
+      position: relative;
+      z-index: 2;
+      width: 200px;
+      height: 200px;
+    }
+
+    .writer-actions {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .btn-action {
+      flex: 1;
+      padding: 9px 0;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .btn-action.primary {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .writer-status {
+      width: 100%;
+      font-size: 13px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      background: #F8FAFC;
+      color: var(--text-muted);
+      border: 1px dashed var(--border);
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.3;
+    }
+
+    .writer-status.info {
+      color: #1E40AF;
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+    }
+
+    .writer-status.correct {
+      color: var(--success);
+      background: var(--success-soft);
+      border-color: #A7F3D0;
+    }
+
+    .writer-status.mistake {
+      color: var(--error);
+      background: var(--error-soft);
+      border-color: #FECACA;
+    }
+
+    .writer-status.success {
+      color: #065F46;
+      background: var(--success-soft);
+      border-color: #34D399;
+      font-weight: 600;
+    }
+
+    /* Decomposition / Lego Blocks */
+    .components-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .component-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 10px;
+      text-align: center;
+      background: #FAFAFA;
+      cursor: pointer;
+    }
+
+    .component-box.semantic {
+      border-color: #99F6E4;
+      background: #F0FDFA;
+    }
+
+    .component-box.phonetic {
+      border-color: #FDE68A;
+      background: #FFFBEB;
+    }
+
+    .comp-char {
+      font-family: "Noto Serif SC", "Kaiti", "STKaiti", serif;
+      font-size: 34px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .comp-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .component-box.semantic .comp-tag {
+      background: var(--accent-semantic-bg);
+      color: var(--accent-semantic);
+    }
+
+    .component-box.phonetic .comp-tag {
+      background: var(--accent-phonetic-bg);
+      color: var(--accent-phonetic);
+    }
+
+    .comp-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    .structure-summary {
+      font-size: 13px;
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: var(--text-main);
+      border-left: 3px solid var(--primary);
+    }
+
+    /* Ancient Evolution Gallery */
+    .evolution-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .evo-card {
+      background: #FFFDF9;
+      border: 1px solid #E2E8F0;
+      border-radius: 10px;
+      padding: 8px 4px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 82px;
+    }
+
+    .evo-stage-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .evo-glyph-box {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .evo-glyph-box svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .evo-modern-char {
+      font-family: "Noto Serif SC", "Kaiti", serif;
+      font-size: 26px;
+      line-height: 1;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .etymology-story {
+      font-size: 14px;
+      color: var(--text-main);
+      line-height: 1.6;
+      background: #FFF1F2;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border-left: 3px solid var(--primary);
+    }
+
+    /* Compound Words */
+    .compounds-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .compound-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 12px;
+      background: #F8FAFC;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .compound-hanzi {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-main);
+      font-family: "Noto Serif SC", serif;
+    }
+
+    .compound-pinyin {
+      font-size: 13px;
+      color: var(--primary);
+      margin-left: 6px;
+    }
+
+    .compound-meaning {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      border-top: 1px solid var(--border);
+      padding: 10px 16px calc(var(--safe-bottom) + 10px) 16px;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+      z-index: 100;
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 460px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      flex: 1;
+      height: 46px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .nav-btn.prev {
+      background: #F1F5F9;
+      color: var(--text-main);
+    }
+
+    .nav-btn.next {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Bảng Quản Lý Tiến Độ (Modal Dialog) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .btn-close-modal {
+      background: #F1F5F9;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 14px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      text-align: center;
+    }
+
+    .stat-box {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 4px;
+    }
+
+    .stat-val {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .modal-action-btn {
+      width: 100%;
+      padding: 11px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .modal-action-btn.export {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border-color: #BFDBFE;
+    }
+
+    .modal-action-btn.import {
+      background: #F0FDF4;
+      color: #059669;
+      border-color: #BBF7D0;
+    }
+
+    .modal-action-btn.danger {
+      background: #FFF1F2;
+      color: #DC2626;
+      border-color: #FECDD3;
+      margin-top: 6px;
+    }
+  </style>
 </head>
 <body>
-​<div id="app-container">
-<!-- Top Bar -->
-<header class="top-bar">
-<a href="../index.html" class="btn-back">
-<span>←</span> Bài học cũ
-</a>
-<div class="top-actions">
-<button class="btn-icon-top" id="btn-open-srs-modal" title="Quản lý tiến độ & Sao lưu" aria-label="Tiến độ học tập">⚙️</button>
-<span class="counter-badge" id="char-counter">Đang nạp...</span>
-</div>
-</header>
-​<!-- Quick Selector, Tabs & Search Controls -->
-<div class="control-deck">
-<!-- Bộ lọc thẻ học / Ôn tập -->
-<div class="filter-tabs">
-<button class="filter-tab active" id="tab-all">Tất cả (<span id="count-all">25</span>)</button>
-<button class="filter-tab" id="tab-review">Cần ôn (<span id="count-review">0</span>)</button>
-<button class="filter-tab" id="tab-mastered">Đã thuộc (<span id="count-mastered">0</span>)</button>
-</div>
-​<div class="search-box-wrapper">
-<span class="search-icon">🔍</span>
-<input type="search" id="char-search" class="search-input" placeholder="Tìm chữ, pinyin, nghĩa..." autocomplete="off">
-</div>
-<select id="char-select" class="selector-select" aria-label="Chọn chữ Hán">
-<option>Đang nạp danh mục chữ...</option>
-</select>
-</div>
-​<!-- Main Character Hero Card -->
-<main>
-<article class="char-card">
-<div class="card-top-action">
-<span class="srs-status-tag" id="srs-status-tag">Mới bắt đầu</span>
-<button class="flashcard-toggle-btn" id="btn-toggle-flashcard">👁️ Chế độ ôn bài</button>
-</div>
-​<div class="pinyin-audio-row">
-<span class="pinyin-text" id="pinyin-display">--</span>
-<button class="audio-btn" id="btn-audio" title="Phát âm" aria-label="Phát âm">🔊</button>
-</div>
-​<div class="meaning-text" id="meaning-display">Đang nạp...</div>
-​<!-- Nút Lật đáp án khi bật chế độ Flashcard -->
-<div id="reveal-container" style="display: none;">
-<button class="btn-reveal-answer" id="btn-reveal">👁️ Hiện đáp án & Chiết tự</button>
-</div>
-​<div class="meta-pills" id="meta-pills"></div>
-​<!-- Khung Đánh Giá SRS (Ghi nhớ ngắt quãng) -->
-<div class="srs-rating-container">
-<div class="srs-rating-title">Mức độ thuộc chữ này của bạn:</div>
-<div class="srs-buttons-row">
-<button class="btn-srs again" data-rating="1">
-<span>🔴 Quên</span>
-<span class="time-hint">Ôn ngay</span>
-</button>
-<button class="btn-srs hard" data-rating="2">
-<span>🟡 Khó</span>
-<span class="time-hint">1 ngày</span>
-</button>
-<button class="btn-srs good" data-rating="3">
-<span>🟢 Thuộc</span>
-<span class="time-hint">3 ngày</span>
-</button>
-<button class="btn-srs easy" data-rating="4">
-<span>⭐ Dễ</span>
-<span class="time-hint">7 ngày</span>
-</button>
-</div>
-</div>
-</article>
-​<!-- Section: Interactive Handwriting Pad (Hanzi Writer) -->
-<section class="section-card" style="margin-top: 14px;">
-<div class="section-header">
-<h2 class="section-title">
-<span>✍️</span> Bút thuận & Luyện viết
-</h2>
-<div class="grid-toggle-group">
-<button class="grid-toggle-btn active" id="btn-grid-mi" title="Ô Mễ tự cách (8 ô)">Mễ (米)</button>
-<button class="grid-toggle-btn" id="btn-grid-tian" title="Ô Điền tự cách (4 ô)">Điền (田)</button>
-</div>
-</div>
-​<div class="writer-stage-wrapper">
-<div class="mige-box" id="grid-container">
-<svg class="mige-svg-grid" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-<line x1="0" y1="100" x2="200" y2="100" stroke="#FDA4AF" stroke-width="1.2" stroke-dasharray="4 4" />
-<line x1="100" y1="0" x2="100" y2="200" stroke="#FDA4AF" stroke-width="1.2" stroke-dasharray="4 4" />
-<g class="diagonal-lines" id="diagonal-lines">
-<line x1="0" y1="0" x2="200" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
-<line x1="200" y1="0" x2="0" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
-</g>
-</svg>
-<div id="writer-target"></div>
-</div>
-​<div class="writer-actions">
-<button class="btn-action" id="btn-animate" title="Xem thứ tự nét">▶ Xem nét</button>
-<button class="btn-action primary" id="btn-quiz" title="Tự tay viết">✏️ Tập viết</button>
-<button class="btn-action" id="btn-reset" title="Xóa viết lại">🔄 Viết lại</button>
-</div>
-​<div class="writer-status info" id="writer-status">
-Bấm "▶ Xem nét" để xem thứ tự viết, hoặc "✏️ Tập viết" để dùng ngón tay vẽ theo.
-</div>
-</div>
-</section>
-​<!-- Structure & Component Decomposition (Chiết tự) -->
-<section class="section-card detail-collapsible" id="sec-decomposition" style="margin-top: 14px;">
-<h2 class="section-title">
-<span>🧩</span> Phân rã cấu trúc (Chiết tự)
-</h2>
-<div class="components-grid" id="components-grid"></div>
-<div class="structure-summary" id="structure-summary"></div>
-</section>
-​<!-- Ancient Script Evolution Gallery & Story -->
-<section class="section-card detail-collapsible" id="sec-evolution" style="margin-top: 14px;">
-<h2 class="section-title">
-<span>📜</span> Diễn biến văn tự & Từ nguyên
-</h2>
-<div class="evolution-gallery" id="evolution-gallery"></div>
-<div class="etymology-story" id="etymology-story"></div>
-</section>
-​<!-- Compound Words -->
-<section class="section-card detail-collapsible" id="sec-compounds" style="margin-top: 14px;">
-<h2 class="section-title">
-<span>📖</span> Từ vựng thường gặp (HSK 1)
-</h2>
-<div class="compounds-list" id="compounds-list"></div>
-</section>
-</main>
-</div>
-​<!-- Bottom Sticky Navigation -->
-<footer class="bottom-nav">
-<div class="nav-inner">
-<button class="nav-btn prev" id="btn-prev">← Chữ trước</button>
-<button class="nav-btn next" id="btn-next">Chữ sau →</button>
-</div>
-</footer>
-​<!-- Bảng Quản Lý Tiến Độ & Sao Lưu (Modal) -->
-<div class="modal-overlay" id="srs-modal">
-<div class="modal-card">
-<div class="modal-header">
-<div class="modal-title">⚙️ Tiến độ học & Sao lưu</div>
-<button class="btn-close-modal" id="btn-close-modal">✕</button>
-</div>
-​<div class="stats-grid">
-<div class="stat-box">
-<div class="stat-val" id="stat-mastered">0</div>
-<div class="stat-lbl">Đã thuộc làu</div>
-</div>
-<div class="stat-box">
-<div class="stat-val" id="stat-review" style="color: #EA580C;">0</div>
-<div class="stat-lbl">Cần ôn tập</div>
-</div>
-<div class="stat-box">
-<div class="stat-val" id="stat-total" style="color: #64748B;">25</div>
-<div class="stat-lbl">Tổng số chữ</div>
-</div>
-</div>
-​<button class="modal-action-btn export" id="btn-export-srs">
-<span>💾</span> Xuất file sao lưu (.json)
-</button>
-​<button class="modal-action-btn import" id="btn-trigger-import">
-<span>📥</span> Nhập file khôi phục (.json)
-</button>
-<input type="file" id="import-file-input" accept=".json" style="display: none;">
-​<button class="modal-action-btn danger" id="btn-reset-srs">
-<span>🗑️</span> Đặt lại tiến độ (Học từ đầu)
-</button>
-</div>
-</div>
-​<script type="module">
-// Kho hình vector văn tự cổ đại chuẩn xác
-const ANCIENT_GLYPHS = {
-"人": {
-oracle: <svg viewBox="0 0 100 100"><path d="M48 20 C48 35, 42 50, 26 80 M46 45 C55 60, 68 75, 76 82" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>,
-bronze: <svg viewBox="0 0 100 100"><path d="M50 18 C50 38, 42 58, 28 82 M47 48 C58 62, 70 76, 76 82" fill="none" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/></svg>,
-seal: <svg viewBox="0 0 100 100"><path d="M50 15 C50 45, 40 65, 26 85 M48 45 C60 65, 72 75, 76 85" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>
-},
-"大": {
-oracle: <svg viewBox="0 0 100 100"><line x1="50" y1="18" x2="50" y2="82" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/><line x1="20" y1="46" x2="80" y2="46" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/><path d="M50 48 L25 82 M50 48 L75 82" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>,
-bronze: <svg viewBox="0 0 100 100"><line x1="50" y1="16" x2="50" y2="84" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/><path d="M20 44 Q50 46 80 44" fill="none" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/><path d="M50 46 Q35 70 25 84 M50 46 Q65 70 75 84" fill="none" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/></svg>,
-seal: <svg viewBox="0 0 100 100"><line x1="50" y1="15" x2="50" y2="85" stroke="#BE123C" stroke-width="7"/><path d="M20 42 C40 45, 60 45, 80 42" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M50 45 C35 70, 30 80, 24 85 M50 45 C65 70, 70 80, 76 85" fill="none" stroke="#BE123C" stroke-width="7"/></svg>
-},
-"天": {
-oracle: <svg viewBox="0 0 100 100"><rect x="35" y="16" width="30" height="18" rx="6" fill="none" stroke="#BE123C" stroke-width="6"/><line x1="50" y1="34" x2="50" y2="82" stroke="#BE123C" stroke-width="6"/><line x1="20" y1="52" x2="80" y2="52" stroke="#BE123C" stroke-width="6"/><path d="M50 52 L26 82 M50 52 L74 82" stroke="#BE123C" stroke-width="6"/></svg>,
-bronze: <svg viewBox="0 0 100 100"><circle cx="50" cy="22" r="10" fill="#BE123C"/><line x1="50" y1="32" x2="50" y2="82" stroke="#BE123C" stroke-width="7"/><line x1="20" y1="50" x2="80" y2="50" stroke="#BE123C" stroke-width="7"/><path d="M50 50 L26 84 M50 50 L74 84" stroke="#BE123C" stroke-width="7"/></svg>,
-seal: <svg viewBox="0 0 100 100"><line x1="25" y1="22" x2="75" y2="22" stroke="#BE123C" stroke-width="7"/><line x1="50" y1="22" x2="50" y2="84" stroke="#BE123C" stroke-width="7"/><path d="M22 45 Q50 46 78 45" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M50 46 C35 70, 30 80, 24 85 M50 46 C65 70, 70 80, 76 85" fill="none" stroke="#BE123C" stroke-width="7"/></svg>
-},
-"木": {
-oracle: <svg viewBox="0 0 100 100"><line x1="50" y1="16" x2="50" y2="84" stroke="#BE123C" stroke-width="7"/><path d="M24 45 C38 40, 48 35, 50 35 C52 35, 62 40, 76 45" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M24 78 C38 65, 48 60, 50 60 C52 60, 62 65, 76 78" fill="none" stroke="#BE123C" stroke-width="7"/></svg>,
-bronze: <svg viewBox="0 0 100 100"><line x1="50" y1="16" x2="50" y2="84" stroke="#BE123C" stroke-width="8"/><path d="M22 44 Q48 36 50 36 Q52 36 78 44" fill="none" stroke="#BE123C" stroke-width="8"/><path d="M22 80 Q48 62 50 62 Q52 62 78 80" fill="none" stroke="#BE123C" stroke-width="8"/></svg>,
-seal: <svg viewBox="0 0 100 100"><line x1="50" y1="14" x2="50" y2="86" stroke="#BE123C" stroke-width="7"/><path d="M22 42 C40 36, 50 36, 50 36 C50 36, 60 36, 78 42" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M24 82 C38 68, 48 60, 50 60 C52 60, 62 68, 76 82" fill="none" stroke="#BE123C" stroke-width="7"/></svg>
-},
-"日": {
-oracle: <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="#BE123C" stroke-width="7"/><circle cx="50" cy="50" r="5" fill="#BE123C"/></svg>,
-bronze: <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="#BE123C" stroke-width="8"/><line x1="38" y1="50" x2="62" y2="50" stroke="#BE123C" stroke-width="6"/></svg>,
-seal: <svg viewBox="0 0 100 100"><rect x="30" y="22" width="40" height="56" rx="14" fill="none" stroke="#BE123C" stroke-width="7"/><line x1="32" y1="50" x2="68" y2="50" stroke="#BE123C" stroke-width="7"/></svg>
-},
-"月": {
-oracle: <svg viewBox="0 0 100 100"><path d="M42 18 C68 34, 68 66, 42 82 C55 66, 55 34, 42 18 Z" fill="none" stroke="#BE123C" stroke-width="6"/><line x1="46" y1="50" x2="56" y2="50" stroke="#BE123C" stroke-width="6"/></svg>,
-bronze: <svg viewBox="0 0 100 100"><path d="M40 20 C66 36, 66 64, 40 80 C54 64, 54 36, 40 20 Z" fill="none" stroke="#BE123C" stroke-width="7"/><line x1="44" y1="50" x2="54" y2="50" stroke="#BE123C" stroke-width="7"/></svg>,
-seal: <svg viewBox="0 0 100 100"><path d="M38 18 C64 32, 64 68, 38 82" fill="none" stroke="#BE123C" stroke-width="7"/><line x1="40" y1="42" x2="56" y2="42" stroke="#BE123C" stroke-width="6"/><line x1="40" y1="58" x2="56" y2="58" stroke="#BE123C" stroke-width="6"/></svg>
-},
-"口": {
-oracle: <svg viewBox="0 0 100 100"><path d="M26 34 C26 68, 34 74, 50 74 C66 74, 74 68, 74 34" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>,
-bronze: <svg viewBox="0 0 100 100"><rect x="28" y="30" width="44" height="40" rx="8" fill="none" stroke="#BE123C" stroke-width="8"/></svg>,
-seal: <svg viewBox="0 0 100 100"><rect x="28" y="28" width="44" height="44" rx="6" fill="none" stroke="#BE123C" stroke-width="7"/></svg>
-},
-"子": {
-oracle: <svg viewBox="0 0 100 100"><circle cx="50" cy="30" r="14" fill="none" stroke="#BE123C" stroke-width="6"/><path d="M50 44 L50 82 M20 54 L80 54" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>,
-bronze: <svg viewBox="0 0 100 100"><circle cx="50" cy="28" r="13" fill="#BE123C"/><path d="M50 41 Q50 65 42 82 M18 50 Q50 54 82 50" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>,
-seal: <svg viewBox="0 0 100 100"><circle cx="50" cy="26" r="12" fill="none" stroke="#BE123C" stroke-width="6"/><path d="M50 38 C50 60, 40 75, 45 84 M16 48 Q50 56 84 48" fill="none" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>
-},
-"不": {
-oracle: <svg viewBox="0 0 100 100"><line x1="20" y1="20" x2="80" y2="20" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/><path d="M50 20 L50 78 M50 38 L25 72 M50 38 L75 72" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>,
-bronze: <svg viewBox="0 0 100 100"><line x1="20" y1="20" x2="80" y2="20" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/><path d="M50 20 L50 82 M50 40 Q32 66 24 76 M50 40 Q68 66 76 76" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>,
-seal: <svg viewBox="0 0 100 100"><line x1="22" y1="18" x2="78" y2="18" stroke="#BE123C" stroke-width="7"/><path d="M50 18 L50 82 M50 36 C35 58, 25 72, 22 78 M50 36 C65 58, 75 72, 78 78" fill="none" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>
-},
-"我": {
-oracle: <svg viewBox="0 0 100 100"><line x1="60" y1="15" x2="60" y2="85" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/><path d="M25 35 L60 30 M20 52 L60 48 M25 70 L60 66" stroke="#BE123C" stroke-width="5" stroke-linecap="round"/><path d="M60 45 L82 60" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>,
-bronze: <svg viewBox="0 0 100 100"><line x1="58" y1="16" x2="58" y2="84" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/><path d="M22 34 Q45 32 58 30 M18 52 Q45 50 58 48 M22 70 Q45 68 58 66" fill="none" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/><path d="M58 48 Q72 60 80 66" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>,
-seal: <svg viewBox="0 0 100 100"><line x1="55" y1="15" x2="55" y2="85" stroke="#BE123C" stroke-width="6"/><path d="M20 36 C40 34, 50 32, 55 30 M18 52 C40 50, 50 48, 55 48 M20 68 C40 66, 50 64, 55 64" fill="none" stroke="#BE123C" stroke-width="5"/><path d="M55 48 C68 60, 76 70, 82 76" fill="none" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>
-}
-};
-​// Dữ liệu ứng dụng
-let HSK1_DATA = [];
-let activeList = []; // Danh sách hiển thị theo bộ lọc
-let currentIndex = 0;
-let writerInstance = null;
-let isFlashcardMode = false;
-let isAnswerRevealed = false;
-let currentFilter = 'all'; // 'all' | 'review' | 'mastered'
-​// Dữ liệu SRS lưu trong LocalStorage điện thoại
-const STORAGE_KEY = 'HSK1_SRS_PROGRESS';
-let srsData = {};
-​function loadSrsData() {
-try {
-const raw = localStorage.getItem(STORAGE_KEY);
-srsData = raw ? JSON.parse(raw) : {};
-} catch (e) {
-srsData = {};
-}
-}
-​function saveSrsData() {
-try {
-localStorage.setItem(STORAGE_KEY, JSON.stringify(srsData));
-} catch (e) {
-console.error("Lỗi lưu LocalStorage:", e);
-}
-}
-​// Elements
-const charCounter = document.getElementById('char-counter');
-const charSelect = document.getElementById('char-select');
-const charSearch = document.getElementById('char-search');
-const pinyinDisplay = document.getElementById('pinyin-display');
-const btnAudio = document.getElementById('btn-audio');
-const meaningDisplay = document.getElementById('meaning-display');
-const metaPills = document.getElementById('meta-pills');
-const componentsGrid = document.getElementById('components-grid');
-const structureSummary = document.getElementById('structure-summary');
-const etymologyStory = document.getElementById('etymology-story');
-const evolutionGallery = document.getElementById('evolution-gallery');
-const compoundsList = document.getElementById('compounds-list');
-const btnPrev = document.getElementById('btn-prev');
-const btnNext = document.getElementById('btn-next');
-​// SRS & Flashcard Elements
-const srsStatusTag = document.getElementById('srs-status-tag');
-const btnToggleFlashcard = document.getElementById('btn-toggle-flashcard');
-const revealContainer = document.getElementById('reveal-container');
-const btnReveal = document.getElementById('btn-reveal');
-const tabAll = document.getElementById('tab-all');
-const tabReview = document.getElementById('tab-review');
-const tabMastered = document.getElementById('tab-mastered');
-const countAll = document.getElementById('count-all');
-const countReview = document.getElementById('count-review');
-const countMastered = document.getElementById('count-mastered');
-​// Modal Tiến độ & Sao lưu Elements
-const btnOpenSrsModal = document.getElementById('btn-open-srs-modal');
-const srsModal = document.getElementById('srs-modal');
-const btnCloseModal = document.getElementById('btn-close-modal');
-const statMastered = document.getElementById('stat-mastered');
-const statReview = document.getElementById('stat-review');
-const statTotal = document.getElementById('stat-total');
-const btnExportSrs = document.getElementById('btn-export-srs');
-const btnTriggerImport = document.getElementById('btn-trigger-import');
-const importFileInput = document.getElementById('import-file-input');
-const btnResetSrs = document.getElementById('btn-reset-srs');
-​// Grid Switcher
-const gridContainer = document.getElementById('grid-container');
-const btnGridMi = document.getElementById('btn-grid-mi');
-const btnGridTian = document.getElementById('btn-grid-tian');
-​// Writer Elements
-const writerTarget = document.getElementById('writer-target');
-const btnAnimate = document.getElementById('btn-animate');
-const btnQuiz = document.getElementById('btn-quiz');
-const btnReset = document.getElementById('btn-reset');
-const writerStatus = document.getElementById('writer-status');
-​function updateWriterStatus(msg, type = "info") {
-writerStatus.textContent = msg;
-writerStatus.className = writer-status ${type};
-}
-​// Đếm số lượng theo trạng thái để hiển thị lên thanh Tab & Bảng thống kê
-function updateTabCounters() {
-const total = HSK1_DATA.length;
-let reviewCount = 0;
-let masteredCount = 0;
-​HSK1_DATA.forEach(item => {
-const record = srsData[item.character];
-if (record) {
-if (record.level === 3) masteredCount++;
-else if (record.level === 1 || record.needReview) reviewCount++;
-}
-});
-​countAll.textContent = total;
-countReview.textContent = reviewCount;
-countMastered.textContent = masteredCount;
-​if (statMastered) statMastered.textContent = masteredCount;
-if (statReview) statReview.textContent = reviewCount;
-if (statTotal) statTotal.textContent = total;
-}
-​// Lọc danh sách chữ
-function applyFilter(filterType) {
-currentFilter = filterType;
-tabAll.classList.toggle('active', filterType === 'all');
-tabReview.classList.toggle('active', filterType === 'review');
-tabMastered.classList.toggle('active', filterType === 'mastered');
-​if (filterType === 'all') {
-activeList = [...HSK1_DATA];
-} else if (filterType === 'review') {
-activeList = HSK1_DATA.filter(item => {
-const rec = srsData[item.character];
-return rec && (rec.level === 1 || rec.needReview);
-});
-} else if (filterType === 'mastered') {
-activeList = HSK1_DATA.filter(item => {
-const rec = srsData[item.character];
-return rec && rec.level === 3;
-});
-}
-​currentIndex = 0;
-initSelector();
-​if (activeList.length === 0) {
-pinyinDisplay.textContent = "";
-meaningDisplay.textContent = "Không có chữ nào trong mục này!";
-updateWriterStatus("Hãy chuyển sang tab 'Tất cả' để tiếp tục học.", "info");
-} else {
-renderCurrent();
-}
-}
-​// Thiết lập Hanzi Writer
-function setupWriter(char) {
-writerTarget.innerHTML = '';
-if (!window.HanziWriter) {
-updateWriterStatus("Đang tải dữ liệu vẽ nét...", "mistake");
-return;
-}
-​writerInstance = HanziWriter.create('writer-target', char, {
-width: 200,
-height: 200,
-padding: 8,
-showOutline: true,
-strokeAnimationSpeed: 1.2,
-delayBetweenStrokes: 180,
-strokeColor: '#BE123C',
-radicalColor: '#0D9488',
-outlineColor: '#E2E8F0',
-drawingColor: '#1D4ED8',
-drawingWidth: 16,
-showCharacter: true
-});
-​updateWriterStatus("Bấm '▶ Xem nét' để xem thứ tự viết, hoặc '✏️ Tập viết' để tự vẽ.", "info");
-}
-​function playAnimation() {
-if (!writerInstance) return;
-writerInstance.cancelQuiz();
-writerInstance.showCharacter();
-updateWriterStatus("Đang trình diễn thứ tự bút thuận từng nét...", "info");
-writerInstance.animateCharacter({
-onComplete: () => {
-updateWriterStatus("Đã diễn họa xong! Hãy bấm '✏️ Tập viết' để tự tay thử sức.", "info");
-}
-});
-}
-​function startQuizMode() {
-if (!writerInstance) return;
-writerInstance.cancelQuiz();
-updateWriterStatus("Hãy dùng ngón tay vẽ nét đầu tiên lên ô...", "info");
-​writerInstance.quiz({
-showOutline: true,
-showHintAfterMisses: 2,
-onMistake: (strokeData) => {
-updateWriterStatus(Sai nét rồi! Hãy vẽ lại nét số ${strokeData.strokeNum + 1}, "mistake");
-},
-onCorrectStroke: (strokeData) => {
-updateWriterStatus(✓ Đúng nét ${strokeData.strokeNum + 1}! Tiếp tục nào..., "correct");
-},
-onComplete: (summaryData) => {
-if (summaryData.totalMistakes === 0) {
-updateWriterStatus("🎉 Xuất sắc! Bạn đã viết đúng 100% không mắc lỗi nào!", "success");
-} else {
-updateWriterStatus(🎉 Hoàn thành chữ! Bạn đã mắc ${summaryData.totalMistakes} lần lỗi., "success");
-}
-}
-});
-}
-​function playAudio(text) {
-if ('speechSynthesis' in window) {
-window.speechSynthesis.cancel();
-const utter = new SpeechSynthesisUtterance(text);
-utter.lang = 'zh-CN';
-utter.rate = 0.85;
-window.speechSynthesis.speak(utter);
-}
-}
-​function renderEvolutionGallery(item) {
-const char = item.character;
-const glyphs = ANCIENT_GLYPHS[char] || null;
-​const stages = [
-{ key: 'oracle', name: 'Giáp cốt' },
-{ key: 'bronze', name: 'Kim văn' },
-{ key: 'seal', name: 'Tiểu triện' },
-{ key: 'regular', name: 'Khải thư' }
-];
-​evolutionGallery.innerHTML = stages.map(st => {
-let contentHtml = '';
-if (st.key === 'regular') {
-contentHtml = <span class="evo-modern-char">${char}</span>;
-} else if (glyphs && glyphs[st.key]) {
-contentHtml = glyphs[st.key];
-} else {
-contentHtml = <span style="font-size: 18px; color: #CBD5E1; font-weight: 600;">古文</span>;
-}
-​return <div class="evo-card"> <div class="evo-stage-title">${st.name}</div> <div class="evo-glyph-box">${contentHtml}</div> </div>;
-}).join('');
-}
-​function initSelector() {
-charSelect.innerHTML = "";
-activeList.forEach((item, idx) => {
-const opt = document.createElement('option');
-opt.value = idx;
-const rec = srsData[item.character];
-const mark = rec?.level === 3 ? "⭐ " : (rec?.level === 1 ? "🔄 " : "");
-opt.textContent = ${mark}${idx + 1}. ${item.character} (${item.pinyin[0]}) - ${item.meaning_vi};
-charSelect.appendChild(opt);
-});
-​charSelect.value = currentIndex;
-}
-​charSearch.addEventListener('input', (e) => {
-const q = e.target.value.trim().toLowerCase();
-if (!q) return;
-​const matchIndex = activeList.findIndex(item => {
-const charMatch = item.character === q;
-const pinyinMatch = item.pinyin.some(p => p.toLowerCase().includes(q));
-const meanMatch = (item.meaning_vi || '').toLowerCase().includes(q);
-return charMatch || pinyinMatch || meanMatch;
-});
-​if (matchIndex !== -1 && matchIndex !== currentIndex) {
-currentIndex = matchIndex;
-isAnswerRevealed = false;
-renderCurrent();
-}
-});
-​charSelect.addEventListener('change', (e) => {
-currentIndex = parseInt(e.target.value, 10);
-isAnswerRevealed = false;
-renderCurrent();
-});
-​// Cập nhật giao diện toàn trang
-function renderCurrent() {
-if (activeList.length === 0) return;
-const item = activeList[currentIndex];
-if (!item) return;
-​charCounter.textContent = Chữ ${currentIndex + 1} / ${activeList.length};
-charSelect.value = currentIndex;
-​// Cập nhật trạng thái SRS hiển thị
-const rec = srsData[item.character] || { level: 0 };
-if (rec.level === 3) {
-srsStatusTag.textContent = "⭐ Đã thuộc làu";
-srsStatusTag.className = "srs-status-tag mastered";
-} else if (rec.level === 2) {
-srsStatusTag.textContent = "🟢 Đang ghi nhớ";
-srsStatusTag.className = "srs-status-tag learning";
-} else if (rec.level === 1) {
-srsStatusTag.textContent = "🔴 Cần ôn tập";
-srsStatusTag.className = "srs-status-tag learning";
-} else {
-srsStatusTag.textContent = "Mới bắt đầu";
-srsStatusTag.className = "srs-status-tag";
-}
-​// Xử lý chế độ Flashcard (Ẩn/Hiện đáp án)
-if (isFlashcardMode && !isAnswerRevealed) {
-pinyinDisplay.textContent = "• • •";
-pinyinDisplay.classList.add('hidden-answer');
-meaningDisplay.textContent = "???";
-meaningDisplay.classList.add('hidden-answer');
-revealContainer.style.display = 'block';
-​document.querySelectorAll('.detail-collapsible').forEach(el => el.style.display = 'none');
-} else {
-pinyinDisplay.textContent = item.pinyin.join(', ');
-pinyinDisplay.classList.remove('hidden-answer');
-meaningDisplay.textContent = item.meaning_vi;
-meaningDisplay.classList.remove('hidden-answer');
-revealContainer.style.display = 'none';
-document.querySelectorAll('.detail-collapsible').forEach(el => el.style.display = 'block');
-}
-​metaPills.innerHTML = <span class="pill">Cấp độ HSK ${item.hsk_level}</span> <span class="pill">${item.stroke_count} nét</span> <span class="pill">Bộ thủ: ${item.radical}</span>;
-​setupWriter(item.character);
-​// Chiết tự
-componentsGrid.innerHTML = "";
-const components = item.structure?.tree?.components || item.structure?.components || [];
-components.forEach(comp => {
-const box = document.createElement('div');
-box.className = component-box ${comp.role};
-box.innerHTML = <div class="comp-char">${comp.character}</div> <div class="comp-tag">${comp.role_vi || (comp.role === 'semantic' ? 'Biểu ý' : 'Biểu âm')}</div> <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 2px;">${comp.pinyin || ''}</div> <div class="comp-hint">${comp.hint_vi}</div>;
-box.addEventListener('click', () => {
-playAudio(comp.character);
-updateWriterStatus(Đang xem cấu kiện '${comp.character}': ${comp.hint_vi}, "info");
-});
-componentsGrid.appendChild(box);
-});
-​const typeName = item.structure?.type_vi || item.structure?.type_name || item.structure?.type || '';
-structureSummary.innerHTML = <strong>${typeName}:</strong> ${item.structure?.description || ''};
-​// Từ nguyên
-etymologyStory.textContent = item.etymology?.story_vi || '';
-renderEvolutionGallery(item);
-​// Từ vựng HSK1
-compoundsList.innerHTML = (item.compound_words || []).map(c => <div class="compound-item"> <div> <span class="compound-hanzi">${c.word}</span> <span class="compound-pinyin">${c.pinyin}</span> </div> <div class="compound-meaning">${c.meaning_vi}</div> </div>).join('');
-​btnPrev.disabled = currentIndex === 0;
-btnNext.disabled = currentIndex === activeList.length - 1;
-}
-​// Bấm đánh giá SRS (Ghi nhớ ngắt quãng)
-document.querySelectorAll('.btn-srs').forEach(btn => {
-btn.addEventListener('click', () => {
-const rating = parseInt(btn.dataset.rating, 10);
-const item = activeList[currentIndex];
-if (!item) return;
-​let level = 1;
-let needReview = false;
-​if (rating === 1) { // Quên
-level = 1;
-needReview = true;
-updateWriterStatus(Đã đánh dấu '${item.character}' vào danh sách CẦN ÔN TẬP., "mistake");
-} else if (rating === 2) { // Khó
-level = 2;
-needReview = true;
-updateWriterStatus(Đã ghi nhận '${item.character}' là chữ KHÓ, sẽ nhắc lại sớm., "info");
-} else if (rating === 3) { // Thuộc
-level = 2;
-needReview = false;
-updateWriterStatus(Tốt lắm! Bạn đã nhớ chữ '${item.character}'., "correct");
-} else if (rating === 4) { // Dễ
-level = 3;
-needReview = false;
-updateWriterStatus(Tuyệt vời! Chữ '${item.character}' đã đạt mức ĐÃ THUỘC LÀU ⭐., "success");
-}
-​srsData[item.character] = {
-level,
-needReview,
-lastReviewed: Date.now()
-};
-​saveSrsData();
-updateTabCounters();
-renderCurrent();
-​setTimeout(() => {
-if (currentIndex < activeList.length - 1) {
-currentIndex++;
-isAnswerRevealed = false;
-renderCurrent();
-}
-}, 650);
-});
-});
-​// Bật/Tắt chế độ Flashcard
-btnToggleFlashcard.addEventListener('click', () => {
-isFlashcardMode = !isFlashcardMode;
-isAnswerRevealed = false;
-btnToggleFlashcard.classList.toggle('active', isFlashcardMode);
-btnToggleFlashcard.textContent = isFlashcardMode ? "✕ Tắt chế độ ôn" : "👁️ Chế độ ôn bài";
-renderCurrent();
-});
-​// Lật mở đáp án
-btnReveal.addEventListener('click', () => {
-isAnswerRevealed = true;
-renderCurrent();
-});
-​// Chuyển Tab bộ lọc
-tabAll.addEventListener('click', () => applyFilter('all'));
-tabReview.addEventListener('click', () => applyFilter('review'));
-tabMastered.addEventListener('click', () => applyFilter('mastered'));
-​// Modal Tiến độ & Sao lưu Events
-btnOpenSrsModal.addEventListener('click', () => {
-updateTabCounters();
-srsModal.classList.add('open');
-});
-​btnCloseModal.addEventListener('click', () => {
-srsModal.classList.remove('open');
-});
-​srsModal.addEventListener('click', (e) => {
-if (e.target === srsModal) srsModal.classList.remove('open');
-});
-​// 1. Xuất file sao lưu JSON
-btnExportSrs.addEventListener('click', () => {
-const exportObject = {
-app: "HSK1_HANZI_DECODER",
-export_date: new Date().toISOString(),
-progress: srsData
-};
-​const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObject, null, 2));
-const downloadAnchor = document.createElement('a');
-const dateStr = new Date().toISOString().slice(0, 10);
-downloadAnchor.setAttribute("href", dataStr);
-downloadAnchor.setAttribute("download", hsk1-tien-do-${dateStr}.json);
-document.body.appendChild(downloadAnchor);
-downloadAnchor.click();
-downloadAnchor.remove();
-​updateWriterStatus("✓ Đã tải file sao lưu tiến độ (.json) về máy thành công!", "success");
-});
-​// 2. Kích hoạt chọn file khôi phục JSON
-btnTriggerImport.addEventListener('click', () => {
-importFileInput.click();
-});
-​importFileInput.addEventListener('change', (e) => {
-const file = e.target.files[0];
-if (!file) return;
-​const reader = new FileReader();
-reader.onload = (event) => {
-try {
-const parsed = JSON.parse(event.target.result);
-if (parsed && (parsed.progress || typeof parsed === 'object')) {
-srsData = parsed.progress ? parsed.progress : parsed;
-saveSrsData();
-updateTabCounters();
-initSelector();
-renderCurrent();
-srsModal.classList.remove('open');
-updateWriterStatus("🎉 Đã khôi phục toàn bộ tiến độ học tập thành công!", "success");
-} else {
-alert("File không đúng cấu trúc tiến độ của ứng dụng!");
-}
-} catch (err) {
-alert("Lỗi đọc file: File không hợp lệ!");
-}
-};
-reader.readAsText(file);
-importFileInput.value = ''; // Reset input
-});
-​// 3. Đặt lại toàn bộ tiến độ (Học từ đầu)
-btnResetSrs.addEventListener('click', () => {
-const agree = confirm("Bạn có chắc chắn muốn xóa toàn bộ lịch sử và tiến độ để học lại từ đầu không?");
-if (agree) {
-srsData = {};
-saveSrsData();
-updateTabCounters();
-initSelector();
-renderCurrent();
-srsModal.classList.remove('open');
-updateWriterStatus("Đã xóa sạch tiến độ, bắt đầu học lại từ chữ số 1.", "info");
-}
-});
-​// Khởi tạo nạp dữ liệu
-async function loadDataBundle() {
-try {
-loadSrsData();
-const response = await fetch('./data/bundles/hsk1-core.json');
-if (!response.ok) throw new Error(HTTP ${response.status});
-HSK1_DATA = await response.json();
-activeList = [...HSK1_DATA];
-​updateTabCounters();
-initSelector();
-​// Kiểm tra deep link ?char=...
-const params = new URLSearchParams(window.location.search);
-const targetChar = params.get('char') || params.get('c');
-if (targetChar) {
-const foundIdx = activeList.findIndex(item => item.character === targetChar.trim());
-if (foundIdx !== -1) currentIndex = foundIdx;
-}
-​renderCurrent();
-} catch (err) {
-console.error("Lỗi nạp hsk1-core.json:", err);
-updateWriterStatus("Không thể tải gói dữ liệu chữ Hán.", "mistake");
-}
-}
-​// Grid toggle
-btnGridMi.addEventListener('click', () => {
-btnGridMi.classList.add('active');
-btnGridTian.classList.remove('active');
-gridContainer.classList.remove('tian-mode');
-});
-​btnGridTian.addEventListener('click', () => {
-btnGridTian.classList.add('active');
-btnGridMi.classList.remove('active');
-gridContainer.classList.add('tian-mode');
-});
-​// Âm thanh & Viết nét
-btnAudio.addEventListener('click', () => {
-if (activeList[currentIndex]) playAudio(activeList[currentIndex].character);
-});
-​btnAnimate.addEventListener('click', playAnimation);
-btnQuiz.addEventListener('click', startQuizMode);
-btnReset.addEventListener('click', () => {
-if (activeList[currentIndex]) {
-setupWriter(activeList[currentIndex].character);
-startQuizMode();
-}
-});
-​btnPrev.addEventListener('click', () => {
-if (currentIndex > 0) {
-currentIndex--;
-isAnswerRevealed = false;
-renderCurrent();
-}
-});
-​btnNext.addEventListener('click', () => {
-if (currentIndex < activeList.length - 1) {
-currentIndex++;
-isAnswerRevealed = false;
-renderCurrent();
-}
-});
-​// Đăng ký Service Worker chạy ngoại tuyến (PWA)
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('./sw.js')
-.then(reg => console.log('PWA ServiceWorker sẵn sàng! Phạm vi:', reg.scope))
-.catch(err => console.log('Lỗi đăng ký ServiceWorker:', err));
-});
-}
-​loadDataBundle();
-</script>
+
+  <div id="app-container">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <a href="../index.html" class="btn-back">
+        <span>←</span> Bài học cũ
+      </a>
+      <div class="top-actions">
+        <button class="btn-icon-top" id="btn-open-srs-modal" title="Quản lý tiến độ & Sao lưu" aria-label="Tiến độ học tập">⚙️</button>
+        <span class="counter-badge" id="char-counter">Đang nạp...</span>
+      </div>
+    </header>
+
+    <!-- Quick Selector, Tabs & Search Controls -->
+    <div class="control-deck">
+      <!-- Bộ lọc thẻ học / Ôn tập -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" id="tab-all">Tất cả (<span id="count-all">25</span>)</button>
+        <button class="filter-tab" id="tab-review">Cần ôn (<span id="count-review">0</span>)</button>
+        <button class="filter-tab" id="tab-mastered">Đã thuộc (<span id="count-mastered">0</span>)</button>
+      </div>
+
+      <div class="search-box-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="char-search" class="search-input" placeholder="Tìm chữ, pinyin, nghĩa..." autocomplete="off">
+      </div>
+      <select id="char-select" class="selector-select" aria-label="Chọn chữ Hán">
+        <option>Đang nạp danh mục chữ...</option>
+      </select>
+    </div>
+
+    <!-- Main Character Hero Card -->
+    <main>
+      <article class="char-card">
+        <div class="card-top-action">
+          <span class="srs-status-tag" id="srs-status-tag">Mới bắt đầu</span>
+          <button class="flashcard-toggle-btn" id="btn-toggle-flashcard">👁️ Chế độ ôn bài</button>
+        </div>
+
+        <div class="pinyin-audio-row">
+          <span class="pinyin-text" id="pinyin-display">--</span>
+          <button class="audio-btn" id="btn-audio" title="Phát âm" aria-label="Phát âm">🔊</button>
+        </div>
+        
+        <div class="meaning-text" id="meaning-display">Đang nạp...</div>
+
+        <!-- Nút Lật đáp án khi bật chế độ Flashcard -->
+        <div id="reveal-container" style="display: none;">
+          <button class="btn-reveal-answer" id="btn-reveal">👁️ Hiện đáp án & Chiết tự</button>
+        </div>
+
+        <div class="meta-pills" id="meta-pills"></div>
+
+        <!-- Khung Đánh Giá SRS (Ghi nhớ ngắt quãng) -->
+        <div class="srs-rating-container">
+          <div class="srs-rating-title">Mức độ thuộc chữ này của bạn:</div>
+          <div class="srs-buttons-row">
+            <button class="btn-srs again" data-rating="1">
+              <span>🔴 Quên</span>
+              <span class="time-hint">Ôn ngay</span>
+            </button>
+            <button class="btn-srs hard" data-rating="2">
+              <span>🟡 Khó</span>
+              <span class="time-hint">1 ngày</span>
+            </button>
+            <button class="btn-srs good" data-rating="3">
+              <span>🟢 Thuộc</span>
+              <span class="time-hint">3 ngày</span>
+            </button>
+            <button class="btn-srs easy" data-rating="4">
+              <span>⭐ Dễ</span>
+              <span class="time-hint">7 ngày</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section: Interactive Handwriting Pad (Hanzi Writer) -->
+      <section class="section-card" style="margin-top: 14px;">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span>✍️</span> Bút thuận & Luyện viết
+          </h2>
+          <div class="grid-toggle-group">
+            <button class="grid-toggle-btn active" id="btn-grid-mi" title="Ô Mễ tự cách (8 ô)">Mễ (米)</button>
+            <button class="grid-toggle-btn" id="btn-grid-tian" title="Ô Điền tự cách (4 ô)">Điền (田)</button>
+          </div>
+        </div>
+        
+        <div class="writer-stage-wrapper">
+          <div class="mige-box" id="grid-container">
+            <svg class="mige-svg-grid" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="100" x2="200" y2="100" stroke="#FDA4AF" stroke-width="1.2" stroke-dasharray="4 4" />
+              <line x1="100" y1="0" x2="100" y2="200" stroke="#FDA4AF" stroke-width="1.2" stroke-dasharray="4 4" />
+              <g class="diagonal-lines" id="diagonal-lines">
+                <line x1="0" y1="0" x2="200" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
+                <line x1="200" y1="0" x2="0" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
+              </g>
+            </svg>
+            <div id="writer-target"></div>
+          </div>
+
+          <div class="writer-actions">
+            <button class="btn-action" id="btn-animate" title="Xem thứ tự nét">▶ Xem nét</button>
+            <button class="btn-action primary" id="btn-quiz" title="Tự tay viết">✏️ Tập viết</button>
+            <button class="btn-action" id="btn-reset" title="Xóa viết lại">🔄 Viết lại</button>
+          </div>
+
+          <div class="writer-status info" id="writer-status">
+            Bấm "▶ Xem nét" để xem thứ tự viết, hoặc "✏️ Tập viết" để dùng ngón tay vẽ theo.
+          </div>
+        </div>
+      </section>
+
+      <!-- Structure & Component Decomposition (Chiết tự) -->
+      <section class="section-card detail-collapsible" id="sec-decomposition" style="margin-top: 14px;">
+        <h2 class="section-title">
+          <span>🧩</span> Phân rã cấu trúc (Chiết tự)
+        </h2>
+        <div class="components-grid" id="components-grid"></div>
+        <div class="structure-summary" id="structure-summary"></div>
+      </section>
+
+      <!-- Ancient Script Evolution Gallery & Story -->
+      <section class="section-card detail-collapsible" id="sec-evolution" style="margin-top: 14px;">
+        <h2 class="section-title">
+          <span>📜</span> Diễn biến văn tự & Từ nguyên
+        </h2>
+        <div class="evolution-gallery" id="evolution-gallery"></div>
+        <div class="etymology-story" id="etymology-story"></div>
+      </section>
+
+      <!-- Compound Words -->
+      <section class="section-card detail-collapsible" id="sec-compounds" style="margin-top: 14px;">
+        <h2 class="section-title">
+          <span>📖</span> Từ vựng thường gặp (HSK 1)
+        </h2>
+        <div class="compounds-list" id="compounds-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Bottom Sticky Navigation -->
+  <footer class="bottom-nav">
+    <div class="nav-inner">
+      <button class="nav-btn prev" id="btn-prev">← Chữ trước</button>
+      <button class="nav-btn next" id="btn-next">Chữ sau →</button>
+    </div>
+  </footer>
+
+  <!-- Bảng Quản Lý Tiến Độ & Sao Lưu (Modal) -->
+  <div class="modal-overlay" id="srs-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">⚙️ Tiến độ học & Sao lưu</div>
+        <button class="btn-close-modal" id="btn-close-modal">✕</button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-val" id="stat-mastered">0</div>
+          <div class="stat-lbl">Đã thuộc làu</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="stat-review" style="color: #EA580C;">0</div>
+          <div class="stat-lbl">Cần ôn tập</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="stat-total" style="color: #64748B;">25</div>
+          <div class="stat-lbl">Tổng số chữ</div>
+        </div>
+      </div>
+
+      <button class="modal-action-btn export" id="btn-export-srs">
+        <span>💾</span> Xuất file sao lưu (.json)
+      </button>
+
+      <button class="modal-action-btn import" id="btn-trigger-import">
+        <span>📥</span> Nhập file khôi phục (.json)
+      </button>
+      <input type="file" id="import-file-input" accept=".json" style="display: none;">
+
+      <button class="modal-action-btn danger" id="btn-reset-srs">
+        <span>🗑️</span> Đặt lại tiến độ (Học từ đầu)
+      </button>
+    </div>
+  </div>
+
+  <script type="module">
+    // Kho hình vector văn tự cổ đại chuẩn xác
+    const ANCIENT_GLYPHS = {
+      "人": {
+        oracle: `<svg viewBox="0 0 100 100"><path d="M48 20 C48 35, 42 50, 26 80 M46 45 C55 60, 68 75, 76 82" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><path d="M50 18 C50 38, 42 58, 28 82 M47 48 C58 62, 70 76, 76 82" fill="none" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><path d="M50 15 C50 45, 40 65, 26 85 M48 45 C60 65, 72 75, 76 85" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`
+      },
+      "大": {
+        oracle: `<svg viewBox="0 0 100 100"><line x1="50" y1="18" x2="50" y2="82" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/><line x1="20" y1="46" x2="80" y2="46" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/><path d="M50 48 L25 82 M50 48 L75 82" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><line x1="50" y1="16" x2="50" y2="84" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/><path d="M20 44 Q50 46 80 44" fill="none" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/><path d="M50 46 Q35 70 25 84 M50 46 Q65 70 75 84" fill="none" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><line x1="50" y1="15" x2="50" y2="85" stroke="#BE123C" stroke-width="7"/><path d="M20 42 C40 45, 60 45, 80 42" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M50 45 C35 70, 30 80, 24 85 M50 45 C65 70, 70 80, 76 85" fill="none" stroke="#BE123C" stroke-width="7"/></svg>`
+      },
+      "天": {
+        oracle: `<svg viewBox="0 0 100 100"><rect x="35" y="16" width="30" height="18" rx="6" fill="none" stroke="#BE123C" stroke-width="6"/><line x1="50" y1="34" x2="50" y2="82" stroke="#BE123C" stroke-width="6"/><line x1="20" y1="52" x2="80" y2="52" stroke="#BE123C" stroke-width="6"/><path d="M50 52 L26 82 M50 52 L74 82" stroke="#BE123C" stroke-width="6"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><circle cx="50" cy="22" r="10" fill="#BE123C"/><line x1="50" y1="32" x2="50" y2="82" stroke="#BE123C" stroke-width="7"/><line x1="20" y1="50" x2="80" y2="50" stroke="#BE123C" stroke-width="7"/><path d="M50 50 L26 84 M50 50 L74 84" stroke="#BE123C" stroke-width="7"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><line x1="25" y1="22" x2="75" y2="22" stroke="#BE123C" stroke-width="7"/><line x1="50" y1="22" x2="50" y2="84" stroke="#BE123C" stroke-width="7"/><path d="M22 45 Q50 46 78 45" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M50 46 C35 70, 30 80, 24 85 M50 46 C65 70, 70 80, 76 85" fill="none" stroke="#BE123C" stroke-width="7"/></svg>`
+      },
+      "木": {
+        oracle: `<svg viewBox="0 0 100 100"><line x1="50" y1="16" x2="50" y2="84" stroke="#BE123C" stroke-width="7"/><path d="M24 45 C38 40, 48 35, 50 35 C52 35, 62 40, 76 45" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M24 78 C38 65, 48 60, 50 60 C52 60, 62 65, 76 78" fill="none" stroke="#BE123C" stroke-width="7"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><line x1="50" y1="16" x2="50" y2="84" stroke="#BE123C" stroke-width="8"/><path d="M22 44 Q48 36 50 36 Q52 36 78 44" fill="none" stroke="#BE123C" stroke-width="8"/><path d="M22 80 Q48 62 50 62 Q52 62 78 80" fill="none" stroke="#BE123C" stroke-width="8"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><line x1="50" y1="14" x2="50" y2="86" stroke="#BE123C" stroke-width="7"/><path d="M22 42 C40 36, 50 36, 50 36 C50 36, 60 36, 78 42" fill="none" stroke="#BE123C" stroke-width="7"/><path d="M24 82 C38 68, 48 60, 50 60 C52 60, 62 68, 76 82" fill="none" stroke="#BE123C" stroke-width="7"/></svg>`
+      },
+      "日": {
+        oracle: `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="#BE123C" stroke-width="7"/><circle cx="50" cy="50" r="5" fill="#BE123C"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="#BE123C" stroke-width="8"/><line x1="38" y1="50" x2="62" y2="50" stroke="#BE123C" stroke-width="6"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><rect x="30" y="22" width="40" height="56" rx="14" fill="none" stroke="#BE123C" stroke-width="7"/><line x1="32" y1="50" x2="68" y2="50" stroke="#BE123C" stroke-width="7"/></svg>`
+      },
+      "月": {
+        oracle: `<svg viewBox="0 0 100 100"><path d="M42 18 C68 34, 68 66, 42 82 C55 66, 55 34, 42 18 Z" fill="none" stroke="#BE123C" stroke-width="6"/><line x1="46" y1="50" x2="56" y2="50" stroke="#BE123C" stroke-width="6"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><path d="M40 20 C66 36, 66 64, 40 80 C54 64, 54 36, 40 20 Z" fill="none" stroke="#BE123C" stroke-width="7"/><line x1="44" y1="50" x2="54" y2="50" stroke="#BE123C" stroke-width="7"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><path d="M38 18 C64 32, 64 68, 38 82" fill="none" stroke="#BE123C" stroke-width="7"/><line x1="40" y1="42" x2="56" y2="42" stroke="#BE123C" stroke-width="6"/><line x1="40" y1="58" x2="56" y2="58" stroke="#BE123C" stroke-width="6"/></svg>`
+      },
+      "口": {
+        oracle: `<svg viewBox="0 0 100 100"><path d="M26 34 C26 68, 34 74, 50 74 C66 74, 74 68, 74 34" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><rect x="28" y="30" width="44" height="40" rx="8" fill="none" stroke="#BE123C" stroke-width="8"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><rect x="28" y="28" width="44" height="44" rx="6" fill="none" stroke="#BE123C" stroke-width="7"/></svg>`
+      },
+      "子": {
+        oracle: `<svg viewBox="0 0 100 100"><circle cx="50" cy="30" r="14" fill="none" stroke="#BE123C" stroke-width="6"/><path d="M50 44 L50 82 M20 54 L80 54" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><circle cx="50" cy="28" r="13" fill="#BE123C"/><path d="M50 41 Q50 65 42 82 M18 50 Q50 54 82 50" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><circle cx="50" cy="26" r="12" fill="none" stroke="#BE123C" stroke-width="6"/><path d="M50 38 C50 60, 40 75, 45 84 M16 48 Q50 56 84 48" fill="none" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>`
+      },
+      "不": {
+        oracle: `<svg viewBox="0 0 100 100"><line x1="20" y1="20" x2="80" y2="20" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/><path d="M50 20 L50 78 M50 38 L25 72 M50 38 L75 72" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><line x1="20" y1="20" x2="80" y2="20" stroke="#BE123C" stroke-width="8" stroke-linecap="round"/><path d="M50 20 L50 82 M50 40 Q32 66 24 76 M50 40 Q68 66 76 76" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><line x1="22" y1="18" x2="78" y2="18" stroke="#BE123C" stroke-width="7"/><path d="M50 18 L50 82 M50 36 C35 58, 25 72, 22 78 M50 36 C65 58, 75 72, 78 78" fill="none" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>`
+      },
+      "我": {
+        oracle: `<svg viewBox="0 0 100 100"><line x1="60" y1="15" x2="60" y2="85" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/><path d="M25 35 L60 30 M20 52 L60 48 M25 70 L60 66" stroke="#BE123C" stroke-width="5" stroke-linecap="round"/><path d="M60 45 L82 60" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>`,
+        bronze: `<svg viewBox="0 0 100 100"><line x1="58" y1="16" x2="58" y2="84" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/><path d="M22 34 Q45 32 58 30 M18 52 Q45 50 58 48 M22 70 Q45 68 58 66" fill="none" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/><path d="M58 48 Q72 60 80 66" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
+        seal: `<svg viewBox="0 0 100 100"><line x1="55" y1="15" x2="55" y2="85" stroke="#BE123C" stroke-width="6"/><path d="M20 36 C40 34, 50 32, 55 30 M18 52 C40 50, 50 48, 55 48 M20 68 C40 66, 50 64, 55 64" fill="none" stroke="#BE123C" stroke-width="5"/><path d="M55 48 C68 60, 76 70, 82 76" fill="none" stroke="#BE123C" stroke-width="6" stroke-linecap="round"/></svg>`
+      }
+    };
+
+    // Dữ liệu ứng dụng
+    let HSK1_DATA = [];
+    let activeList = []; // Danh sách hiển thị theo bộ lọc
+    let currentIndex = 0;
+    let writerInstance = null;
+    let isFlashcardMode = false;
+    let isAnswerRevealed = false;
+    let currentFilter = 'all'; // 'all' | 'review' | 'mastered'
+
+    // Dữ liệu SRS lưu trong LocalStorage điện thoại
+    const STORAGE_KEY = 'HSK1_SRS_PROGRESS';
+    let srsData = {};
+
+    function loadSrsData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        srsData = raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        srsData = {};
+      }
+    }
+
+    function saveSrsData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(srsData));
+      } catch (e) {
+        console.error("Lỗi lưu LocalStorage:", e);
+      }
+    }
+
+    // Elements
+    const charCounter = document.getElementById('char-counter');
+    const charSelect = document.getElementById('char-select');
+    const charSearch = document.getElementById('char-search');
+    const pinyinDisplay = document.getElementById('pinyin-display');
+    const btnAudio = document.getElementById('btn-audio');
+    const meaningDisplay = document.getElementById('meaning-display');
+    const metaPills = document.getElementById('meta-pills');
+    const componentsGrid = document.getElementById('components-grid');
+    const structureSummary = document.getElementById('structure-summary');
+    const etymologyStory = document.getElementById('etymology-story');
+    const evolutionGallery = document.getElementById('evolution-gallery');
+    const compoundsList = document.getElementById('compounds-list');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+
+    // SRS & Flashcard Elements
+    const srsStatusTag = document.getElementById('srs-status-tag');
+    const btnToggleFlashcard = document.getElementById('btn-toggle-flashcard');
+    const revealContainer = document.getElementById('reveal-container');
+    const btnReveal = document.getElementById('btn-reveal');
+    const tabAll = document.getElementById('tab-all');
+    const tabReview = document.getElementById('tab-review');
+    const tabMastered = document.getElementById('tab-mastered');
+    const countAll = document.getElementById('count-all');
+    const countReview = document.getElementById('count-review');
+    const countMastered = document.getElementById('count-mastered');
+
+    // Modal Tiến độ & Sao lưu Elements
+    const btnOpenSrsModal = document.getElementById('btn-open-srs-modal');
+    const srsModal = document.getElementById('srs-modal');
+    const btnCloseModal = document.getElementById('btn-close-modal');
+    const statMastered = document.getElementById('stat-mastered');
+    const statReview = document.getElementById('stat-review');
+    const statTotal = document.getElementById('stat-total');
+    const btnExportSrs = document.getElementById('btn-export-srs');
+    const btnTriggerImport = document.getElementById('btn-trigger-import');
+    const importFileInput = document.getElementById('import-file-input');
+    const btnResetSrs = document.getElementById('btn-reset-srs');
+
+    // Grid Switcher
+    const gridContainer = document.getElementById('grid-container');
+    const btnGridMi = document.getElementById('btn-grid-mi');
+    const btnGridTian = document.getElementById('btn-grid-tian');
+
+    // Writer Elements
+    const writerTarget = document.getElementById('writer-target');
+    const btnAnimate = document.getElementById('btn-animate');
+    const btnQuiz = document.getElementById('btn-quiz');
+    const btnReset = document.getElementById('btn-reset');
+    const writerStatus = document.getElementById('writer-status');
+
+    function updateWriterStatus(msg, type = "info") {
+      writerStatus.textContent = msg;
+      writerStatus.className = `writer-status ${type}`;
+    }
+
+    // Đếm số lượng theo trạng thái để hiển thị lên thanh Tab & Bảng thống kê
+    function updateTabCounters() {
+      const total = HSK1_DATA.length;
+      let reviewCount = 0;
+      let masteredCount = 0;
+
+      HSK1_DATA.forEach(item => {
+        const record = srsData[item.character];
+        if (record) {
+          if (record.level === 3) masteredCount++;
+          else if (record.level === 1 || record.needReview) reviewCount++;
+        }
+      });
+
+      countAll.textContent = total;
+      countReview.textContent = reviewCount;
+      countMastered.textContent = masteredCount;
+
+      if (statMastered) statMastered.textContent = masteredCount;
+      if (statReview) statReview.textContent = reviewCount;
+      if (statTotal) statTotal.textContent = total;
+    }
+
+    // Lọc danh sách chữ
+    function applyFilter(filterType) {
+      currentFilter = filterType;
+      tabAll.classList.toggle('active', filterType === 'all');
+      tabReview.classList.toggle('active', filterType === 'review');
+      tabMastered.classList.toggle('active', filterType === 'mastered');
+
+      if (filterType === 'all') {
+        activeList = [...HSK1_DATA];
+      } else if (filterType === 'review') {
+        activeList = HSK1_DATA.filter(item => {
+          const rec = srsData[item.character];
+          return rec && (rec.level === 1 || rec.needReview);
+        });
+      } else if (filterType === 'mastered') {
+        activeList = HSK1_DATA.filter(item => {
+          const rec = srsData[item.character];
+          return rec && rec.level === 3;
+        });
+      }
+
+      currentIndex = 0;
+      initSelector();
+
+      if (activeList.length === 0) {
+        pinyinDisplay.textContent = "";
+        meaningDisplay.textContent = "Không có chữ nào trong mục này!";
+        updateWriterStatus("Hãy chuyển sang tab 'Tất cả' để tiếp tục học.", "info");
+      } else {
+        renderCurrent();
+      }
+    }
+
+    // Thiết lập Hanzi Writer
+    function setupWriter(char) {
+      writerTarget.innerHTML = '';
+      if (!window.HanziWriter) {
+        updateWriterStatus("Đang tải dữ liệu vẽ nét...", "mistake");
+        return;
+      }
+
+      writerInstance = HanziWriter.create('writer-target', char, {
+        width: 200,
+        height: 200,
+        padding: 8,
+        showOutline: true,
+        strokeAnimationSpeed: 1.2,
+        delayBetweenStrokes: 180,
+        strokeColor: '#BE123C',
+        radicalColor: '#0D9488',
+        outlineColor: '#E2E8F0',
+        drawingColor: '#1D4ED8',
+        drawingWidth: 16,
+        showCharacter: true
+      });
+
+      updateWriterStatus("Bấm '▶ Xem nét' để xem thứ tự viết, hoặc '✏️ Tập viết' để tự vẽ.", "info");
+    }
+
+    function playAnimation() {
+      if (!writerInstance) return;
+      writerInstance.cancelQuiz();
+      writerInstance.showCharacter();
+      updateWriterStatus("Đang trình diễn thứ tự bút thuận từng nét...", "info");
+      writerInstance.animateCharacter({
+        onComplete: () => {
+          updateWriterStatus("Đã diễn họa xong! Hãy bấm '✏️ Tập viết' để tự tay thử sức.", "info");
+        }
+      });
+    }
+
+    function startQuizMode() {
+      if (!writerInstance) return;
+      writerInstance.cancelQuiz();
+      updateWriterStatus("Hãy dùng ngón tay vẽ nét đầu tiên lên ô...", "info");
+
+      writerInstance.quiz({
+        showOutline: true,
+        showHintAfterMisses: 2,
+        onMistake: (strokeData) => {
+          updateWriterStatus(`Sai nét rồi! Hãy vẽ lại nét số ${strokeData.strokeNum + 1}`, "mistake");
+        },
+        onCorrectStroke: (strokeData) => {
+          updateWriterStatus(`✓ Đúng nét ${strokeData.strokeNum + 1}! Tiếp tục nào...`, "correct");
+        },
+        onComplete: (summaryData) => {
+          if (summaryData.totalMistakes === 0) {
+            updateWriterStatus("🎉 Xuất sắc! Bạn đã viết đúng 100% không mắc lỗi nào!", "success");
+          } else {
+            updateWriterStatus(`🎉 Hoàn thành chữ! Bạn đã mắc ${summaryData.totalMistakes} lần lỗi.`, "success");
+          }
+        }
+      });
+    }
+
+    function playAudio(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'zh-CN';
+        utter.rate = 0.85;
+        window.speechSynthesis.speak(utter);
+      }
+    }
+
+    function renderEvolutionGallery(item) {
+      const char = item.character;
+      const glyphs = ANCIENT_GLYPHS[char] || null;
+
+      const stages = [
+        { key: 'oracle', name: 'Giáp cốt' },
+        { key: 'bronze', name: 'Kim văn' },
+        { key: 'seal', name: 'Tiểu triện' },
+        { key: 'regular', name: 'Khải thư' }
+      ];
+
+      evolutionGallery.innerHTML = stages.map(st => {
+        let contentHtml = '';
+        if (st.key === 'regular') {
+          contentHtml = `<span class="evo-modern-char">${char}</span>`;
+        } else if (glyphs && glyphs[st.key]) {
+          contentHtml = glyphs[st.key];
+        } else {
+          contentHtml = `<span style="font-size: 18px; color: #CBD5E1; font-weight: 600;">古文</span>`;
+        }
+
+        return `
+          <div class="evo-card">
+            <div class="evo-stage-title">${st.name}</div>
+            <div class="evo-glyph-box">${contentHtml}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function initSelector() {
+      charSelect.innerHTML = "";
+      activeList.forEach((item, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        const rec = srsData[item.character];
+        const mark = rec?.level === 3 ? "⭐ " : (rec?.level === 1 ? "🔄 " : "");
+        opt.textContent = `${mark}${idx + 1}. ${item.character} (${item.pinyin[0]}) - ${item.meaning_vi}`;
+        charSelect.appendChild(opt);
+      });
+
+      charSelect.value = currentIndex;
+    }
+
+    charSearch.addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      if (!q) return;
+
+      const matchIndex = activeList.findIndex(item => {
+        const charMatch = item.character === q;
+        const pinyinMatch = item.pinyin.some(p => p.toLowerCase().includes(q));
+        const meanMatch = (item.meaning_vi || '').toLowerCase().includes(q);
+        return charMatch || pinyinMatch || meanMatch;
+      });
+
+      if (matchIndex !== -1 && matchIndex !== currentIndex) {
+        currentIndex = matchIndex;
+        isAnswerRevealed = false;
+        renderCurrent();
+      }
+    });
+
+    charSelect.addEventListener('change', (e) => {
+      currentIndex = parseInt(e.target.value, 10);
+      isAnswerRevealed = false;
+      renderCurrent();
+    });
+
+    // Cập nhật giao diện toàn trang
+    function renderCurrent() {
+      if (activeList.length === 0) return;
+      const item = activeList[currentIndex];
+      if (!item) return;
+
+      charCounter.textContent = `Chữ ${currentIndex + 1} / ${activeList.length}`;
+      charSelect.value = currentIndex;
+
+      // Cập nhật trạng thái SRS hiển thị
+      const rec = srsData[item.character] || { level: 0 };
+      if (rec.level === 3) {
+        srsStatusTag.textContent = "⭐ Đã thuộc làu";
+        srsStatusTag.className = "srs-status-tag mastered";
+      } else if (rec.level === 2) {
+        srsStatusTag.textContent = "🟢 Đang ghi nhớ";
+        srsStatusTag.className = "srs-status-tag learning";
+      } else if (rec.level === 1) {
+        srsStatusTag.textContent = "🔴 Cần ôn tập";
+        srsStatusTag.className = "srs-status-tag learning";
+      } else {
+        srsStatusTag.textContent = "Mới bắt đầu";
+        srsStatusTag.className = "srs-status-tag";
+      }
+
+      // Xử lý chế độ Flashcard (Ẩn/Hiện đáp án)
+      if (isFlashcardMode && !isAnswerRevealed) {
+        pinyinDisplay.textContent = "• • •";
+        pinyinDisplay.classList.add('hidden-answer');
+        meaningDisplay.textContent = "???";
+        meaningDisplay.classList.add('hidden-answer');
+        revealContainer.style.display = 'block';
+
+        document.querySelectorAll('.detail-collapsible').forEach(el => el.style.display = 'none');
+      } else {
+        pinyinDisplay.textContent = item.pinyin.join(', ');
+        pinyinDisplay.classList.remove('hidden-answer');
+        meaningDisplay.textContent = item.meaning_vi;
+        meaningDisplay.classList.remove('hidden-answer');
+        revealContainer.style.display = 'none';
+        document.querySelectorAll('.detail-collapsible').forEach(el => el.style.display = 'block');
+      }
+
+      metaPills.innerHTML = `
+        <span class="pill">Cấp độ HSK ${item.hsk_level}</span>
+        <span class="pill">${item.stroke_count} nét</span>
+        <span class="pill">Bộ thủ: ${item.radical}</span>
+      `;
+
+      setupWriter(item.character);
+
+      // Chiết tự
+      componentsGrid.innerHTML = "";
+      const components = item.structure?.tree?.components || item.structure?.components || [];
+      components.forEach(comp => {
+        const box = document.createElement('div');
+        box.className = `component-box ${comp.role}`;
+        box.innerHTML = `
+          <div class="comp-char">${comp.character}</div>
+          <div class="comp-tag">${comp.role_vi || (comp.role === 'semantic' ? 'Biểu ý' : 'Biểu âm')}</div>
+          <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 2px;">${comp.pinyin || ''}</div>
+          <div class="comp-hint">${comp.hint_vi}</div>
+        `;
+        box.addEventListener('click', () => {
+          playAudio(comp.character);
+          updateWriterStatus(`Đang xem cấu kiện '${comp.character}': ${comp.hint_vi}`, "info");
+        });
+        componentsGrid.appendChild(box);
+      });
+
+      const typeName = item.structure?.type_vi || item.structure?.type_name || item.structure?.type || '';
+      structureSummary.innerHTML = `<strong>${typeName}:</strong> ${item.structure?.description || ''}`;
+
+      // Từ nguyên
+      etymologyStory.textContent = item.etymology?.story_vi || '';
+      renderEvolutionGallery(item);
+
+      // Từ vựng HSK1
+      compoundsList.innerHTML = (item.compound_words || []).map(c => `
+        <div class="compound-item">
+          <div>
+            <span class="compound-hanzi">${c.word}</span>
+            <span class="compound-pinyin">${c.pinyin}</span>
+          </div>
+          <div class="compound-meaning">${c.meaning_vi}</div>
+        </div>
+      `).join('');
+
+      btnPrev.disabled = currentIndex === 0;
+      btnNext.disabled = currentIndex === activeList.length - 1;
+    }
+
+    // Bấm đánh giá SRS (Ghi nhớ ngắt quãng)
+    document.querySelectorAll('.btn-srs').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const rating = parseInt(btn.dataset.rating, 10);
+        const item = activeList[currentIndex];
+        if (!item) return;
+
+        let level = 1;
+        let needReview = false;
+
+        if (rating === 1) { // Quên
+          level = 1;
+          needReview = true;
+          updateWriterStatus(`Đã đánh dấu '${item.character}' vào danh sách CẦN ÔN TẬP.`, "mistake");
+        } else if (rating === 2) { // Khó
+          level = 2;
+          needReview = true;
+          updateWriterStatus(`Đã ghi nhận '${item.character}' là chữ KHÓ, sẽ nhắc lại sớm.`, "info");
+        } else if (rating === 3) { // Thuộc
+          level = 2;
+          needReview = false;
+          updateWriterStatus(`Tốt lắm! Bạn đã nhớ chữ '${item.character}'.`, "correct");
+        } else if (rating === 4) { // Dễ
+          level = 3;
+          needReview = false;
+          updateWriterStatus(`Tuyệt vời! Chữ '${item.character}' đã đạt mức ĐÃ THUỘC LÀU ⭐.`, "success");
+        }
+
+        srsData[item.character] = {
+          level,
+          needReview,
+          lastReviewed: Date.now()
+        };
+
+        saveSrsData();
+        updateTabCounters();
+        renderCurrent();
+
+        setTimeout(() => {
+          if (currentIndex < activeList.length - 1) {
+            currentIndex++;
+            isAnswerRevealed = false;
+            renderCurrent();
+          }
+        }, 650);
+      });
+    });
+
+    // Bật/Tắt chế độ Flashcard
+    btnToggleFlashcard.addEventListener('click', () => {
+      isFlashcardMode = !isFlashcardMode;
+      isAnswerRevealed = false;
+      btnToggleFlashcard.classList.toggle('active', isFlashcardMode);
+      btnToggleFlashcard.textContent = isFlashcardMode ? "✕ Tắt chế độ ôn" : "👁️ Chế độ ôn bài";
+      renderCurrent();
+    });
+
+    // Lật mở đáp án
+    btnReveal.addEventListener('click', () => {
+      isAnswerRevealed = true;
+      renderCurrent();
+    });
+
+    // Chuyển Tab bộ lọc
+    tabAll.addEventListener('click', () => applyFilter('all'));
+    tabReview.addEventListener('click', () => applyFilter('review'));
+    tabMastered.addEventListener('click', () => applyFilter('mastered'));
+
+    // Modal Tiến độ & Sao lưu Events
+    btnOpenSrsModal.addEventListener('click', () => {
+      updateTabCounters();
+      srsModal.classList.add('open');
+    });
+
+    btnCloseModal.addEventListener('click', () => {
+      srsModal.classList.remove('open');
+    });
+
+    srsModal.addEventListener('click', (e) => {
+      if (e.target === srsModal) srsModal.classList.remove('open');
+    });
+
+    // 1. Xuất file sao lưu JSON
+    btnExportSrs.addEventListener('click', () => {
+      const exportObject = {
+        app: "HSK1_HANZI_DECOCOT_APP",
+        export_date: new Date().toISOString(),
+        progress: srsData
+      };
+
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObject, null, 2));
+      const downloadAnchor = document.createElement('a');
+      const dateStr = new Date().toISOString().slice(0, 10);
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `hsk1-tien-do-${dateStr}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+
+      updateWriterStatus("✓ Đã tải file sao lưu tiến độ (.json) về máy thành công!", "success");
+    });
+
+    // 2. Kích hoạt chọn file khôi phục JSON
+    btnTriggerImport.addEventListener('click', () => {
+      importFileInput.click();
+    });
+
+    importFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const parsed = JSON.parse(event.target.result);
+          if (parsed && (parsed.progress || typeof parsed === 'object')) {
+            srsData = parsed.progress ? parsed.progress : parsed;
+            saveSrsData();
+            updateTabCounters();
+            initSelector();
+            renderCurrent();
+            srsModal.classList.remove('open');
+            updateWriterStatus("🎉 Đã khôi phục toàn bộ tiến độ học tập thành công!", "success");
+          } else {
+            alert("File không đúng cấu trúc tiến độ của ứng dụng!");
+          }
+        } catch (err) {
+          alert("Lỗi đọc file: File không hợp lệ!");
+        }
+      };
+      reader.readAsText(file);
+      importFileInput.value = ''; // Reset input
+    });
+
+    // 3. Đặt lại toàn bộ tiến độ (Học từ đầu)
+    btnResetSrs.addEventListener('click', () => {
+      const agree = confirm("Bạn có chắc chắn muốn xóa toàn bộ lịch sử và tiến độ để học lại từ đầu không?");
+      if (agree) {
+        srsData = {};
+        saveSrsData();
+        updateTabCounters();
+        initSelector();
+        renderCurrent();
+        srsModal.classList.remove('open');
+        updateWriterStatus("Đã xóa sạch tiến độ, bắt đầu học lại từ chữ số 1.", "info");
+      }
+    });
+
+    // Khởi tạo nạp dữ liệu
+    async function loadDataBundle() {
+      try {
+        loadSrsData();
+        const response = await fetch('./data/bundles/hsk1-core.json');
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        HSK1_DATA = await response.json();
+        activeList = [...HSK1_DATA];
+
+        // Kiểm tra deep link ?char=... từ web gốc chuyển sang
+        const params = new URLSearchParams(window.location.search);
+        const targetChar = params.get('char') || params.get('c');
+        if (targetChar) {
+          const cleanChar = targetChar.trim();
+          const foundIdx = activeList.findIndex(item => item.character === cleanChar);
+          if (foundIdx !== -1) {
+            currentIndex = foundIdx;
+          } else {
+            // Tự động khởi tạo thẻ giải mã cho chữ Hán mới chuyển từ bài học gốc sang
+            const dynamicItem = {
+              character: cleanChar,
+              unicode: cleanChar.charCodeAt(0).toString(16).toUpperCase(),
+              pinyin: [cleanChar],
+              meaning_vi: "Chữ chuyển từ bài học: " + cleanChar,
+              hsk_level: 1,
+              frequency_rank: "--",
+              stroke_count: "--",
+              radical: "Chữ Hán",
+              structure: {
+                ids: cleanChar,
+                type_vi: "Chữ Hán từ bài học",
+                description: `Chữ '${cleanChar}' được chuyển trực tiếp từ bài học web gốc sang để tập viết bút thuận.`
+              },
+              etymology: {
+                story_vi: `Chữ '${cleanChar}' sẵn sàng để bạn tập viết từng nét trên ô Mễ tự cách bên dưới theo thứ tự bút thuận chuẩn xác.`
+              },
+              compound_words: []
+            };
+            HSK1_DATA.unshift(dynamicItem);
+            activeList = [...HSK1_DATA];
+            currentIndex = 0;
+          }
+        }
+
+        updateTabCounters();
+        initSelector();
+        renderCurrent();
+      } catch (err) {
+        console.error("Lỗi nạp hsk1-core.json:", err);
+        updateWriterStatus("Không thể tải gói dữ liệu chữ Hán.", "mistake");
+      }
+    }
+
+    // Grid toggle
+    btnGridMi.addEventListener('click', () => {
+      btnGridMi.classList.add('active');
+      btnGridTian.classList.remove('active');
+      gridContainer.classList.remove('tian-mode');
+    });
+
+    btnGridTian.addEventListener('click', () => {
+      btnGridTian.classList.add('active');
+      btnGridMi.classList.remove('active');
+      gridContainer.classList.add('tian-mode');
+    });
+
+    // Âm thanh & Viết nét
+    btnAudio.addEventListener('click', () => {
+      if (activeList[currentIndex]) playAudio(activeList[currentIndex].character);
+    });
+
+    btnAnimate.addEventListener('click', playAnimation);
+    btnQuiz.addEventListener('click', startQuizMode);
+    btnReset.addEventListener('click', () => {
+      if (activeList[currentIndex]) {
+        setupWriter(activeList[currentIndex].character);
+        startQuizMode();
+      }
+    });
+
+    btnPrev.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        isAnswerRevealed = false;
+        renderCurrent();
+      }
+    });
+
+    btnNext.addEventListener('click', () => {
+      if (currentIndex < activeList.length - 1) {
+        currentIndex++;
+        isAnswerRevealed = false;
+        renderCurrent();
+      }
+    });
+
+    // Đăng ký Service Worker chạy ngoại tuyến (PWA)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('PWA ServiceWorker sẵn sàng!'))
+          .catch(err => console.log('Lỗi đăng ký ServiceWorker:', err));
+      });
+    }
+
+    loadDataBundle();
+  </script>
 </body>
 </html>
+```
