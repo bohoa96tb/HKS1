@@ -1,4 +1,4 @@
-```javascript
+javascript
 /* Mỗi bài một mục. Giữ mục bài cũ khi thêm bài; tăng v sau khi sửa. */
 window.HSK_MANIFEST = [
   {
@@ -120,4 +120,3 @@ try {
 } catch (error) {
   console.warn("Lỗi tính năng mở rộng trong manifest:", error);
 }
-```
