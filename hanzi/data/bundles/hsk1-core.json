@@ -696,5 +696,476 @@
 { "word": "明天", "pinyin": "míng tiān", "meaning_vi": "ngày mai" },
 { "word": "明白", "pinyin": "míng bai", "meaning_vi": "hiểu rõ, sáng tỏ" }
 ]
+},
+{
+"character": "你",
+"unicode": "4F60",
+"pinyin": ["nǐ"],
+"meaning_vi": "bạn, anh, chị (ngôi thứ 2)",
+"hsk_level": 1,
+"frequency_rank": 29,
+"stroke_count": 7,
+"radical": "亻",
+"structure": {
+"ids": "⿰亻尔",
+"type": "pictophonetic",
+"type_vi": "Chữ hình thanh (Nghĩa + Âm)",
+"description": "Bố cục trái - phải (⿰). Bộ nhân đứng (亻) mang nghĩa con người, chữ Nhĩ (尔) gợi ý âm đọc.",
+"tree": {
+"operator": "⿰",
+"components": [
+{
+"character": "亻",
+"pinyin": "rén",
+"role": "semantic",
+"role_vi": "Biểu ý",
+"hint_vi": "Con người (bộ Nhân đứng)"
+},
+{
+"character": "尔",
+"pinyin": "ěr",
+"role": "phonetic",
+"role_vi": "Biểu âm",
+"hint_vi": "ěr gợi ý âm đọc cho nǐ"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Chữ vốn bắt nguồn từ chữ Nhĩ (尔), về sau thêm bộ Nhân đứng (亻) ở bên cạnh để nhấn mạnh rõ đối tượng giao tiếp là con người đối diện: 'Bạn' (你).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "你好", "pinyin": "nǐ hǎo", "meaning_vi": "xin chào" },
+{ "word": "你们", "pinyin": "nǐ men", "meaning_vi": "các bạn" }
+]
+},
+{
+"character": "我",
+"unicode": "6211",
+"pinyin": ["wǒ"],
+"meaning_vi": "tôi, ta (ngôi thứ nhất)",
+"hsk_level": 1,
+"frequency_rank": 3,
+"stroke_count": 7,
+"radical": "戈",
+"structure": {
+"ids": "⿰手戈",
+"type": "compound_ideographic",
+"type_vi": "Chữ hội ý (Ghép ý nghĩa)",
+"description": "Thời cổ gồm bộ Thủ (bàn tay) cầm cây vũ khí Qua (戈). Cầm vũ khí trong tay để tự vệ và bảo vệ chính mình: 'Tôi' (我).",
+"tree": {
+"operator": "⿰",
+"components": [
+{
+"character": "手",
+"pinyin": "shǒu",
+"role": "semantic",
+"role_vi": "Biểu ý 1",
+"hint_vi": "Bàn tay cầm nắm vững chắc"
+},
+{
+"character": "戈",
+"pinyin": "gē",
+"role": "semantic",
+"role_vi": "Biểu ý 2",
+"hint_vi": "Cây giáo mác, vũ khí thời cổ"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Thời Giáp cốt văn vẽ người cầm binh khí có răng cưa. Về sau mượn làm đại từ tự xưng: người cầm vũ khí đứng lên bảo vệ bản thân và thị tộc chính là 'Tôi' (我).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "我们", "pinyin": "wǒ men", "meaning_vi": "chúng tôi, chúng ta" }
+]
+},
+{
+"character": "他",
+"unicode": "4ED6",
+"pinyin": ["tā"],
+"meaning_vi": "anh ấy, ông ấy, nó (ngôi thứ 3 nam)",
+"hsk_level": 1,
+"frequency_rank": 10,
+"stroke_count": 5,
+"radical": "亻",
+"structure": {
+"ids": "⿰亻也",
+"type": "pictophonetic",
+"type_vi": "Chữ hình thanh (Nghĩa + Âm)",
+"description": "Bố cục trái - phải (⿰). Bộ nhân đứng (亻) chỉ con người, chữ Dã (也) gợi ý âm đọc.",
+"tree": {
+"operator": "⿰",
+"components": [
+{
+"character": "亻",
+"pinyin": "rén",
+"role": "semantic",
+"role_vi": "Biểu ý",
+"hint_vi": "Con người (bộ Nhân đứng)"
+},
+{
+"character": "也",
+"pinyin": "yě",
+"role": "phonetic",
+"role_vi": "Biểu âm",
+"hint_vi": "yě gợi ý âm đọc cho tā"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Chữ vốn có nghĩa là người khác ở bên ngoài. Ghép bộ Nhân (亻) với chữ Dã (也) để chỉ một người thứ ba: 'anh ấy' (他).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "他们", "pinyin": "tā men", "meaning_vi": "họ, các anh ấy" }
+]
+},
+{
+"character": "她",
+"unicode": "5979",
+"pinyin": ["tā"],
+"meaning_vi": "cô ấy, bà ấy (ngôi thứ 3 nữ)",
+"hsk_level": 1,
+"frequency_rank": 38,
+"stroke_count": 6,
+"radical": "女",
+"structure": {
+"ids": "⿰女也",
+"type": "pictophonetic",
+"type_vi": "Chữ hình thanh (Nghĩa + Âm)",
+"description": "Bố cục trái - phải (⿰). Bộ Nữ (女) chỉ phái nữ, chữ Dã (也) gợi ý âm đọc.",
+"tree": {
+"operator": "⿰",
+"components": [
+{
+"character": "女",
+"pinyin": "nǚ",
+"role": "semantic",
+"role_vi": "Biểu ý",
+"hint_vi": "Người phụ nữ"
+},
+{
+"character": "也",
+"pinyin": "yě",
+"role": "phonetic",
+"role_vi": "Biểu âm",
+"hint_vi": "yě gợi ý âm đọc cho tā"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Được các học giả sáng tạo vào đầu thế kỷ 20 để tương đương với đại từ nữ giới trong ngôn ngữ hiện đại, kết hợp bộ Nữ (女) và chữ Dã (也).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "她们", "pinyin": "tā men", "meaning_vi": "họ, các cô ấy" }
+]
+},
+{
+"character": "们",
+"unicode": "4EEC",
+"pinyin": ["men"],
+"meaning_vi": "các, chúng (hậu tố số nhiều)",
+"hsk_level": 1,
+"frequency_rank": 24,
+"stroke_count": 5,
+"radical": "亻",
+"structure": {
+"ids": "⿰亻门",
+"type": "pictophonetic",
+"type_vi": "Chữ hình thanh (Nghĩa + Âm)",
+"description": "Bố cục trái - phải (⿰). Bộ nhân đứng (亻) chỉ con người, chữ Môn (门) mượn âm mén tạo nên hậu tố men.",
+"tree": {
+"operator": "⿰",
+"components": [
+{
+"character": "亻",
+"pinyin": "rén",
+"role": "semantic",
+"role_vi": "Biểu ý",
+"hint_vi": "Con người (bộ Nhân đứng)"
+},
+{
+"character": "门",
+"pinyin": "mén",
+"role": "phonetic",
+"role_vi": "Biểu âm",
+"hint_vi": "mén gợi ý âm đọc cho men"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Chữ biểu thị số nhiều của người, kết hợp giữa con người (亻) và âm đọc từ cánh cửa (门).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "人们", "pinyin": "rén men", "meaning_vi": "mọi người" }
+]
+},
+{
+"character": "不",
+"unicode": "4E0D",
+"pinyin": ["bù"],
+"meaning_vi": "không, chẳng (phủ định)",
+"hsk_level": 1,
+"frequency_rank": 4,
+"stroke_count": 4,
+"radical": "一",
+"structure": {
+"ids": "不",
+"type": "ideographic",
+"type_vi": "Chữ chỉ sự / tượng hình",
+"description": "Chữ đơn thể. Nét ngang ở trên biểu thị bầu trời, các nét bên dưới vẽ hình chim bay vút lên trời không chịu sà xuống.",
+"tree": {
+"operator": "",
+"components": [
+{
+"character": "不",
+"pinyin": "bù",
+"role": "semantic",
+"role_vi": "Tự thân",
+"hint_vi": "Hình cánh chim vút bay lên trời cao"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Thời Giáp cốt văn vẽ đài hoa hoặc con chim bay ngược lên trời không chịu đậu xuống đất, mượn làm từ biểu thị sự phủ định: 'không' (不).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "不好", "pinyin": "bù hǎo", "meaning_vi": "không tốt" },
+{ "word": "不是", "pinyin": "bú shì", "meaning_vi": "không phải là" }
+]
+},
+{
+"character": "是",
+"unicode": "662F",
+"pinyin": ["shì"],
+"meaning_vi": "là, đúng, phải",
+"hsk_level": 1,
+"frequency_rank": 5,
+"stroke_count": 9,
+"radical": "日",
+"structure": {
+"ids": "⿱日疋",
+"type": "compound_ideographic",
+"type_vi": "Chữ hội ý (Ghép ý nghĩa)",
+"description": "Bố cục trên - dưới (⿱). Ở trên là Mặt trời (日), ở dưới là chữ Chính (正) biến thể (bước chân đi ngay thẳng dưới ánh sáng mặt trời).",
+"tree": {
+"operator": "⿱",
+"components": [
+{
+"character": "日",
+"pinyin": "rì",
+"role": "semantic",
+"role_vi": "Mặt trời",
+"hint_vi": "Ánh sáng mặt trời soi sáng chân lý"
+},
+{
+"character": "疋",
+"pinyin": "shū",
+"role": "semantic",
+"role_vi": "Bước chân",
+"hint_vi": "Bước chân đi ngay thẳng, đúng đắn"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Mặt trời (日) chiếu sáng trên cao, bước chân (正/疋) đi thẳng thắn không quanh co, biểu thị điều chân thật, đúng đắn và chính trực: 'là, phải' (是).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "是不是", "pinyin": "shì bu shì", "meaning_vi": "phải không, có phải không" }
+]
+},
+{
+"character": "有",
+"unicode": "6709",
+"pinyin": ["yǒu"],
+"meaning_vi": "có, sở hữu",
+"hsk_level": 1,
+"frequency_rank": 12,
+"stroke_count": 6,
+"radical": "月",
+"structure": {
+"ids": "⿸𠂇月",
+"type": "compound_ideographic",
+"type_vi": "Chữ hội ý (Ghép ý nghĩa)",
+"description": "Bố cục bao bọc trên-trái. Ở trên là bàn tay (bộ Hữu 𠂇/又), ở dưới là miếng thịt (bộ Nhục 肉 biến thành 月). Bàn tay nắm giữ miếng thịt biểu thị 'có' của cải.",
+"tree": {
+"operator": "⿸",
+"components": [
+{
+"character": "𠂇",
+"pinyin": "yòu",
+"role": "semantic",
+"role_vi": "Bàn tay",
+"hint_vi": "Bàn tay dang ra nắm lấy"
+},
+{
+"character": "月",
+"pinyin": "ròu",
+"role": "semantic",
+"role_vi": "Miếng thịt",
+"hint_vi": "Miếng thịt (nguồn thức ăn quý báu thời cổ)"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Bàn tay (𠂇) cầm một miếng thịt (月/肉) dồi dào, tượng trưng cho việc có thức ăn, có của cải và sự sở hữu: 'có' (有).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "有人", "pinyin": "yǒu rén", "meaning_vi": "có người" },
+{ "word": "没有", "pinyin": "méi yǒu", "meaning_vi": "không có" }
+]
+},
+{
+"character": "个",
+"unicode": "4E2A",
+"pinyin": ["gè"],
+"meaning_vi": "cái, chiếc (lượng từ)",
+"hsk_level": 1,
+"frequency_rank": 8,
+"stroke_count": 3,
+"radical": "人",
+"structure": {
+"ids": "⿱人丨",
+"type": "ideographic",
+"type_vi": "Chữ chỉ sự",
+"description": "Bố cục trên - dưới (⿱). Chữ Nhân (人) ở trên và nét sổ đứng (丨) ở dưới. Nguyên thể là hình cây trúc đứng đơn độc.",
+"tree": {
+"operator": "⿱",
+"components": [
+{
+"character": "人",
+"pinyin": "rén",
+"role": "semantic",
+"role_vi": "Con người",
+"hint_vi": "Hình dáng con người hoặc chiếc que đứng"
+},
+{
+"character": "丨",
+"pinyin": "gǔn",
+"role": "semantic",
+"role_vi": "Nét đứng",
+"hint_vi": "Thân que đứng thẳng đơn độc"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Chữ '個' vốn chỉ một nhánh trúc riêng lẻ; dạng giản thể '个' dùng để đếm từng sự vật độc lập: một cái, một người.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "一个人", "pinyin": "yí gè rén", "meaning_vi": "một người" },
+{ "word": "这个", "pinyin": "zhè ge", "meaning_vi": "cái này" }
+]
+},
+{
+"character": "子",
+"unicode": "5B50",
+"pinyin": ["zǐ"],
+"meaning_vi": "con, đứa trẻ, hạt",
+"hsk_level": 1,
+"frequency_rank": 30,
+"stroke_count": 3,
+"radical": "子",
+"structure": {
+"ids": "子",
+"type": "pictographic",
+"type_vi": "Chữ tượng hình",
+"description": "Chữ đơn thể. Vẽ hình một đứa trẻ sơ sinh quấn tã, đầu tròn, hai tay vung vẩy sang hai bên.",
+"tree": {
+"operator": "",
+"components": [
+{
+"character": "子",
+"pinyin": "zǐ",
+"role": "semantic",
+"role_vi": "Tự thân",
+"hint_vi": "Đứa bé sơ sinh đáng yêu"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Thời Giáp cốt văn vẽ đứa trẻ sơ sinh với chiếc đầu tròn xoe, thân mình bọc trong tã và hai cánh tay nhỏ vươn ra tìm mẹ.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "儿子", "pinyin": "ér zi", "meaning_vi": "con trai" },
+{ "word": "日子", "pinyin": "rì zi", "meaning_vi": "ngày tháng, cuộc sống" }
+]
 }
 ]
