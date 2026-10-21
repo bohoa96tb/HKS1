@@ -1,0 +1,700 @@
+[
+{
+"character": "妈",
+"unicode": "5988",
+"pinyin": ["mā"],
+"meaning_vi": "mẹ, má",
+"hsk_level": 1,
+"frequency_rank": 452,
+"stroke_count": 6,
+"radical": "女",
+"structure": {
+"ids": "⿰女马",
+"type": "pictophonetic",
+"type_vi": "Chữ hình thanh (Nghĩa + Âm)",
+"description": "Bố cục trái - phải (⿰). Bộ Nữ (女) mang ý nghĩa người mẹ, chữ Mã (马) gợi ý âm đọc.",
+"tree": {
+"operator": "⿰",
+"components": [
+{
+"character": "女",
+"pinyin": "nǚ",
+"role": "semantic",
+"role_vi": "Biểu ý (Ý nghĩa)",
+"hint_vi": "Người phụ nữ (thành phần mang ý nghĩa người mẹ)"
+},
+{
+"character": "马",
+"pinyin": "mǎ",
+"role": "phonetic",
+"role_vi": "Biểu âm (Âm đọc)",
+"hint_vi": "Ngựa (mǎ gợi ý âm đọc cho mā)"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Người phụ nữ (女) luôn làm việc vất vả, bền bỉ như chú ngựa (马) để chăm sóc con cái chính là Mẹ (妈).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "妈妈", "pinyin": "māma", "meaning_vi": "mẹ, má" }
+]
+},
+{
+"character": "人",
+"unicode": "4EBA",
+"pinyin": ["rén"],
+"meaning_vi": "người",
+"hsk_level": 1,
+"frequency_rank": 7,
+"stroke_count": 2,
+"radical": "人",
+"structure": {
+"ids": "人",
+"type": "pictographic",
+"type_vi": "Chữ tượng hình (Vẽ hình dạng)",
+"description": "Chữ đơn thể độc lập, vẽ hình dáng một con người nhìn nghiêng đang bước đi.",
+"tree": {
+"operator": "",
+"components": [
+{
+"character": "人",
+"pinyin": "rén",
+"role": "semantic",
+"role_vi": "Tự thân",
+"hint_vi": "Hình tượng con người đứng thẳng và tiến bước"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Mô phỏng hình dáng một con người nhìn nghiêng, hai chân vững chãi bước đi trong tư thế lao động.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "中国人", "pinyin": "zhōng guó rén", "meaning_vi": "người Trung Quốc" },
+{ "word": "大人", "pinyin": "dà ren", "meaning_vi": "người lớn" }
+]
+},
+{
+"character": "大",
+"unicode": "5927",
+"pinyin": ["dà"],
+"meaning_vi": "to, lớn",
+"hsk_level": 1,
+"frequency_rank": 20,
+"stroke_count": 3,
+"radical": "大",
+"structure": {
+"ids": "大",
+"type": "ideographic",
+"type_vi": "Chữ chỉ sự / tượng hình",
+"description": "Chữ đơn thể, vẽ hình một con người (人) dang rộng cả hai tay và hai chân hết cỡ.",
+"tree": {
+"operator": "",
+"components": [
+{
+"character": "人",
+"pinyin": "rén",
+"role": "semantic",
+"role_vi": "Thân người",
+"hint_vi": "Hình dáng con người trưởng thành"
+},
+{
+"character": "一",
+"pinyin": "yī",
+"role": "semantic",
+"role_vi": "Hai cánh tay",
+"hint_vi": "Dang rộng hai cánh tay để biểu đạt sự to lớn"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Người xưa diễn tả thứ gì đó thật to lớn bằng cử chỉ dang rộng cả hai tay và hai chân.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "大学", "pinyin": "dà xué", "meaning_vi": "trường đại học" },
+{ "word": "大人", "pinyin": "dà ren", "meaning_vi": "người lớn" }
+]
+},
+{
+"character": "天",
+"unicode": "5929",
+"pinyin": ["tiān"],
+"meaning_vi": "trời, ngày",
+"hsk_level": 1,
+"frequency_rank": 66,
+"stroke_count": 4,
+"radical": "大",
+"structure": {
+"ids": "⿱一大",
+"type": "ideographic",
+"type_vi": "Chữ chỉ sự",
+"description": "Bố cục trên - dưới (⿱). Phía trên con người (大) có thêm nét ngang chỉ khoảng không bao la trên đỉnh đầu.",
+"tree": {
+"operator": "⿱",
+"components": [
+{
+"character": "一",
+"pinyin": "yī",
+"role": "semantic",
+"role_vi": "Bầu trời",
+"hint_vi": "Khoảng không vô cực ở phía trên đỉnh đầu"
+},
+{
+"character": "大",
+"pinyin": "dà",
+"role": "semantic",
+"role_vi": "Con người",
+"hint_vi": "Con người đứng đầu đội trời chân đạp đất"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Khoảng không vô tận nằm ngay phía trên đỉnh đầu con người (大) chính là Bầu trời (天).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "今天", "pinyin": "jīn tiān", "meaning_vi": "hôm nay" },
+{ "word": "明天", "pinyin": "míng tiān", "meaning_vi": "ngày mai" },
+{ "word": "昨天", "pinyin": "zuó tiān", "meaning_vi": "hôm qua" }
+]
+},
+{
+"character": "木",
+"unicode": "6728",
+"pinyin": ["mù"],
+"meaning_vi": "cây, gỗ",
+"hsk_level": 1,
+"frequency_rank": 1150,
+"stroke_count": 4,
+"radical": "木",
+"structure": {
+"ids": "木",
+"type": "pictographic",
+"type_vi": "Chữ tượng hình",
+"description": "Chữ đơn thể, nét thẳng đứng là thân cây, hai nhánh trên là cành, hai nhánh dưới là rễ đâm vào đất.",
+"tree": {
+"operator": "",
+"components": [
+{
+"character": "木",
+"pinyin": "mù",
+"role": "semantic",
+"role_vi": "Tự thân",
+"hint_vi": "Hình dáng một cái cây cắm rễ sâu vào lòng đất"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Hình vẽ trực quan một cái cây có thân đứng thẳng, cành lá vươn lên và chùm rễ cắm sâu xuống đất.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "木头", "pinyin": "mù tou", "meaning_vi": "khúc gỗ, gỗ" }
+]
+},
+{
+"character": "林",
+"unicode": "6797",
+"pinyin": ["lín"],
+"meaning_vi": "rừng cây nhỏ",
+"hsk_level": 1,
+"frequency_rank": 780,
+"stroke_count": 8,
+"radical": "木",
+"structure": {
+"ids": "⿰木木",
+"type": "compound_ideographic",
+"type_vi": "Chữ hội ý (Ghép ý nghĩa)",
+"description": "Bố cục trái - phải (⿰). Ghép hai cây gỗ (木 + 木) đứng cạnh nhau biểu thị nhiều cây mọc thành rừng.",
+"tree": {
+"operator": "⿰",
+"components": [
+{
+"character": "木",
+"pinyin": "mù",
+"role": "semantic",
+"role_vi": "Biểu ý 1",
+"hint_vi": "Một cái cây đứng bên trái"
+},
+{
+"character": "木",
+"pinyin": "mù",
+"role": "semantic",
+"role_vi": "Biểu ý 2",
+"hint_vi": "Thêm một cái cây nữa đứng bên phải"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Một cây chưa thể thành rừng, hai cây (木 + 木) mọc cạnh nhau sẽ tạo nên một khu rừng (林).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "树林", "pinyin": "shù lín", "meaning_vi": "rừng cây nhỏ" }
+]
+},
+{
+"character": "好",
+"unicode": "597D",
+"pinyin": ["hǎo"],
+"meaning_vi": "tốt, đẹp, hay",
+"hsk_level": 1,
+"frequency_rank": 70,
+"stroke_count": 6,
+"radical": "女",
+"structure": {
+"ids": "⿰女子",
+"type": "compound_ideographic",
+"type_vi": "Chữ hội ý (Ghép ý nghĩa)",
+"description": "Bố cục trái - phải (⿰). Ghép giữa người phụ nữ (女) và đứa con nhỏ (子).",
+"tree": {
+"operator": "⿰",
+"components": [
+{
+"character": "女",
+"pinyin": "nǚ",
+"role": "semantic",
+"role_vi": "Biểu ý",
+"hint_vi": "Người phụ nữ, người mẹ hiền từ"
+},
+{
+"character": "子",
+"pinyin": "zǐ",
+"role": "semantic",
+"role_vi": "Biểu ý",
+"hint_vi": "Đứa con thơ nhỏ nhắn"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Người mẹ (女) âu yếm ôm đứa con (子) trong lòng là hình ảnh đẹp đẽ, hạnh phúc và tốt lành nhất (好).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "你好", "pinyin": "nǐ hǎo", "meaning_vi": "xin chào" },
+{ "word": "很好", "pinyin": "hěn hǎo", "meaning_vi": "rất tốt" }
+]
+},
+{
+"character": "一",
+"unicode": "4E00",
+"pinyin": ["yī"],
+"meaning_vi": "một, số 1",
+"hsk_level": 1,
+"frequency_rank": 2,
+"stroke_count": 1,
+"radical": "一",
+"structure": {
+"ids": "一",
+"type": "ideographic",
+"type_vi": "Chữ chỉ sự",
+"description": "Chữ đơn thể, một nét gạch ngang duy nhất biểu thị số lượng là một.",
+"tree": {
+"operator": "",
+"components": [
+{
+"character": "一",
+"pinyin": "yī",
+"role": "semantic",
+"role_vi": "Tự thân",
+"hint_vi": "Một chiếc que tính đặt nằm ngang"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Thời cổ đại dùng que tính để đếm số, đặt một chiếc que nằm ngang để biểu thị số 1.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "一个", "pinyin": "yí gè", "meaning_vi": "một cái" },
+{ "word": "一起", "pinyin": "yì qǐ", "meaning_vi": "cùng nhau" }
+]
+},
+{
+"character": "二",
+"unicode": "4E8C",
+"pinyin": ["èr"],
+"meaning_vi": "hai, số 2",
+"hsk_level": 1,
+"frequency_rank": 35,
+"stroke_count": 2,
+"radical": "二",
+"structure": {
+"ids": "⿱一一",
+"type": "ideographic",
+"type_vi": "Chữ chỉ sự",
+"description": "Bố cục trên - dưới (⿱). Hai nét gạch ngang song song biểu thị số lượng là hai.",
+"tree": {
+"operator": "⿱",
+"components": [
+{
+"character": "一",
+"pinyin": "yī",
+"role": "semantic",
+"role_vi": "Nét trên",
+"hint_vi": "Một que tính ở trên"
+},
+{
+"character": "一",
+"pinyin": "yī",
+"role": "semantic",
+"role_vi": "Nét dưới",
+"hint_vi": "Một que tính ở dưới (vẽ dài hơn để tạo thế vững chãi)"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Đặt hai chiếc que tính song song để biểu thị số 2.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "二十", "pinyin": "èr shí", "meaning_vi": "hai mươi" },
+{ "word": "二月", "pinyin": "èr yuè", "meaning_vi": "tháng hai" }
+]
+},
+{
+"character": "三",
+"unicode": "4E09",
+"pinyin": ["sān"],
+"meaning_vi": "ba, số 3",
+"hsk_level": 1,
+"frequency_rank": 48,
+"stroke_count": 3,
+"radical": "一",
+"structure": {
+"ids": "⿱一二",
+"type": "ideographic",
+"type_vi": "Chữ chỉ sự",
+"description": "Bố cục trên - dưới (⿱). Ba nét gạch ngang xếp chồng lên nhau biểu thị số 3.",
+"tree": {
+"operator": "⿱",
+"components": [
+{
+"character": "一",
+"pinyin": "yī",
+"role": "semantic",
+"role_vi": "Nét trên",
+"hint_vi": "Tượng trưng cho Trời (Thiên)"
+},
+{
+"character": "一",
+"pinyin": "yī",
+"role": "semantic",
+"role_vi": "Nét giữa",
+"hint_vi": "Tượng trưng cho Người (Nhân)"
+},
+{
+"character": "一",
+"pinyin": "yī",
+"role": "semantic",
+"role_vi": "Nét dưới",
+"hint_vi": "Tượng trưng cho Đất (Địa)"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Ba nét ngang xếp chồng đại diện cho số 3, đồng thời cũng tượng trưng cho tam tài: Thiên - Địa - Nhân.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "三十", "pinyin": "sān shí", "meaning_vi": "ba mươi" },
+{ "word": "三月", "pinyin": "sān yuè", "meaning_vi": "tháng ba" }
+]
+},
+{
+"character": "十",
+"unicode": "5341",
+"pinyin": ["shí"],
+"meaning_vi": "mười, số 10",
+"hsk_level": 1,
+"frequency_rank": 40,
+"stroke_count": 2,
+"radical": "十",
+"structure": {
+"ids": "十",
+"type": "ideographic",
+"type_vi": "Chữ chỉ sự",
+"description": "Chữ đơn thể, nét ngang biểu thị bốn phương Đông Tây, nét dọc biểu thị Nam Bắc, giao nhau tạo nên số 10 tròn vẹn.",
+"tree": {
+"operator": "",
+"components": [
+{
+"character": "一",
+"pinyin": "yī",
+"role": "semantic",
+"role_vi": "Nét ngang",
+"hint_vi": "Trục phương hướng ngang"
+},
+{
+"character": "丨",
+"pinyin": "gǔn",
+"role": "semantic",
+"role_vi": "Nét dọc",
+"hint_vi": "Trục phương hướng đứng"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Thời Giáp cốt văn chữ Thập là một nét thẳng đứng có thắt nút ở giữa biểu thị việc đếm xong một chu kỳ 10 ngón tay.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "十月", "pinyin": "shí yuè", "meaning_vi": "tháng mười" },
+{ "word": "十分", "pinyin": "shí fēn", "meaning_vi": "vô cùng, rất" }
+]
+},
+{
+"character": "口",
+"unicode": "53E3",
+"pinyin": ["kǒu"],
+"meaning_vi": "miệng, cửa, khẩu",
+"hsk_level": 1,
+"frequency_rank": 150,
+"stroke_count": 3,
+"radical": "口",
+"structure": {
+"ids": "口",
+"type": "pictographic",
+"type_vi": "Chữ tượng hình",
+"description": "Chữ đơn thể, vẽ hình cái miệng con người đang mở rộng.",
+"tree": {
+"operator": "",
+"components": [
+{
+"character": "口",
+"pinyin": "kǒu",
+"role": "semantic",
+"role_vi": "Tự thân",
+"hint_vi": "Hình dáng chiếc miệng đang mở"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Chữ mô phỏng hình dạng chiếc miệng mở ra để ăn uống và phát ra lời nói.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "人口", "pinyin": "rén kǒu", "meaning_vi": "dân số" },
+{ "word": "一口", "pinyin": "yì kǒu", "meaning_vi": "một ngụm, một miếng" }
+]
+},
+{
+"character": "日",
+"unicode": "65E5",
+"pinyin": ["rì"],
+"meaning_vi": "mặt trời, ngày",
+"hsk_level": 1,
+"frequency_rank": 52,
+"stroke_count": 4,
+"radical": "日",
+"structure": {
+"ids": "日",
+"type": "pictographic",
+"type_vi": "Chữ tượng hình",
+"description": "Chữ đơn thể, vẽ hình vầng thái dương tròn trĩnh có một chấm đen ở giữa biểu thị năng lượng ánh sáng.",
+"tree": {
+"operator": "",
+"components": [
+{
+"character": "日",
+"pinyin": "rì",
+"role": "semantic",
+"role_vi": "Tự thân",
+"hint_vi": "Vầng mặt trời tỏa sáng rực rỡ"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Ban đầu là một hình tròn có dấu chấm ở giữa mô phỏng mặt trời; khi viết bằng bút lông được vuông vức hóa thành chữ Nhật.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "生日", "pinyin": "shēng rì", "meaning_vi": "sinh nhật" },
+{ "word": "日月", "pinyin": "rì yuè", "meaning_vi": "ngày tháng, thời gian" }
+]
+},
+{
+"character": "月",
+"unicode": "6708",
+"pinyin": ["yuè"],
+"meaning_vi": "mặt trăng, tháng",
+"hsk_level": 1,
+"frequency_rank": 75,
+"stroke_count": 4,
+"radical": "月",
+"structure": {
+"ids": "月",
+"type": "pictographic",
+"type_vi": "Chữ tượng hình",
+"description": "Chữ đơn thể, vẽ hình mảnh trăng khuyết với hai vệt mây mờ che ngang.",
+"tree": {
+"operator": "",
+"components": [
+{
+"character": "月",
+"pinyin": "yuè",
+"role": "semantic",
+"role_vi": "Tự thân",
+"hint_vi": "Vầng trăng lưỡi liềm trên bầu trời đêm"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Mặt trăng hay biến đổi tròn khuyết, vì vậy người xưa vẽ hình trăng khuyết để phân biệt với mặt trời (日) vốn luôn tròn.",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "月亮", "pinyin": "yuè liang", "meaning_vi": "mặt trăng" },
+{ "word": "一个月", "pinyin": "yí gè yuè", "meaning_vi": "một tháng" }
+]
+},
+{
+"character": "明",
+"unicode": "660E",
+"pinyin": ["míng"],
+"meaning_vi": "sáng, rõ ràng, ngày mai",
+"hsk_level": 1,
+"frequency_rank": 88,
+"stroke_count": 8,
+"radical": "日",
+"structure": {
+"ids": "⿰日月",
+"type": "compound_ideographic",
+"type_vi": "Chữ hội ý (Ghép ý nghĩa)",
+"description": "Bố cục trái - phải (⿰). Kết hợp giữa Mặt trời (日) và Mặt trăng (月), hai nguồn sáng lớn nhất trong vũ trụ tạo nên sự sáng tỏ.",
+"tree": {
+"operator": "⿰",
+"components": [
+{
+"character": "日",
+"pinyin": "rì",
+"role": "semantic",
+"role_vi": "Biểu ý 1",
+"hint_vi": "Mặt trời chiếu sáng ban ngày"
+},
+{
+"character": "月",
+"pinyin": "yuè",
+"role": "semantic",
+"role_vi": "Biểu ý 2",
+"hint_vi": "Mặt trăng tỏa sáng ban đêm"
+}
+]
+}
+},
+"etymology": {
+"evolution_available": ["oracle", "bronze", "seal"],
+"story_vi": "Mặt trời (日) cùng Mặt trăng (月) hội tụ, ngày đêm đều được chiếu rọi thì vạn vật đều rực rỡ và sáng tỏ (明).",
+"evolution": [
+{ "stage": "Giáp cốt", "status": "Có" },
+{ "stage": "Kim văn", "status": "Có" },
+{ "stage": "Tiểu triện", "status": "Có" },
+{ "stage": "Khải thư", "status": "Chuẩn" }
+]
+},
+"compound_words": [
+{ "word": "明天", "pinyin": "míng tiān", "meaning_vi": "ngày mai" },
+{ "word": "明白", "pinyin": "míng bai", "meaning_vi": "hiểu rõ, sáng tỏ" }
+]
+}
+]
