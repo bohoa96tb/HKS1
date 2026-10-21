@@ -6,6 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Giải Mã Hán Tự - HSK 1</title>
   
+  <!-- Thẻ Cấu hình PWA & Biểu tượng -->
+  <meta name="theme-color" content="#BE123C">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Giải Mã HSK1">
+  <link rel="manifest" href="./app.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="apple-touch-icon" href="./icon.svg">
+
   <!-- Thư viện nguồn mở Hanzi Writer (Giấy phép MIT) -->
   <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 
@@ -1436,6 +1445,15 @@
         renderCurrent();
       }
     });
+
+    // Đăng ký Service Worker chạy ngoại tuyến (PWA)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('PWA ServiceWorker sẵn sàng! Phạm vi:', reg.scope))
+          .catch(err => console.log('Lỗi đăng ký ServiceWorker:', err));
+      });
+    }
 
     loadDataBundle();
   </script>
