@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Giải Mã Hán Tự - HSK 1</title>
+  
+  <!-- Thư viện nguồn mở Hanzi Writer (Giấy phép MIT) -->
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+
   <style>
     :root {
       --bg: #F8FAFC;
@@ -18,6 +22,10 @@
       --accent-semantic-bg: #CCFBF1;
       --accent-phonetic: #D97706;
       --accent-phonetic-bg: #FEF3C7;
+      --success: #059669;
+      --success-soft: #D1FAE5;
+      --error: #DC2626;
+      --error-soft: #FEE2E2;
       --radius: 16px;
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -39,7 +47,7 @@
       justify-content: center;
       min-height: 100vh;
       padding-top: var(--safe-top);
-      padding-bottom: calc(var(--safe-bottom) + 76px);
+      padding-bottom: calc(var(--safe-bottom) + 80px);
     }
 
     #app-container {
@@ -83,24 +91,32 @@
       border-radius: 999px;
     }
 
-    /* Hero Character Card */
+    /* Quick Selector */
+    .selector-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .selector-select {
+      flex: 1;
+      padding: 10px 12px;
+      font-size: 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #FFFFFF;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    /* Character Hero Card */
     .char-card {
       background: var(--card-bg);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 20px 16px;
+      padding: 18px 16px;
       text-align: center;
       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-      position: relative;
-    }
-
-    .hanzi-display {
-      font-family: "Noto Serif SC", "Kaiti", "STKaiti", "SimSun", serif;
-      font-size: 88px;
-      line-height: 1.1;
-      color: var(--text-main);
-      margin-bottom: 4px;
-      user-select: none;
     }
 
     .pinyin-audio-row {
@@ -108,12 +124,12 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .pinyin-text {
-      font-size: 24px;
-      font-weight: 600;
+      font-size: 26px;
+      font-weight: 700;
       color: var(--primary);
       letter-spacing: 0.5px;
     }
@@ -141,7 +157,7 @@
       font-size: 18px;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .meta-pills {
@@ -181,6 +197,121 @@
       gap: 6px;
     }
 
+    /* Hanzi Writer Stage & Ô Mễ Tự Cách */
+    .writer-stage-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mige-box {
+      width: 204px;
+      height: 204px;
+      position: relative;
+      background-color: #FFFDF9;
+      border: 2px solid #F43F5E;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(244, 63, 94, 0.08);
+      touch-action: none; /* Khóa cuộn trang khi ngón tay vẽ trên điện thoại */
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mige-svg-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    #writer-target {
+      position: relative;
+      z-index: 2;
+      width: 200px;
+      height: 200px;
+    }
+
+    .writer-actions {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .btn-action {
+      flex: 1;
+      padding: 9px 0;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+      transition: all 0.15s ease;
+    }
+
+    .btn-action:active {
+      transform: scale(0.96);
+    }
+
+    .btn-action.primary {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .writer-status {
+      width: 100%;
+      font-size: 13px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      background: #F8FAFC;
+      color: var(--text-muted);
+      border: 1px dashed var(--border);
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.3;
+    }
+
+    .writer-status.info {
+      color: #1E40AF;
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+    }
+
+    .writer-status.correct {
+      color: var(--success);
+      background: var(--success-soft);
+      border-color: #A7F3D0;
+    }
+
+    .writer-status.mistake {
+      color: var(--error);
+      background: var(--error-soft);
+      border-color: #FECACA;
+    }
+
+    .writer-status.success {
+      color: #065F46;
+      background: #D1FAE5;
+      border-color: #34D399;
+      font-weight: 600;
+    }
+
     /* Decomposition / Lego Blocks */
     .components-grid {
       display: grid;
@@ -195,7 +326,6 @@
       padding: 12px 10px;
       text-align: center;
       background: #FAFAFA;
-      transition: transform 0.15s ease;
     }
 
     .component-box.semantic {
@@ -210,7 +340,7 @@
 
     .comp-char {
       font-family: "Noto Serif SC", "Kaiti", "STKaiti", serif;
-      font-size: 36px;
+      font-size: 34px;
       line-height: 1.1;
       margin-bottom: 4px;
     }
@@ -265,7 +395,7 @@
       display: flex;
       justify-content: space-between;
       gap: 6px;
-      padding: 8px 0 2px 0;
+      padding: 4px 0 2px 0;
     }
 
     .evo-step {
@@ -324,25 +454,7 @@
       color: var(--text-muted);
     }
 
-    /* Quick Selector */
-    .selector-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .selector-select {
-      flex: 1;
-      padding: 10px 12px;
-      font-size: 15px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: #FFFFFF;
-      color: var(--text-main);
-      outline: none;
-    }
-
-    /* Bottom Sticky Navigation */
+    /* Bottom Navigation */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -415,10 +527,9 @@
       <select id="char-select" class="selector-select" aria-label="Chọn chữ Hán"></select>
     </div>
 
-    <!-- Main Character Hero -->
+    <!-- Main Character Hero Card -->
     <main>
       <article class="char-card">
-        <div class="hanzi-display" id="char-display">妈</div>
         <div class="pinyin-audio-row">
           <span class="pinyin-text" id="pinyin-display">mā</span>
           <button class="audio-btn" id="btn-audio" title="Phát âm" aria-label="Phát âm">🔊</button>
@@ -426,6 +537,38 @@
         <div class="meaning-text" id="meaning-display">mẹ, má</div>
         <div class="meta-pills" id="meta-pills"></div>
       </article>
+
+      <!-- Section: Interactive Handwriting Pad (Hanzi Writer) -->
+      <section class="section-card" style="margin-top: 14px;">
+        <h2 class="section-title">
+          <span>✍️</span> Luyện viết bút thuận (Mễ tự cách)
+        </h2>
+        
+        <div class="writer-stage-wrapper">
+          <!-- Ô Mễ tự cách chuẩn truyền thống -->
+          <div class="mige-box">
+            <svg class="mige-svg-grid" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="100" x2="200" y2="100" stroke="#FDA4AF" stroke-width="1" stroke-dasharray="4 4" />
+              <line x1="100" y1="0" x2="100" y2="200" stroke="#FDA4AF" stroke-width="1" stroke-dasharray="4 4" />
+              <line x1="0" y1="0" x2="200" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
+              <line x1="200" y1="0" x2="0" y2="200" stroke="#FECDD3" stroke-width="1" stroke-dasharray="4 4" />
+            </svg>
+            <div id="writer-target"></div>
+          </div>
+
+          <!-- Nút điều khiển -->
+          <div class="writer-actions">
+            <button class="btn-action" id="btn-animate" title="Xem thứ tự nét">▶ Xem nét</button>
+            <button class="btn-action primary" id="btn-quiz" title="Tự tay viết">✏️ Tập viết</button>
+            <button class="btn-action" id="btn-reset" title="Xóa viết lại">🔄 Viết lại</button>
+          </div>
+
+          <!-- Trạng thái hướng dẫn -->
+          <div class="writer-status info" id="writer-status">
+            Bấm "▶ Xem nét" để xem thứ tự viết, hoặc "✏️ Tập viết" để dùng ngón tay vẽ theo.
+          </div>
+        </div>
+      </section>
 
       <!-- Structure & Component Decomposition (Chiết tự) -->
       <section class="section-card" style="margin-top: 14px;">
@@ -455,7 +598,7 @@
     </main>
   </div>
 
-  <!-- Bottom Navigation Buttons -->
+  <!-- Bottom Sticky Navigation -->
   <footer class="bottom-nav">
     <div class="nav-inner">
       <button class="nav-btn prev" id="btn-prev">← Chữ trước</button>
@@ -464,7 +607,6 @@
   </footer>
 
   <script type="module">
-    // Dữ liệu chữ Hán HSK1 chuẩn hoá theo tài liệu kiến trúc (docs/kien-truc.pdf)
     const HSK1_DATA = [
       {
         character: "妈",
@@ -682,11 +824,11 @@
     ];
 
     let currentIndex = 0;
+    let writerInstance = null;
 
     // Elements
     const charCounter = document.getElementById('char-counter');
     const charSelect = document.getElementById('char-select');
-    const charDisplay = document.getElementById('char-display');
     const pinyinDisplay = document.getElementById('pinyin-display');
     const btnAudio = document.getElementById('btn-audio');
     const meaningDisplay = document.getElementById('meaning-display');
@@ -699,7 +841,94 @@
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
 
-    // Populate Selector
+    // Writer Elements
+    const writerTarget = document.getElementById('writer-target');
+    const btnAnimate = document.getElementById('btn-animate');
+    const btnQuiz = document.getElementById('btn-quiz');
+    const btnReset = document.getElementById('btn-reset');
+    const writerStatus = document.getElementById('writer-status');
+
+    function updateWriterStatus(msg, type = "info") {
+      writerStatus.textContent = msg;
+      writerStatus.className = `writer-status ${type}`;
+    }
+
+    // Khởi tạo Hanzi Writer cho chữ Hán hiện tại
+    function setupWriter(char) {
+      writerTarget.innerHTML = '';
+      if (!window.HanziWriter) {
+        updateWriterStatus("Đang tải dữ liệu viết nét... Vui lòng kiểm tra kết nối mạng.", "mistake");
+        return;
+      }
+
+      writerInstance = HanziWriter.create('writer-target', char, {
+        width: 200,
+        height: 200,
+        padding: 8,
+        showOutline: true,
+        strokeAnimationSpeed: 1.2,
+        delayBetweenStrokes: 180,
+        strokeColor: '#BE123C',      // Màu nét chữ chính (Đỏ hồng)
+        radicalColor: '#0D9488',     // Nổi bật bộ thủ bằng màu xanh ngọc
+        outlineColor: '#E2E8F0',     // Viền nét mờ chỉ dẫn
+        drawingColor: '#1D4ED8',     // Nét vẽ tay ngón tay (Xanh dương)
+        drawingWidth: 16,
+        showCharacter: true
+      });
+
+      updateWriterStatus("Bấm '▶ Xem nét' để xem thứ tự viết, hoặc '✏️ Tập viết' để tự vẽ.", "info");
+    }
+
+    // Chế độ xem chuyển động nét (Animation)
+    function playAnimation() {
+      if (!writerInstance) return;
+      writerInstance.cancelQuiz();
+      writerInstance.showCharacter();
+      updateWriterStatus("Đang trình diễn thứ tự bút thuận từng nét...", "info");
+      writerInstance.animateCharacter({
+        onComplete: () => {
+          updateWriterStatus("Đã diễn họa xong! Hãy bấm '✏️ Tập viết' để tự tay thử sức.", "info");
+        }
+      });
+    }
+
+    // Chế độ thử thách tự viết (Quiz)
+    function startQuizMode() {
+      if (!writerInstance) return;
+      writerInstance.cancelQuiz();
+      updateWriterStatus("Hãy dùng ngón tay vẽ nét đầu tiên lên ô...", "active");
+
+      writerInstance.quiz({
+        showOutline: true,
+        showHintAfterMisses: 2,
+        onMistake: (strokeData) => {
+          updateWriterStatus(`Sai nét rồi! Hãy vẽ lại nét số ${strokeData.strokeNum + 1}`, "mistake");
+        },
+        onCorrectStroke: (strokeData) => {
+          updateWriterStatus(`✓ Đúng nét ${strokeData.strokeNum + 1}! Tiếp tục nào...`, "correct");
+        },
+        onComplete: (summaryData) => {
+          if (summaryData.totalMistakes === 0) {
+            updateWriterStatus("🎉 Xuất sắc! Bạn đã viết đúng 100% không mắc lỗi nào!", "success");
+          } else {
+            updateWriterStatus(`🎉 Hoàn thành chữ! Bạn đã mắc ${summaryData.totalMistakes} lần lỗi. Bấm 'Viết lại' để thử lại.`, "success");
+          }
+        }
+      });
+    }
+
+    // Phát âm giọng bản xứ
+    function playAudio(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'zh-CN';
+        utter.rate = 0.85;
+        window.speechSynthesis.speak(utter);
+      }
+    }
+
+    // Điền danh sách chọn nhanh
     function initSelector() {
       charSelect.innerHTML = "";
       HSK1_DATA.forEach((item, idx) => {
@@ -715,34 +944,18 @@
       });
     }
 
-    // Speech Synthesis for Audio
-    function playAudio(text) {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = 'zh-CN';
-        utter.rate = 0.85;
-        window.speechSynthesis.speak(utter);
-      } else {
-        alert("Trình duyệt không hỗ trợ phát âm trực tiếp.");
-      }
-    }
-
-    // Render Character Data
+    // Cập nhật giao diện toàn trang
     function renderCurrent() {
       const item = HSK1_DATA[currentIndex];
       if (!item) return;
 
-      // Update counters & selector
       charCounter.textContent = `Chữ ${currentIndex + 1} / ${HSK1_DATA.length}`;
       charSelect.value = currentIndex;
 
-      // Main Hero
-      charDisplay.textContent = item.character;
+      // Cập nhật Hero Info
       pinyinDisplay.textContent = item.pinyin.join(', ');
       meaningDisplay.textContent = item.meaning_vi;
 
-      // Meta Pills
       metaPills.innerHTML = `
         <span class="pill">Cấp độ HSK ${item.hsk_level}</span>
         <span class="pill">${item.stroke_count} nét</span>
@@ -750,7 +963,10 @@
         <span class="pill">Mã: U+${item.unicode}</span>
       `;
 
-      // Components Grid
+      // Cập nhật Động cơ Hanzi Writer
+      setupWriter(item.character);
+
+      // Phân rã Chiết tự
       componentsGrid.innerHTML = "";
       item.structure.components.forEach(comp => {
         const box = document.createElement('div');
@@ -766,7 +982,7 @@
 
       structureSummary.innerHTML = `<strong>${item.structure.type_name}:</strong> ${item.structure.description}`;
 
-      // Etymology & Story
+      // Từ nguyên & Câu chuyện
       etymologyStory.textContent = item.etymology.story_vi;
       evolutionTimeline.innerHTML = item.etymology.evolution.map(evo => `
         <div class="evo-step">
@@ -775,7 +991,7 @@
         </div>
       `).join('');
 
-      // Compound Words
+      // Từ vựng HSK1
       compoundsList.innerHTML = item.compound_words.map(c => `
         <div class="compound-item">
           <div>
@@ -786,17 +1002,23 @@
         </div>
       `).join('');
 
-      // Buttons State
+      // Nút tới/lui
       btnPrev.disabled = currentIndex === 0;
       btnNext.disabled = currentIndex === HSK1_DATA.length - 1;
 
-      // Scroll to top gently on card switch
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Event Listeners
+    // Gán sự kiện nút bấm
     btnAudio.addEventListener('click', () => {
       playAudio(HSK1_DATA[currentIndex].character);
+    });
+
+    btnAnimate.addEventListener('click', playAnimation);
+    btnQuiz.addEventListener('click', startQuizMode);
+    btnReset.addEventListener('click', () => {
+      setupWriter(HSK1_DATA[currentIndex].character);
+      startQuizMode();
     });
 
     btnPrev.addEventListener('click', () => {
@@ -813,7 +1035,6 @@
       }
     });
 
-    // Keyboard navigation (for testing on desktop/laptop)
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft' && currentIndex > 0) {
         currentIndex--;
@@ -824,7 +1045,7 @@
       }
     });
 
-    // Init
+    // Khởi động trang
     initSelector();
     renderCurrent();
   </script>
