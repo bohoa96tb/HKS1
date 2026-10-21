@@ -213,7 +213,7 @@
       border: 2px solid #F43F5E;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(244, 63, 94, 0.08);
-      touch-action: none; /* Khóa cuộn trang khi ngón tay vẽ trên điện thoại */
+      touch-action: none;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -519,22 +519,24 @@
       <a href="../index.html" class="btn-back">
         <span>←</span> Bài học cũ
       </a>
-      <span class="counter-badge" id="char-counter">Chữ 1 / 7</span>
+      <span class="counter-badge" id="char-counter">Đang nạp...</span>
     </header>
 
     <!-- Quick Jump Selector -->
     <div class="selector-row">
-      <select id="char-select" class="selector-select" aria-label="Chọn chữ Hán"></select>
+      <select id="char-select" class="selector-select" aria-label="Chọn chữ Hán">
+        <option>Đang nạp danh mục chữ...</option>
+      </select>
     </div>
 
     <!-- Main Character Hero Card -->
     <main>
       <article class="char-card">
         <div class="pinyin-audio-row">
-          <span class="pinyin-text" id="pinyin-display">mā</span>
+          <span class="pinyin-text" id="pinyin-display">--</span>
           <button class="audio-btn" id="btn-audio" title="Phát âm" aria-label="Phát âm">🔊</button>
         </div>
-        <div class="meaning-text" id="meaning-display">mẹ, má</div>
+        <div class="meaning-text" id="meaning-display">Đang nạp...</div>
         <div class="meta-pills" id="meta-pills"></div>
       </article>
 
@@ -607,222 +609,8 @@
   </footer>
 
   <script type="module">
-    const HSK1_DATA = [
-      {
-        character: "妈",
-        unicode: "5988",
-        pinyin: ["mā"],
-        meaning_vi: "mẹ, má",
-        hsk_level: 1,
-        stroke_count: 6,
-        radical: "女",
-        structure: {
-          ids: "⿰女马",
-          type_name: "Chữ hình thanh (Nghĩa + Âm)",
-          description: "Bố cục trái - phải (⿰). Bộ Nữ (女) mang ý nghĩa người mẹ, chữ Mã (马) gợi ý âm đọc.",
-          components: [
-            { character: "女", pinyin: "nǚ", role: "semantic", role_vi: "Biểu ý (Ý nghĩa)", hint_vi: "Người phụ nữ, liên quan đến tính nữ và người mẹ" },
-            { character: "马", pinyin: "mǎ", role: "phonetic", role_vi: "Biểu âm (Âm đọc)", hint_vi: "Ngựa (mǎ gợi ý âm đọc cho mā)" }
-          ]
-        },
-        etymology: {
-          story_vi: "Người phụ nữ (女) luôn làm việc tận tụy, bền bỉ như chú ngựa (马) để chăm sóc con cái chính là người Mẹ (妈).",
-          evolution: [
-            { stage: "Giáp cốt", status: "Có" },
-            { stage: "Kim văn", status: "Có" },
-            { stage: "Tiểu triện", status: "Có" },
-            { stage: "Khải thư", status: "Chuẩn" }
-          ]
-        },
-        compound_words: [
-          { word: "妈妈", pinyin: "māma", meaning_vi: "mẹ, má" }
-        ]
-      },
-      {
-        character: "人",
-        unicode: "4EBA",
-        pinyin: ["rén"],
-        meaning_vi: "người",
-        hsk_level: 1,
-        stroke_count: 2,
-        radical: "人",
-        structure: {
-          ids: "人",
-          type_name: "Chữ tượng hình (Vẽ hình dạng)",
-          description: "Chữ đơn thể độc lập, mô phỏng dáng đứng chân bước của con người nhìn nghiêng.",
-          components: [
-            { character: "人", pinyin: "rén", role: "semantic", role_vi: "Tự thân", hint_vi: "Hình dáng con người nghiêng mình bước đi" }
-          ]
-        },
-        etymology: {
-          story_vi: "Chữ vẽ hình ảnh một con người đang đứng nghiêng mình và bước hai chân về phía trước.",
-          evolution: [
-            { stage: "Giáp cốt", status: "Có" },
-            { stage: "Kim văn", status: "Có" },
-            { stage: "Tiểu triện", status: "Có" },
-            { stage: "Khải thư", status: "Chuẩn" }
-          ]
-        },
-        compound_words: [
-          { word: "中国人", pinyin: "zhōng guó rén", meaning_vi: "người Trung Quốc" },
-          { word: "大人", pinyin: "dà ren", meaning_vi: "người lớn" }
-        ]
-      },
-      {
-        character: "大",
-        unicode: "5927",
-        pinyin: ["dà"],
-        meaning_vi: "to, lớn",
-        hsk_level: 1,
-        stroke_count: 3,
-        radical: "大",
-        structure: {
-          ids: "大",
-          type_name: "Chữ chỉ sự / tượng hình",
-          description: "Chữ đơn thể, vẽ hình một người trưởng thành (人) dang rộng cả hai tay và hai chân.",
-          components: [
-            { character: "人", pinyin: "rén", role: "semantic", role_vi: "Thân người", hint_vi: "Con người" },
-            { character: "一", pinyin: "yī", role: "semantic", role_vi: "Hai cánh tay", hint_vi: "Dang rộng hai tay hết cỡ để biểu thị sự to lớn" }
-          ]
-        },
-        etymology: {
-          story_vi: "Khi người cổ đại muốn diễn tả thứ gì thật to lớn, họ dùng cử chỉ dang rộng cả hai tay và hai chân.",
-          evolution: [
-            { stage: "Giáp cốt", status: "Có" },
-            { stage: "Kim văn", status: "Có" },
-            { stage: "Tiểu triện", status: "Có" },
-            { stage: "Khải thư", status: "Chuẩn" }
-          ]
-        },
-        compound_words: [
-          { word: "大学", pinyin: "dà xué", meaning_vi: "trường đại học" },
-          { word: "大人", pinyin: "dà ren", meaning_vi: "người lớn" }
-        ]
-      },
-      {
-        character: "天",
-        unicode: "5929",
-        pinyin: ["tiān"],
-        meaning_vi: "trời, ngày",
-        hsk_level: 1,
-        stroke_count: 4,
-        radical: "大",
-        structure: {
-          ids: "⿱一大",
-          type_name: "Chữ chỉ sự",
-          description: "Bố cục trên - dưới (⿱). Phía trên người lớn (大) có thêm nét ngang chỉ khoảng không vô tận trên đỉnh đầu.",
-          components: [
-            { character: "一", pinyin: "yī", role: "semantic", role_vi: "Bầu trời", hint_vi: "Khoảng không vô cực ở phía trên đỉnh đầu" },
-            { character: "大", pinyin: "dà", role: "semantic", role_vi: "Con người", hint_vi: "Người đứng thẳng đầu đội trời chân đạp đất" }
-          ]
-        },
-        etymology: {
-          story_vi: "Bên trên đỉnh đầu của con người (大) chính là bầu trời cao vút và bao la vô tận (天).",
-          evolution: [
-            { stage: "Giáp cốt", status: "Có" },
-            { stage: "Kim văn", status: "Có" },
-            { stage: "Tiểu triện", status: "Có" },
-            { stage: "Khải thư", status: "Chuẩn" }
-          ]
-        },
-        compound_words: [
-          { word: "今天", pinyin: "jīn tiān", meaning_vi: "hôm nay" },
-          { word: "明天", pinyin: "míng tiān", meaning_vi: "ngày mai" },
-          { word: "昨天", pinyin: "zuó tiān", meaning_vi: "hôm qua" }
-        ]
-      },
-      {
-        character: "木",
-        unicode: "6728",
-        pinyin: ["mù"],
-        meaning_vi: "cây, gỗ",
-        hsk_level: 1,
-        stroke_count: 4,
-        radical: "木",
-        structure: {
-          ids: "木",
-          type_name: "Chữ tượng hình",
-          description: "Chữ đơn thể, vẽ hình cây thân gỗ: nét thẳng đứng là thân, hai nhánh trên là cành, hai nét xòe dưới là rễ.",
-          components: [
-            { character: "木", pinyin: "mù", role: "semantic", role_vi: "Tự thân", hint_vi: "Cây cối cắm rễ sâu vào lòng đất" }
-          ]
-        },
-        etymology: {
-          story_vi: "Hình vẽ trực quan một cái cây có thân vươn thẳng, cành lá tỏa ra phía trên và rễ bám chắc ở dưới.",
-          evolution: [
-            { stage: "Giáp cốt", status: "Có" },
-            { stage: "Kim văn", status: "Có" },
-            { stage: "Tiểu triện", status: "Có" },
-            { stage: "Khải thư", status: "Chuẩn" }
-          ]
-        },
-        compound_words: [
-          { word: "木头", pinyin: "mù tou", meaning_vi: "khúc gỗ, gỗ" }
-        ]
-      },
-      {
-        character: "林",
-        unicode: "6797",
-        pinyin: ["lín"],
-        meaning_vi: "rừng cây nhỏ",
-        hsk_level: 1,
-        stroke_count: 8,
-        radical: "木",
-        structure: {
-          ids: "⿰木木",
-          type_name: "Chữ hội ý (Ghép ý nghĩa)",
-          description: "Bố cục trái - phải (⿰). Ghép hai cây gỗ (木 + 木) đứng cạnh nhau để diễn tả một cụm cây hay rừng thưa.",
-          components: [
-            { character: "木", pinyin: "mù", role: "semantic", role_vi: "Biểu ý 1", hint_vi: "Một cái cây bên trái" },
-            { character: "木", pinyin: "mù", role: "semantic", role_vi: "Biểu ý 2", hint_vi: "Thêm một cái cây nữa bên phải" }
-          ]
-        },
-        etymology: {
-          story_vi: "Nhiều cây (木) mọc tụ lại thành hàng lối liền kề nhau sẽ hình thành nên một khu rừng (林).",
-          evolution: [
-            { stage: "Giáp cốt", status: "Có" },
-            { stage: "Kim văn", status: "Có" },
-            { stage: "Tiểu triện", status: "Có" },
-            { stage: "Khải thư", status: "Chuẩn" }
-          ]
-        },
-        compound_words: [
-          { word: "树林", pinyin: "shù lín", meaning_vi: "rừng cây nhỏ" }
-        ]
-      },
-      {
-        character: "好",
-        unicode: "597D",
-        pinyin: ["hǎo"],
-        meaning_vi: "tốt, đẹp, hay",
-        hsk_level: 1,
-        stroke_count: 6,
-        radical: "女",
-        structure: {
-          ids: "⿰女子",
-          type_name: "Chữ hội ý (Ghép ý nghĩa)",
-          description: "Bố cục trái - phải (⿰). Kết hợp giữa người phụ nữ (女) và đứa con nhỏ (子).",
-          components: [
-            { character: "女", pinyin: "nǚ", role: "semantic", role_vi: "Biểu ý", hint_vi: "Người phụ nữ, người mẹ hiền từ" },
-            { character: "子", pinyin: "zǐ", role: "semantic", role_vi: "Biểu ý", hint_vi: "Đứa con thơ ngoan ngoãn" }
-          ]
-        },
-        etymology: {
-          story_vi: "Người mẹ (女) âu yếm bế đứa con (子) trên tay là hình ảnh đẹp đẽ, hòa thuận và trọn vẹn nhất (好).",
-          evolution: [
-            { stage: "Giáp cốt", status: "Có" },
-            { stage: "Kim văn", status: "Có" },
-            { stage: "Tiểu triện", status: "Có" },
-            { stage: "Khải thư", status: "Chuẩn" }
-          ]
-        },
-        compound_words: [
-          { word: "你好", pinyin: "nǐ hǎo", meaning_vi: "xin chào" },
-          { word: "很好", pinyin: "hěn hǎo", meaning_vi: "rất tốt" }
-        ]
-      }
-    ];
-
+    // Biến lưu trữ dữ liệu nạp động từ gói JSON
+    let HSK1_DATA = [];
     let currentIndex = 0;
     let writerInstance = null;
 
@@ -896,7 +684,7 @@
     function startQuizMode() {
       if (!writerInstance) return;
       writerInstance.cancelQuiz();
-      updateWriterStatus("Hãy dùng ngón tay vẽ nét đầu tiên lên ô...", "active");
+      updateWriterStatus("Hãy dùng ngón tay vẽ nét đầu tiên lên ô...", "info");
 
       writerInstance.quiz({
         showOutline: true,
@@ -968,23 +756,26 @@
 
       // Phân rã Chiết tự
       componentsGrid.innerHTML = "";
-      item.structure.components.forEach(comp => {
+      const components = item.structure?.tree?.components || item.structure?.components || [];
+      components.forEach(comp => {
         const box = document.createElement('div');
         box.className = `component-box ${comp.role}`;
         box.innerHTML = `
           <div class="comp-char">${comp.character}</div>
-          <div class="comp-tag">${comp.role_vi}</div>
+          <div class="comp-tag">${comp.role_vi || (comp.role === 'semantic' ? 'Biểu ý' : 'Biểu âm')}</div>
           <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 2px;">${comp.pinyin || ''}</div>
           <div class="comp-hint">${comp.hint_vi}</div>
         `;
         componentsGrid.appendChild(box);
       });
 
-      structureSummary.innerHTML = `<strong>${item.structure.type_name}:</strong> ${item.structure.description}`;
+      const typeName = item.structure?.type_vi || item.structure?.type_name || item.structure?.type || '';
+      structureSummary.innerHTML = `<strong>${typeName}:</strong> ${item.structure?.description || ''}`;
 
       // Từ nguyên & Câu chuyện
-      etymologyStory.textContent = item.etymology.story_vi;
-      evolutionTimeline.innerHTML = item.etymology.evolution.map(evo => `
+      etymologyStory.textContent = item.etymology?.story_vi || '';
+      const evolutionList = item.etymology?.evolution || [];
+      evolutionTimeline.innerHTML = evolutionList.map(evo => `
         <div class="evo-step">
           <div class="evo-name">${evo.stage}</div>
           <div class="evo-status">${evo.status}</div>
@@ -992,7 +783,7 @@
       `).join('');
 
       // Từ vựng HSK1
-      compoundsList.innerHTML = item.compound_words.map(c => `
+      compoundsList.innerHTML = (item.compound_words || []).map(c => `
         <div class="compound-item">
           <div>
             <span class="compound-hanzi">${c.word}</span>
@@ -1009,16 +800,36 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Nạp gói dữ liệu JSON
+    async function loadDataBundle() {
+      try {
+        const response = await fetch('./data/bundles/hsk1-core.json');
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        HSK1_DATA = await response.json();
+        initSelector();
+        renderCurrent();
+      } catch (err) {
+        console.error("Lỗi nạp hsk1-core.json:", err);
+        updateWriterStatus("Không thể tải gói dữ liệu chữ Hán. Vui lòng kiểm tra lại kết nối mạng.", "mistake");
+      }
+    }
+
     // Gán sự kiện nút bấm
     btnAudio.addEventListener('click', () => {
-      playAudio(HSK1_DATA[currentIndex].character);
+      if (HSK1_DATA[currentIndex]) {
+        playAudio(HSK1_DATA[currentIndex].character);
+      }
     });
 
     btnAnimate.addEventListener('click', playAnimation);
     btnQuiz.addEventListener('click', startQuizMode);
     btnReset.addEventListener('click', () => {
-      setupWriter(HSK1_DATA[currentIndex].character);
-      startQuizMode();
+      if (HSK1_DATA[currentIndex]) {
+        setupWriter(HSK1_DATA[currentIndex].character);
+        startQuizMode();
+      }
     });
 
     btnPrev.addEventListener('click', () => {
@@ -1045,9 +856,8 @@
       }
     });
 
-    // Khởi động trang
-    initSelector();
-    renderCurrent();
+    // Bắt đầu nạp dữ liệu
+    loadDataBundle();
   </script>
 </body>
 </html>
