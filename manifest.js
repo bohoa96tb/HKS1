@@ -1,3 +1,4 @@
+```javascript
 /* Mỗi bài một mục. Giữ mục bài cũ khi thêm bài; tăng v sau khi sửa. */
 window.HSK_MANIFEST = [
   {
@@ -13,15 +14,14 @@ window.HSK_MANIFEST = [
 ];
 
 /**
- * TỰ ĐỘNG HIỂN THỊ NÚT BẤM "🧩 GIẢI MÃ HÁN TỰ" TRÊN TRANG CHỦ
+ * TỰ ĐỘNG HIỂN THỊ NÚT BẤM "🧩 GIẢI MÃ HÁN TỰ" & TỰ ĐỘNG CHUYỂN TRANG KHI CLICK CHỮ HÁN
  * Kỹ thuật nhúng an toàn: Giữ nguyên vẹn 100% file index.html gốc, không sợ xung đột mã nguồn.
  */
 (function() {
+  // 1. Tạo nút nổi Giải mã Hán tự (vị trí nổi cao hơn thanh menu đáy)
   function renderHanziEntryPoint() {
-    // Tránh tạo trùng lặp nếu hàm bị gọi nhiều lần
     if (document.getElementById('floating-hanzi-btn')) return;
 
-    // 1. Tạo thẻ nút bấm nổi
     const btn = document.createElement('a');
     btn.id = 'floating-hanzi-btn';
     btn.href = './hanzi/index.html';
@@ -31,7 +31,6 @@ window.HSK_MANIFEST = [
       <span>Giải mã Hán tự</span>
     `;
 
-    // 2. Thiết lập kiểu dáng: Đẩy cao lên trên thanh menu dưới đáy (cách đáy 85px)
     Object.assign(btn.style, {
       position: 'fixed',
       bottom: 'calc(env(safe-area-inset-bottom, 0px) + 85px)',
@@ -55,7 +54,6 @@ window.HSK_MANIFEST = [
       webkitTapHighlightColor: 'transparent'
     });
 
-    // 3. Hiệu ứng nhún khi chạm ngón tay trên điện thoại
     btn.addEventListener('touchstart', function() {
       btn.style.transform = 'scale(0.93)';
     }, { passive: true });
@@ -75,10 +73,53 @@ window.HSK_MANIFEST = [
     document.body.appendChild(btn);
   }
 
-  // Chờ trang web nạp xong cấu trúc là gắn nút ngay
+  // 2. Tự động nhận diện cú chạm/click vào bất kỳ chữ Hán nào trên web gốc
+  function setupHanziClickListener() {
+    document.addEventListener('click', function(e) {
+      // Bỏ qua nếu bấm vào nút nổi hoặc các nút điều hướng trên/dưới
+      if (e.target.closest('#floating-hanzi-btn, nav, .bottom-nav, footer, button, .audio-btn')) return;
+
+      let detectedChar = null;
+
+      // Cách 1: Xác định chính xác ký tự cụ thể dưới đầu ngón tay chạm vào
+      if (document.caretRangeFromPoint) {
+        const range = document.caretRangeFromPoint(e.clientX, e.clientY);
+        if (range && range.startContainer && range.startContainer.nodeType === Node.TEXT_NODE) {
+          const text = range.startContainer.textContent;
+          const charAtPoint = text.charAt(range.startOffset);
+          if (/[\u4e00-\u9fff]/.test(charAtPoint)) {
+            detectedChar = charAtPoint;
+          }
+        }
+      }
+
+      // Cách 2: Nếu chưa bắt được qua caret, kiểm tra nội dung text của thẻ được bấm
+      if (!detectedChar) {
+        const textContent = (e.target.innerText || e.target.textContent || '').trim();
+        // Chỉ nhận diện các phần tử chứa cụm chữ ngắn (thẻ từ vựng, ví dụ câu ngắn)
+        if (textContent.length <= 15) {
+          const match = textContent.match(/[\u4e00-\u9fff]/);
+          if (match) {
+            detectedChar = match[0];
+          }
+        }
+      }
+
+      // Nếu phát hiện đúng là chữ Hán, lập tức chuyển hướng sang khu giải mã
+      if (detectedChar) {
+        window.location.href = './hanzi/index.html?char=' + encodeURIComponent(detectedChar);
+      }
+    }, true);
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderHanziEntryPoint);
+    document.addEventListener('DOMContentLoaded', function() {
+      renderHanziEntryPoint();
+      setupHanziClickListener();
+    });
   } else {
     renderHanziEntryPoint();
+    setupHanziClickListener();
   }
 })();
+```
