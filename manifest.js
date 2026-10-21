@@ -1,4 +1,3 @@
-javascript
 /* Mỗi bài một mục. Giữ mục bài cũ khi thêm bài; tăng v sau khi sửa. */
 window.HSK_MANIFEST = [
   {
