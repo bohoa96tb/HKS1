@@ -47,7 +47,7 @@
       justify-content: center;
       min-height: 100vh;
       padding-top: var(--safe-top);
-      padding-bottom: calc(var(--safe-bottom) + 85px);
+      padding-bottom: calc(var(--safe-bottom) + 95px);
     }
 
     #app-container {
@@ -91,11 +91,39 @@
       border-radius: 999px;
     }
 
-    /* Quick Selector & Search Row */
+    /* Quick Selector & Filter Deck */
     .control-deck {
       display: flex;
       flex-direction: column;
       gap: 8px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 6px;
+      background: #E2E8F0;
+      padding: 3px;
+      border-radius: 10px;
+    }
+
+    .filter-tab {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 6px 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .filter-tab.active {
+      background: #FFFFFF;
+      color: var(--primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
     }
 
     .search-box-wrapper {
@@ -105,16 +133,14 @@
 
     .search-input {
       width: 100%;
-      height: 42px;
+      height: 40px;
       padding: 0 12px 0 36px;
-      /* Cố định font-size 16px để ngăn Safari trên iPhone tự ý phóng to màn hình */
       font-size: 16px;
       border: 1px solid var(--border);
       border-radius: 12px;
       background: #FFFFFF;
       color: var(--text-main);
       outline: none;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     }
 
     .search-icon {
@@ -129,15 +155,14 @@
 
     .selector-select {
       width: 100%;
-      height: 42px;
+      height: 40px;
       padding: 0 12px;
-      font-size: 15px;
+      font-size: 14px;
       border: 1px solid var(--border);
       border-radius: 12px;
       background: #FFFFFF;
       color: var(--text-main);
       outline: none;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     }
 
     /* Character Hero Card */
@@ -145,9 +170,53 @@
       background: var(--card-bg);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 18px 16px;
+      padding: 16px;
       text-align: center;
       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+      position: relative;
+    }
+
+    .card-top-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .srs-status-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #F1F5F9;
+      color: var(--text-muted);
+    }
+
+    .srs-status-tag.learning {
+      background: #FEF3C7;
+      color: #B45309;
+    }
+
+    .srs-status-tag.mastered {
+      background: #D1FAE5;
+      color: #065F46;
+    }
+
+    .flashcard-toggle-btn {
+      border: 1px solid var(--border);
+      background: #F8FAFC;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .flashcard-toggle-btn.active {
+      background: #FFF1F2;
+      color: var(--primary);
+      border-color: #FECDD3;
     }
 
     .pinyin-audio-row {
@@ -155,7 +224,8 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      min-height: 42px;
     }
 
     .pinyin-text {
@@ -177,18 +247,37 @@
       justify-content: center;
       cursor: pointer;
       font-size: 17px;
-      transition: transform 0.1s ease;
-    }
-
-    .audio-btn:active {
-      transform: scale(0.90);
     }
 
     .meaning-text {
       font-size: 18px;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      min-height: 27px;
+    }
+
+    /* Ẩn đáp án trong chế độ Flashcard */
+    .hidden-answer {
+      filter: blur(8px);
+      user-select: none;
+      transition: filter 0.2s ease;
+    }
+
+    .btn-reveal-answer {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(190, 18, 60, 0.3);
     }
 
     .meta-pills {
@@ -205,6 +294,75 @@
       border-radius: 999px;
       background: #F1F5F9;
       color: var(--text-muted);
+    }
+
+    /* SRS Rating Deck */
+    .srs-rating-container {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .srs-rating-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .srs-buttons-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .btn-srs {
+      border: 1px solid var(--border);
+      background: #FFFFFF;
+      border-radius: 10px;
+      padding: 7px 2px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      transition: transform 0.1s ease;
+    }
+
+    .btn-srs:active {
+      transform: scale(0.94);
+    }
+
+    .btn-srs.again {
+      border-color: #FECACA;
+      color: #DC2626;
+      background: #FFF5F5;
+    }
+
+    .btn-srs.hard {
+      border-color: #FED7AA;
+      color: #EA580C;
+      background: #FFF7ED;
+    }
+
+    .btn-srs.good {
+      border-color: #A7F3D0;
+      color: #059669;
+      background: #F0FDF4;
+    }
+
+    .btn-srs.easy {
+      border-color: #BAE6FD;
+      color: #0284C7;
+      background: #F0F9FF;
+    }
+
+    .btn-srs .time-hint {
+      font-size: 10px;
+      opacity: 0.75;
+      font-weight: normal;
     }
 
     /* Section Cards */
@@ -328,12 +486,6 @@
       align-items: center;
       justify-content: center;
       gap: 4px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-      transition: all 0.15s ease;
-    }
-
-    .btn-action:active {
-      transform: scale(0.96);
     }
 
     .btn-action.primary {
@@ -378,7 +530,7 @@
 
     .writer-status.success {
       color: #065F46;
-      background: #D1FAE5;
+      background: var(--success-soft);
       border-color: #34D399;
       font-weight: 600;
     }
@@ -398,11 +550,6 @@
       text-align: center;
       background: #FAFAFA;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .component-box:active {
-      transform: scale(0.97);
     }
 
     .component-box.semantic {
@@ -456,7 +603,7 @@
       border-left: 3px solid var(--primary);
     }
 
-    /* Ancient Script Evolution Gallery */
+    /* Ancient Evolution Gallery */
     .evolution-gallery {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -585,11 +732,6 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      transition: opacity 0.15s ease;
-    }
-
-    .nav-btn:active {
-      opacity: 0.8;
     }
 
     .nav-btn.prev {
@@ -619,8 +761,15 @@
       <span class="counter-badge" id="char-counter">Đang nạp...</span>
     </header>
 
-    <!-- Quick Search & Select Controls -->
+    <!-- Quick Selector, Tabs & Search Controls -->
     <div class="control-deck">
+      <!-- Bộ lọc thẻ học / Ôn tập -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" id="tab-all">Tất cả (<span id="count-all">15</span>)</button>
+        <button class="filter-tab" id="tab-review">Cần ôn (<span id="count-review">0</span>)</button>
+        <button class="filter-tab" id="tab-mastered">Đã thuộc (<span id="count-mastered">0</span>)</button>
+      </div>
+
       <div class="search-box-wrapper">
         <span class="search-icon">🔍</span>
         <input type="search" id="char-search" class="search-input" placeholder="Tìm chữ, pinyin, nghĩa..." autocomplete="off">
@@ -633,12 +782,47 @@
     <!-- Main Character Hero Card -->
     <main>
       <article class="char-card">
+        <div class="card-top-action">
+          <span class="srs-status-tag" id="srs-status-tag">Mới bắt đầu</span>
+          <button class="flashcard-toggle-btn" id="btn-toggle-flashcard">👁️ Chế độ ôn bài</button>
+        </div>
+
         <div class="pinyin-audio-row">
           <span class="pinyin-text" id="pinyin-display">--</span>
           <button class="audio-btn" id="btn-audio" title="Phát âm" aria-label="Phát âm">🔊</button>
         </div>
+        
         <div class="meaning-text" id="meaning-display">Đang nạp...</div>
+
+        <!-- Nút Lật đáp án khi bật chế độ Flashcard -->
+        <div id="reveal-container" style="display: none;">
+          <button class="btn-reveal-answer" id="btn-reveal">👁️ Hiện đáp án & Chiết tự</button>
+        </div>
+
         <div class="meta-pills" id="meta-pills"></div>
+
+        <!-- Khung Đánh Giá SRS (Ghi nhớ ngắt quãng) -->
+        <div class="srs-rating-container">
+          <div class="srs-rating-title">Mức độ thuộc chữ này của bạn:</div>
+          <div class="srs-buttons-row">
+            <button class="btn-srs again" data-rating="1">
+              <span>🔴 Quên</span>
+              <span class="time-hint">Ôn ngay</span>
+            </button>
+            <button class="btn-srs hard" data-rating="2">
+              <span>🟡 Khó</span>
+              <span class="time-hint">1 ngày</span>
+            </button>
+            <button class="btn-srs good" data-rating="3">
+              <span>🟢 Thuộc</span>
+              <span class="time-hint">3 ngày</span>
+            </button>
+            <button class="btn-srs easy" data-rating="4">
+              <span>⭐ Dễ</span>
+              <span class="time-hint">7 ngày</span>
+            </button>
+          </div>
+        </div>
       </article>
 
       <!-- Section: Interactive Handwriting Pad (Hanzi Writer) -->
@@ -647,7 +831,6 @@
           <h2 class="section-title">
             <span>✍️</span> Bút thuận & Luyện viết
           </h2>
-          <!-- Nút chuyển đổi kiểu ô giấy tập viết -->
           <div class="grid-toggle-group">
             <button class="grid-toggle-btn active" id="btn-grid-mi" title="Ô Mễ tự cách (8 ô)">Mễ (米)</button>
             <button class="grid-toggle-btn" id="btn-grid-tian" title="Ô Điền tự cách (4 ô)">Điền (田)</button>
@@ -679,8 +862,8 @@
         </div>
       </section>
 
-      <!-- Structure & Component Decomposition (Chiết tự tương tác) -->
-      <section class="section-card" style="margin-top: 14px;">
+      <!-- Structure & Component Decomposition (Chiết tự) -->
+      <section class="section-card detail-collapsible" id="sec-decomposition" style="margin-top: 14px;">
         <h2 class="section-title">
           <span>🧩</span> Phân rã cấu trúc (Chiết tự)
         </h2>
@@ -689,7 +872,7 @@
       </section>
 
       <!-- Ancient Script Evolution Gallery & Story -->
-      <section class="section-card" style="margin-top: 14px;">
+      <section class="section-card detail-collapsible" id="sec-evolution" style="margin-top: 14px;">
         <h2 class="section-title">
           <span>📜</span> Diễn biến văn tự & Từ nguyên
         </h2>
@@ -698,7 +881,7 @@
       </section>
 
       <!-- Compound Words -->
-      <section class="section-card" style="margin-top: 14px;">
+      <section class="section-card detail-collapsible" id="sec-compounds" style="margin-top: 14px;">
         <h2 class="section-title">
           <span>📖</span> Từ vựng thường gặp (HSK 1)
         </h2>
@@ -716,7 +899,7 @@
   </footer>
 
   <script type="module">
-    // Kho hình ảnh vector (SVG) văn tự cổ đại chuẩn xác
+    // Kho hình vector văn tự cổ đại
     const ANCIENT_GLYPHS = {
       "人": {
         oracle: `<svg viewBox="0 0 100 100"><path d="M48 20 C48 35, 42 50, 26 80 M46 45 C55 60, 68 75, 76 82" fill="none" stroke="#BE123C" stroke-width="7" stroke-linecap="round"/></svg>`,
@@ -757,8 +940,33 @@
 
     // Dữ liệu ứng dụng
     let HSK1_DATA = [];
+    let activeList = []; // Danh sách hiển thị theo bộ lọc
     let currentIndex = 0;
     let writerInstance = null;
+    let isFlashcardMode = false;
+    let isAnswerRevealed = false;
+    let currentFilter = 'all'; // 'all' | 'review' | 'mastered'
+
+    // Dữ liệu SRS lưu trong LocalStorage điện thoại
+    const STORAGE_KEY = 'HSK1_SRS_PROGRESS';
+    let srsData = {};
+
+    function loadSrsData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        srsData = raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        srsData = {};
+      }
+    }
+
+    function saveSrsData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(srsData));
+      } catch (e) {
+        console.error("Lỗi lưu LocalStorage:", e);
+      }
+    }
 
     // Elements
     const charCounter = document.getElementById('char-counter');
@@ -775,6 +983,18 @@
     const compoundsList = document.getElementById('compounds-list');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
+
+    // SRS & Flashcard Elements
+    const srsStatusTag = document.getElementById('srs-status-tag');
+    const btnToggleFlashcard = document.getElementById('btn-toggle-flashcard');
+    const revealContainer = document.getElementById('reveal-container');
+    const btnReveal = document.getElementById('btn-reveal');
+    const tabAll = document.getElementById('tab-all');
+    const tabReview = document.getElementById('tab-review');
+    const tabMastered = document.getElementById('tab-mastered');
+    const countAll = document.getElementById('count-all');
+    const countReview = document.getElementById('count-review');
+    const countMastered = document.getElementById('count-mastered');
 
     // Grid Switcher
     const gridContainer = document.getElementById('grid-container');
@@ -793,31 +1013,63 @@
       writerStatus.className = `writer-status ${type}`;
     }
 
-    // Xử lý Liên Kết Sâu (Deep Link) từ URL parameters
-    function parseDeepLinkParams() {
-      const params = new URLSearchParams(window.location.search);
-      const targetChar = params.get('char') || params.get('c');
-      if (targetChar) {
-        const foundIdx = HSK1_DATA.findIndex(item => item.character === targetChar.trim());
-        if (foundIdx !== -1) {
-          currentIndex = foundIdx;
-          return;
+    // Đếm số lượng theo trạng thái để hiển thị lên thanh Tab
+    function updateTabCounters() {
+      const total = HSK1_DATA.length;
+      let reviewCount = 0;
+      let masteredCount = 0;
+
+      HSK1_DATA.forEach(item => {
+        const record = srsData[item.character];
+        if (record) {
+          if (record.level === 3) masteredCount++;
+          else if (record.level === 1 || record.needReview) reviewCount++;
         }
+      });
+
+      countAll.textContent = total;
+      countReview.textContent = reviewCount;
+      countMastered.textContent = masteredCount;
+    }
+
+    // Lọc danh sách chữ
+    function applyFilter(filterType) {
+      currentFilter = filterType;
+      tabAll.classList.toggle('active', filterType === 'all');
+      tabReview.classList.toggle('active', filterType === 'review');
+      tabMastered.classList.toggle('active', filterType === 'mastered');
+
+      if (filterType === 'all') {
+        activeList = [...HSK1_DATA];
+      } else if (filterType === 'review') {
+        activeList = HSK1_DATA.filter(item => {
+          const rec = srsData[item.character];
+          return rec && (rec.level === 1 || rec.needReview);
+        });
+      } else if (filterType === 'mastered') {
+        activeList = HSK1_DATA.filter(item => {
+          const rec = srsData[item.character];
+          return rec && rec.level === 3;
+        });
       }
-      const targetIdx = params.get('index') || params.get('id');
-      if (targetIdx !== null) {
-        const parsed = parseInt(targetIdx, 10);
-        if (!isNaN(parsed) && parsed >= 0 && parsed < HSK1_DATA.length) {
-          currentIndex = parsed;
-        }
+
+      currentIndex = 0;
+      initSelector();
+
+      if (activeList.length === 0) {
+        pinyinDisplay.textContent = "";
+        meaningDisplay.textContent = "Không có chữ nào trong mục này!";
+        updateWriterStatus("Hãy chuyển sang tab 'Tất cả' để tiếp tục học.", "info");
+      } else {
+        renderCurrent();
       }
     }
 
-    // Khởi tạo Hanzi Writer
+    // Thiết lập Hanzi Writer
     function setupWriter(char) {
       writerTarget.innerHTML = '';
       if (!window.HanziWriter) {
-        updateWriterStatus("Đang tải dữ liệu viết nét... Vui lòng kiểm tra kết nối mạng.", "mistake");
+        updateWriterStatus("Đang tải dữ liệu vẽ nét...", "mistake");
         return;
       }
 
@@ -839,7 +1091,6 @@
       updateWriterStatus("Bấm '▶ Xem nét' để xem thứ tự viết, hoặc '✏️ Tập viết' để tự vẽ.", "info");
     }
 
-    // Chế độ xem chuyển động nét
     function playAnimation() {
       if (!writerInstance) return;
       writerInstance.cancelQuiz();
@@ -852,7 +1103,6 @@
       });
     }
 
-    // Chế độ thử thách tự viết
     function startQuizMode() {
       if (!writerInstance) return;
       writerInstance.cancelQuiz();
@@ -871,13 +1121,12 @@
           if (summaryData.totalMistakes === 0) {
             updateWriterStatus("🎉 Xuất sắc! Bạn đã viết đúng 100% không mắc lỗi nào!", "success");
           } else {
-            updateWriterStatus(`🎉 Hoàn thành chữ! Bạn đã mắc ${summaryData.totalMistakes} lần lỗi. Bấm 'Viết lại' để thử lại.`, "success");
+            updateWriterStatus(`🎉 Hoàn thành chữ! Bạn đã mắc ${summaryData.totalMistakes} lần lỗi.`, "success");
           }
         }
       });
     }
 
-    // Phát âm giọng chuẩn
     function playAudio(text) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
@@ -888,7 +1137,6 @@
       }
     }
 
-    // Render diễn biến văn tự cổ
     function renderEvolutionGallery(item) {
       const char = item.character;
       const glyphs = ANCIENT_GLYPHS[char] || null;
@@ -919,28 +1167,31 @@
       }).join('');
     }
 
-    // Danh sách chọn nhanh
     function initSelector() {
       charSelect.innerHTML = "";
-      HSK1_DATA.forEach((item, idx) => {
+      activeList.forEach((item, idx) => {
         const opt = document.createElement('option');
         opt.value = idx;
-        opt.textContent = `${idx + 1}. ${item.character} (${item.pinyin[0]}) - ${item.meaning_vi}`;
+        const rec = srsData[item.character];
+        const mark = rec?.level === 3 ? "⭐ " : (rec?.level === 1 ? "🔄 " : "");
+        opt.textContent = `${mark}${idx + 1}. ${item.character} (${item.pinyin[0]}) - ${item.meaning_vi}`;
         charSelect.appendChild(opt);
       });
 
-      charSelect.addEventListener('change', (e) => {
-        currentIndex = parseInt(e.target.value, 10);
-        renderCurrent();
-      });
+      charSelect.value = currentIndex;
     }
 
-    // Tìm kiếm nhanh Hán tự / Pinyin / Tiếng Việt
+    charSelect.addEventListener('change', (e) => {
+      currentIndex = parseInt(e.target.value, 10);
+      isAnswerRevealed = false;
+      renderCurrent();
+    });
+
     charSearch.addEventListener('input', (e) => {
       const q = e.target.value.trim().toLowerCase();
       if (!q) return;
 
-      const matchIndex = HSK1_DATA.findIndex(item => {
+      const matchIndex = activeList.findIndex(item => {
         const charMatch = item.character === q;
         const pinyinMatch = item.pinyin.some(p => p.toLowerCase().includes(q));
         const meanMatch = (item.meaning_vi || '').toLowerCase().includes(q);
@@ -949,37 +1200,64 @@
 
       if (matchIndex !== -1 && matchIndex !== currentIndex) {
         currentIndex = matchIndex;
+        isAnswerRevealed = false;
         renderCurrent();
       }
     });
 
     // Cập nhật giao diện toàn trang
     function renderCurrent() {
-      const item = HSK1_DATA[currentIndex];
+      if (activeList.length === 0) return;
+      const item = activeList[currentIndex];
       if (!item) return;
 
-      charCounter.textContent = `Chữ ${currentIndex + 1} / ${HSK1_DATA.length}`;
+      charCounter.textContent = `Chữ ${currentIndex + 1} / ${activeList.length}`;
       charSelect.value = currentIndex;
 
-      // Cập nhật URL trình duyệt ngầm mà không làm tải lại trang
-      const newUrl = `${window.location.pathname}?char=${encodeURIComponent(item.character)}`;
-      window.history.replaceState({ char: item.character }, '', newUrl);
+      // Cập nhật trạng thái SRS hiển thị
+      const rec = srsData[item.character] || { level: 0 };
+      if (rec.level === 3) {
+        srsStatusTag.textContent = "⭐ Đã thuộc làu";
+        srsStatusTag.className = "srs-status-tag mastered";
+      } else if (rec.level === 2) {
+        srsStatusTag.textContent = "🟢 Đang ghi nhớ";
+        srsStatusTag.className = "srs-status-tag learning";
+      } else if (rec.level === 1) {
+        srsStatusTag.textContent = "🔴 Cần ôn tập";
+        srsStatusTag.className = "srs-status-tag learning";
+      } else {
+        srsStatusTag.textContent = "Mới bắt đầu";
+        srsStatusTag.className = "srs-status-tag";
+      }
 
-      // Hero Info
-      pinyinDisplay.textContent = item.pinyin.join(', ');
-      meaningDisplay.textContent = item.meaning_vi;
+      // Xử lý chế độ Flashcard (Ẩn/Hiện đáp án)
+      if (isFlashcardMode && !isAnswerRevealed) {
+        pinyinDisplay.textContent = "• • •";
+        pinyinDisplay.classList.add('hidden-answer');
+        meaningDisplay.textContent = "???";
+        meaningDisplay.classList.add('hidden-answer');
+        revealContainer.style.display = 'block';
+
+        // Ẩn chi tiết chiết tự để người dùng tự suy nghĩ
+        document.querySelectorAll('.detail-collapsible').forEach(el => el.style.display = 'none');
+      } else {
+        pinyinDisplay.textContent = item.pinyin.join(', ');
+        pinyinDisplay.classList.remove('hidden-answer');
+        meaningDisplay.textContent = item.meaning_vi;
+        meaningDisplay.classList.remove('hidden-answer');
+        revealContainer.style.display = 'none';
+        document.querySelectorAll('.detail-collapsible').forEach(el => el.style.display = 'block');
+      }
 
       metaPills.innerHTML = `
         <span class="pill">Cấp độ HSK ${item.hsk_level}</span>
         <span class="pill">${item.stroke_count} nét</span>
         <span class="pill">Bộ thủ: ${item.radical}</span>
-        <span class="pill">Mã: U+${item.unicode}</span>
       `;
 
-      // Khởi tạo Hanzi Writer
       setupWriter(item.character);
 
-      // Chiết tự Lego
+      // Chiết tự
       componentsGrid.innerHTML = "";
       const components = item.structure?.tree?.components || item.structure?.components || [];
       components.forEach(comp => {
@@ -1001,7 +1279,7 @@
       const typeName = item.structure?.type_vi || item.structure?.type_name || item.structure?.type || '';
       structureSummary.innerHTML = `<strong>${typeName}:</strong> ${item.structure?.description || ''}`;
 
-      // Từ nguyên & Diễn biến cổ
+      // Từ nguyên
       etymologyStory.textContent = item.etymology?.story_vi || '';
       renderEvolutionGallery(item);
 
@@ -1016,29 +1294,107 @@
         </div>
       `).join('');
 
-      // Nút tới/lui
       btnPrev.disabled = currentIndex === 0;
-      btnNext.disabled = currentIndex === HSK1_DATA.length - 1;
+      btnNext.disabled = currentIndex === activeList.length - 1;
     }
 
-    // Nạp dữ liệu
+    // Bấm đánh giá SRS (Ghi nhớ ngắt quãng)
+    document.querySelectorAll('.btn-srs').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const rating = parseInt(btn.dataset.rating, 10);
+        const item = activeList[currentIndex];
+        if (!item) return;
+
+        let level = 1;
+        let needReview = false;
+
+        if (rating === 1) { // Quên
+          level = 1;
+          needReview = true;
+          updateWriterStatus(`Đã đánh dấu '${item.character}' vào danh sách CẦN ÔN TẬP.`, "mistake");
+        } else if (rating === 2) { // Khó
+          level = 2;
+          needReview = true;
+          updateWriterStatus(`Đã ghi nhận '${item.character}' là chữ KHÓ, sẽ nhắc lại sớm.`, "info");
+        } else if (rating === 3) { // Thuộc
+          level = 2;
+          needReview = false;
+          updateWriterStatus(`Tốt lắm! Bạn đã nhớ chữ '${item.character}'.`, "correct");
+        } else if (rating === 4) { // Dễ
+          level = 3;
+          needReview = false;
+          updateWriterStatus(`Tuyệt vời! Chữ '${item.character}' đã đạt mức ĐÃ THUỘC LÀU ⭐.`, "success");
+        }
+
+        srsData[item.character] = {
+          level,
+          needReview,
+          lastReviewed: Date.now()
+        };
+
+        saveSrsData();
+        updateTabCounters();
+        renderCurrent();
+
+        // Tự động chuyển nhẹ sang chữ tiếp theo sau 600ms
+        setTimeout(() => {
+          if (currentIndex < activeList.length - 1) {
+            currentIndex++;
+            isAnswerRevealed = false;
+            renderCurrent();
+          }
+        }, 650);
+      });
+    });
+
+    // Bật/Tắt chế độ Flashcard
+    btnToggleFlashcard.addEventListener('click', () => {
+      isFlashcardMode = !isFlashcardMode;
+      isAnswerRevealed = false;
+      btnToggleFlashcard.classList.toggle('active', isFlashcardMode);
+      btnToggleFlashcard.textContent = isFlashcardMode ? "✕ Tắt chế độ ôn" : "👁️ Chế độ ôn bài";
+      renderCurrent();
+    });
+
+    // Lật mở đáp án
+    btnReveal.addEventListener('click', () => {
+      isAnswerRevealed = true;
+      renderCurrent();
+    });
+
+    // Chuyển Tab bộ lọc
+    tabAll.addEventListener('click', () => applyFilter('all'));
+    tabReview.addEventListener('click', () => applyFilter('review'));
+    tabMastered.addEventListener('click', () => applyFilter('mastered'));
+
+    // Khởi tạo nạp dữ liệu
     async function loadDataBundle() {
       try {
+        loadSrsData();
         const response = await fetch('./data/bundles/hsk1-core.json');
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         HSK1_DATA = await response.json();
-        
+        activeList = [...HSK1_DATA];
+
+        updateTabCounters();
         initSelector();
-        // Kiểm tra xem người dùng có mở link dạng ?char=... không
-        parseDeepLinkParams();
+
+        // Kiểm tra deep link ?char=...
+        const params = new URLSearchParams(window.location.search);
+        const targetChar = params.get('char') || params.get('c');
+        if (targetChar) {
+          const foundIdx = activeList.findIndex(item => item.character === targetChar.trim());
+          if (foundIdx !== -1) currentIndex = foundIdx;
+        }
+
         renderCurrent();
       } catch (err) {
         console.error("Lỗi nạp hsk1-core.json:", err);
-        updateWriterStatus("Không thể tải gói dữ liệu chữ Hán. Vui lòng kiểm tra lại kết nối mạng.", "mistake");
+        updateWriterStatus("Không thể tải gói dữ liệu chữ Hán.", "mistake");
       }
     }
 
-    // Ô Mễ và Điền tự cách
+    // Grid toggle
     btnGridMi.addEventListener('click', () => {
       btnGridMi.classList.add('active');
       btnGridTian.classList.remove('active');
@@ -1051,16 +1407,16 @@
       gridContainer.classList.add('tian-mode');
     });
 
-    // Các nút bấm
+    // Âm thanh & Viết nét
     btnAudio.addEventListener('click', () => {
-      if (HSK1_DATA[currentIndex]) playAudio(HSK1_DATA[currentIndex].character);
+      if (activeList[currentIndex]) playAudio(activeList[currentIndex].character);
     });
 
     btnAnimate.addEventListener('click', playAnimation);
     btnQuiz.addEventListener('click', startQuizMode);
     btnReset.addEventListener('click', () => {
-      if (HSK1_DATA[currentIndex]) {
-        setupWriter(HSK1_DATA[currentIndex].character);
+      if (activeList[currentIndex]) {
+        setupWriter(activeList[currentIndex].character);
         startQuizMode();
       }
     });
@@ -1068,18 +1424,19 @@
     btnPrev.addEventListener('click', () => {
       if (currentIndex > 0) {
         currentIndex--;
+        isAnswerRevealed = false;
         renderCurrent();
       }
     });
 
     btnNext.addEventListener('click', () => {
-      if (currentIndex < HSK1_DATA.length - 1) {
+      if (currentIndex < activeList.length - 1) {
         currentIndex++;
+        isAnswerRevealed = false;
         renderCurrent();
       }
     });
 
-    // Bắt đầu
     loadDataBundle();
   </script>
 </body>
