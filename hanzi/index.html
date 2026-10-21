@@ -1,0 +1,833 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Giải Mã Hán Tự - HSK 1</title>
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --primary: #BE123C;
+      --primary-soft: #FFE4E6;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --accent-semantic: #0D9488;
+      --accent-semantic-bg: #CCFBF1;
+      --accent-phonetic: #D97706;
+      --accent-phonetic-bg: #FEF3C7;
+      --radius: 16px;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding-top: var(--safe-top);
+      padding-bottom: calc(var(--safe-bottom) + 76px);
+    }
+
+    #app-container {
+      width: 100%;
+      max-width: 460px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Top Navigation */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 12px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .counter-badge {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* Hero Character Card */
+    .char-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 20px 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+      position: relative;
+    }
+
+    .hanzi-display {
+      font-family: "Noto Serif SC", "Kaiti", "STKaiti", "SimSun", serif;
+      font-size: 88px;
+      line-height: 1.1;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      user-select: none;
+    }
+
+    .pinyin-audio-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .pinyin-text {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+
+    .audio-btn {
+      background: var(--primary-soft);
+      border: none;
+      color: var(--primary);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.1s ease;
+    }
+
+    .audio-btn:active {
+      transform: scale(0.92);
+    }
+
+    .meaning-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .pill {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #F1F5F9;
+      color: var(--text-muted);
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Decomposition / Lego Blocks */
+    .components-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .component-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 10px;
+      text-align: center;
+      background: #FAFAFA;
+      transition: transform 0.15s ease;
+    }
+
+    .component-box.semantic {
+      border-color: #99F6E4;
+      background: #F0FDFA;
+    }
+
+    .component-box.phonetic {
+      border-color: #FDE68A;
+      background: #FFFBEB;
+    }
+
+    .comp-char {
+      font-family: "Noto Serif SC", "Kaiti", "STKaiti", serif;
+      font-size: 36px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .comp-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .component-box.semantic .comp-tag {
+      background: var(--accent-semantic-bg);
+      color: var(--accent-semantic);
+    }
+
+    .component-box.phonetic .comp-tag {
+      background: var(--accent-phonetic-bg);
+      color: var(--accent-phonetic);
+    }
+
+    .comp-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    .structure-summary {
+      font-size: 13px;
+      background: #F8FAFC;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: var(--text-main);
+      border-left: 3px solid var(--primary);
+    }
+
+    /* Etymology & Story */
+    .etymology-story {
+      font-size: 14px;
+      color: var(--text-main);
+      line-height: 1.6;
+      background: #FFF1F2;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border-left: 3px solid var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .evolution-timeline {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      padding: 8px 0 2px 0;
+    }
+
+    .evo-step {
+      flex: 1;
+      text-align: center;
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 2px;
+    }
+
+    .evo-name {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .evo-status {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Compound Words */
+    .compounds-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .compound-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: #F8FAFC;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .compound-hanzi {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-main);
+      font-family: "Noto Serif SC", serif;
+    }
+
+    .compound-pinyin {
+      font-size: 13px;
+      color: var(--primary);
+      margin-left: 6px;
+    }
+
+    .compound-meaning {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Quick Selector */
+    .selector-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .selector-select {
+      flex: 1;
+      padding: 10px 12px;
+      font-size: 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #FFFFFF;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    /* Bottom Sticky Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      border-top: 1px solid var(--border);
+      padding: 10px 16px calc(var(--safe-bottom) + 10px) 16px;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+      z-index: 100;
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 460px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      flex: 1;
+      height: 46px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: opacity 0.15s ease;
+    }
+
+    .nav-btn:active {
+      opacity: 0.8;
+    }
+
+    .nav-btn.prev {
+      background: #F1F5F9;
+      color: var(--text-main);
+    }
+
+    .nav-btn.next {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app-container">
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <a href="../index.html" class="btn-back">
+        <span>←</span> Bài học cũ
+      </a>
+      <span class="counter-badge" id="char-counter">Chữ 1 / 7</span>
+    </header>
+
+    <!-- Quick Jump Selector -->
+    <div class="selector-row">
+      <select id="char-select" class="selector-select" aria-label="Chọn chữ Hán"></select>
+    </div>
+
+    <!-- Main Character Hero -->
+    <main>
+      <article class="char-card">
+        <div class="hanzi-display" id="char-display">妈</div>
+        <div class="pinyin-audio-row">
+          <span class="pinyin-text" id="pinyin-display">mā</span>
+          <button class="audio-btn" id="btn-audio" title="Phát âm" aria-label="Phát âm">🔊</button>
+        </div>
+        <div class="meaning-text" id="meaning-display">mẹ, má</div>
+        <div class="meta-pills" id="meta-pills"></div>
+      </article>
+
+      <!-- Structure & Component Decomposition (Chiết tự) -->
+      <section class="section-card" style="margin-top: 14px;">
+        <h2 class="section-title">
+          <span>🧩</span> Phân rã cấu trúc (Chiết tự)
+        </h2>
+        <div class="components-grid" id="components-grid"></div>
+        <div class="structure-summary" id="structure-summary"></div>
+      </section>
+
+      <!-- Etymology & Mnemonic Story -->
+      <section class="section-card" style="margin-top: 14px;">
+        <h2 class="section-title">
+          <span>📜</span> Từ nguyên & Câu chuyện nhớ chữ
+        </h2>
+        <div class="etymology-story" id="etymology-story"></div>
+        <div class="evolution-timeline" id="evolution-timeline"></div>
+      </section>
+
+      <!-- Compound Words -->
+      <section class="section-card" style="margin-top: 14px;">
+        <h2 class="section-title">
+          <span>📖</span> Từ vựng thường gặp (HSK 1)
+        </h2>
+        <div class="compounds-list" id="compounds-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Bottom Navigation Buttons -->
+  <footer class="bottom-nav">
+    <div class="nav-inner">
+      <button class="nav-btn prev" id="btn-prev">← Chữ trước</button>
+      <button class="nav-btn next" id="btn-next">Chữ sau →</button>
+    </div>
+  </footer>
+
+  <script type="module">
+    // Dữ liệu chữ Hán HSK1 chuẩn hoá theo tài liệu kiến trúc (docs/kien-truc.pdf)
+    const HSK1_DATA = [
+      {
+        character: "妈",
+        unicode: "5988",
+        pinyin: ["mā"],
+        meaning_vi: "mẹ, má",
+        hsk_level: 1,
+        stroke_count: 6,
+        radical: "女",
+        structure: {
+          ids: "⿰女马",
+          type_name: "Chữ hình thanh (Nghĩa + Âm)",
+          description: "Bố cục trái - phải (⿰). Bộ Nữ (女) mang ý nghĩa người mẹ, chữ Mã (马) gợi ý âm đọc.",
+          components: [
+            { character: "女", pinyin: "nǚ", role: "semantic", role_vi: "Biểu ý (Ý nghĩa)", hint_vi: "Người phụ nữ, liên quan đến tính nữ và người mẹ" },
+            { character: "马", pinyin: "mǎ", role: "phonetic", role_vi: "Biểu âm (Âm đọc)", hint_vi: "Ngựa (mǎ gợi ý âm đọc cho mā)" }
+          ]
+        },
+        etymology: {
+          story_vi: "Người phụ nữ (女) luôn làm việc tận tụy, bền bỉ như chú ngựa (马) để chăm sóc con cái chính là người Mẹ (妈).",
+          evolution: [
+            { stage: "Giáp cốt", status: "Có" },
+            { stage: "Kim văn", status: "Có" },
+            { stage: "Tiểu triện", status: "Có" },
+            { stage: "Khải thư", status: "Chuẩn" }
+          ]
+        },
+        compound_words: [
+          { word: "妈妈", pinyin: "māma", meaning_vi: "mẹ, má" }
+        ]
+      },
+      {
+        character: "人",
+        unicode: "4EBA",
+        pinyin: ["rén"],
+        meaning_vi: "người",
+        hsk_level: 1,
+        stroke_count: 2,
+        radical: "人",
+        structure: {
+          ids: "人",
+          type_name: "Chữ tượng hình (Vẽ hình dạng)",
+          description: "Chữ đơn thể độc lập, mô phỏng dáng đứng chân bước của con người nhìn nghiêng.",
+          components: [
+            { character: "人", pinyin: "rén", role: "semantic", role_vi: "Tự thân", hint_vi: "Hình dáng con người nghiêng mình bước đi" }
+          ]
+        },
+        etymology: {
+          story_vi: "Chữ vẽ hình ảnh một con người đang đứng nghiêng mình và bước hai chân về phía trước.",
+          evolution: [
+            { stage: "Giáp cốt", status: "Có" },
+            { stage: "Kim văn", status: "Có" },
+            { stage: "Tiểu triện", status: "Có" },
+            { stage: "Khải thư", status: "Chuẩn" }
+          ]
+        },
+        compound_words: [
+          { word: "中国人", pinyin: "zhōng guó rén", meaning_vi: "người Trung Quốc" },
+          { word: "大人", pinyin: "dà ren", meaning_vi: "người lớn" }
+        ]
+      },
+      {
+        character: "大",
+        unicode: "5927",
+        pinyin: ["dà"],
+        meaning_vi: "to, lớn",
+        hsk_level: 1,
+        stroke_count: 3,
+        radical: "大",
+        structure: {
+          ids: "大",
+          type_name: "Chữ chỉ sự / tượng hình",
+          description: "Chữ đơn thể, vẽ hình một người trưởng thành (人) dang rộng cả hai tay và hai chân.",
+          components: [
+            { character: "人", pinyin: "rén", role: "semantic", role_vi: "Thân người", hint_vi: "Con người" },
+            { character: "一", pinyin: "yī", role: "semantic", role_vi: "Hai cánh tay", hint_vi: "Dang rộng hai tay hết cỡ để biểu thị sự to lớn" }
+          ]
+        },
+        etymology: {
+          story_vi: "Khi người cổ đại muốn diễn tả thứ gì thật to lớn, họ dùng cử chỉ dang rộng cả hai tay và hai chân.",
+          evolution: [
+            { stage: "Giáp cốt", status: "Có" },
+            { stage: "Kim văn", status: "Có" },
+            { stage: "Tiểu triện", status: "Có" },
+            { stage: "Khải thư", status: "Chuẩn" }
+          ]
+        },
+        compound_words: [
+          { word: "大学", pinyin: "dà xué", meaning_vi: "trường đại học" },
+          { word: "大人", pinyin: "dà ren", meaning_vi: "người lớn" }
+        ]
+      },
+      {
+        character: "天",
+        unicode: "5929",
+        pinyin: ["tiān"],
+        meaning_vi: "trời, ngày",
+        hsk_level: 1,
+        stroke_count: 4,
+        radical: "大",
+        structure: {
+          ids: "⿱一大",
+          type_name: "Chữ chỉ sự",
+          description: "Bố cục trên - dưới (⿱). Phía trên người lớn (大) có thêm nét ngang chỉ khoảng không vô tận trên đỉnh đầu.",
+          components: [
+            { character: "一", pinyin: "yī", role: "semantic", role_vi: "Bầu trời", hint_vi: "Khoảng không vô cực ở phía trên đỉnh đầu" },
+            { character: "大", pinyin: "dà", role: "semantic", role_vi: "Con người", hint_vi: "Người đứng thẳng đầu đội trời chân đạp đất" }
+          ]
+        },
+        etymology: {
+          story_vi: "Bên trên đỉnh đầu của con người (大) chính là bầu trời cao vút và bao la vô tận (天).",
+          evolution: [
+            { stage: "Giáp cốt", status: "Có" },
+            { stage: "Kim văn", status: "Có" },
+            { stage: "Tiểu triện", status: "Có" },
+            { stage: "Khải thư", status: "Chuẩn" }
+          ]
+        },
+        compound_words: [
+          { word: "今天", pinyin: "jīn tiān", meaning_vi: "hôm nay" },
+          { word: "明天", pinyin: "míng tiān", meaning_vi: "ngày mai" },
+          { word: "昨天", pinyin: "zuó tiān", meaning_vi: "hôm qua" }
+        ]
+      },
+      {
+        character: "木",
+        unicode: "6728",
+        pinyin: ["mù"],
+        meaning_vi: "cây, gỗ",
+        hsk_level: 1,
+        stroke_count: 4,
+        radical: "木",
+        structure: {
+          ids: "木",
+          type_name: "Chữ tượng hình",
+          description: "Chữ đơn thể, vẽ hình cây thân gỗ: nét thẳng đứng là thân, hai nhánh trên là cành, hai nét xòe dưới là rễ.",
+          components: [
+            { character: "木", pinyin: "mù", role: "semantic", role_vi: "Tự thân", hint_vi: "Cây cối cắm rễ sâu vào lòng đất" }
+          ]
+        },
+        etymology: {
+          story_vi: "Hình vẽ trực quan một cái cây có thân vươn thẳng, cành lá tỏa ra phía trên và rễ bám chắc ở dưới.",
+          evolution: [
+            { stage: "Giáp cốt", status: "Có" },
+            { stage: "Kim văn", status: "Có" },
+            { stage: "Tiểu triện", status: "Có" },
+            { stage: "Khải thư", status: "Chuẩn" }
+          ]
+        },
+        compound_words: [
+          { word: "木头", pinyin: "mù tou", meaning_vi: "khúc gỗ, gỗ" }
+        ]
+      },
+      {
+        character: "林",
+        unicode: "6797",
+        pinyin: ["lín"],
+        meaning_vi: "rừng cây nhỏ",
+        hsk_level: 1,
+        stroke_count: 8,
+        radical: "木",
+        structure: {
+          ids: "⿰木木",
+          type_name: "Chữ hội ý (Ghép ý nghĩa)",
+          description: "Bố cục trái - phải (⿰). Ghép hai cây gỗ (木 + 木) đứng cạnh nhau để diễn tả một cụm cây hay rừng thưa.",
+          components: [
+            { character: "木", pinyin: "mù", role: "semantic", role_vi: "Biểu ý 1", hint_vi: "Một cái cây bên trái" },
+            { character: "木", pinyin: "mù", role: "semantic", role_vi: "Biểu ý 2", hint_vi: "Thêm một cái cây nữa bên phải" }
+          ]
+        },
+        etymology: {
+          story_vi: "Nhiều cây (木) mọc tụ lại thành hàng lối liền kề nhau sẽ hình thành nên một khu rừng (林).",
+          evolution: [
+            { stage: "Giáp cốt", status: "Có" },
+            { stage: "Kim văn", status: "Có" },
+            { stage: "Tiểu triện", status: "Có" },
+            { stage: "Khải thư", status: "Chuẩn" }
+          ]
+        },
+        compound_words: [
+          { word: "树林", pinyin: "shù lín", meaning_vi: "rừng cây nhỏ" }
+        ]
+      },
+      {
+        character: "好",
+        unicode: "597D",
+        pinyin: ["hǎo"],
+        meaning_vi: "tốt, đẹp, hay",
+        hsk_level: 1,
+        stroke_count: 6,
+        radical: "女",
+        structure: {
+          ids: "⿰女子",
+          type_name: "Chữ hội ý (Ghép ý nghĩa)",
+          description: "Bố cục trái - phải (⿰). Kết hợp giữa người phụ nữ (女) và đứa con nhỏ (子).",
+          components: [
+            { character: "女", pinyin: "nǚ", role: "semantic", role_vi: "Biểu ý", hint_vi: "Người phụ nữ, người mẹ hiền từ" },
+            { character: "子", pinyin: "zǐ", role: "semantic", role_vi: "Biểu ý", hint_vi: "Đứa con thơ ngoan ngoãn" }
+          ]
+        },
+        etymology: {
+          story_vi: "Người mẹ (女) âu yếm bế đứa con (子) trên tay là hình ảnh đẹp đẽ, hòa thuận và trọn vẹn nhất (好).",
+          evolution: [
+            { stage: "Giáp cốt", status: "Có" },
+            { stage: "Kim văn", status: "Có" },
+            { stage: "Tiểu triện", status: "Có" },
+            { stage: "Khải thư", status: "Chuẩn" }
+          ]
+        },
+        compound_words: [
+          { word: "你好", pinyin: "nǐ hǎo", meaning_vi: "xin chào" },
+          { word: "很好", pinyin: "hěn hǎo", meaning_vi: "rất tốt" }
+        ]
+      }
+    ];
+
+    let currentIndex = 0;
+
+    // Elements
+    const charCounter = document.getElementById('char-counter');
+    const charSelect = document.getElementById('char-select');
+    const charDisplay = document.getElementById('char-display');
+    const pinyinDisplay = document.getElementById('pinyin-display');
+    const btnAudio = document.getElementById('btn-audio');
+    const meaningDisplay = document.getElementById('meaning-display');
+    const metaPills = document.getElementById('meta-pills');
+    const componentsGrid = document.getElementById('components-grid');
+    const structureSummary = document.getElementById('structure-summary');
+    const etymologyStory = document.getElementById('etymology-story');
+    const evolutionTimeline = document.getElementById('evolution-timeline');
+    const compoundsList = document.getElementById('compounds-list');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+
+    // Populate Selector
+    function initSelector() {
+      charSelect.innerHTML = "";
+      HSK1_DATA.forEach((item, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.textContent = `${idx + 1}. ${item.character} (${item.pinyin[0]}) - ${item.meaning_vi}`;
+        charSelect.appendChild(opt);
+      });
+
+      charSelect.addEventListener('change', (e) => {
+        currentIndex = parseInt(e.target.value, 10);
+        renderCurrent();
+      });
+    }
+
+    // Speech Synthesis for Audio
+    function playAudio(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'zh-CN';
+        utter.rate = 0.85;
+        window.speechSynthesis.speak(utter);
+      } else {
+        alert("Trình duyệt không hỗ trợ phát âm trực tiếp.");
+      }
+    }
+
+    // Render Character Data
+    function renderCurrent() {
+      const item = HSK1_DATA[currentIndex];
+      if (!item) return;
+
+      // Update counters & selector
+      charCounter.textContent = `Chữ ${currentIndex + 1} / ${HSK1_DATA.length}`;
+      charSelect.value = currentIndex;
+
+      // Main Hero
+      charDisplay.textContent = item.character;
+      pinyinDisplay.textContent = item.pinyin.join(', ');
+      meaningDisplay.textContent = item.meaning_vi;
+
+      // Meta Pills
+      metaPills.innerHTML = `
+        <span class="pill">Cấp độ HSK ${item.hsk_level}</span>
+        <span class="pill">${item.stroke_count} nét</span>
+        <span class="pill">Bộ thủ: ${item.radical}</span>
+        <span class="pill">Mã: U+${item.unicode}</span>
+      `;
+
+      // Components Grid
+      componentsGrid.innerHTML = "";
+      item.structure.components.forEach(comp => {
+        const box = document.createElement('div');
+        box.className = `component-box ${comp.role}`;
+        box.innerHTML = `
+          <div class="comp-char">${comp.character}</div>
+          <div class="comp-tag">${comp.role_vi}</div>
+          <div style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 2px;">${comp.pinyin || ''}</div>
+          <div class="comp-hint">${comp.hint_vi}</div>
+        `;
+        componentsGrid.appendChild(box);
+      });
+
+      structureSummary.innerHTML = `<strong>${item.structure.type_name}:</strong> ${item.structure.description}`;
+
+      // Etymology & Story
+      etymologyStory.textContent = item.etymology.story_vi;
+      evolutionTimeline.innerHTML = item.etymology.evolution.map(evo => `
+        <div class="evo-step">
+          <div class="evo-name">${evo.stage}</div>
+          <div class="evo-status">${evo.status}</div>
+        </div>
+      `).join('');
+
+      // Compound Words
+      compoundsList.innerHTML = item.compound_words.map(c => `
+        <div class="compound-item">
+          <div>
+            <span class="compound-hanzi">${c.word}</span>
+            <span class="compound-pinyin">${c.pinyin}</span>
+          </div>
+          <div class="compound-meaning">${c.meaning_vi}</div>
+        </div>
+      `).join('');
+
+      // Buttons State
+      btnPrev.disabled = currentIndex === 0;
+      btnNext.disabled = currentIndex === HSK1_DATA.length - 1;
+
+      // Scroll to top gently on card switch
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Event Listeners
+    btnAudio.addEventListener('click', () => {
+      playAudio(HSK1_DATA[currentIndex].character);
+    });
+
+    btnPrev.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderCurrent();
+      }
+    });
+
+    btnNext.addEventListener('click', () => {
+      if (currentIndex < HSK1_DATA.length - 1) {
+        currentIndex++;
+        renderCurrent();
+      }
+    });
+
+    // Keyboard navigation (for testing on desktop/laptop)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' && currentIndex > 0) {
+        currentIndex--;
+        renderCurrent();
+      } else if (e.key === 'ArrowRight' && currentIndex < HSK1_DATA.length - 1) {
+        currentIndex++;
+        renderCurrent();
+      }
+    });
+
+    // Init
+    initSelector();
+    renderCurrent();
+  </script>
+</body>
+</html>
+```
