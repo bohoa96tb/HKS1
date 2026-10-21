@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+<linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#E11D48"/>
+<stop offset="100%" stop-color="#9F1239"/>
+</linearGradient>
+<filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+<feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.25"/>
+</filter>
+</defs>
+​<!-- Nền bo góc mềm mại -->
+<rect width="512" height="512" rx="115" fill="url(#bgGrad)"/>
+​<!-- Biểu tượng ghép hình mảnh ghép (Lego/Puzzle) viền sáng -->
+<g filter="url(#shadow)">
+<!-- Ô giấy Mễ tự cách thu nhỏ -->
+<rect x="86" y="86" width="340" height="340" rx="36" fill="#FFFDF9" stroke="#FECDD3" stroke-width="6"/>
+<line x1="86" y1="256" x2="426" y2="256" stroke="#FECDD3" stroke-width="3" stroke-dasharray="8 8"/>
+<line x1="256" y1="86" x2="256" y2="426" stroke="#FECDD3" stroke-width="3" stroke-dasharray="8 8"/>
+<line x1="86" y1="86" x2="426" y2="426" stroke="#FFE4E6" stroke-width="2" stroke-dasharray="8 8"/>
+<line x1="426" y1="86" x2="86" y2="426" stroke="#FFE4E6" stroke-width="2" stroke-dasharray="8 8"/>
+​<!-- Chữ Hán "字" (Tự) màu đỏ son nằm trang trọng ở giữa -->
+<text x="256" y="325" 
+font-family="'Noto Serif SC', 'Kaiti', 'STKaiti', serif" 
+font-size="210" 
+font-weight="bold" 
+fill="#BE123C" 
+text-anchor="middle">字</text>
+</g>
+​<!-- Huy hiệu ghép hình mảnh lego 🧩 nhỏ xinh góc dưới -->
+<circle cx="390" cy="390" r="46" fill="#0D9488" stroke="#FFFFFF" stroke-width="6"/>
+<text x="390" y="405" font-size="44" text-anchor="middle">🧩</text>
+</svg>
